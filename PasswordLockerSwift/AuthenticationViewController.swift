@@ -78,6 +78,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             if retrieveString == passwordTextField.text {
                 // Success
                 NSLog("Login Successful")
+                self.performSegueWithIdentifier("AuthenticationToTabBarController", sender: nil)
                 return true
             } else {
                 // show alert
@@ -90,6 +91,12 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             }
         }
         return false
+    }
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AuthenticationToTabBarController" {
+        }
     }
 }
 
