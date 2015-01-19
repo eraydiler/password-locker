@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Authentication View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="AuthenticationViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,10 +16,85 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIf-ia-jvo">
+                                <rect key="frame" x="16" y="285" width="115" height="30"/>
+                                <state key="normal" title="Delete PassLock">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deletePassLockButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wy0-L5-2IL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbn-JZ-9Q5">
+                                <rect key="frame" x="484" y="285" width="100" height="30"/>
+                                <state key="normal" title="Add PassLock">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPassLockButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7ad-9L-mrS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass Locker !" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0C3-lz-PMu">
+                                <rect key="frame" x="222" y="184" width="157" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2L-xk-H47">
+                                <rect key="frame" x="16" y="243" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFK-ZQ-axM">
+                                <rect key="frame" x="277" y="373" width="42" height="30"/>
+                                <state key="normal" title="check">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BeU-iA-TRF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="v2L-xk-H47" firstAttribute="trailing" secondItem="cbn-JZ-9Q5" secondAttribute="trailing" id="7k0-KF-8JQ"/>
+                            <constraint firstItem="FFK-ZQ-axM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="277" id="EpJ-Rp-1Aa"/>
+                            <constraint firstItem="PIf-ia-jvo" firstAttribute="top" secondItem="v2L-xk-H47" secondAttribute="bottom" constant="12" id="Fcv-XD-6FL"/>
+                            <constraint firstItem="0C3-lz-PMu" firstAttribute="centerX" secondItem="v2L-xk-H47" secondAttribute="centerX" id="Mou-du-yS2"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="FFK-ZQ-axM" secondAttribute="bottom" constant="197" id="TUl-xq-DQp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FFK-ZQ-axM" secondAttribute="trailing" constant="264" id="Ws2-N9-mTq"/>
+                            <constraint firstItem="PIf-ia-jvo" firstAttribute="baseline" secondItem="cbn-JZ-9Q5" secondAttribute="baseline" id="ciH-v4-QFz"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="FFK-ZQ-axM" secondAttribute="bottom" constant="197" id="clJ-bC-87X"/>
+                            <constraint firstItem="v2L-xk-H47" firstAttribute="leading" secondItem="PIf-ia-jvo" secondAttribute="leading" id="dk9-mF-o4A"/>
+                            <constraint firstItem="v2L-xk-H47" firstAttribute="top" secondItem="0C3-lz-PMu" secondAttribute="bottom" constant="29" id="ebP-gz-zQx"/>
+                            <constraint firstItem="v2L-xk-H47" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="gw5-xX-aTi"/>
+                            <constraint firstItem="cbn-JZ-9Q5" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="k57-vl-S0k"/>
+                            <constraint firstItem="v2L-xk-H47" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="uGN-Oh-4ej"/>
+                            <constraint firstItem="FFK-ZQ-axM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="277" id="wC4-0d-v2G"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ws2-N9-mTq"/>
+                                <exclude reference="wC4-0d-v2G"/>
+                                <exclude reference="clJ-bC-87X"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NE0-hv-y5m" appends="YES" id="x9A-iH-HRn"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="v2L-xk-H47" id="ASe-5W-5Tb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NE0-hv-y5m">
+                    <connections>
+                        <action selector="viewTapped:" destination="vXZ-lx-hvc" id="TWJ-Vs-Pxi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>
