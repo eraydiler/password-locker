@@ -8,7 +8,7 @@
         <!--Authentication View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="AuthenticationViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthenticationID" id="vXZ-lx-hvc" customClass="AuthenticationViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -99,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="-232" y="0.0"/>
         </scene>
-        <!--Settings-->
+        <!--View Controller-->
         <scene sceneID="Rqk-1f-VuI">
             <objects>
                 <viewController id="RrA-f4-6kO" sceneMemberID="viewController">
@@ -112,13 +112,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings-29.png" id="NIF-re-ass"/>
+                    <navigationItem key="navigationItem" id="c3e-jw-T1j"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HpT-iB-n9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240" y="356"/>
+            <point key="canvasLocation" x="2052" y="356"/>
         </scene>
-        <!--Login-->
+        <!--Logins-->
         <scene sceneID="Xzk-oN-OsI">
             <objects>
                 <tableViewController id="hn5-Yg-bS0" customClass="LoginsTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,10 +127,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Login Cell" id="rT2-oe-jAo">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Login Cell" textLabel="RgI-0v-Vxb" detailTextLabel="48a-cc-Cvv" style="IBUITableViewCellStyleSubtitle" id="rT2-oe-jAo">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rT2-oe-jAo" id="0T4-TY-sE7">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RgI-0v-Vxb">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="48a-cc-Cvv">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -139,11 +153,22 @@
                             <outlet property="delegate" destination="hn5-Yg-bS0" id="Oxw-jk-LrV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Login" image="login-29.png" id="vqo-Lv-een"/>
+                    <navigationItem key="navigationItem" title="Logins" id="i7Q-om-Hqq">
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="0bZ-T5-mSW">
+                            <connections>
+                                <action selector="quitBarButtonPressed:" destination="hn5-Yg-bS0" id="gmy-J9-In2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FXv-uF-wXO">
+                            <connections>
+                                <action selector="addBarButtonPressed:" destination="hn5-Yg-bS0" id="ICC-Z6-TfP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qzc-kJ-NP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240" y="-369"/>
+            <point key="canvasLocation" x="2052" y="-369"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="K7F-QR-nKd">
@@ -156,13 +181,51 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hn5-Yg-bS0" kind="relationship" relationship="viewControllers" id="YoY-tV-UG6"/>
-                        <segue destination="RrA-f4-6kO" kind="relationship" relationship="viewControllers" id="n7T-9E-EN9"/>
+                        <segue destination="uhu-5k-jJP" kind="relationship" relationship="viewControllers" id="YoY-tV-UG6"/>
+                        <segue destination="R00-Th-bwq" kind="relationship" relationship="viewControllers" id="n7T-9E-EN9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tPu-H4-alH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="543" y="0.0"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="sbd-7S-igO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uhu-5k-jJP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Login" image="login-29.png" id="vqo-Lv-een"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rqc-TK-URY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hn5-Yg-bS0" kind="relationship" relationship="rootViewController" id="wo8-5r-b1R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0D-Je-AYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1240" y="-369"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Aat-ks-92g">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R00-Th-bwq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-29.png" id="NIF-re-ass"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wIQ-Fz-qmX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RrA-f4-6kO" kind="relationship" relationship="rootViewController" id="E4a-Ws-UO4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ff2-XT-b3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1240" y="356"/>
         </scene>
     </scenes>
     <resources>
