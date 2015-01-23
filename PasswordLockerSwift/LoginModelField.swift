@@ -2,7 +2,7 @@
 //  LoginModelField.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 20/01/15.
+//  Created by Eray on 22/01/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 

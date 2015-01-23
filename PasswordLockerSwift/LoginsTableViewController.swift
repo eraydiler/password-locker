@@ -9,9 +9,11 @@
 import UIKit
 import CoreData
 
+let TAG = "LoginsViewController"
+
 class LoginsTableViewController: UITableViewController {
 
-    var loginModels = [Any]()
+    var loginModels = [LoginModel]()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     let CellIdentifier = "Login Cell"
     
@@ -35,13 +37,21 @@ class LoginsTableViewController: UITableViewController {
         
         // If an error occurs assign it to error variable.
         var error: NSError?
-        let fetchedLoginModels = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error)
+        let fetchedLoginModels = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error) as [LoginModel]?
         
         if let results = fetchedLoginModels {
             loginModels = results
         } else {
-            println("Could not fetched \(error), \(error!.userInfo)")
+            println("\(TAG) Could not fetched \(error), \(error!.userInfo)")
         }
+        
+        // Test
+        
+        for element in loginModels {
+            let login = element as LoginModel
+            println(login.name)
+        }
+        
         self.tableView.reloadData()
     }
     
@@ -68,11 +78,10 @@ class LoginsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
-        let loginModel: LoginModel? = self.loginModels[indexPath.row] as? LoginModel
-        if loginModel != nil {
-            cell.textLabel?.text = loginModel?.name
-            cell.detailTextLabel?.text = self.stringFromDate(loginModel!.date)
-        }
+        let loginModel = loginModels[indexPath.row] as LoginModel
+        
+        cell.textLabel?.text = loginModel.name
+        cell.detailTextLabel?.text = self.stringFromDate(loginModel.date)
         
         return cell
     }
@@ -88,6 +97,15 @@ class LoginsTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
+            // Not: LoginModel 'i daha sonra siliyorum çünkü silindikten sonra nesneye ulaşamıyorum.
+            let loginModel = loginModels[indexPath.row] as LoginModel
+            //remove related fields from Core Data
+            deleteRelatedFields(loginModel)
+            // remove from Core Data
+            deleteLoginModel(loginModel)
+            // remove from array
+            loginModels.removeAtIndex(indexPath.row)
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
@@ -110,18 +128,29 @@ class LoginsTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - Table view delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("toLoginEditViewControllerSegue", sender: indexPath)
+    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toLoginEditViewControllerSegue" {
+            var loginEditVC: LoginEditTableViewController = segue.destinationViewController as LoginEditTableViewController
+            
+            let indexPath: NSIndexPath = sender as NSIndexPath
+            let loginModel = loginModels[indexPath.row]
+            loginEditVC.loginModel = loginModel
+        }
     }
-    */
     
     // MARK: - IBActions
+    
     @IBAction func addBarButtonPressed(sender: AnyObject) {
         
         // 1. Create the alert controller.
@@ -139,13 +168,13 @@ class LoginsTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             
             // Get the text in alertView 's textField
-            let loginModelName = (alert.textFields![0] as UITextField).text
+            let loginModelName: String = (alert.textFields![0] as UITextField).text
 
             // Instant indexPath
             var indexPath = NSIndexPath(forRow: self.loginModels.count, inSection: 0)
-            
+
             // Create new loginModel in the Core Data
-            let login = self.loginMoldelWithName(loginModelName, atIndexPath: indexPath)
+            let login: LoginModel = self.loginMoldelWithName(loginModelName, atIndexPath: indexPath)
 
             // Add new loginModel to loginModels array
             self.loginModels.append(login)
@@ -168,27 +197,59 @@ class LoginsTableViewController: UITableViewController {
         if (self.presentedViewController?.isBeingDismissed() == true) {
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
                 // buraya nedense girmiyor
-                println("logout")
+                println("\(TAG) logout")
             })
         }
     }
     
     // MARK: Helper Methods
+    
     func loginMoldelWithName(name: NSString, atIndexPath indexPath: NSIndexPath) -> LoginModel {
         
-        let login = NSEntityDescription.insertNewObjectForEntityForName("LoginModel", inManagedObjectContext: self.managedObjectContext!) as LoginModel
+//        var login = NSEntityDescription.insertNewObjectForEntityForName("LoginModel", inManagedObjectContext: managedObjectContext!) as LoginModel
         
-        login.name = name;
-        login.date = NSDate()
+        let entity = NSEntityDescription.entityForName("LoginModel", inManagedObjectContext: managedObjectContext!)        
+        var login = LoginModel(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+        
+        login.name = name
         login.rowIndex = indexPath.row as NSNumber
         
         var error: NSError?
-        
         if !managedObjectContext!.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+            println("\(TAG) Could not save \(error), \(error?.userInfo)")
         }
         
-        return login
+        return login as LoginModel
+    }
+    
+    func deleteLoginModel(loginModel: LoginModel) {
+        managedObjectContext?.deleteObject(loginModel)
+        
+        var error : NSError?
+        if !managedObjectContext!.save(&error) {
+            println("\(TAG) \(error?.localizedDescription)")
+        }
+    }
+    
+    func deleteRelatedFields(loginModel: LoginModel) {
+        println("\(TAG)  \(loginModel.name)")
+        
+        let fetchRequest = NSFetchRequest(entityName: "LoginModelField")
+        fetchRequest.predicate = NSPredicate(format: "loginModel.name == %@", loginModel.name)
+        
+        var error: NSError?
+        let loginModelFields = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error)
+        
+        if error != nil { println("\(TAG) \(error?.localizedDescription)") }
+        
+        for field in loginModelFields! {
+            managedObjectContext?.deleteObject(field as LoginModel)
+        }
+        
+        error = nil
+        if(managedObjectContext!.save(&error) ) {
+            println("\(TAG) \(error?.localizedDescription)")
+        }
     }
     
     func stringFromDate(date: NSDate) -> String {

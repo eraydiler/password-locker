@@ -19,9 +19,12 @@
 		2A438D9B1A6DA84000101092 /* login-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D991A6DA84000101092 /* login-50.png */; };
 		2A438D9E1A6DAA3500101092 /* settings-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D9C1A6DAA3500101092 /* settings-29.png */; };
 		2A438D9F1A6DAA3500101092 /* login-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D9D1A6DAA3500101092 /* login-29.png */; };
-		2A76A1CD1A6EFF5F00C4EF98 /* LoginModelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A76A1CC1A6EFF5F00C4EF98 /* LoginModelField.swift */; };
-		2A76A1CF1A6EFF5F00C4EF98 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A76A1CE1A6EFF5F00C4EF98 /* LoginModel.swift */; };
+		2A9586171A700F6B006C7056 /* LoginEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9586161A700F6B006C7056 /* LoginEditTableViewController.swift */; };
+		2A95861B1A70152D006C7056 /* bank_cards-37.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9586191A70152D006C7056 /* bank_cards-37.png */; };
+		2A95861D1A7016E0006C7056 /* bank_cards-75.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A95861C1A7016E0006C7056 /* bank_cards-75.png */; };
 		2AB72CEB1A6E749E00CADAD0 /* LoginsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB72CEA1A6E749E00CADAD0 /* LoginsTableViewController.swift */; };
+		2ACEDC2B1A71774100AC4D30 /* LoginModelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACEDC2A1A71774100AC4D30 /* LoginModelField.swift */; };
+		2ACEDC2D1A71774100AC4D30 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACEDC2C1A71774100AC4D30 /* LoginModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +54,12 @@
 		2A438D991A6DA84000101092 /* login-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-50.png"; sourceTree = "<group>"; };
 		2A438D9C1A6DAA3500101092 /* settings-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-29.png"; sourceTree = "<group>"; };
 		2A438D9D1A6DAA3500101092 /* login-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-29.png"; sourceTree = "<group>"; };
-		2A76A1CC1A6EFF5F00C4EF98 /* LoginModelField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModelField.swift; sourceTree = "<group>"; };
-		2A76A1CE1A6EFF5F00C4EF98 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		2A9586161A700F6B006C7056 /* LoginEditTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEditTableViewController.swift; sourceTree = "<group>"; };
+		2A9586191A70152D006C7056 /* bank_cards-37.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bank_cards-37.png"; sourceTree = "<group>"; };
+		2A95861C1A7016E0006C7056 /* bank_cards-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bank_cards-75.png"; sourceTree = "<group>"; };
 		2AB72CEA1A6E749E00CADAD0 /* LoginsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginsTableViewController.swift; sourceTree = "<group>"; };
+		2ACEDC2A1A71774100AC4D30 /* LoginModelField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModelField.swift; sourceTree = "<group>"; };
+		2ACEDC2C1A71774100AC4D30 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +140,9 @@
 		2A438D881A6D66C700101092 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2ACEDC2C1A71774100AC4D30 /* LoginModel.swift */,
+				2ACEDC2A1A71774100AC4D30 /* LoginModelField.swift */,
 				2A438D671A6D66A500101092 /* PasswordLockerSwift.xcdatamodeld */,
-				2A76A1CE1A6EFF5F00C4EF98 /* LoginModel.swift */,
-				2A76A1CC1A6EFF5F00C4EF98 /* LoginModelField.swift */,
 				2A438D891A6D66EC00101092 /* Utils */,
 			);
 			name = Model;
@@ -164,6 +170,7 @@
 			children = (
 				2A438D901A6D69E500101092 /* AuthenticationViewController.swift */,
 				2AB72CEA1A6E749E00CADAD0 /* LoginsTableViewController.swift */,
+				2A9586161A700F6B006C7056 /* LoginEditTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -171,6 +178,8 @@
 		2A438D971A6DA82700101092 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				2A95861C1A7016E0006C7056 /* bank_cards-75.png */,
+				2A9586191A70152D006C7056 /* bank_cards-37.png */,
 				2A438D9C1A6DAA3500101092 /* settings-29.png */,
 				2A438D9D1A6DAA3500101092 /* login-29.png */,
 				2A438D981A6DA84000101092 /* settings-50.png */,
@@ -264,8 +273,10 @@
 				2A438D9A1A6DA84000101092 /* settings-50.png in Resources */,
 				2A438D731A6D66A500101092 /* LaunchScreen.xib in Resources */,
 				2A438D9B1A6DA84000101092 /* login-50.png in Resources */,
+				2A95861D1A7016E0006C7056 /* bank_cards-75.png in Resources */,
 				2A438D701A6D66A500101092 /* Images.xcassets in Resources */,
 				2A438D9E1A6DAA3500101092 /* settings-29.png in Resources */,
+				2A95861B1A70152D006C7056 /* bank_cards-37.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,12 +295,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A438D8B1A6D670500101092 /* KeychainWrapper.swift in Sources */,
-				2A76A1CF1A6EFF5F00C4EF98 /* LoginModel.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
 				2AB72CEB1A6E749E00CADAD0 /* LoginsTableViewController.swift in Sources */,
+				2ACEDC2B1A71774100AC4D30 /* LoginModelField.swift in Sources */,
 				2A438D691A6D66A500101092 /* PasswordLockerSwift.xcdatamodeld in Sources */,
-				2A76A1CD1A6EFF5F00C4EF98 /* LoginModelField.swift in Sources */,
+				2ACEDC2D1A71774100AC4D30 /* LoginModel.swift in Sources */,
 				2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */,
+				2A9586171A700F6B006C7056 /* LoginEditTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
