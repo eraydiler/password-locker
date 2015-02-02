@@ -8,8 +8,10 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class LoginModel: NSManagedObject {
+    let TAG = "LoginModel"
 
     @NSManaged var date: NSDate
     @NSManaged var name: String
@@ -25,5 +27,5 @@ class LoginModel: NSManagedObject {
         let res = super.validateForInsert(error)
         println(res)
         return res
-    }
+    }    
 }

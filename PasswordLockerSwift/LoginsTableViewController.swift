@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-let TAG = "LoginsViewController"
-
 class LoginsTableViewController: UITableViewController {
+    
+    let TAG = "LoginsViewController"
 
     var loginModels = [LoginModel]()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
@@ -47,10 +47,10 @@ class LoginsTableViewController: UITableViewController {
         
         // Test
         
-        for element in loginModels {
-            let login = element as LoginModel
-            println(login.name)
-        }
+//        for element in loginModels {
+//            let login = element as LoginModel
+//            println(login.name)
+//        }
         
         self.tableView.reloadData()
     }
@@ -100,12 +100,16 @@ class LoginsTableViewController: UITableViewController {
             
             // Not: LoginModel 'i daha sonra siliyorum çünkü silindikten sonra nesneye ulaşamıyorum.
             let loginModel = loginModels[indexPath.row] as LoginModel
+            
             //remove related fields from Core Data
-            deleteRelatedFields(loginModel)
+            LoginModel.deleteRelatedFields(loginModel)
+            
             // remove from Core Data
-            deleteLoginModel(loginModel)
+            LoginModel.deleteLoginModel(loginModel)
+            
             // remove from array
             loginModels.removeAtIndex(indexPath.row)
+            
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
@@ -174,7 +178,7 @@ class LoginsTableViewController: UITableViewController {
             var indexPath = NSIndexPath(forRow: self.loginModels.count, inSection: 0)
 
             // Create new loginModel in the Core Data
-            let login: LoginModel = self.loginMoldelWithName(loginModelName, atIndexPath: indexPath)
+            let login: LoginModel = LoginModel.loginMoldelWithName(loginModelName, atIndexPath: indexPath)
 
             // Add new loginModel to loginModels array
             self.loginModels.append(login)
@@ -197,60 +201,59 @@ class LoginsTableViewController: UITableViewController {
         if (self.presentedViewController?.isBeingDismissed() == true) {
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
                 // buraya nedense girmiyor
-                println("\(TAG) logout")
+                println("\(self.TAG) logout")
             })
         }
     }
     
     // MARK: Helper Methods
     
-    func loginMoldelWithName(name: NSString, atIndexPath indexPath: NSIndexPath) -> LoginModel {
-        
-//        var login = NSEntityDescription.insertNewObjectForEntityForName("LoginModel", inManagedObjectContext: managedObjectContext!) as LoginModel
-        
-        let entity = NSEntityDescription.entityForName("LoginModel", inManagedObjectContext: managedObjectContext!)        
-        var login = LoginModel(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
-        
-        login.name = name
-        login.rowIndex = indexPath.row as NSNumber
-        
-        var error: NSError?
-        if !managedObjectContext!.save(&error) {
-            println("\(TAG) Could not save \(error), \(error?.userInfo)")
-        }
-        
-        return login as LoginModel
-    }
-    
-    func deleteLoginModel(loginModel: LoginModel) {
-        managedObjectContext?.deleteObject(loginModel)
-        
-        var error : NSError?
-        if !managedObjectContext!.save(&error) {
-            println("\(TAG) \(error?.localizedDescription)")
-        }
-    }
-    
-    func deleteRelatedFields(loginModel: LoginModel) {
-        println("\(TAG)  \(loginModel.name)")
-        
-        let fetchRequest = NSFetchRequest(entityName: "LoginModelField")
-        fetchRequest.predicate = NSPredicate(format: "loginModel.name == %@", loginModel.name)
-        
-        var error: NSError?
-        let loginModelFields = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error)
-        
-        if error != nil { println("\(TAG) \(error?.localizedDescription)") }
-        
-        for field in loginModelFields! {
-            managedObjectContext?.deleteObject(field as LoginModel)
-        }
-        
-        error = nil
-        if(managedObjectContext!.save(&error) ) {
-            println("\(TAG) \(error?.localizedDescription)")
-        }
-    }
+//    func loginMoldelWithName(name: NSString, atIndexPath indexPath: NSIndexPath) -> LoginModel {
+//        
+////        var login = NSEntityDescription.insertNewObjectForEntityForName("LoginModel", inManagedObjectContext: managedObjectContext!) as LoginModel
+//        
+//        let entity = NSEntityDescription .entityForName("LoginModel", inManagedObjectContext: managedObjectContext!)        
+//        var login = LoginModel(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+//        
+//        login.name = name
+//        login.rowIndex = indexPath.row as NSNumber
+//        
+//        var error: NSError?
+//        if !managedObjectContext!.save(&error) {
+//            println("\(TAG) Could not save \(error), \(error?.userInfo)")
+//        }
+//        
+//        return login as LoginModel
+//    }
+//    
+//    func deleteLoginModel(loginModel: LoginModel) {
+//        managedObjectContext?.deleteObject(loginModel)
+//        
+//        var error : NSError?
+//        if !managedObjectContext!.save(&error) {
+//            println("\(TAG) \(error?.localizedDescription)")
+//        }
+//    }
+//    
+//    func deleteRelatedFields(loginModel: LoginModel) {
+//        
+//        let fetchRequest = NSFetchRequest(entityName: "LoginModelField")
+//        fetchRequest.predicate = NSPredicate(format: "loginModel.name == %@", loginModel.name)
+//        
+//        var error: NSError?
+//        let loginModelFields = managedObjectContext?.executeFetchRequest(fetchRequest, error: &error)
+//        
+//        if error != nil { println("\(TAG) \(error?.localizedDescription)") }
+//        
+//        for field in loginModelFields! {
+//            managedObjectContext?.deleteObject(field as LoginModel)
+//        }
+//        
+//        error = nil
+//        if(managedObjectContext!.save(&error) ) {
+//            println("\(TAG) \(error?.localizedDescription)")
+//        }
+//    }
     
     func stringFromDate(date: NSDate) -> String {
         var formatter: NSDateFormatter = NSDateFormatter()

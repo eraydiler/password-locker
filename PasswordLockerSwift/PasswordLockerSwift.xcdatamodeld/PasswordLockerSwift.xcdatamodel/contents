@@ -13,7 +13,7 @@
         <relationship name="loginModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LoginModel" inverseName="fields" inverseEntity="LoginModel" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LoginModel" positionX="4851" positionY="-414" width="128" height="103"/>
-        <element name="LoginModelField" positionX="5112" positionY="-409" width="128" height="103"/>
+        <element name="LoginModel" positionX="4851" positionY="-418" width="128" height="103"/>
+        <element name="LoginModelField" positionX="5112" positionY="-423" width="128" height="103"/>
     </elements>
 </model>
