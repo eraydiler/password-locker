@@ -1,5 +1,5 @@
 //
-//  WebLoginTypeTableViewController.swift
+//  WebTypeTableViewController.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 03/02/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebLoginTypeTableViewController: UITableViewController {
+class WebTypeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
