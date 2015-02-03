@@ -118,6 +118,10 @@ class LoginEditTableViewController: UITableViewController {
         var keyTextField: UITextField = cell .viewWithTag(1) as UITextField
         var valueTextField: UITextField = cell .viewWithTag(2) as UITextField
         
+        // Remove borders from text fields
+        keyTextField.borderStyle = UITextBorderStyle.None
+        valueTextField.borderStyle = UITextBorderStyle.None
+        
         if isSavePressed {
             
             // If save button is pressed get data from textFields
