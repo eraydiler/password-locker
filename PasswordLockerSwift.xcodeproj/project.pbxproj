@@ -189,13 +189,13 @@
 			isa = PBXGroup;
 			children = (
 				2AE8082B1A8127D70005E831 /* AddTableViewController.swift */,
-				2AE42AA51A7FAEE000BE5507 /* WebLoginTableViewController.swift */,
-				2AE42AA21A7FADA600BE5507 /* EditWebLoginTableViewController.swift */,
 				2AE8082F1A8146150005E831 /* AccountTypeTableViewController.swift */,
 				2AF76B331A8172B900873A92 /* WebTypeTableViewController.swift */,
 				2AE808331A814BFF0005E831 /* NoteTypeTableViewController.swift */,
 				2AE808351A814C130005E831 /* EmailTypeTableViewController.swift */,
 				2AE808371A814C220005E831 /* WalletTypeTableViewController.swift */,
+				2AE42AA51A7FAEE000BE5507 /* WebLoginTableViewController.swift */,
+				2AE42AA21A7FADA600BE5507 /* EditWebLoginTableViewController.swift */,
 			);
 			name = New;
 			sourceTree = "<group>";

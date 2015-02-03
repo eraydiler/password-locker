@@ -18,6 +18,8 @@ class AccountTypeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.rowHeight = 45
+        self.navigationItem.title = "Type"
     }
 
     override func didReceiveMemoryWarning() {
