@@ -1,5 +1,5 @@
 //
-//  GenericAccountTableViewController.swift
+//  EditWebTableViewController.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 04/02/15.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class GenericAccountTableViewController: UITableViewController {
+class EditWebTableViewController: UITableViewController {
+    
+    @IBOutlet weak var editTextField: UITextField!
+    var placeholder: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +21,8 @@ class GenericAccountTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-//        self.tableView.separatorColor = UIColor .clearColor()
+        self.editTextField.placeholder = self.placeholder
+        self.tableView.rowHeight = 45
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,23 +35,24 @@ class GenericAccountTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        switch (section){
-        case 0:
-            return 4
-        default:
-            return 1
-        }
+        return 1
     }
 
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell .addSubview(Helper.seperatorImageView(cell))
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+
+        // Configure the cell...
+
+        return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
