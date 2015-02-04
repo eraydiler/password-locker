@@ -1,14 +1,14 @@
 //
-//  EmailTypeTableViewController.swift
+//  GenericAccountTableViewController.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 03/02/15.
+//  Created by Eray on 04/02/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
 import UIKit
 
-class EmailTypeTableViewController: UITableViewController {
+class GenericAccountTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +18,7 @@ class EmailTypeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.tableView.rowHeight = 45
-        self.navigationItem.title = "Type"
+//        self.tableView.separatorColor = UIColor .clearColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,24 +31,28 @@ class EmailTypeTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 4
+        switch (section){
+        case 0:
+            return 4
+        default:
+            return 1
+        }
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+//    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if indexPath.section != 0 {
+////            cell.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, cell.bounds.size.width)
+//            var lineView: UIView = UIView(frame: CGRectMake(15, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width, 1))
+//            lineView.backgroundColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1.0)
+//            cell.contentView .addSubview(lineView)
+//        }
+//    }
 
     /*
     // Override to support conditional editing of the table view.

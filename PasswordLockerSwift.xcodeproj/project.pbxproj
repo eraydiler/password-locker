@@ -29,6 +29,7 @@
 		2AE808361A814C130005E831 /* EmailTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE808351A814C130005E831 /* EmailTypeTableViewController.swift */; };
 		2AE808381A814C220005E831 /* WalletTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE808371A814C220005E831 /* WalletTypeTableViewController.swift */; };
 		2AF76B341A8172B900873A92 /* WebTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B331A8172B900873A92 /* WebTypeTableViewController.swift */; };
+		2AF76B391A8239D700873A92 /* GenericAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B381A8239D700873A92 /* GenericAccountTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		2AE808351A814C130005E831 /* EmailTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailTypeTableViewController.swift; sourceTree = "<group>"; };
 		2AE808371A814C220005E831 /* WalletTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTypeTableViewController.swift; sourceTree = "<group>"; };
 		2AF76B331A8172B900873A92 /* WebTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTypeTableViewController.swift; sourceTree = "<group>"; };
+		2AF76B381A8239D700873A92 /* GenericAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericAccountTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,16 +190,41 @@
 		2AE42AA41A7FAEBE00BE5507 /* New */ = {
 			isa = PBXGroup;
 			children = (
+				2AF76B371A8239B400873A92 /* Type */,
+				2AF76B361A82399C00873A92 /* Add */,
+				2AF76B351A82398B00873A92 /* Account */,
+				2AE42AA51A7FAEE000BE5507 /* WebLoginTableViewController.swift */,
+				2AE42AA21A7FADA600BE5507 /* EditWebLoginTableViewController.swift */,
+			);
+			name = New;
+			sourceTree = "<group>";
+		};
+		2AF76B351A82398B00873A92 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				2AF76B381A8239D700873A92 /* GenericAccountTableViewController.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		2AF76B361A82399C00873A92 /* Add */ = {
+			isa = PBXGroup;
+			children = (
 				2AE8082B1A8127D70005E831 /* AddTableViewController.swift */,
+			);
+			name = Add;
+			sourceTree = "<group>";
+		};
+		2AF76B371A8239B400873A92 /* Type */ = {
+			isa = PBXGroup;
+			children = (
 				2AE8082F1A8146150005E831 /* AccountTypeTableViewController.swift */,
 				2AF76B331A8172B900873A92 /* WebTypeTableViewController.swift */,
 				2AE808331A814BFF0005E831 /* NoteTypeTableViewController.swift */,
 				2AE808351A814C130005E831 /* EmailTypeTableViewController.swift */,
 				2AE808371A814C220005E831 /* WalletTypeTableViewController.swift */,
-				2AE42AA51A7FAEE000BE5507 /* WebLoginTableViewController.swift */,
-				2AE42AA21A7FADA600BE5507 /* EditWebLoginTableViewController.swift */,
 			);
-			name = New;
+			name = Type;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +332,7 @@
 				2AD6A9351A7ED2A100CE103A /* LoginModelFieldManage.swift in Sources */,
 				2A438D8B1A6D670500101092 /* KeychainWrapper.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
+				2AF76B391A8239D700873A92 /* GenericAccountTableViewController.swift in Sources */,
 				2AE42AA31A7FADA600BE5507 /* EditWebLoginTableViewController.swift in Sources */,
 				2AE8082C1A8127D70005E831 /* AddTableViewController.swift in Sources */,
 				2AE808361A814C130005E831 /* EmailTypeTableViewController.swift in Sources */,
