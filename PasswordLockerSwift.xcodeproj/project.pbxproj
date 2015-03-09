@@ -18,6 +18,12 @@
 		2A9586171A700F6B006C7056 /* LoginEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9586161A700F6B006C7056 /* LoginEditTableViewController.swift */; };
 		2AA2B4641AADE65300876B50 /* EmailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B4631AADE65300876B50 /* EmailTableViewController.swift */; };
 		2AA2B4661AADE66400876B50 /* EditEmailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B4651AADE66400876B50 /* EditEmailTableViewController.swift */; };
+		2AA2B4691AADF81700876B50 /* BankAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B4681AADF81700876B50 /* BankAccountTableViewController.swift */; };
+		2AA2B46B1AADF82B00876B50 /* CreditCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B46A1AADF82B00876B50 /* CreditCardTableViewController.swift */; };
+		2AA2B46D1AADF83700876B50 /* IDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B46C1AADF83700876B50 /* IDTableViewController.swift */; };
+		2AA2B46F1AADF84A00876B50 /* DriverLicenceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B46E1AADF84A00876B50 /* DriverLicenceTableViewController.swift */; };
+		2AA2B4711AADF85B00876B50 /* PassportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B4701AADF85B00876B50 /* PassportTableViewController.swift */; };
+		2AA2B4731AADF88D00876B50 /* MembershipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2B4721AADF88D00876B50 /* MembershipTableViewController.swift */; };
 		2AB72CEB1A6E749E00CADAD0 /* LoginsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB72CEA1A6E749E00CADAD0 /* LoginsTableViewController.swift */; };
 		2ACEDC2B1A71774100AC4D30 /* LoginModelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACEDC2A1A71774100AC4D30 /* LoginModelField.swift */; };
 		2ACEDC2D1A71774100AC4D30 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACEDC2C1A71774100AC4D30 /* LoginModel.swift */; };
@@ -69,6 +75,12 @@
 		2A9586161A700F6B006C7056 /* LoginEditTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEditTableViewController.swift; sourceTree = "<group>"; };
 		2AA2B4631AADE65300876B50 /* EmailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailTableViewController.swift; sourceTree = "<group>"; };
 		2AA2B4651AADE66400876B50 /* EditEmailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEmailTableViewController.swift; sourceTree = "<group>"; };
+		2AA2B4681AADF81700876B50 /* BankAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankAccountTableViewController.swift; sourceTree = "<group>"; };
+		2AA2B46A1AADF82B00876B50 /* CreditCardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardTableViewController.swift; sourceTree = "<group>"; };
+		2AA2B46C1AADF83700876B50 /* IDTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDTableViewController.swift; sourceTree = "<group>"; };
+		2AA2B46E1AADF84A00876B50 /* DriverLicenceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverLicenceTableViewController.swift; sourceTree = "<group>"; };
+		2AA2B4701AADF85B00876B50 /* PassportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassportTableViewController.swift; sourceTree = "<group>"; };
+		2AA2B4721AADF88D00876B50 /* MembershipTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipTableViewController.swift; sourceTree = "<group>"; };
 		2AB72CEA1A6E749E00CADAD0 /* LoginsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginsTableViewController.swift; sourceTree = "<group>"; };
 		2ACEDC2A1A71774100AC4D30 /* LoginModelField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModelField.swift; sourceTree = "<group>"; };
 		2ACEDC2C1A71774100AC4D30 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -222,6 +234,12 @@
 		2AA2B4671AADEDDE00876B50 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				2AA2B4681AADF81700876B50 /* BankAccountTableViewController.swift */,
+				2AA2B46A1AADF82B00876B50 /* CreditCardTableViewController.swift */,
+				2AA2B46C1AADF83700876B50 /* IDTableViewController.swift */,
+				2AA2B46E1AADF84A00876B50 /* DriverLicenceTableViewController.swift */,
+				2AA2B4701AADF85B00876B50 /* PassportTableViewController.swift */,
+				2AA2B4721AADF88D00876B50 /* MembershipTableViewController.swift */,
 			);
 			name = Wallet;
 			sourceTree = "<group>";
@@ -387,13 +405,16 @@
 				2A9300E41A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld in Sources */,
 				2AE808341A814BFF0005E831 /* NoteTypeTableViewController.swift in Sources */,
 				2AD6A9351A7ED2A100CE103A /* LoginModelFieldManage.swift in Sources */,
+				2AA2B46F1AADF84A00876B50 /* DriverLicenceTableViewController.swift in Sources */,
 				2A438D8B1A6D670500101092 /* KeychainWrapper.swift in Sources */,
+				2AA2B4731AADF88D00876B50 /* MembershipTableViewController.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
 				2AF76B391A8239D700873A92 /* GenericAccountTableViewController.swift in Sources */,
 				2AE8082C1A8127D70005E831 /* AddTableViewController.swift in Sources */,
 				2AF76B431A82955900873A92 /* WirelessRouterTableViewController.swift in Sources */,
 				2AE808361A814C130005E831 /* EmailTypeTableViewController.swift in Sources */,
 				2AB72CEB1A6E749E00CADAD0 /* LoginsTableViewController.swift in Sources */,
+				2AA2B46B1AADF82B00876B50 /* CreditCardTableViewController.swift in Sources */,
 				2ACEDC2B1A71774100AC4D30 /* LoginModelField.swift in Sources */,
 				2AF76B501A83601000873A92 /* EditAccountNoteTableViewController.swift in Sources */,
 				2ACEDC2D1A71774100AC4D30 /* LoginModel.swift in Sources */,
@@ -401,7 +422,9 @@
 				2AA2B4661AADE66400876B50 /* EditEmailTableViewController.swift in Sources */,
 				2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */,
 				2AF76B341A8172B900873A92 /* WebTypeTableViewController.swift in Sources */,
+				2AA2B46D1AADF83700876B50 /* IDTableViewController.swift in Sources */,
 				2A9586171A700F6B006C7056 /* LoginEditTableViewController.swift in Sources */,
+				2AA2B4691AADF81700876B50 /* BankAccountTableViewController.swift in Sources */,
 				2AE808301A8146150005E831 /* AccountTypeTableViewController.swift in Sources */,
 				2AF76B3F1A82953600873A92 /* DatabaseTableViewController.swift in Sources */,
 				2AF76B4C1A82C4A800873A92 /* EditWebTableViewController.swift in Sources */,
@@ -412,6 +435,7 @@
 				2AF76B3B1A82951400873A92 /* InstantMessengerTableViewController.swift in Sources */,
 				2AF76B471A82B1C500873A92 /* Helper.swift in Sources */,
 				2AA2B4641AADE65300876B50 /* EmailTableViewController.swift in Sources */,
+				2AA2B4711AADF85B00876B50 /* PassportTableViewController.swift in Sources */,
 				2AE808381A814C220005E831 /* WalletTypeTableViewController.swift in Sources */,
 				2AD6A9331A7ECA9000CE103A /* LoginModelManage.swift in Sources */,
 			);
