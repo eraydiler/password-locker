@@ -1,17 +1,15 @@
 //
-//  EditWebLoginTableViewController.swift
+//  EditAccountTableViewController.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 02/02/15.
+//  Created by Eray on 05/02/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
 import UIKit
 
-class EditWebLoginTableViewController: UITableViewController {
+class EditAccountTableViewController: UITableViewController {
 
-    @IBOutlet weak var editTextField: UITextField!
-    var placeholder: String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,8 +18,6 @@ class EditWebLoginTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.editTextField.placeholder = self.placeholder
-        self.tableView.rowHeight = 45
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,13 +30,13 @@ class EditWebLoginTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 1
+        return 0
     }
 
     /*

@@ -1,14 +1,14 @@
 //
-//  WebTableViewController.swift
+//  EmailTableViewController.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 04/02/15.
+//  Created by Eray on 09/03/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
 import UIKit
 
-class WebTableViewController: UITableViewController {
+class EmailTableViewController: UITableViewController {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -25,7 +25,7 @@ class WebTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.iconImageView.image = iconImage
-        self.titleLabel.text = titleName        
+        self.titleLabel.text = titleName
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +38,7 @@ class WebTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,28 +46,30 @@ class WebTableViewController: UITableViewController {
         // Return the number of rows in the section.
         switch(section) {
         case 0:
+            return 3
+        case 1:
             return 4
         default:
             return 1
         }
     }
-    
+
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell .addSubview(Helper.seperatorImageView(cell))
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("toEditWebTVCSegue", sender: indexPath)
+        self.performSegueWithIdentifier("toEditEmailTVCSegue", sender: indexPath)
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if segue.identifier == "toEditWebTVCSegue" {
-            let targetVC = segue.destinationViewController as EditWebTableViewController
+        if segue.identifier == "toEditEmailTVCSegue" {
+            let targetVC = segue.destinationViewController as EditEmailTableViewController
             targetVC.placeholder = getPlaceholder(sender as NSIndexPath)
         }
     }
@@ -78,9 +80,13 @@ class WebTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 { return self.titleLabel.text! }
-            else if indexPath.row == 1 { return "Url" }
-            else if indexPath.row == 2 { return "Username" }
+            else if indexPath.row == 1 { return "Username" }
             else { return "Password" }
+        case 1:
+            if indexPath.row == 0 { return "Server" }
+            else if indexPath.row == 1 { return "Server Type" }
+            else if indexPath.row == 2 { return "SMTP Server" }
+            else { return "Webmail" }
             
         default:
             return "Notes"
