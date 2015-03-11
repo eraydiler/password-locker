@@ -46,7 +46,6 @@
 		2AF76B4A1A82C48F00873A92 /* WebTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B491A82C48F00873A92 /* WebTableViewController.swift */; };
 		2AF76B4C1A82C4A800873A92 /* EditWebTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B4B1A82C4A800873A92 /* EditWebTableViewController.swift */; };
 		2AF76B4E1A83600000873A92 /* EditAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B4D1A83600000873A92 /* EditAccountTableViewController.swift */; };
-		2AF76B501A83601000873A92 /* EditAccountNoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B4F1A83601000873A92 /* EditAccountNoteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +102,6 @@
 		2AF76B491A82C48F00873A92 /* WebTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTableViewController.swift; sourceTree = "<group>"; };
 		2AF76B4B1A82C4A800873A92 /* EditWebTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWebTableViewController.swift; sourceTree = "<group>"; };
 		2AF76B4D1A83600000873A92 /* EditAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAccountTableViewController.swift; sourceTree = "<group>"; };
-		2AF76B4F1A83601000873A92 /* EditAccountNoteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAccountNoteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,7 +266,6 @@
 				2AF76B421A82955900873A92 /* WirelessRouterTableViewController.swift */,
 				2AF76B441A82956800873A92 /* ServerTableViewController.swift */,
 				2AF76B4D1A83600000873A92 /* EditAccountTableViewController.swift */,
-				2AF76B4F1A83601000873A92 /* EditAccountNoteTableViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -416,7 +413,6 @@
 				2AB72CEB1A6E749E00CADAD0 /* LoginsTableViewController.swift in Sources */,
 				2AA2B46B1AADF82B00876B50 /* CreditCardTableViewController.swift in Sources */,
 				2ACEDC2B1A71774100AC4D30 /* LoginModelField.swift in Sources */,
-				2AF76B501A83601000873A92 /* EditAccountNoteTableViewController.swift in Sources */,
 				2ACEDC2D1A71774100AC4D30 /* LoginModel.swift in Sources */,
 				2AF76B451A82956800873A92 /* ServerTableViewController.swift in Sources */,
 				2AA2B4661AADE66400876B50 /* EditEmailTableViewController.swift in Sources */,
