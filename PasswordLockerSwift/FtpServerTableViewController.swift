@@ -72,9 +72,17 @@ class FtpServerTableViewController: UITableViewController {
         
         switch indexPath.section {
         case 0:
-            if indexPath.row == 0 { return "Database" }
-            else if indexPath.row == 1 { return "ID" }
+            if indexPath.row == 0 { return "Ftp Server" }
+            else if indexPath.row == 1 { return "Server" }
+            else if indexPath.row == 2 { return "Path" }
+            else if indexPath.row == 3 { return "Username" }
             else { return "Password" }
+            
+        case 1:
+            if indexPath.row == 0 { return "Provider" }
+            else if indexPath.row == 1 { return "Website" }
+            else if indexPath.row == 2 { return "Phone" }
+            else { return "Toll Free" }
             
         default:
             return "Notes"

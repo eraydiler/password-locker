@@ -72,8 +72,18 @@ class DatabaseTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 { return "Database" }
-            else if indexPath.row == 1 { return "ID" }
+            else if indexPath.row == 1 { return "Type" }
+            else if indexPath.row == 2 { return "Server" }
+            else if indexPath.row == 3 { return "Port" }
+            else if indexPath.row == 4 { return "Database" }
+            else if indexPath.row == 5 { return "Username" }
+            else if indexPath.row == 6 { return "Password" }
             else { return "Password" }
+            
+        case 1:
+            if indexPath.row == 0 { return "SID" }
+            else if indexPath.row == 1 { return "Alias" }
+            else { return "Options" }
             
         default:
             return "Notes"

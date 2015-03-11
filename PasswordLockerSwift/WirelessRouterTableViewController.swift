@@ -70,9 +70,15 @@ class WirelessRouterTableViewController: UITableViewController {
         
         switch indexPath.section {
         case 0:
-            if indexPath.row == 0 { return "Database" }
-            else if indexPath.row == 1 { return "ID" }
-            else { return "Password" }
+            if indexPath.row == 0 { return "Wireless Router" }
+            else if indexPath.row == 1 { return "Station" }
+            else if indexPath.row == 2 { return "Password" }
+            else if indexPath.row == 3 { return "Ip Address" }
+            else if indexPath.row == 4 { return "Airport ID" }
+            else if indexPath.row == 5 { return "Network" }
+            else if indexPath.row == 6 { return "Security" }
+            else if indexPath.row == 7 { return "Network Passwrd." }
+            else { return "Storage Passwd." }
             
         default:
             return "Notes"

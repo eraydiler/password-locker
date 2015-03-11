@@ -30,7 +30,7 @@ class ServerTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,8 +39,10 @@ class ServerTableViewController: UITableViewController {
         switch section {
         case 0:
             return 4
-        default:
+        case 1:
             return 7
+        default:
+            return 1
         }
     }
     
@@ -68,10 +70,21 @@ class ServerTableViewController: UITableViewController {
     func getPlaceholder(indexPath: NSIndexPath) -> String {
         
         switch indexPath.section {
+            
         case 0:
-            if indexPath.row == 0 { return "Database" }
-            else if indexPath.row == 1 { return "ID" }
+            if indexPath.row == 0 { return "Server" }
+            else if indexPath.row == 1 { return "Url" }
+            else if indexPath.row == 2 { return "Username" }
             else { return "Password" }
+            
+        case 1:
+            if indexPath.row == 0 { return "Name" }
+            if indexPath.row == 1 { return "Website" }
+            if indexPath.row == 2 { return "Admin Panel URL" }
+            if indexPath.row == 3 { return "Adm.P.Username" }
+            if indexPath.row == 4 { return "Adm.P.Password" }
+            if indexPath.row == 5 { return "Support URL" }
+            else { return "Support#" }
             
         default:
             return "Notes"
