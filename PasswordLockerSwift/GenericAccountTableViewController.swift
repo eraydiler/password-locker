@@ -9,7 +9,7 @@
 import UIKit
 
 class GenericAccountTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,5 +77,25 @@ class GenericAccountTableViewController: UITableViewController {
         default:
             return "Notes"
         }
+    }
+    
+    @IBAction func saveBarButtonPressed(sender: UIBarButtonItem) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var tabBar: UITabBarController = storyBoard.instantiateViewControllerWithIdentifier("TabBar") as UITabBarController
+        
+        var newUIView: UIViewController = UIViewController()
+        
+        if self.tabBarController?.viewControllers?.count == 5 {
+            newUIView.tabBarItem = UITabBarItem(tabBarSystemItem: .More, tag: 5)
+            self.tabBarController!.viewControllers?.removeLast()
+            self.tabBarController?.viewControllers?.insert(newUIView, atIndex: 4)
+        } else {
+            newUIView.tabBarItem = UITabBarItem(title: "new", image: UIImage(named: "genericAccount"), selectedImage: nil)
+            self.tabBarController?.addChildViewController(newUIView)
+        }
+        
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }
