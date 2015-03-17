@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Categories" representedClassName="Categories" syncable="YES">
+    <entity name="Category" representedClassName="Categories" syncable="YES">
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Types" inverseName="category" inverseEntity="Types" syncable="YES"/>
+        <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="category" inverseEntity="Type" syncable="YES"/>
     </entity>
-    <entity name="Types" representedClassName="Types" syncable="YES">
+    <entity name="Row" representedClassName="Rows" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="type" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="rows" inverseEntity="Type" syncable="YES"/>
+    </entity>
+    <entity name="Type" representedClassName="Types" syncable="YES">
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories" inverseName="types" inverseEntity="Categories" syncable="YES"/>
-        <relationship name="values" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Values" inverseName="types" inverseEntity="Values" syncable="YES"/>
-    </entity>
-    <entity name="Values" representedClassName="Values" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Types" inverseName="values" inverseEntity="Types" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="types" inverseEntity="Category" syncable="YES"/>
+        <relationship name="rows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Row" inverseName="type" inverseEntity="Row" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Categories" positionX="4750" positionY="-270" width="128" height="88"/>
-        <element name="Types" positionX="4932" positionY="-270" width="128" height="103"/>
-        <element name="Values" positionX="5112" positionY="-270" width="128" height="73"/>
+        <element name="Category" positionX="2626" positionY="-2124" width="128" height="88"/>
+        <element name="Type" positionX="2844" positionY="-2124" width="128" height="103"/>
+        <element name="Row" positionX="2626" positionY="-1998" width="128" height="103"/>
     </elements>
 </model>

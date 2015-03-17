@@ -1,19 +1,19 @@
 //
-//  LoginModelField.swift
+//  Rows.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 22/01/15.
+//  Created by Eray on 17/03/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class LoginModelField: NSManagedObject {
+class Row: NSManagedObject {
 
     @NSManaged var key: String
-    @NSManaged var rowIndex: NSNumber
     @NSManaged var value: String
-    @NSManaged var loginModel: LoginModel
+    @NSManaged var section: NSNumber
+    @NSManaged var type: NSSet
 
 }
