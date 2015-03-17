@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class AccountTypeTableViewController: UITableViewController {
+    
+    // set by AppDelegate on application startup
+    var managedObjectContext: NSManagedObjectContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +59,7 @@ class AccountTypeTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "toAccountValuesTVCSegue" {
             var targetVC = segue.destinationViewController as AccountValuesTableViewController
-            targetVC.accountTypeName = sender as? String
+            targetVC.managedObjectContext = self.managedObjectContext
         }
     }
 }

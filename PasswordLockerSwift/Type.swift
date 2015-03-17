@@ -13,7 +13,7 @@ class Type: NSManagedObject {
 
     @NSManaged var imageName: String
     @NSManaged var name: String
-    @NSManaged var category: Categories
+    @NSManaged var category: Category
     @NSManaged var rows: NSSet
 
 }

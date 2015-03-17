@@ -1,4 +1,4 @@
-//
+    //
 //  AccountValuesTableViewController.swift
 //  PasswordLockerSwift
 //
@@ -10,11 +10,7 @@ import UIKit
 import CoreData
 
 class AccountValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    
-    var accountTypeName: String?
-    var sections: Int?
-    var values = [NSManagedObject]()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,15 +37,41 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
     override func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int)
         -> Int {
-            let info = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
-            return info.numberOfObjects
+            return self.fetchedResultsController.sections![section].numberOfObjects
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![section]
+        
+        switch (sectionsInfo.indexTitle) {
+        case "0":
+            return "Title Header"
+            
+        case "1":
+            return "Values Header"
+            
+        default:
+            return nil
+        }
     }
     
     // create and configure each `UITableViewCell`
     override func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+            var cell: UITableViewCell = UITableViewCell()
+            switch (indexPath.section) {
+            case 0:
+                cell = tableView.dequeueReusableCellWithIdentifier("TitleCell", forIndexPath: indexPath) as UITableViewCell
+                break;
+                
+            case 1:
+                cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath) as UITableViewCell
+                break;
+                
+            default:
+                break;
+            }
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -73,15 +95,15 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         fetch all `Item`s
         order them alphabetically by name
         at least one sort order _is_ required */
-        let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: managedObjectContext)
-        let sort = NSSortDescriptor(key: "name", ascending: true)
+        let entity = NSEntityDescription.entityForName("Row", inManagedObjectContext: managedObjectContext)
+        let sort = NSSortDescriptor(key: "key", ascending: true)
         let req = NSFetchRequest()
         req.entity = entity
         req.sortDescriptors = [sort]
         
         /* NSFetchedResultsController initialization
         a `nil` `sectionNameKeyPath` generates a single section */
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: "section", cacheName: nil)
         aFetchedResultsController.delegate = self
         self._fetchedResultsController = aFetchedResultsController
         

@@ -14,6 +14,6 @@ class Row: NSManagedObject {
     @NSManaged var key: String
     @NSManaged var value: String
     @NSManaged var section: NSNumber
-    @NSManaged var type: NSSet
+    @NSManaged var types: NSSet
 
 }

@@ -13,10 +13,22 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let FIRSTRUN: Bool = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if FIRSTRUN {
+            InsertData.setupInitialData(self.managedObjectContext!)
+            println("Sample Data inserted")
+            exit(EXIT_SUCCESS)
+        }
+        
+        let tab = self.window!.rootViewController as UITabBarController
+        let nav = tab.childViewControllers[0] as UINavigationController
+        let master = nav.topViewController as AddTableViewController
+        master.managedObjectContext = self.managedObjectContext
+        
         return true
     }
 
