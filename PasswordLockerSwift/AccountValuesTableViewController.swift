@@ -204,10 +204,6 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             
             let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
             let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
-
-            println("\(sectionsInfo.indexTitle) - \(row.key)")
-            println("\(indexPath.section) - \(row.key)")
-            println()
             
             switch (sectionsInfo.indexTitle) {
             case "0":
@@ -223,11 +219,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
                 break;
             case "2":
                 let note = cell.contentView.subviews[0] as UILabel
-                if row.value == "" {
-                    note.text = "No Notes"
-                } else {
-                    note.text = row.value
-                }
+                note.text = row.value
                 break;
                 
             default:
