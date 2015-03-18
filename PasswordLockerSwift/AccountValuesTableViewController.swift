@@ -28,7 +28,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
     }
 
     // MARK: - Table view data source
-    
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections!.count
     }
@@ -50,6 +50,9 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         case "1":
             return "Values Header"
             
+        case "2":
+            return "Notes Header"
+            
         default:
             return nil
         }
@@ -66,6 +69,10 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
                 break;
                 
             case 1:
+                cell = tableView.dequeueReusableCellWithIdentifier("ValueCell", forIndexPath: indexPath) as UITableViewCell
+                break;
+                
+            case 2:
                 cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath) as UITableViewCell
                 break;
                 
@@ -76,6 +83,17 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             return cell
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 60.0
+        }
+        return 44.0
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell .addSubview(Helper.seperatorImageView(cell))
+    }
+        
     // MARK: - Fetched results controller
     
     // set by AppDelegate on application startup
@@ -164,6 +182,6 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
             let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
-            cell.textLabel?.text = row.key
+            //cell.textLabel?.text = row.key
     }
 }

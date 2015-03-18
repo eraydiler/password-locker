@@ -75,17 +75,17 @@ class InsertData: NSObject {
         var rows2: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rows2.key = "Username"
         rows2.value = ""
-        rows2.section = 0
+        rows2.section = 1
         
         var rows3: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rows3.key = "Password"
         rows3.value = ""
-        rows3.section = 0
+        rows3.section = 1
         
         var rows4: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rows4.key = "Notes"
         rows4.value = ""
-        rows4.section = 1
+        rows4.section = 2
         
         // save `NSManagedObjectContext`
         var error: NSError?
