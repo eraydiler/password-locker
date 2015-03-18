@@ -7,7 +7,7 @@
     </entity>
     <entity name="Row" representedClassName="PasswordLockerSwift.Row" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="section" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="rows" inverseEntity="Type" syncable="YES"/>
     </entity>

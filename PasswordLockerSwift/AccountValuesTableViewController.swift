@@ -102,7 +102,9 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section != 0 {
+        if indexPath.section == 0 {
+            cell.addSubview(Helper.seperatorTopImageView(cell))
+        } else {
             cell.addSubview(Helper.seperatorTopImageView(cell))
             cell.addSubview(Helper.seperatorButtomImageView(cell))
         }
@@ -128,7 +130,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         order them alphabetically by name
         at least one sort order _is_ required */
         let entity = NSEntityDescription.entityForName("Row", inManagedObjectContext: managedObjectContext)
-        let sort = NSSortDescriptor(key: "key", ascending: true)
+        let sort = NSSortDescriptor(key: "section", ascending: true)
         let req = NSFetchRequest()
         req.entity = entity
         req.sortDescriptors = [sort]
@@ -171,14 +173,18 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             switch type {
             case .Insert:
                 self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                println("coredata insert")
             case .Update:
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath)
                 self.configureCell(cell!, atIndexPath: indexPath)
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                println("coredata update")
             case .Move:
+                println("coredata move")
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             case .Delete:
+                println("coredata delete")
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             default:
                 return
@@ -202,7 +208,6 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             println("\(sectionsInfo.indexTitle) - \(row.key)")
             println("\(indexPath.section) - \(row.key)")
             println()
-
             
             switch (sectionsInfo.indexTitle) {
             case "0":

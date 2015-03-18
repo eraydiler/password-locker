@@ -3766,7 +3766,7 @@
                         <sections>
                             <tableViewSection id="oZq-GV-aVr">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KtW-Wc-btB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kj" id="KtW-Wc-btB">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="KtW-Wc-btB" id="RNJ-jM-3uR">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -3843,6 +3843,6 @@
         <image name="youtube" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OdE-PH-UPj"/>
+        <segue reference="Rr0-81-lgJ"/>
     </inferredMetricsTieBreakers>
 </document>
