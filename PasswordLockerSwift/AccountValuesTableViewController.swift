@@ -10,7 +10,11 @@ import UIKit
 import CoreData
 
 class AccountValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-        
+    
+    func configureView() {
+        self.tableView.rowHeight = 44.0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +23,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        configureView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +87,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
-
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 60.0
@@ -90,8 +95,17 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         return 44.0
     }
     
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("toEditAccountValuesTVCSegue", sender: indexPath)
+    }
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell .addSubview(Helper.seperatorImageView(cell))
+        if indexPath.section != 0 {
+            cell.addSubview(Helper.seperatorTopImageView(cell))
+            cell.addSubview(Helper.seperatorButtomImageView(cell))
+        }
     }
         
     // MARK: - Fetched results controller
@@ -181,7 +195,52 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
     ask `NSFetchedResultsController` for the model */
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
+            
+            let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
             let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
-            //cell.textLabel?.text = row.key
+
+            println("\(sectionsInfo.indexTitle) - \(row.key)")
+            println("\(indexPath.section) - \(row.key)")
+            println()
+
+            
+            switch (sectionsInfo.indexTitle) {
+            case "0":
+                let imageView = cell.contentView.subviews[0] as UIImageView
+                let title = cell.contentView.subviews[1].subviews[0] as UILabel
+                title.text = row.value
+                break;
+            case "1":
+                let key = cell.contentView.subviews[0] as UILabel
+                let value = cell.contentView.subviews[1] as UILabel
+                key.text = row.key
+                value.text = row.value
+                break;
+            case "2":
+                let note = cell.contentView.subviews[0] as UILabel
+                if row.value == "" {
+                    note.text = "No Notes"
+                } else {
+                    note.text = row.value
+                }
+                break;
+                
+            default:
+                break;
+            }
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "toEditAccountValuesTVCSegue" {
+            let targetVC = segue.destinationViewController as EditAccountValuesTableViewController
+            targetVC.managedObjectContext = self.managedObjectContext
+            let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
+            targetVC.rowId = row.objectID
+        }
     }
 }

@@ -21,7 +21,7 @@ class FtpServerTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell .addSubview(Helper.seperatorImageView(cell))
+        cell .addSubview(Helper.seperatorButtomImageView(cell))
     }
 
     override func didReceiveMemoryWarning() {
