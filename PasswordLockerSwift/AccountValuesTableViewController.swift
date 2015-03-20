@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AccountValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class AccountValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, EditAccountValuesTableViewControllerDelegate {
     
     func configureView() {
         self.tableView.rowHeight = 44.0
@@ -24,6 +24,21 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         configureView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+//        let cell = tableView.dequeueReusableCellWithIdentifier("TitleCell", forIndexPath: indexPath) as UITableViewCell
+//        
+//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//        cell.selectionStyle = .None
+//        
+//        let imageView = cell.contentView.subviews[0] as UIImageView
+//        var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
+//        titleLabel.text = "asd"
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,22 +83,16 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             var cell: UITableViewCell = UITableViewCell()
-            switch (indexPath.section) {
-            case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier("TitleCell", forIndexPath: indexPath) as UITableViewCell
-                break;
-                
-            case 1:
-                cell = tableView.dequeueReusableCellWithIdentifier("ValueCell", forIndexPath: indexPath) as UITableViewCell
-                break;
-                
-            case 2:
-                cell = tableView.dequeueReusableCellWithIdentifier("NoteCell", forIndexPath: indexPath) as UITableViewCell
-                break;
-                
-            default:
-                break;
+            var reuseIdentifier: String!
+            
+            if (indexPath.section == 0) {
+                reuseIdentifier = "TitleCell"
+            } else if (indexPath.section == 1) {
+                reuseIdentifier = "ValueCell"
+            } else {
+                reuseIdentifier = "NoteCell"
             }
+            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -208,23 +217,48 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             switch (sectionsInfo.indexTitle) {
             case "0":
                 let imageView = cell.contentView.subviews[0] as UIImageView
-                let title = cell.contentView.subviews[1].subviews[0] as UILabel
-                title.text = row.value
+                var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
+                titleLabel.text = row.value
                 break;
             case "1":
-                let key = cell.contentView.subviews[0] as UILabel
-                let value = cell.contentView.subviews[1] as UILabel
-                key.text = row.key
-                value.text = row.value
+                var keyLabel = cell.contentView.subviews[0] as UILabel
+                var valueLabel = cell.contentView.subviews[1] as UILabel
+                keyLabel.text = row.key
+                valueLabel.text = row.value
                 break;
             case "2":
-                let note = cell.contentView.subviews[0] as UILabel
-                note.text = row.value
+                var noteLabel = cell.contentView.subviews[0] as UILabel
+                noteLabel.text = row.value
                 break;
                 
             default:
                 break;
             }
+    }
+    
+    // MARK: - EditAccountValuesTableViewController Delegate
+    
+    func rowValueChanged() {
+        
+        let indexPath = self.tableView.indexPathForSelectedRow()!
+        
+        var reuseIdentifier: String! = nil
+        if indexPath.section == 0 {
+            reuseIdentifier = "TitleCell"
+        }
+        else if indexPath.section == 1 {
+            reuseIdentifier = "ValueCell"
+        }
+        else {
+            reuseIdentifier = "NoteCell"
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        cell.selectionStyle = .None
+        
+        configureCell(cell, atIndexPath: indexPath)
     }
     
     // MARK: - Navigation
@@ -238,6 +272,9 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             targetVC.managedObjectContext = self.managedObjectContext
             let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
             targetVC.rowId = row.objectID
+            targetVC.placeholder = row.value
+            targetVC.delegate = self
+//            self.tableView.allowsMultipleSelection = true
         }
     }
 }

@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol EditAccountValuesTableViewControllerDelegate {
+    func rowValueChanged()
+}
+
 class EditAccountValuesTableViewController: UITableViewController {
 
     @IBOutlet weak var editTextField: UITextField!
@@ -20,6 +24,9 @@ class EditAccountValuesTableViewController: UITableViewController {
     var rowId: NSManagedObjectID?
     var row: Row?
     
+    // delegate to send value to former controller
+    var delegate: EditAccountValuesTableViewControllerDelegate! = nil
+    
     func configureView() {
         self.tableView.rowHeight = 44.0
         self.row = self.managedObjectContext?.objectWithID(self.rowId!) as? Row
@@ -29,6 +36,7 @@ class EditAccountValuesTableViewController: UITableViewController {
         } else {
             self.editTextField.text = self.row?.value
         }
+        self.editTextField.text = placeholder
     }
 
     override func viewDidLoad() {
@@ -60,8 +68,11 @@ class EditAccountValuesTableViewController: UITableViewController {
         // Return the number of rows in the section.
         return 1
     }
-
+    
     @IBAction func doneBarButtonPressed(sender: UIBarButtonItem) {
-        
+        let newValue = editTextField.text
+        self.row?.value = newValue
+        delegate.rowValueChanged()
+        self.navigationController?.popViewControllerAnimated(false)
     }
 }

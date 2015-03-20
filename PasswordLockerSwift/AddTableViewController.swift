@@ -22,7 +22,7 @@ class AddTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        println(managedObjectContext)
+       // println(managedObjectContext)
     }
 
     override func didReceiveMemoryWarning() {
