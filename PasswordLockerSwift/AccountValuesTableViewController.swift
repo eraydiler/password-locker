@@ -222,6 +222,8 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             case 0:
                 let imageView = cell.contentView.subviews[0] as UIImageView
                 var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
+                println(row.key)
+                imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
                 break;
             case 1:

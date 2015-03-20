@@ -15,5 +15,23 @@ class Row: NSManagedObject {
     @NSManaged var value: String
     @NSManaged var section: String
     @NSManaged var types: NSSet
+    
+}
 
+extension Row {
+    func addTypeToRow(type: Type) {
+        var types = self.mutableSetValueForKey("types")
+        types.addObject(type)
+    }
+    
+    func getNumberOfTypes() -> Int {
+        return self.types.count
+    }
+    
+    func getTypesAsArray() -> [Type] {
+        var types: [Type]
+        types = self.types.allObjects as [Type]
+        
+        return types
+    }
 }
