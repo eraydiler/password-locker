@@ -73,6 +73,6 @@ class EditAccountValuesTableViewController: UITableViewController {
         let newValue = editTextField.text
         self.row?.value = newValue
         delegate.rowValueChanged()
-        self.navigationController?.popViewControllerAnimated(false)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }
