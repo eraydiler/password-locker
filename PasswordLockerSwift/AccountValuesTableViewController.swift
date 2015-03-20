@@ -30,17 +30,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-//        let cell = tableView.dequeueReusableCellWithIdentifier("TitleCell", forIndexPath: indexPath) as UITableViewCell
-//        
-//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        cell.selectionStyle = .None
-//        
-//        let imageView = cell.contentView.subviews[0] as UIImageView
-//        var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
-//        titleLabel.text = "asd"
-        
+        isBackTouched = true
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -286,7 +276,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             targetVC.rowId = row.objectID
             targetVC.placeholder = row.value
             targetVC.delegate = self
-//            self.tableView.allowsMultipleSelection = true
+            isBackTouched = false
         }
     }
     
@@ -294,6 +284,13 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
     
     @IBAction func saveBarButtonTouched(sender: UIBarButtonItem) {
         isBackTouched = false
+        
+        var e: NSError?
+        if !managedObjectContext!.save(&e) {
+            println("save error: \(e!.localizedDescription)")
+            abort()
+        }
+        
         self.navigationController?.popViewControllerAnimated(true)
     }
     
