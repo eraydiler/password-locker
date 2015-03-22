@@ -9,10 +9,20 @@
 import UIKit
 import CoreData
 
-class AccountTypeTableViewController: UITableViewController {
+class AccountTypeTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // set by AppDelegate on application startup
     var managedObjectContext: NSManagedObjectContext?
+    
+    // set by former controller
+    var category: Category?
+    
+    // configure view
+    func configureView() {
+        self.tableView.rowHeight = 45
+        self.navigationItem.title = "Type"
+//        println("burada \(category?.objectID)")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,44 +32,109 @@ class AccountTypeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.tableView.rowHeight = 45
-        self.navigationItem.title = "Type"
+        
+        configureView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // MARK: - Fetched results controller
+    
+    /* `NSFetchedResultsController`
+    lazily initialized
+    fetches the displayed domain model */
+    var fetchedResultsController: NSFetchedResultsController {
+        // return if already initialized
+        if self._fetchedResultsController != nil {
+            return self._fetchedResultsController!
+        }
+        let managedObjectContext = self.managedObjectContext!
+        
+        /* `NSFetchRequest` config
+        fetch all `Item`s
+        order them alphabetically by name
+        at least one sort order _is_ required */
+        let entity = NSEntityDescription.entityForName("Type", inManagedObjectContext: managedObjectContext)
+        let sort = NSSortDescriptor(key: "name", ascending: true)
+        let req = NSFetchRequest()
+        req.entity = entity
+        req.sortDescriptors = [sort]
+        
+        /* NSFetchedResultsController initialization
+        a `nil` `sectionNameKeyPath` generates a single section */
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        aFetchedResultsController.delegate = self
+        self._fetchedResultsController = aFetchedResultsController
+        
+        // perform initial model fetch
+        var e: NSError?
+        if !self._fetchedResultsController!.performFetch(&e) {
+            println("fetch error: \(e!.localizedDescription)")
+            abort();
+        }
+        
+        return self._fetchedResultsController!
+    }
+    var _fetchedResultsController: NSFetchedResultsController?
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return self.fetchedResultsController.sections!.count
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 7
+        return self.fetchedResultsController.sections![section].numberOfObjects
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
-        let label: UILabel = selectedCell?.contentView.subviews[1] as UILabel
-        self.performSegueWithIdentifier("toAccountValuesTVCSegue", sender: label.text)
+    // create and configure each `UITableViewCell`
+    override func tableView(tableView: UITableView,
+        cellForRowAtIndexPath indexPath: NSIndexPath)
+        -> UITableViewCell {
+            var cell: UITableViewCell = UITableViewCell()
+            cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as UITableViewCell
+            self.configureCell(cell, atIndexPath: indexPath)
+            return cell
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        let indexPath = self.tableView.indexPathForSelectedRow()
+        let type = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Type
+        
         if segue.identifier == "toAccountValuesTVCSegue" {
-            var targetVC = segue.destinationViewController as AccountValuesTableViewController
+            let targetVC = segue.destinationViewController as AccountValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
+            targetVC.category = self.category
+            targetVC.type = type
         }
+    }
+    
+    /* helper method to configure a `UITableViewCell`
+    ask `NSFetchedResultsController` for the model */
+    func configureCell(cell: UITableViewCell,
+        atIndexPath indexPath: NSIndexPath) {
+            
+            let type = self.fetchedResultsController.objectAtIndexPath(indexPath)
+                as Type
+            
+            var titleLabel = cell.contentView.subviews[0] as UILabel
+            let imageView = cell.contentView.subviews[1] as UIImageView
+            
+            titleLabel.text = type.name
+            imageView.image = UIImage(named: type.imageName)
     }
 }

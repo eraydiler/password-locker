@@ -28,8 +28,11 @@ class EditAccountValuesTableViewController: UITableViewController {
     var delegate: EditAccountValuesTableViewControllerDelegate! = nil
     
     func configureView() {
+        
         self.tableView.rowHeight = 44.0
         self.row = self.managedObjectContext?.objectWithID(self.rowId!) as? Row
+        
+        self.title = "Edit"
         
         if self.row?.value == "" {
             self.editTextField.placeholder = self.row?.key

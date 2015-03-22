@@ -11,10 +11,16 @@ import CoreData
 
 class AccountValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate,  EditAccountValuesTableViewControllerDelegate {
     
+    // set by former controller
+    var category: Category?
+    var type: Type?
+    
+    // hack for handling back button
     var isBackTouched = true
     
     func configureView() {
         self.tableView.rowHeight = 44.0
+        self.title = self.type?.name
     }
     
     override func viewDidLoad() {
@@ -147,6 +153,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         let req = NSFetchRequest()
         req.entity = entity
         req.sortDescriptors = [sort]
+        req.fetchBatchSize = 20
         
         /* NSFetchedResultsController initialization
         a `nil` `sectionNameKeyPath` generates a single section */
@@ -222,7 +229,6 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             case 0:
                 let imageView = cell.contentView.subviews[0] as UIImageView
                 var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
-                println(row.key)
                 imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
                 break;
@@ -272,12 +278,15 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "toEditAccountValuesTVCSegue" {
-            let targetVC = segue.destinationViewController as EditAccountValuesTableViewController
-            targetVC.managedObjectContext = self.managedObjectContext
+            
             let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
+            let targetVC = segue.destinationViewController as EditAccountValuesTableViewController
+            
+            targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowId = row.objectID
             targetVC.placeholder = row.value
             targetVC.delegate = self
+            
             isBackTouched = false
         }
     }

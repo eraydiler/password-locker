@@ -213,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				2AA2B4671AADEDDE00876B50 /* Wallet */,
-				2AF76B361A82399C00873A92 /* Add */,
 				2AF76B351A82398B00873A92 /* Account */,
 				2AF76B481A82B93900873A92 /* Web */,
 				2AA2B4621AADE53300876B50 /* Email */,
@@ -226,6 +225,8 @@
 		2A6E28DE1AB1D75200A25E73 /* dinamik */ = {
 			isa = PBXGroup;
 			children = (
+				2AE8082B1A8127D70005E831 /* AddTableViewController.swift */,
+				2AE8082F1A8146150005E831 /* AccountTypeTableViewController.swift */,
 				2A6E28DC1AB1D74F00A25E73 /* AccountValuesTableViewController.swift */,
 				2ACFDE551ABA070300579467 /* EditAccountValuesTableViewController.swift */,
 			);
@@ -286,18 +287,9 @@
 			name = Account;
 			sourceTree = "<group>";
 		};
-		2AF76B361A82399C00873A92 /* Add */ = {
-			isa = PBXGroup;
-			children = (
-				2AE8082B1A8127D70005E831 /* AddTableViewController.swift */,
-			);
-			name = Add;
-			sourceTree = "<group>";
-		};
 		2AF76B371A8239B400873A92 /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				2AE8082F1A8146150005E831 /* AccountTypeTableViewController.swift */,
 				2AF76B331A8172B900873A92 /* WebTypeTableViewController.swift */,
 				2AE808331A814BFF0005E831 /* NoteTypeTableViewController.swift */,
 				2AE808351A814C130005E831 /* EmailTypeTableViewController.swift */,

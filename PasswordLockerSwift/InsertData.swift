@@ -16,7 +16,9 @@ class InsertData: NSObject {
     class func setupInitialData(managedObjectContext: NSManagedObjectContext) {
         let moc: NSManagedObjectContext = managedObjectContext
         
+        
         // MARK: - Categories
+        
         var categoryAccount: Category = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as Category
         categoryAccount.name = "Account"
         categoryAccount.imageName = "user"
@@ -37,7 +39,9 @@ class InsertData: NSObject {
         categoryWallet.name = "Wallet"
         categoryWallet.imageName = "wallet"
         
+        
         // MARK: - Account Types
+        
         var typeGenericAcc: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
         typeGenericAcc.name = "Generic Account"
         typeGenericAcc.imageName = "genericAccount"
@@ -61,17 +65,17 @@ class InsertData: NSObject {
         var typeFtpServer: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
         typeFtpServer.name = "Ftp Server"
         typeFtpServer.imageName = "ftpServer"
-        typeDatabase.category = categoryAccount
+        typeFtpServer.category = categoryAccount
         
         var typeWirelessRtr: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
         typeWirelessRtr.name = "Wireless Router"
         typeWirelessRtr.imageName = "wirelessRouter"
-        typeDatabase.category = categoryAccount
+        typeWirelessRtr.category = categoryAccount
         
         var typeServer: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
         typeServer.name = "Server"
         typeServer.imageName = "server"
-        typeDatabase.category = categoryAccount
+        typeServer.category = categoryAccount
         
         // MARK: - Rows
         
