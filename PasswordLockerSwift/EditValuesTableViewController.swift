@@ -1,5 +1,5 @@
 //
-//  EditAccountValuesTableViewController.swift
+//  EditValuesTableViewController.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 18/03/15.
@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-protocol EditAccountValuesTableViewControllerDelegate {
+protocol EditValuesTableViewControllerDelegate {
     func rowValueChanged()
 }
 
-class EditAccountValuesTableViewController: UITableViewController {
+class EditValuesTableViewController: UITableViewController {
 
     @IBOutlet weak var editTextField: UITextField!
     
@@ -25,7 +25,7 @@ class EditAccountValuesTableViewController: UITableViewController {
     var row: Row?
     
     // delegate to send value to former controller
-    var delegate: EditAccountValuesTableViewControllerDelegate! = nil
+    var delegate: EditValuesTableViewControllerDelegate! = nil
     
     func configureView() {
         
@@ -73,9 +73,34 @@ class EditAccountValuesTableViewController: UITableViewController {
     }
     
     @IBAction func doneBarButtonPressed(sender: UIBarButtonItem) {
+        
         let newValue = editTextField.text
         self.row?.value = newValue
+        
         delegate.rowValueChanged()
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    /*
+    @IBAction func saveBarButtonPressed(sender: UIBarButtonItem) {
+    
+    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    var tabBar: UITabBarController = storyBoard.instantiateViewControllerWithIdentifier("TabBar") as UITabBarController
+    
+    var newUIView: UIViewController = UIViewController()
+    
+    if self.tabBarController?.viewControllers?.count == 5 {
+    newUIView.tabBarItem = UITabBarItem(tabBarSystemItem: .More, tag: 5)
+    self.tabBarController!.viewControllers?.removeLast()
+    self.tabBarController?.viewControllers?.insert(newUIView, atIndex: 4)
+    } else {
+    newUIView.tabBarItem = UITabBarItem(title: "new", image: UIImage(named: "genericAccount"), selectedImage: nil)
+    self.tabBarController?.addChildViewController(newUIView)
+    }
+    
+    
+    self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+
+    */
 }

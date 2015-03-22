@@ -442,7 +442,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1p-LZ-9JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6518" y="-1095"/>
+            <point key="canvasLocation" x="9302" y="-1463"/>
         </scene>
         <!--Note Type Table View Controller-->
         <scene sceneID="YvJ-gD-jpO">
@@ -505,7 +505,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXF-uy-cRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12294" y="1236"/>
+            <point key="canvasLocation" x="9302" y="-109"/>
         </scene>
         <!--Email Type Table View Controller-->
         <scene sceneID="hUV-O2-0UL">
@@ -637,7 +637,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mi0-w9-dRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10524" y="3152"/>
+            <point key="canvasLocation" x="9302" y="731"/>
         </scene>
         <!--Wallet Type Table View Controller-->
         <scene sceneID="f9K-av-FZ7">
@@ -847,12 +847,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssh-Y2-FTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5006" y="5311"/>
+            <point key="canvasLocation" x="9302" y="2127"/>
         </scene>
         <!--Add-->
         <scene sceneID="FR4-IX-zIz">
             <objects>
-                <tableViewController id="uOe-fI-r19" customClass="AddTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="uOe-fI-r19" customClass="CategoriesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bmz-w3-zzT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -902,10 +902,10 @@
             </objects>
             <point key="canvasLocation" x="4982" y="-116.5"/>
         </scene>
-        <!--Account Type Table View Controller-->
+        <!--Types Table View Controller-->
         <scene sceneID="Mvf-D9-8qu">
             <objects>
-                <tableViewController id="7fz-YA-aGB" customClass="AccountTypeTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7fz-YA-aGB" customClass="TypesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fvH-3p-qoB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -916,21 +916,26 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hou-0e-vGX" id="FCw-9d-Lfw">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generic Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLg-xV-Xqx">
-                                            <rect key="frame" x="16" y="11" width="129" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLg-xV-Xqx">
+                                            <rect key="frame" x="8" y="1" width="531" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericAccount" translatesAutoresizingMaskIntoConstraints="NO" id="IN9-dd-afM">
                                             <rect key="frame" x="547" y="12" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="4Ho-e5-EXo"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="WLg-xV-Xqx" firstAttribute="leading" secondItem="FCw-9d-Lfw" secondAttribute="leadingMargin" constant="8" id="0Ng-eJ-mJw"/>
-                                        <constraint firstItem="WLg-xV-Xqx" firstAttribute="centerY" secondItem="FCw-9d-Lfw" secondAttribute="centerY" id="Vbb-a5-X7t"/>
-                                        <constraint firstItem="WLg-xV-Xqx" firstAttribute="bottom" secondItem="IN9-dd-afM" secondAttribute="bottom" id="ebX-ne-Yjp"/>
-                                        <constraint firstAttribute="trailing" secondItem="IN9-dd-afM" secondAttribute="trailing" id="hpJ-D5-l3q"/>
+                                        <constraint firstItem="WLg-xV-Xqx" firstAttribute="top" secondItem="FCw-9d-Lfw" secondAttribute="topMargin" constant="-7" id="0oG-jN-1p9"/>
+                                        <constraint firstItem="WLg-xV-Xqx" firstAttribute="leading" secondItem="FCw-9d-Lfw" secondAttribute="leadingMargin" id="9IM-rq-m5V"/>
+                                        <constraint firstAttribute="trailing" secondItem="IN9-dd-afM" secondAttribute="trailing" id="Dn6-QR-cwH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WLg-xV-Xqx" secondAttribute="bottom" constant="-10" id="HmB-Cs-TYl"/>
+                                        <constraint firstItem="IN9-dd-afM" firstAttribute="leading" secondItem="WLg-xV-Xqx" secondAttribute="trailing" constant="8" symbolic="YES" id="Wrh-QD-NAc"/>
+                                        <constraint firstItem="IN9-dd-afM" firstAttribute="top" secondItem="FCw-9d-Lfw" secondAttribute="topMargin" constant="4" id="zP7-Jb-axg"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -948,7 +953,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNc-Dr-BoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5438" y="-2914"/>
+            <point key="canvasLocation" x="5661" y="-120"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="d53-Lc-cVI">
@@ -1101,13 +1106,10 @@
                     <navigationItem key="navigationItem" id="lCG-ht-gJ9">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="IU8-L9-13i"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="Z1f-ra-ybK" kind="show" identifier="toEditAccountTVCSegue" id="Y8y-HZ-ftF"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cU8-Gf-Ozf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6362" y="-6113"/>
+            <point key="canvasLocation" x="9302" y="-5721"/>
         </scene>
         <!--Software Licence Table View Controller-->
         <scene sceneID="ZFt-lR-QdF">
@@ -1179,13 +1181,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="92J-1D-Rnd"/>
-                    <connections>
-                        <segue destination="Z1f-ra-ybK" kind="show" identifier="toEditAccountTVCSegue" id="2VT-Qd-RHE"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xp-SG-x0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6362" y="-5441"/>
+            <point key="canvasLocation" x="9302" y="-5049"/>
         </scene>
         <!--Database Table View Controller-->
         <scene sceneID="Z0Z-Y8-fQU">
@@ -1373,13 +1372,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="642-Lr-3bX"/>
-                    <connections>
-                        <segue destination="Z1f-ra-ybK" kind="show" identifier="toEditAccountTVCSegue" id="ZmL-YH-GO5"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdT-Tf-f2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6362" y="-4744"/>
+            <point key="canvasLocation" x="9302" y="-4352"/>
         </scene>
         <!--Ftp Server Table View Controller-->
         <scene sceneID="649-VW-DtB">
@@ -1553,13 +1549,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hYq-D0-Irt"/>
-                    <connections>
-                        <segue destination="Z1f-ra-ybK" kind="show" identifier="toEditAccountTVCSegue" id="azi-fc-C8b"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHj-8C-R7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6362" y="-4077"/>
+            <point key="canvasLocation" x="9302" y="-3685"/>
         </scene>
         <!--Wireless Router Table View Controller-->
         <scene sceneID="kA2-oO-PSf">
@@ -1729,13 +1722,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="103-42-dpt"/>
-                    <connections>
-                        <segue destination="Z1f-ra-ybK" kind="show" identifier="toEditAccountTVCSegue" id="OdE-PH-UPj"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pa9-Zh-OH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6362" y="-3391"/>
+            <point key="canvasLocation" x="9302" y="-2999"/>
         </scene>
         <!--Server Table View Controller-->
         <scene sceneID="NQz-Vu-wj1">
@@ -1937,13 +1927,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Kg9-Nu-qg9"/>
-                    <connections>
-                        <segue destination="Z1f-ra-ybK" kind="show" identifier="toEditAccountTVCSegue" id="ItU-gY-2Jh"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u4Y-IC-Bb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6362" y="-2669"/>
+            <point key="canvasLocation" x="9302" y="-2277"/>
         </scene>
         <!--Web Table View Controller-->
         <scene sceneID="Bp1-mX-tOe">
@@ -2051,7 +2038,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ze9-nz-u0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7227" y="-1095"/>
+            <point key="canvasLocation" x="10011" y="-1463"/>
         </scene>
         <!--Edit Web Table View Controller-->
         <scene sceneID="fwB-Sv-YZw">
@@ -2091,7 +2078,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCY-Uy-jNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7931" y="-1095"/>
+            <point key="canvasLocation" x="10715" y="-1463"/>
         </scene>
         <!--Email Table View Controller-->
         <scene sceneID="SUe-PC-wwp">
@@ -2245,7 +2232,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2R-q9-sVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11212" y="3152"/>
+            <point key="canvasLocation" x="9990" y="731"/>
         </scene>
         <!--Edit Email Table View Controller-->
         <scene sceneID="oSd-ho-SxB">
@@ -2285,7 +2272,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIu-5W-ofN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11894" y="3152"/>
+            <point key="canvasLocation" x="10672" y="731"/>
         </scene>
         <!--Bank Account Table View Controller-->
         <scene sceneID="D2m-b2-q2b">
@@ -2452,7 +2439,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTy-Eo-28B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7176" y="2483"/>
+            <point key="canvasLocation" x="10656" y="2127"/>
         </scene>
         <!--Credit Card Table View Controller-->
         <scene sceneID="g3O-fh-cXy">
@@ -2619,7 +2606,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5A-DI-XL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7176" y="3165"/>
+            <point key="canvasLocation" x="10656" y="2809"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="KeI-bo-M6F">
@@ -2772,7 +2759,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKT-pt-CcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7176" y="3844"/>
+            <point key="canvasLocation" x="10656" y="3488"/>
         </scene>
         <!--Driver Licence Table View Controller-->
         <scene sceneID="EsK-7c-MWu">
@@ -2911,7 +2898,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7w8-9P-sSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7176" y="4530"/>
+            <point key="canvasLocation" x="10656" y="4174"/>
         </scene>
         <!--Passport Table View Controller-->
         <scene sceneID="Bku-iu-qVW">
@@ -3064,7 +3051,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Urp-S4-s6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7176" y="5906"/>
+            <point key="canvasLocation" x="10656" y="5550"/>
         </scene>
         <!--Membership Table View Controller-->
         <scene sceneID="DH3-Nb-IMH">
@@ -3241,55 +3228,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0I-cq-hZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7176" y="5213"/>
-        </scene>
-        <!--Edit Account Table View Controller-->
-        <scene sceneID="SNO-Wq-gqh">
-            <objects>
-                <tableViewController id="Z1f-ra-ybK" customClass="EditAccountTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VSh-iN-bja">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                        <sections>
-                            <tableViewSection id="qJc-qM-n5l">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bwD-3R-H1s">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="bwD-3R-H1s" id="azV-1c-RZH">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QYh-E1-xgb">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="Z1f-ra-ybK" id="FL8-74-VfU"/>
-                            <outlet property="delegate" destination="Z1f-ra-ybK" id="PWG-yv-MxL"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="Xr2-cS-AiO"/>
-                        <barButtonItem title="Item" id="IVp-bX-REC"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="R0r-mm-rB8">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="KdM-Tp-dOy"/>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="editTextField" destination="QYh-E1-xgb" id="3qa-sU-cvN"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oTS-5L-e6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7287" y="-4573"/>
+            <point key="canvasLocation" x="10656" y="4857"/>
         </scene>
         <!--Generic Account Table View Controller-->
         <scene sceneID="2pe-X5-fTi">
@@ -3381,18 +3320,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="Z1f-ra-ybK" kind="show" identifier="toEditAccountTVCSegue" id="Rr0-81-lgJ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Z8-Kf-3Ke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6362" y="-6832"/>
+            <point key="canvasLocation" x="9302" y="-6440"/>
         </scene>
-        <!--Account Values Table View Controller-->
+        <!--Values Table View Controller-->
         <scene sceneID="UcH-iM-0Ve">
             <objects>
-                <tableViewController id="a6e-zU-uwA" customClass="AccountValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="a6e-zU-uwA" customClass="ValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="giO-96-bfv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3512,12 +3448,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4h-m8-ECT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5438" y="-3595"/>
+            <point key="canvasLocation" x="6333" y="-117"/>
         </scene>
-        <!--Edit Account Values Table View Controller-->
+        <!--Edit Values Table View Controller-->
         <scene sceneID="bk6-Yo-jPa">
             <objects>
-                <tableViewController id="2Fn-h2-KOk" customClass="EditAccountValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="2Fn-h2-KOk" customClass="EditValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fef-YK-G6r">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3559,7 +3495,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBB-20-w8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5443" y="-4270"/>
+            <point key="canvasLocation" x="7012" y="-117"/>
         </scene>
     </scenes>
     <resources>
@@ -3594,7 +3530,4 @@
         <image name="yahoomail" width="20" height="20"/>
         <image name="youtube" width="20" height="20"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="azi-fc-C8b"/>
-    </inferredMetricsTieBreakers>
 </document>

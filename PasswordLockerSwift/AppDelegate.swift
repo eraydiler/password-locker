@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tab = self.window!.rootViewController as UITabBarController
         let nav = tab.childViewControllers[0] as UINavigationController
-        let master = nav.topViewController as AddTableViewController
+        let master = nav.topViewController as CategoriesTableViewController
         master.managedObjectContext = self.managedObjectContext
         
         return true

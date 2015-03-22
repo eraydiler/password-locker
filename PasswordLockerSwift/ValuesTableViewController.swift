@@ -1,5 +1,5 @@
     //
-//  AccountValuesTableViewController.swift
+//  ValuesTableViewController.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 12/03/15.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AccountValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate,  EditAccountValuesTableViewControllerDelegate {
+class ValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate,  EditValuesTableViewControllerDelegate {
     
     // set by former controller
     var category: Category?
@@ -248,7 +248,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
             }
     }
     
-    // MARK: - EditAccountValuesTableViewController Delegate
+    // MARK: - EditValuesTableViewController Delegate
     
     func rowValueChanged() {
         
@@ -280,7 +280,7 @@ class AccountValuesTableViewController: UITableViewController, NSFetchedResultsC
         if segue.identifier == "toEditAccountValuesTVCSegue" {
             
             let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
-            let targetVC = segue.destinationViewController as EditAccountValuesTableViewController
+            let targetVC = segue.destinationViewController as EditValuesTableViewController
             
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowId = row.objectID

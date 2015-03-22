@@ -1,5 +1,5 @@
 //
-//  AddTableViewController.swift
+//  CategoriesTableViewController.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 03/02/15.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class CategoriesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // set by AppDelegate on application startup
     var managedObjectContext: NSManagedObjectContext?
@@ -110,7 +110,7 @@ class AddTableViewController: UITableViewController, NSFetchedResultsControllerD
         let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Category
         
         if segue.identifier == "toAccountTypeTVCSegue" {
-            let targetVC = segue.destinationViewController as AccountTypeTableViewController
+            let targetVC = segue.destinationViewController as TypesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = category
         }

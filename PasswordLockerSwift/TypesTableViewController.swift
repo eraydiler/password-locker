@@ -1,5 +1,5 @@
 //
-//  AccountTypeTableViewController.swift
+//  TypesTableViewController.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 03/02/15.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AccountTypeTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class TypesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // set by AppDelegate on application startup
     var managedObjectContext: NSManagedObjectContext?
@@ -116,7 +116,7 @@ class AccountTypeTableViewController: UITableViewController, NSFetchedResultsCon
         let type = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Type
         
         if segue.identifier == "toAccountValuesTVCSegue" {
-            let targetVC = segue.destinationViewController as AccountValuesTableViewController
+            let targetVC = segue.destinationViewController as ValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
             targetVC.type = type
