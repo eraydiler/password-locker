@@ -505,7 +505,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXF-uy-cRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9302" y="-109"/>
+            <point key="canvasLocation" x="7012" y="593"/>
         </scene>
         <!--Email Type Table View Controller-->
         <scene sceneID="hUV-O2-0UL">

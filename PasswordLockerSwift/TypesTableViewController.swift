@@ -59,9 +59,10 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         at least one sort order _is_ required */
         let entity = NSEntityDescription.entityForName("Type", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "name", ascending: true)
-        let req = NSFetchRequest()
+        let req = NSFetchRequest() as NSFetchRequest
         req.entity = entity
         req.sortDescriptors = [sort]
+        req.predicate = NSPredicate(format: "category == %@", category!)        
         
         /* NSFetchedResultsController initialization
         a `nil` `sectionNameKeyPath` generates a single section */

@@ -77,56 +77,181 @@ class InsertData: NSObject {
         typeServer.imageName = "server"
         typeServer.category = categoryAccount
         
+        
+        // MARK: - Web Types
+        
+        var typeRegular: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeRegular.name = "Regular"
+        typeRegular.imageName = "regularWeb"
+        typeRegular.category = categoryWeb
+        
+        var typeFacebook: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeFacebook.name = "Facebook"
+        typeFacebook.imageName = "facebook"
+        typeFacebook.category = categoryWeb
+        
+        var typeGoogle: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeGoogle.name = "Google"
+        typeGoogle.imageName = "google"
+        typeGoogle.category = categoryWeb
+        
+        var typeTwitter: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeTwitter.name = "Twitter"
+        typeTwitter.imageName = "twitter"
+        typeTwitter.category = categoryWeb
+        
+        var typeInstagram: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeInstagram.name = "Instagram"
+        typeInstagram.imageName = "instagram"
+        typeInstagram.category = categoryWeb
+        
+        var typeFlickr: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeFlickr.name = "Flickr"
+        typeFlickr.imageName = "flickr"
+        typeFlickr.category = categoryWeb
+        
+        var typeYoutube: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeYoutube.name = "Youtube"
+        typeYoutube.imageName = "youtube"
+        typeYoutube.category = categoryWeb
+        
+        var typeLinkedin: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeLinkedin.name = "Linkedin"
+        typeLinkedin.imageName = "linkedin"
+        typeLinkedin.category = categoryWeb
+        
+        var typeYahoo: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeYahoo.name = "Yahoo"
+        typeYahoo.imageName = "yahoo"
+        typeYahoo.category = categoryWeb
+        
+        var typePaypal: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typePaypal.name = "Paypal"
+        typePaypal.imageName = "paypal"
+        typePaypal.category = categoryWeb
+        
+        var typeAmazon: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeAmazon.name = "Amazon"
+        typeAmazon.imageName = "amazon"
+        typeAmazon.category = categoryWeb
+        
+        var typeEbay: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeEbay.name = "Ebay"
+        typeEbay.imageName = "ebay"
+        typeEbay.category = categoryWeb
+        
+        var typeWordpress: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeWordpress.name = "Wordpress"
+        typeWordpress.imageName = "wordpress"
+        typeWordpress.category = categoryWeb
+        
+        
+        // MARK: - Email Types
+        
+        var typeRegularMail: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeRegularMail.name = "Regular Mail"
+        typeRegularMail.imageName = "regularMail"
+        typeRegularMail.category = categoryEmail
+        
+        var typeGmail: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeGmail.name = "Gmail"
+        typeGmail.imageName = "gmail"
+        typeGmail.category = categoryEmail
+        
+        var typeHotmail: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeHotmail.name = "Hotmail"
+        typeHotmail.imageName = "hotmail"
+        typeHotmail.category = categoryEmail
+        
+        var typeYahooMail: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeYahooMail.name = "Yahoo"
+        typeYahooMail.imageName = "yahoo"
+        typeYahooMail.category = categoryEmail
+        
+        
+        // MARK: - Wallet Types
+        
+        var typeBankAccount: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeBankAccount.name = "Bank Account"
+        typeBankAccount.imageName = "bankAccount"
+        typeBankAccount.category = categoryWallet
+        
+        var typeCreditCard: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeCreditCard.name = "Credit Card"
+        typeCreditCard.imageName = "creditCard"
+        typeCreditCard.category = categoryWallet
+        
+        var typeID: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeID.name = "ID"
+        typeID.imageName = "ID"
+        typeID.category = categoryWallet
+        
+        var typeDriverLicence: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeDriverLicence.name = "Driver Licence"
+        typeDriverLicence.imageName = "driveLicence"
+        typeDriverLicence.category = categoryWallet
+        
+        var typeMembership: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeMembership.name = "Membership"
+        typeMembership.imageName = "membership"
+        typeMembership.category = categoryWallet
+        
+        var typePassport: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typePassport.name = "Passport"
+        typePassport.imageName = "passport"
+        typePassport.category = categoryWallet
+        
+        
         // MARK: - Rows
         
-        // Generic Account title row
+        // Generic Account header row
         var rowGenericAccTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowGenericAccTitle.key = "genericAccount"
         rowGenericAccTitle.value = "Generic Account"
         rowGenericAccTitle.section = "0"
         rowGenericAccTitle.types = NSSet(array: [typeGenericAcc])
         
-        // Instant Messenger title row
+        // Instant Messenger header row
         var rowInstanMsngrTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowInstanMsngrTitle.key = "instantMessenger"
         rowInstanMsngrTitle.value = "Instant Messenger"
         rowInstanMsngrTitle.section = "0"
-        rowGenericAccTitle.types = NSSet(array: [typeInstnMssngr])
+        rowInstanMsngrTitle.types = NSSet(array: [typeInstnMssngr])
         
-        // Software Licence title row
+        // Software Licence header row
         var rowSoftwareLicenceTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowSoftwareLicenceTitle.key = "softwareLicence"
         rowSoftwareLicenceTitle.value = "Software Licence"
         rowSoftwareLicenceTitle.section = "0"
         rowSoftwareLicenceTitle.types = NSSet(array: [typeSoftwrLcnc])
         
-        // Database title row
+        // Database header row
         var rowDatabaseTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowDatabaseTitle.key = "database"
         rowDatabaseTitle.value = "Database"
         rowDatabaseTitle.section = "0"
         rowDatabaseTitle.types = NSSet(array: [typeDatabase])
         
-        // Ftp Server title row
+        // Ftp Server header row
         var rowFtpServerTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowFtpServerTitle.key = "ftpServer"
         rowFtpServerTitle.value = "Ftp Server"
         rowFtpServerTitle.section = "0"
         rowFtpServerTitle.types = NSSet(array: [typeFtpServer])
         
-        // Ftp Server title row
+        // Ftp Server header row
         var rowWirlessRouterTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowWirlessRouterTitle.key = "wirelessRouter"
         rowWirlessRouterTitle.value = "Wireless Router"
         rowWirlessRouterTitle.section = "0"
         rowWirlessRouterTitle.types = NSSet(array: [typeWirelessRtr])
         
-        // Server title row
+        // Server header row
         var rowServerTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowServerTitle.key = "server"
         rowServerTitle.value = "Server"
         rowServerTitle.section = "0"
-        rowServerTitle.types = NSSet(array: [typeServer, typeFtpServer])
+        rowServerTitle.types = NSSet(array: [typeServer])
         
         // end of titles
         

@@ -88,7 +88,6 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         return self.fetchedResultsController.sections![section].numberOfObjects
     }
     
-    
     // create and configure each `UITableViewCell`
     override func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath)

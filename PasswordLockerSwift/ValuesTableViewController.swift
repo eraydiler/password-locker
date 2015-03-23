@@ -92,7 +92,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     override func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
-            var cell: UITableViewCell = UITableViewCell()
+//            var cell: UITableViewCell = UITableViewCell()
             var reuseIdentifier: String!
             
             if (indexPath.section == 0) {
@@ -102,7 +102,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             } else {
                 reuseIdentifier = "NoteCell"
             }
-            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -154,6 +154,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         req.entity = entity
         req.sortDescriptors = [sort]
         req.fetchBatchSize = 20
+        req.predicate = NSPredicate(format: "ANY types == %@", self.type!)
         
         /* NSFetchedResultsController initialization
         a `nil` `sectionNameKeyPath` generates a single section */
