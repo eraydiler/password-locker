@@ -869,7 +869,7 @@
                                                 <constraint firstAttribute="width" constant="25" id="97O-ut-Ju6"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Category Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtH-AB-5Zb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtH-AB-5Zb">
                                             <rect key="frame" x="55" y="-1" width="512" height="53"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -881,6 +881,8 @@
                                         <constraint firstItem="RUs-gP-fU1" firstAttribute="centerY" secondItem="HtH-AB-5Zb" secondAttribute="centerY" id="ebf-Pc-G0R"/>
                                         <constraint firstItem="RUs-gP-fU1" firstAttribute="top" secondItem="3nz-60-lmE" secondAttribute="topMargin" constant="5" id="mD9-EX-7Cq"/>
                                         <constraint firstItem="RUs-gP-fU1" firstAttribute="leading" secondItem="3nz-60-lmE" secondAttribute="leadingMargin" constant="7" id="nLB-fv-zmy"/>
+                                        <constraint firstItem="HtH-AB-5Zb" firstAttribute="top" secondItem="3nz-60-lmE" secondAttribute="topMargin" constant="-9" id="nUv-rI-fcQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="HtH-AB-5Zb" secondAttribute="trailing" id="ngh-Bc-fnJ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="RUs-gP-fU1" secondAttribute="bottom" constant="4" id="yjM-FK-CH2"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -922,7 +924,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genericAccount" translatesAutoresizingMaskIntoConstraints="NO" id="IN9-dd-afM">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IN9-dd-afM">
                                             <rect key="frame" x="547" y="12" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="4Ho-e5-EXo"/>
@@ -935,6 +937,7 @@
                                         <constraint firstAttribute="trailing" secondItem="IN9-dd-afM" secondAttribute="trailing" id="Dn6-QR-cwH"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="WLg-xV-Xqx" secondAttribute="bottom" constant="-10" id="HmB-Cs-TYl"/>
                                         <constraint firstItem="IN9-dd-afM" firstAttribute="leading" secondItem="WLg-xV-Xqx" secondAttribute="trailing" constant="8" symbolic="YES" id="Wrh-QD-NAc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="IN9-dd-afM" secondAttribute="bottom" constant="3" id="gDc-nb-Ga7"/>
                                         <constraint firstItem="IN9-dd-afM" firstAttribute="top" secondItem="FCw-9d-Lfw" secondAttribute="topMargin" constant="4" id="zP7-Jb-axg"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -978,18 +981,30 @@
         <scene sceneID="BiW-MH-dBm">
             <objects>
                 <tableViewController id="CyU-Kt-BxO" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="A2I-2D-dvr">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="A2I-2D-dvr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="l6b-BS-iJa">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l6b-BS-iJa" id="qAd-YM-gtF">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections>
+                            <tableViewSection id="n2a-EX-BxF">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="190-id-yF4" style="IBUITableViewCellStyleDefault" id="l6b-BS-iJa">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l6b-BS-iJa" id="qAd-YM-gtF">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="190-id-yF4">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="CyU-Kt-BxO" id="AmZ-WN-JWY"/>
                             <outlet property="delegate" destination="CyU-Kt-BxO" id="7QP-w9-QAk"/>

@@ -82,7 +82,7 @@ class InsertData: NSObject {
         
         var typeRegular: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
         typeRegular.name = "Regular"
-        typeRegular.imageName = "regularWeb"
+        typeRegular.imageName = "regular"
         typeRegular.category = categoryWeb
         
         var typeFacebook: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
@@ -188,7 +188,7 @@ class InsertData: NSObject {
         
         var typeDriverLicence: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
         typeDriverLicence.name = "Driver Licence"
-        typeDriverLicence.imageName = "driveLicence"
+        typeDriverLicence.imageName = "driverLicence"
         typeDriverLicence.category = categoryWallet
         
         var typeMembership: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
