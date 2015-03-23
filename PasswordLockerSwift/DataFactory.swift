@@ -1,5 +1,5 @@
 //
-//  InsertData.swift
+//  DataFactory.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 17/03/15.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class InsertData: NSObject {
+class DataFactory: NSObject {
     
     var managedObjectContext: NSManagedObjectContext?
     
@@ -201,6 +201,13 @@ class InsertData: NSObject {
         typePassport.imageName = "passport"
         typePassport.category = categoryWallet
         
+        // MARK: - Note Type
+        
+        var typeNote: Type = NSEntityDescription.insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as Type
+        typeNote.name = "Note"
+        typeNote.imageName = "note"
+        typeNote.category = categoryNote
+        
         
         // MARK: - Rows
         
@@ -239,7 +246,7 @@ class InsertData: NSObject {
         rowFtpServerTitle.section = "0"
         rowFtpServerTitle.types = NSSet(array: [typeFtpServer])
         
-        // Ftp Server header row
+        // Wireless Router header row
         var rowWirlessRouterTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowWirlessRouterTitle.key = "wirelessRouter"
         rowWirlessRouterTitle.value = "Wireless Router"
@@ -253,7 +260,15 @@ class InsertData: NSObject {
         rowServerTitle.section = "0"
         rowServerTitle.types = NSSet(array: [typeServer])
         
-        // end of titles
+        // Note header row
+        var rowNoteTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowNoteTitle.key = "note"
+        rowNoteTitle.value = "New Note"
+        rowNoteTitle.section = "0"
+        rowNoteTitle.types = NSSet(array: [typeNote])
+        
+        // end of headers
+        
         
         var rowUsername: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowUsername.key = "Username"
@@ -268,7 +283,7 @@ class InsertData: NSObject {
         rowPassword.types = NSSet(array: [typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeWirelessRtr, typeServer])
         
         var rowNote: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
-        rowNote.key = "Note"
+        rowNote.key = "note"
         rowNote.value = "No Note"
         rowNote.section = "2"
         rowNote.types = NSSet(array: [typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeSoftwrLcnc, typeWirelessRtr, typeServer])
@@ -352,7 +367,7 @@ class InsertData: NSObject {
         rowPhone.types = NSSet(array: [typeFtpServer])
         
         var rowStation: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
-        rowStation.key = "Password"
+        rowStation.key = "Station"
         rowStation.value = ""
         rowStation.section = "1"
         rowStation.types = NSSet(array: [typeWirelessRtr])
@@ -440,6 +455,25 @@ class InsertData: NSObject {
         if !moc.save(&error) {
             println("finish error: \(error!.localizedDescription)")
             abort()
+        }
+    }
+    
+    class func deleteAllObjects(managedObjectContext: NSManagedObjectContext, entityDescription: String) {
+        
+        let entity = NSEntityDescription.entityForName(entityDescription, inManagedObjectContext: managedObjectContext)
+        let req = NSFetchRequest()
+        req.entity = entity
+
+        // perform initial model fetch
+        var e: NSError?
+        if let items = managedObjectContext.executeFetchRequest(req, error: &e) {
+            for object in items {
+                managedObjectContext.deleteObject(object as NSManagedObject)
+                println("\(object) object deleted")
+            }
+            if !managedObjectContext.save(&e) {
+                println("Error deleting \(entityDescription) - error:\(e)")
+            }
         }
     }
 }

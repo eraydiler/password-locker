@@ -19,7 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if FIRSTRUN {
-            InsertData.setupInitialData(self.managedObjectContext!)
+            
+            DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Category")
+            DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Type")
+            DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Row")
+            
+            DataFactory.setupInitialData(self.managedObjectContext!)
+            
             println("Sample Data inserted")
             exit(EXIT_SUCCESS)
         }

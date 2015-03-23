@@ -21,7 +21,6 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
     func configureView() {
         self.tableView.rowHeight = 45
         self.navigationItem.title = "Type"
-//        println("burada \(category?.objectID)")
     }
 
     override func viewDidLoad() {
@@ -123,6 +122,8 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
             targetVC.type = type
         }
     }
+    
+    // MARK: - Helper Methods
     
     /* helper method to configure a `UITableViewCell`
     ask `NSFetchedResultsController` for the model */

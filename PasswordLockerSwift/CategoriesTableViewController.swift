@@ -98,6 +98,19 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
             return cell
     }
     
+    // MARK: - Table view delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let indexPath = self.tableView.indexPathForSelectedRow()
+        let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Category
+        
+        if category.name == "Note" {
+            self.performSegueWithIdentifier("toNoteTypeTVCSegue", sender: nil)
+        } else {
+            self.performSegueWithIdentifier("toTypesTVCSegue", sender: nil)
+        }
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -108,10 +121,14 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         let indexPath = self.tableView.indexPathForSelectedRow()
         let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Category
         
-        if segue.identifier == "toAccountTypeTVCSegue" {
+        if segue.identifier == "toTypesTVCSegue" {
             let targetVC = segue.destinationViewController as TypesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = category
+        } else
+        if segue.identifier == "toNoteTypeTVCSegue" {
+            let targetVC = segue.destinationViewController as NoteTypeTableViewController
+            targetVC.managedObjectContext = self.managedObjectContext
         }
     }
     

@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "note.pdf"
+      "scale" : "1x",
+      "filename" : "notes-20.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "Notes-icon40.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "Notes-icon60.png"
     }
   ],
   "info" : {

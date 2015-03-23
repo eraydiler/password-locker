@@ -109,7 +109,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 60.0
+            return 68.0
         }
         return 44.0
     }
