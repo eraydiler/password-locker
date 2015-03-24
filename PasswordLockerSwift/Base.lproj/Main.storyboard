@@ -505,7 +505,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph7-2q-8BU">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="384"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -524,13 +524,88 @@
                             <outlet property="delegate" destination="aWD-sI-9aa" id="SbR-Jl-R81"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="N59-8w-uCE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="1el-Pz-cxo">
+                            <connections>
+                                <action selector="saveBarButtonPressed:" destination="aWD-sI-9aa" id="08Z-IG-afP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="2Fn-h2-KOk" kind="show" identifier="toEditValueTVCSegue" id="VRi-d3-vpY"/>
+                        <segue destination="cuf-bt-J3h" kind="show" identifier="toEditNoteTVCSegue" id="BuQ-gG-fUU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXF-uy-cRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6333" y="731"/>
+        </scene>
+        <!--Edit Note Table View Controller-->
+        <scene sceneID="EVQ-NP-HTw">
+            <objects>
+                <tableViewController id="cuf-bt-J3h" customClass="EditNoteTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="NMt-a4-ayS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" id="qGz-v8-9vA">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qGz-v8-9vA" id="00D-fF-QKq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New Note" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RgP-RG-NI2">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="44"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="RgP-RG-NI2" firstAttribute="top" secondItem="00D-fF-QKq" secondAttribute="top" id="9mm-vR-GWI"/>
+                                        <constraint firstItem="RgP-RG-NI2" firstAttribute="trailing" secondItem="00D-fF-QKq" secondAttribute="trailingMargin" id="JXi-ZZ-8Sg"/>
+                                        <constraint firstAttribute="bottom" secondItem="RgP-RG-NI2" secondAttribute="bottom" id="guo-rw-9EN"/>
+                                        <constraint firstItem="RgP-RG-NI2" firstAttribute="leading" secondItem="00D-fF-QKq" secondAttribute="leadingMargin" id="icx-jW-Jet"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="500" id="SHo-vC-WvZ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SHo-vC-WvZ" id="sQJ-jr-IVh">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hob-A2-eJA">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GUB-sc-Edb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </scrollView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cuf-bt-J3h" id="xcD-8I-XNK"/>
+                            <outlet property="delegate" destination="cuf-bt-J3h" id="Z7Y-Tf-JTh"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="MaW-mt-Wyy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="d6g-ZP-ve1">
+                            <connections>
+                                <action selector="doneBarButtonPressed:" destination="cuf-bt-J3h" id="FhD-A1-8bd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgD-Xc-gCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7052" y="728"/>
         </scene>
         <!--Email Type Table View Controller-->
         <scene sceneID="hUV-O2-0UL">
@@ -1022,7 +1097,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="190-id-yF4">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -3571,7 +3646,4 @@
         <image name="yahoomail" width="20" height="20"/>
         <image name="youtube" width="20" height="20"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="VRi-d3-vpY"/>
-    </inferredMetricsTieBreakers>
 </document>

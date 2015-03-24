@@ -23,6 +23,7 @@
 		2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA343FA1AB87EFF00819709 /* DataFactory.swift */; };
 		2ACFDE561ABA070300579467 /* EditValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */; };
 		2AD3C1201AC0731B00286A18 /* NoteTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */; };
+		2AD3C1221AC0A5DC00286A18 /* EditNoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C1211AC0A5DC00286A18 /* EditNoteTableViewController.swift */; };
 		2AE8082C1A8127D70005E831 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */; };
 		2AE808301A8146150005E831 /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8082F1A8146150005E831 /* TypesTableViewController.swift */; };
 		2AF76B471A82B1C500873A92 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B461A82B1C500873A92 /* Helper.swift */; };
@@ -59,6 +60,7 @@
 		2AA343FA1AB87EFF00819709 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditValuesTableViewController.swift; sourceTree = "<group>"; };
 		2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTypeTableViewController.swift; sourceTree = "<group>"; };
+		2AD3C1211AC0A5DC00286A18 /* EditNoteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteTableViewController.swift; sourceTree = "<group>"; };
 		2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		2AE8082F1A8146150005E831 /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
 		2AF76B461A82B1C500873A92 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -176,8 +178,9 @@
 				2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */,
 				2AE8082F1A8146150005E831 /* TypesTableViewController.swift */,
 				2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */,
-				2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */,
 				2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */,
+				2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */,
+				2AD3C1211AC0A5DC00286A18 /* EditNoteTableViewController.swift */,
 				2A438D901A6D69E500101092 /* AuthenticationViewController.swift */,
 			);
 			name = Controller;
@@ -294,6 +297,7 @@
 			files = (
 				2A9300E41A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld in Sources */,
 				2A438D8B1A6D670500101092 /* KeychainWrapper.swift in Sources */,
+				2AD3C1221AC0A5DC00286A18 /* EditNoteTableViewController.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
 				2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */,
 				2AE8082C1A8127D70005E831 /* CategoriesTableViewController.swift in Sources */,

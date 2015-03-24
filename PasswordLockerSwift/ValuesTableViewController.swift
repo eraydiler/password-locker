@@ -302,7 +302,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             println("save error: \(e!.localizedDescription)")
             abort()
         }
-        
         self.navigationController?.popViewControllerAnimated(true)
     }
     

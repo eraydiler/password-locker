@@ -13,7 +13,10 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
     
     // set by AppDelegate on application startup
     var managedObjectContext: NSManagedObjectContext?
-
+    
+    // hack for handling back button
+    var isBackTouched = true
+    
     func configureView() {
         self.title = "Type"
     }
@@ -27,6 +30,23 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         configureView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        isBackTouched = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        if isBackTouched {
+            println("back pressed")
+        }
+        
+        if managedObjectContext!.hasChanges  && isBackTouched {
+            managedObjectContext?.rollback()
+            println("Changes rolled back")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -115,7 +135,7 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
     // MARK: - Table view delegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("toEditValueTVCSegue", sender: nil)
+        self.performSegueWithIdentifier("toEditNoteTVCSegue", sender: indexPath)
     }
     
     // MARK: - EditValuesTableViewController Delegate
@@ -124,7 +144,7 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
         
         let indexPath = self.tableView.indexPathForSelectedRow()
         
-        var reuseIdentifier: String! = nil
+        var reuseIdentifier: String!
         if indexPath?.section == 0 {
             reuseIdentifier = "TitleCell"
         }
@@ -143,18 +163,17 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
             
-            //            let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
             let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
             
             switch (indexPath.section) {
             case 0:
                 let imageView = cell.contentView.subviews[0] as UIImageView
-                var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
+                let titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
                 imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
                 break;
             case 1:
-                var valueLabel = cell.contentView.subviews[0] as UILabel
+                let valueLabel = cell.contentView.subviews[0] as UILabel
                 valueLabel.text = row.value
                 break;
                 
@@ -163,68 +182,35 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
             }
     }
     
+    // MARK: - IBActions
+    
+    @IBAction func saveBarButtonPressed(sender: UIBarButtonItem) {
+        isBackTouched = false
+        
+        var e: NSError?
+        if !managedObjectContext!.save(&e) {
+            println("save error: \(e!.localizedDescription)")
+            abort()
+        }
+        self.navigationController?.popViewControllerAnimated(true)
+    }    
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if segue.identifier == "toEditAccountValuesTVCSegue" {
+        if segue.identifier == "toEditNoteTVCSegue" {
             
-//            let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
-//            let targetVC = segue.destinationViewController as EditValuesTableViewController
-//            
-//            targetVC.managedObjectContext = self.managedObjectContext
-//            targetVC.rowId = row.objectID
-//            targetVC.placeholder = row.value
-//            targetVC.delegate = self
+            let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
+            let targetVC = segue.destinationViewController as EditNoteTableViewController
+
+            targetVC.managedObjectContext = self.managedObjectContext
+            targetVC.rowId = row.objectID
+            targetVC.delegate = self
             
+            isBackTouched = false
         }
-        
     }
-    
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 }
