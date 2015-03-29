@@ -20,3 +20,5 @@ self.tabBarController?.addChildViewController(newUIView)
 self.navigationController?.popToRootViewControllerAnimated(true)
 }
 
+
+Rowları sıralamak için veritabanında sıralama diye bir alan koyabilirsin. fetchreq.sort... ile bu alanı belirterek sıralama yapabilirsin.

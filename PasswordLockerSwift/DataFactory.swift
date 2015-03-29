@@ -267,6 +267,167 @@ class DataFactory: NSObject {
         rowNoteTitle.section = "0"
         rowNoteTitle.types = NSSet(array: [typeNote])
         
+        // Regular Mail header row
+        var rowRegularMailTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowRegularMailTitle.key = "regularMail"
+        rowRegularMailTitle.value = "Regular Mail"
+        rowRegularMailTitle.section = "0"
+        rowRegularMailTitle.types = NSSet(array: [typeRegularMail])
+        
+        // Gmail header row
+        var rowGmailTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowGmailTitle.key = "gmail"
+        rowGmailTitle.value = "Gmail"
+        rowGmailTitle.section = "0"
+        rowGmailTitle.types = NSSet(array: [typeGmail])
+        
+        // Hotmail header row
+        var rowHotmailTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowHotmailTitle.key = "hotmail"
+        rowHotmailTitle.value = "Hotmail"
+        rowHotmailTitle.section = "0"
+        rowHotmailTitle.types = NSSet(array: [typeHotmail])
+        
+        // Yahoo header row
+        var rowYahooMailTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowYahooMailTitle.key = "yahoomail"
+        rowYahooMailTitle.value = "Yahoo Mail"
+        rowYahooMailTitle.section = "0"
+        rowYahooMailTitle.types = NSSet(array: [typeYahooMail])
+        
+        // Bank Account header row
+        var rowBankAccountTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowBankAccountTitle.key = "bankAccount"
+        rowBankAccountTitle.value = "Bank Account"
+        rowBankAccountTitle.section = "0"
+        rowBankAccountTitle.types = NSSet(array: [typeBankAccount])
+        
+        // Credit Card header row
+        var rowCreditCardTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowCreditCardTitle.key = "creditCard"
+        rowCreditCardTitle.value = "Credit Card"
+        rowCreditCardTitle.section = "0"
+        rowCreditCardTitle.types = NSSet(array: [typeCreditCard])
+        
+        // ID header row
+        var rowIDTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowIDTitle.key = "id"
+        rowIDTitle.value = "ID"
+        rowIDTitle.section = "0"
+        rowIDTitle.types = NSSet(array: [typeID])
+        
+        // Driver Licence header row
+        var rowDriverLicenceTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowDriverLicenceTitle.key = "driverLicence"
+        rowDriverLicenceTitle.value = "Driver Licence"
+        rowDriverLicenceTitle.section = "0"
+        rowDriverLicenceTitle.types = NSSet(array: [typeDriverLicence])
+        
+        // Membership header row
+        var rowMembershipTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowMembershipTitle.key = "membership"
+        rowMembershipTitle.value = "Membersip"
+        rowMembershipTitle.section = "0"
+        rowMembershipTitle.types = NSSet(array: [typeMembership])
+        
+        // Passport header row
+        var rowPassportTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowPassportTitle.key = "passport"
+        rowPassportTitle.value = "Passport"
+        rowPassportTitle.section = "0"
+        rowPassportTitle.types = NSSet(array: [typePassport])
+        
+        // Regular header row
+        var rowRegularTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowRegularTitle.key = "regular"
+        rowRegularTitle.value = "Regular"
+        rowRegularTitle.section = "0"
+        rowRegularTitle.types = NSSet(array: [typeRegular])
+        
+        // Facebook header row
+        var rowFacebookTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowFacebookTitle.key = "facebook"
+        rowFacebookTitle.value = "Facebook"
+        rowFacebookTitle.section = "0"
+        rowFacebookTitle.types = NSSet(array: [typeFacebook])
+        
+        // Google header row
+        var rowGoogleTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowGoogleTitle.key = "google"
+        rowGoogleTitle.value = "Google"
+        rowGoogleTitle.section = "0"
+        rowGoogleTitle.types = NSSet(array: [typeGoogle])
+        
+        // Twitter header row
+        var rowTwitterTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowTwitterTitle.key = "twitter"
+        rowTwitterTitle.value = "Twitter"
+        rowTwitterTitle.section = "0"
+        rowTwitterTitle.types = NSSet(array: [typeTwitter])
+        
+        // Instagram header row
+        var rowInstagramTİtle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowInstagramTİtle.key = "instagram"
+        rowInstagramTİtle.value = "Instagram"
+        rowInstagramTİtle.section = "0"
+        rowInstagramTİtle.types = NSSet(array: [typeInstagram])
+        
+        // Flickr header row
+        var rowFlickrTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowFlickrTitle.key = "flickr"
+        rowFlickrTitle.value = "Flickr"
+        rowFlickrTitle.section = "0"
+        rowFlickrTitle.types = NSSet(array: [typeFlickr])
+        
+        // Youtube header row
+        var rowYoutubeTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowYoutubeTitle.key = "youtube"
+        rowYoutubeTitle.value = "Youtube"
+        rowYoutubeTitle.section = "0"
+        rowYoutubeTitle.types = NSSet(array: [typeYoutube])
+        
+        // Linkedin header row
+        var rowLinkedinTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowLinkedinTitle.key = "linkedin"
+        rowLinkedinTitle.value = "Linkedin"
+        rowLinkedinTitle.section = "0"
+        rowLinkedinTitle.types = NSSet(array: [typeLinkedin])
+        
+        // Yahoo header row
+        var rowYahooTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowYahooTitle.key = "yahoo"
+        rowYahooTitle.value = "Yahoo"
+        rowYahooTitle.section = "0"
+        rowYahooTitle.types = NSSet(array: [typeYahoo])
+        
+        // Paypal header row
+        var rowPaypalTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowPaypalTitle.key = "paypal"
+        rowPaypalTitle.value = "Paypal"
+        rowPaypalTitle.section = "0"
+        rowPaypalTitle.types = NSSet(array: [typePaypal])
+        
+        // Amazon header row
+        var rowAmazonTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowAmazonTitle.key = "amazon"
+        rowAmazonTitle.value = "Amazon"
+        rowAmazonTitle.section = "0"
+        rowAmazonTitle.types = NSSet(array: [typeAmazon])
+        
+        // Ebay header row
+        var rowEbayTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowEbayTitle.key = "ebay"
+        rowEbayTitle.value = "Ebay"
+        rowEbayTitle.section = "0"
+        rowEbayTitle.types = NSSet(array: [typeEbay])
+        
+        // Wordpress header row
+        var rowWordpressTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowWordpressTitle.key = "wordpress"
+        rowWordpressTitle.value = "Wordpress"
+        rowWordpressTitle.section = "0"
+        rowWordpressTitle.types = NSSet(array: [typeWordpress])        
+        
         // end of headers
         
         
@@ -274,19 +435,20 @@ class DataFactory: NSObject {
         rowUsername.key = "Username"
         rowUsername.value = ""
         rowUsername.section = "1"
-        rowUsername.types = NSSet(array: [typeGenericAcc, typeDatabase, typeFtpServer, typeServer])
+        rowUsername.types = NSSet(array: Array<Type>([typeGenericAcc, typeDatabase, typeFtpServer, typeServer, typeRegularMail, typeGmail, typeHotmail, typeYahooMail, typeRegular, typeFacebook, typeGoogle, typeTwitter, typeInstagram, typeFlickr, typeYoutube, typeLinkedin, typeYahoo, typePaypal, typeAmazon, typeEbay, typeWordpress])
+)
         
         var rowPassword: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowPassword.key = "Password"
         rowPassword.value = ""
         rowPassword.section = "1"
-        rowPassword.types = NSSet(array: [typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeWirelessRtr, typeServer])
-        
+        rowPassword.types = NSSet(array: Array<Type>([typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeWirelessRtr, typeServer, typeRegularMail, typeGmail, typeHotmail, typeYahooMail, typeMembership, typeRegular, typeFacebook, typeGoogle, typeTwitter, typeInstagram, typeFlickr, typeYoutube, typeLinkedin, typeYahoo, typePaypal, typeAmazon, typeEbay, typeWordpress]))
+
         var rowNote: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowNote.key = "note"
         rowNote.value = "No Note"
         rowNote.section = "2"
-        rowNote.types = NSSet(array: [typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeSoftwrLcnc, typeWirelessRtr, typeServer])
+        rowNote.types = NSSet(array: Array<Type>([typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeSoftwrLcnc, typeWirelessRtr, typeServer, typeRegularMail, typeGmail, typeHotmail, typeYahooMail, typeBankAccount, typeID, typePassport, typeRegular, typeFacebook, typeGoogle, typeTwitter, typeInstagram, typeFlickr, typeYoutube, typeLinkedin, typeYahoo, typePaypal, typeAmazon, typeEbay, typeWordpress]))
         
         var rowID: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowID.key = "ID"
@@ -304,20 +466,20 @@ class DataFactory: NSObject {
         rowType.key = "Type"
         rowType.value = ""
         rowType.section = "1"
-        rowType.types = NSSet(array: [typeDatabase])
+        rowType.types = NSSet(array: Array<Type>([typeDatabase, typeBankAccount, typeCreditCard]))
         
         var rowServer: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowServer.key = "Server"
         rowServer.value = ""
         rowServer.section = "1"
-        rowServer.types = NSSet(array: [typeDatabase, typeFtpServer])
-        
+        rowServer.types = NSSet(array: Array<Type>([typeDatabase, typeFtpServer, typeRegularMail, typeGmail, typeHotmail, typeYahooMail]))
+
         var rowPort: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowPort.key = "Port"
         rowPort.value = ""
         rowPort.section = "1"
         rowPort.types = NSSet(array: [typeDatabase])
-        
+
         var rowDatabase: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowDatabase.key = "Database"
         rowDatabase.value = ""
@@ -358,8 +520,8 @@ class DataFactory: NSObject {
         rowWebsite.key = "Website"
         rowWebsite.value = ""
         rowWebsite.section = "1"
-        rowWebsite.types = NSSet(array: [typeFtpServer])
-        
+        rowWebsite.types = NSSet(array: Array<Type>([typeFtpServer, typeMembership]))
+
         var rowPhone: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowPhone.key = "Phone"
         rowPhone.value = ""
@@ -412,13 +574,13 @@ class DataFactory: NSObject {
         rowUrl.key = "Url"
         rowUrl.value = ""
         rowUrl.section = "1"
-        rowUrl.types = NSSet(array: [typeServer])
+        rowUrl.types = NSSet(array: Array<Type>([typeServer, typeRegular, typeFacebook, typeGoogle, typeTwitter, typeInstagram, typeFlickr, typeYoutube, typeLinkedin, typeYahoo, typePaypal, typeAmazon, typeEbay, typeWordpress]))
         
         var rowName: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowName.key = "Name"
         rowName.value = ""
         rowName.section = "1"
-        rowName.types = NSSet(array: [typeServer])
+        rowName.types = NSSet(array: Array<Type>([typeServer, typeID, typeMembership, typePassport]))
         
         var rowAdmPUrl: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
         rowAdmPUrl.key = "Admin Panel URL"
@@ -449,6 +611,144 @@ class DataFactory: NSObject {
         rowSupport.value = ""
         rowSupport.section = "1"
         rowSupport.types = NSSet(array: [typeServer])
+        
+        var rowServerType: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowServerType.key = "Server Type"
+        rowServerType.value = ""
+        rowServerType.section = "1"
+        rowServerType.types = NSSet(array: Array<Type>([typeRegularMail, typeGmail, typeHotmail, typeYahooMail]))
+
+        var rowSmtpServer: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowSmtpServer.key = "SMTP Server"
+        rowSmtpServer.value = ""
+        rowSmtpServer.section = "1"
+        rowSmtpServer.types = NSSet(array: Array<Type>([typeRegularMail, typeGmail, typeHotmail, typeYahooMail]))
+
+        var rowWebmail: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowWebmail.key = "Webmail"
+        rowWebmail.value = ""
+        rowWebmail.section = "1"
+        rowWebmail.types = NSSet(array: Array<Type>([typeRegularMail, typeGmail, typeHotmail, typeYahooMail]))
+        
+        var rowBankName: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowBankName.key = "Bank Name"
+        rowBankName.value = ""
+        rowBankName.section = "1"
+        rowBankName.types = NSSet(array: [typeBankAccount])
+        
+        var rowOwner: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowOwner.key = "Owner"
+        rowOwner.value = ""
+        rowOwner.section = "1"
+        rowOwner.types = NSSet(array: Array<Type>([typeBankAccount, typeCreditCard]))
+        
+        var rowAccount: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowAccount.key = "Account#"
+        rowAccount.value = ""
+        rowAccount.section = "1"
+        rowAccount.types = NSSet(array: [typeBankAccount])
+        
+        var rowPin: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowPin.key = "PIN"
+        rowPin.value = ""
+        rowPin.section = "1"
+        rowPin.types = NSSet(array: Array<Type>([typeBankAccount, typeCreditCard]))
+        
+        var rowSwift: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowSwift.key = "Swift"
+        rowSwift.value = ""
+        rowSwift.section = "1"
+        rowSwift.types = NSSet(array: [typeBankAccount])
+        
+        var rowIban: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowIban.key = "IBAN"
+        rowIban.value = ""
+        rowIban.section = "1"
+        rowIban.types = NSSet(array: [typeBankAccount])
+        
+        var rowNumber: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowNumber.key = "Number"
+        rowNumber.value = ""
+        rowNumber.section = "1"
+        rowNumber.types = NSSet(array: Array<Type>([typeCreditCard, typeID, typeDriverLicence, typeMembership, typePassport]))
+        
+        var rowCardHolder: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowCardHolder.key = "Cardholder"
+        rowCardHolder.value = ""
+        rowCardHolder.section = "1"
+        rowCardHolder.types = NSSet(array: [typeCreditCard])
+        
+        var rowValid: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowValid.key = "Valid"
+        rowValid.value = ""
+        rowValid.section = "1"
+        rowValid.types = NSSet(array: [typeCreditCard])
+        
+        var rowCvc: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowCvc.key = "CVC"
+        rowCvc.value = ""
+        rowCvc.section = "1"
+        rowCvc.types = NSSet(array: [typeCreditCard])
+        
+        var rowDateOfBirth: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowDateOfBirth.key = "Date of birth"
+        rowDateOfBirth.value = ""
+        rowDateOfBirth.section = "1"
+        rowDateOfBirth.types = NSSet(array: Array<Type>([typeID, typePassport]))
+        
+        var rowPlaceOfBirth: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowPlaceOfBirth.key = "Place of birth"
+        rowPlaceOfBirth.value = ""
+        rowPlaceOfBirth.section = "1"
+        rowPlaceOfBirth.types = NSSet(array: Array<Type>([typeID, typePassport]))
+        
+        var rowDateOfIssue: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowDateOfIssue.key = "Date of issue"
+        rowDateOfIssue.value = ""
+        rowDateOfIssue.section = "1"
+        rowDateOfIssue.types = NSSet(array: Array<Type>([typeID, typeDriverLicence, typePassport]))
+        
+        var rowDateOfExpiry: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowDateOfExpiry.key = "Date of Expiry"
+        rowDateOfExpiry.value = ""
+        rowDateOfExpiry.section = "1"
+        rowDateOfExpiry.types = NSSet(array: Array<Type>([typeID, typeDriverLicence, typePassport]))
+        
+        var rowFullName: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowFullName.key = "Full Name"
+        rowFullName.value = ""
+        rowFullName.section = "1"
+        rowFullName.types = NSSet(array: [typeDriverLicence])
+        
+        var rowVehicleTypes: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowVehicleTypes.key = "Vehicle Types"
+        rowVehicleTypes.value = ""
+        rowVehicleTypes.section = "1"
+        rowVehicleTypes.types = NSSet(array: [typeDriverLicence])
+        
+        var rowOrg: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowOrg.key = "Org"
+        rowOrg.value = ""
+        rowOrg.section = "1"
+        rowOrg.types = NSSet(array: [typeMembership])
+        
+        var rowTelephone: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowTelephone.key = "Telephone"
+        rowTelephone.value = ""
+        rowTelephone.section = "1"
+        rowTelephone.types = NSSet(array: [typeMembership])
+        
+        var rowSince: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowSince.key = "Since"
+        rowSince.value = ""
+        rowSince.section = "1"
+        rowSince.types = NSSet(array: [typeMembership])
+        
+        var rowExpires: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
+        rowExpires.key = "Expires"
+        rowExpires.value = ""
+        rowExpires.section = "1"
+        rowExpires.types = NSSet(array: [typeMembership])
         
         // MARK: - Save
         var error: NSError?
