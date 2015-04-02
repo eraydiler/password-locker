@@ -46,7 +46,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         }
         
         if managedObjectContext!.hasChanges  && isBackTouched {
-            managedObjectContext?.rollback()
+            rollBack()
             println("Changes rolled back")
         }
     }
@@ -296,16 +296,62 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     @IBAction func saveBarButtonTouched(sender: UIBarButtonItem) {
         isBackTouched = false
+        save()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func backBarButtonTouched(sender: UIBarButtonItem) {
+        println("back clicked")
+    }
+    
+    // MARK: - Helper Methods
+    
+    func rollBack() {
+        managedObjectContext?.rollback()
+    }
+    
+    func save() {
+        
+        // Insert new entity for SavedData
+        var newData = NSEntityDescription.insertNewObjectForEntityForName("SavedData", inManagedObjectContext: managedObjectContext!) as SavedData
+        newData.data = dictionaryForModifiedType()
+        newData.type = self.type!
+        
+        // template deki degisiklikeri geri almak icin
+//        rollBack()
         
         var e: NSError?
         if !managedObjectContext!.save(&e) {
             println("save error: \(e!.localizedDescription)")
             abort()
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        
+        // TEST
+//        let req = NSFetchRequest(entityName: "SavedData")
+//        var e: NSError?
+//        let fetchArray  = managedObjectContext?.executeFetchRequest(req, error: &e)
+//        for savedData in fetchArray as [SavedData] {
+//            let arr: Array = savedData.data
+//            for a in arr {
+//                println(a)
+//            }
+//        }
+        
     }
     
-    func backBarButtonTouched(sender: UIBarButtonItem) {
-        println("back clicked")
+    func dictionaryForModifiedType() -> Array<Dictionary<String, String>> {
+        var dict = [String:String]()
+        var arr = [Dictionary<String, String>]()
+        
+//        let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
+        
+        let rows = self.fetchedResultsController.fetchedObjects as [Row]
+        for row in rows {
+            dict["key"] = row.key
+            dict["value"] = row.value
+            arr.append(dict)
+        }
+        
+        return arr
     }
 }

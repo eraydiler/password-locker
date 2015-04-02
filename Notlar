@@ -20,5 +20,5 @@ self.tabBarController?.addChildViewController(newUIView)
 self.navigationController?.popToRootViewControllerAnimated(true)
 }
 
-
-Rowları sıralamak için veritabanında sıralama diye bir alan koyabilirsin. fetchreq.sort... ile bu alanı belirterek sıralama yapabilirsin.
++ SaveData da data attribute nin type ını transformable yapıp nsdictionary olarak kaydedebilirim key-value ikililerini
++ Rowları sıralamak için veritabanında sıralama diye bir alan koyabilirsin. fetchreq.sort... ile bu alanı belirterek sıralama yapabilirsin.

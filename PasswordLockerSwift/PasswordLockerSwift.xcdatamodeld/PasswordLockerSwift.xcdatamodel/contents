@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Category" representedClassName="PasswordLockerSwift.Category" syncable="YES">
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="category" inverseEntity="Type" syncable="YES"/>
     </entity>
     <entity name="Row" representedClassName="PasswordLockerSwift.Row" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="rows" inverseEntity="Type" syncable="YES"/>
+    </entity>
+    <entity name="SavedData" representedClassName="PasswordLockerSwift.SavedData" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="savedData" inverseEntity="Type" syncable="YES"/>
     </entity>
     <entity name="Type" representedClassName="PasswordLockerSwift.Type" syncable="YES">
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="types" inverseEntity="Category" syncable="YES"/>
         <relationship name="rows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Row" inverseName="types" inverseEntity="Row" syncable="YES"/>
+        <relationship name="savedData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedData" inverseName="type" inverseEntity="SavedData" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="2626" positionY="-2124" width="128" height="88"/>
-        <element name="Row" positionX="2626" positionY="-1998" width="128" height="105"/>
-        <element name="Type" positionX="2844" positionY="-2124" width="128" height="103"/>
+        <element name="Category" positionX="2590" positionY="-3897" width="128" height="88"/>
+        <element name="Row" positionX="2988" positionY="-3897" width="128" height="118"/>
+        <element name="SavedData" positionX="2590" positionY="-3787" width="128" height="73"/>
+        <element name="Type" positionX="2799" positionY="-3897" width="128" height="118"/>
     </elements>
 </model>

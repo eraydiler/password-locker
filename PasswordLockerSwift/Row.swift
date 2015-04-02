@@ -1,8 +1,8 @@
 //
-//  Rows.swift
+//  Row.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 17/03/15.
+//  Created by Eray on 29/03/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
@@ -12,10 +12,11 @@ import CoreData
 class Row: NSManagedObject {
 
     @NSManaged var key: String
-    @NSManaged var value: String
     @NSManaged var section: String
+    @NSManaged var value: String
+    @NSManaged var id: NSNumber
     @NSManaged var types: NSSet
-    
+
 }
 
 extension Row {
