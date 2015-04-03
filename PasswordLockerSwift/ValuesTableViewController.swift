@@ -364,11 +364,12 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     func addNewBar() {
         
-        var newUIView: UITableViewController = UITableViewController()
-        newUIView.tabBarItem = UITabBarItem(title: self.category?.name, image: UIImage(named: self.category!.imageName), selectedImage: nil)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var newUIView = storyBoard.instantiateViewControllerWithIdentifier("testTVCID") as UITableViewController
+        
+        newUIView.tabBarItem = UITabBarItem(title: self.category!.name, image: UIImage(named: "tab_\(self.category!.imageName)"), selectedImage: nil)
         var tabs = self.tabBarController?.viewControllers
         tabs?.append(newUIView)
-        self.tabBarController?.setViewControllers(tabs!, animated: true)
-        
+        self.tabBarController?.setViewControllers(tabs!, animated: true)        
     }
 }

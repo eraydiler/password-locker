@@ -1088,10 +1088,10 @@
         <scene sceneID="BiW-MH-dBm">
             <objects>
                 <tableViewController id="CyU-Kt-BxO" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="A2I-2D-dvr">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="A2I-2D-dvr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="n2a-EX-BxF">
                                 <cells>
@@ -1122,6 +1122,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPb-Tv-RiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4314" y="731"/>
+        </scene>
+        <!--Test Table View Controller-->
+        <scene sceneID="w0j-8w-Nf0">
+            <objects>
+                <tableViewController storyboardIdentifier="testTVCID" id="NFi-iT-ycV" customClass="TestTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="A3Y-VL-cLd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="E9p-EW-WsC">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E9p-EW-WsC" id="91Y-Ib-Esz">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NFi-iT-ycV" id="6wc-cR-iq7"/>
+                            <outlet property="delegate" destination="NFi-iT-ycV" id="K73-gP-ugN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="osR-Kj-r0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3614" y="1554"/>
         </scene>
         <!--Add-->
         <scene sceneID="m0x-NZ-zq6">
@@ -3622,7 +3648,7 @@
     </scenes>
     <resources>
         <image name="ID" width="20" height="15"/>
-        <image name="add" width="20" height="20"/>
+        <image name="add" width="29" height="29"/>
         <image name="amazon" width="20" height="20"/>
         <image name="bankAccount" width="20" height="15"/>
         <image name="creditCard" width="18" height="13"/>
@@ -3644,7 +3670,7 @@
         <image name="paypal" width="20" height="20"/>
         <image name="regular" width="20" height="20"/>
         <image name="regularMail" width="20" height="20"/>
-        <image name="settings" width="20" height="20"/>
+        <image name="settings" width="29" height="29"/>
         <image name="softwareLicence" width="20" height="20"/>
         <image name="twitter" width="20" height="20"/>
         <image name="wordpress" width="20" height="20"/>

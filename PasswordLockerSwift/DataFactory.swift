@@ -21,11 +21,11 @@ class DataFactory: NSObject {
         
         var categoryAccount: Category = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as Category
         categoryAccount.name = "Account"
-        categoryAccount.imageName = "user"
+        categoryAccount.imageName = "account"
         
         var categoryWeb: Category = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as Category
         categoryWeb.name = "Web"
-        categoryWeb.imageName = "globe"
+        categoryWeb.imageName = "web"
         
         var categoryNote: Category = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as Category
         categoryNote.name = "Note"
