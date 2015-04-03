@@ -111,6 +111,8 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         }
     }
     
+    @IBAction func addBarButtonTouched(sender: UIBarButtonItem) {
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

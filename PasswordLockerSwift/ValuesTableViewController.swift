@@ -297,6 +297,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     @IBAction func saveBarButtonTouched(sender: UIBarButtonItem) {
         isBackTouched = false
         save()
+        addNewBar()
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -312,7 +313,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     func save() {
         
-        // backup changes
+        // backup changed rows before rollBack
         let rows = self.fetchedResultsController.fetchedObjects as [Row]
         
         // Get Data
@@ -353,13 +354,21 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         var dict = [String:String]()
         var arr = [Dictionary<String, String>]()
         
-//        let rows = self.fetchedResultsController.fetchedObjects as [Row]
         for row in rows {
             dict["key"] = row.key
             dict["value"] = row.value
             arr.append(dict)
         }
-        
         return arr
+    }
+    
+    func addNewBar() {
+        
+        var newUIView: UITableViewController = UITableViewController()
+        newUIView.tabBarItem = UITabBarItem(title: self.category?.name, image: UIImage(named: self.category!.imageName), selectedImage: nil)
+        var tabs = self.tabBarController?.viewControllers
+        tabs?.append(newUIView)
+        self.tabBarController?.setViewControllers(tabs!, animated: true)
+        
     }
 }

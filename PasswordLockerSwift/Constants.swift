@@ -12,6 +12,6 @@ struct Constants {
 
     static let FIRST_RUN = false
     static let DEBUG = false
-    static let TEST = true
+    static let TEST = false
     
 }

@@ -578,7 +578,7 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GUB-sc-Edb">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -995,7 +995,13 @@
                             <outlet property="delegate" destination="uOe-fI-r19" id="x4v-Dy-NyE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add" id="3Ns-Od-2CX"/>
+                    <navigationItem key="navigationItem" title="Add" id="3Ns-Od-2CX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="r37-GI-sfy">
+                            <connections>
+                                <action selector="addBarButtonTouched:" destination="uOe-fI-r19" id="f6b-2i-lAe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="aWD-sI-9aa" kind="show" identifier="toNoteTypeTVCSegue" id="Uzd-2o-ph4"/>
                         <segue destination="7fz-YA-aGB" kind="show" identifier="toTypesTVCSegue" id="XFD-Wr-bfu"/>
@@ -1134,7 +1140,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kj8-YU-5uE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4308" y="-109"/>
+            <point key="canvasLocation" x="4308" y="-117"/>
         </scene>
         <!--Instant Messenger Table View Controller-->
         <scene sceneID="Jm6-hO-mo0">

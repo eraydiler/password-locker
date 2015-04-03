@@ -22,3 +22,8 @@ self.navigationController?.popToRootViewControllerAnimated(true)
 
 + SaveData da data attribute nin type ını transformable yapıp nsdictionary olarak kaydedebilirim key-value ikililerini
 + Rowları sıralamak için veritabanında sıralama diye bir alan koyabilirsin. fetchreq.sort... ile bu alanı belirterek sıralama yapabilirsin.
+
+Hata Çözümleri
+
+Story Board 'dan swift dosyasına action ya da outlet tanımlarken hata verdiğinde.
+http://stackoverflow.com/questions/15288773/could-not-insert-new-outlet-connection
