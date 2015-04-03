@@ -13,12 +13,12 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let FIRSTRUN: Bool = false
+//    let FIRSTRUN: Bool = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        if FIRSTRUN {
+        if Constants.FIRST_RUN {
             
             DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Category")
             DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Type")

@@ -312,40 +312,48 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     func save() {
         
-        // Insert new entity for SavedData
-        var newData = NSEntityDescription.insertNewObjectForEntityForName("SavedData", inManagedObjectContext: managedObjectContext!) as SavedData
-        newData.data = dictionaryForModifiedType()
-        newData.type = self.type!
+        // backup changes
+        let rows = self.fetchedResultsController.fetchedObjects as [Row]
+        
+        // Get Data
+        let arr = dictionaryForModifiedType(rows)
         
         // template deki degisiklikeri geri almak icin
-//        rollBack()
+        rollBack()
+        
+        // Insert new entity for SavedData
+        var newData = NSEntityDescription.insertNewObjectForEntityForName("SavedData", inManagedObjectContext: self.managedObjectContext!) as SavedData
+        newData.data = arr
+        newData.type = self.type!
         
         var e: NSError?
-        if !managedObjectContext!.save(&e) {
-            println("save error: \(e!.localizedDescription)")
-            abort()
+
+        if !Constants.TEST {
+            if !managedObjectContext!.save(&e) {
+                println("save error: \(e!.localizedDescription)")
+                abort()
+            }
         }
         
-        // TEST
-//        let req = NSFetchRequest(entityName: "SavedData")
-//        var e: NSError?
-//        let fetchArray  = managedObjectContext?.executeFetchRequest(req, error: &e)
-//        for savedData in fetchArray as [SavedData] {
-//            let arr: Array = savedData.data
-//            for a in arr {
-//                println(a)
-//            }
-//        }
+        if Constants.TEST {
+            let req = NSFetchRequest(entityName: "SavedData")
+            let fetchArray  = self.managedObjectContext?.executeFetchRequest(req, error: &e)
+            for savedData in fetchArray as [SavedData] {
+                let arr: Array = savedData.data
+                for a in arr {
+                    println(a)
+                }
+                println()
+            }
+        }
         
     }
     
-    func dictionaryForModifiedType() -> Array<Dictionary<String, String>> {
+    func dictionaryForModifiedType(rows: [Row]) -> Array<Dictionary<String, String>> {
         var dict = [String:String]()
         var arr = [Dictionary<String, String>]()
         
-//        let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
-        
-        let rows = self.fetchedResultsController.fetchedObjects as [Row]
+//        let rows = self.fetchedResultsController.fetchedObjects as [Row]
         for row in rows {
             dict["key"] = row.key
             dict["value"] = row.value

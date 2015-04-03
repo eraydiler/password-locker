@@ -311,7 +311,7 @@ class DataFactory: NSObject {
         
         // ID header row
         var rowIDTitle: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as Row
-        rowIDTitle.key = "id"
+        rowIDTitle.key = "ID"
         rowIDTitle.value = "ID"
         rowIDTitle.section = "0"
         rowIDTitle.types = NSSet(array: [typeID])
