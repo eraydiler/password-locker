@@ -1,29 +1,11 @@
-Yeni tab ekleme kodu
-
-@IBAction func saveBarButtonPressed(sender: UIBarButtonItem) {
-
-let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-var tabBar: UITabBarController = storyBoard.instantiateViewControllerWithIdentifier("TabBar") as UITabBarController
-
-var newUIView: UIViewController = UIViewController()
-
-if self.tabBarController?.viewControllers?.count == 5 {
-newUIView.tabBarItem = UITabBarItem(tabBarSystemItem: .More, tag: 5)
-self.tabBarController!.viewControllers?.removeLast()
-self.tabBarController?.viewControllers?.insert(newUIView, atIndex: 4)
-} else {
-newUIView.tabBarItem = UITabBarItem(title: "new", image: UIImage(named: "genericAccount"), selectedImage: nil)
-self.tabBarController?.addChildViewController(newUIView)
-}
-
-
-self.navigationController?.popToRootViewControllerAnimated(true)
-}
 
 + SaveData da data attribute nin type ını transformable yapıp nsdictionary olarak kaydedebilirim key-value ikililerini
 + Rowları sıralamak için veritabanında sıralama diye bir alan koyabilirsin. fetchreq.sort... ile bu alanı belirterek sıralama yapabilirsin.
 
 Hata Çözümleri
 
-Story Board 'dan swift dosyasına action ya da outlet tanımlarken hata verdiğinde.
++ Story Board 'dan swift dosyasına action ya da outlet tanımlarken hata verdiğinde.
 http://stackoverflow.com/questions/15288773/could-not-insert-new-outlet-connection
+
++ images.xcassets 'de yaptıgım degisikliklerden sonra commit etmeye calışırken aldığım hata için
+http://stackoverflow.com/questions/11940564/xcode-4-4-1-git-no-longer-showing-modifications

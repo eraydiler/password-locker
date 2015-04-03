@@ -947,7 +947,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssh-Y2-FTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9302" y="2127"/>
+            <point key="canvasLocation" x="10114" y="2127"/>
         </scene>
         <!--Add-->
         <scene sceneID="FR4-IX-zIz">
@@ -1123,19 +1123,27 @@
             </objects>
             <point key="canvasLocation" x="4314" y="731"/>
         </scene>
-        <!--Test Table View Controller-->
+        <!--Selected Type Table View Controller-->
         <scene sceneID="w0j-8w-Nf0">
             <objects>
-                <tableViewController storyboardIdentifier="testTVCID" id="NFi-iT-ycV" customClass="TestTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="selectedTypeView" id="NFi-iT-ycV" customClass="SelectedTypeTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="A3Y-VL-cLd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="E9p-EW-WsC">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectedCell" textLabel="l8p-PC-3GI" style="IBUITableViewCellStyleDefault" id="E9p-EW-WsC">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E9p-EW-WsC" id="91Y-Ib-Esz">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l8p-PC-3GI">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -1144,10 +1152,11 @@
                             <outlet property="delegate" destination="NFi-iT-ycV" id="K73-gP-ugN"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="HyU-vI-sGg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osR-Kj-r0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3614" y="1554"/>
+            <point key="canvasLocation" x="4426" y="1554"/>
         </scene>
         <!--Add-->
         <scene sceneID="m0x-NZ-zq6">
@@ -2587,7 +2596,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTy-Eo-28B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10656" y="2127"/>
+            <point key="canvasLocation" x="11468" y="2127"/>
         </scene>
         <!--Credit Card Table View Controller-->
         <scene sceneID="g3O-fh-cXy">
@@ -3644,6 +3653,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBB-20-w8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7052" y="-117"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Zji-uH-7hu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ttb-QY-bSc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F5y-4A-Lt9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NFi-iT-ycV" kind="relationship" relationship="rootViewController" id="Laz-gA-mNB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iG-6Z-5QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="1554"/>
         </scene>
     </scenes>
     <resources>

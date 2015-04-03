@@ -23,13 +23,13 @@
 		2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA343FA1AB87EFF00819709 /* DataFactory.swift */; };
 		2AC4C6EE1ACCC782000C527E /* SavedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4C6ED1ACCC782000C527E /* SavedData.swift */; };
 		2ACFDE561ABA070300579467 /* EditValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */; };
-		2AD35BAC1ACF265900CD3C0C /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD35BAB1ACF265900CD3C0C /* TestTableViewController.swift */; };
 		2AD3671A1ACEB98100538F6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD367191ACEB98100538F6E /* Constants.swift */; };
 		2AD3C1201AC0731B00286A18 /* NoteTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */; };
 		2AD3C1221AC0A5DC00286A18 /* EditNoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C1211AC0A5DC00286A18 /* EditNoteTableViewController.swift */; };
 		2AE8082C1A8127D70005E831 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */; };
 		2AE808301A8146150005E831 /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8082F1A8146150005E831 /* TypesTableViewController.swift */; };
 		2AF76B471A82B1C500873A92 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B461A82B1C500873A92 /* Helper.swift */; };
+		2AFC83051ACF2C6D005825D6 /* SelectedTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,13 +63,13 @@
 		2AA343FA1AB87EFF00819709 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		2AC4C6ED1ACCC782000C527E /* SavedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedData.swift; sourceTree = "<group>"; };
 		2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditValuesTableViewController.swift; sourceTree = "<group>"; };
-		2AD35BAB1ACF265900CD3C0C /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		2AD367191ACEB98100538F6E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTypeTableViewController.swift; sourceTree = "<group>"; };
 		2AD3C1211AC0A5DC00286A18 /* EditNoteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteTableViewController.swift; sourceTree = "<group>"; };
 		2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		2AE8082F1A8146150005E831 /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
 		2AF76B461A82B1C500873A92 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedTypeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +183,7 @@
 		2A438D8D1A6D67DA00101092 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2AD35BAA1ACF263100CD3C0C /* test */,
+				2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */,
 				2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */,
 				2AE8082F1A8146150005E831 /* TypesTableViewController.swift */,
 				2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */,
@@ -201,14 +201,6 @@
 				2AA343FA1AB87EFF00819709 /* DataFactory.swift */,
 			);
 			name = DataInsertion;
-			sourceTree = "<group>";
-		};
-		2AD35BAA1ACF263100CD3C0C /* test */ = {
-			isa = PBXGroup;
-			children = (
-				2AD35BAB1ACF265900CD3C0C /* TestTableViewController.swift */,
-			);
-			name = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,12 +309,12 @@
 				2A438D8B1A6D670500101092 /* KeychainWrapper.swift in Sources */,
 				2AD3C1221AC0A5DC00286A18 /* EditNoteTableViewController.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
-				2AD35BAC1ACF265900CD3C0C /* TestTableViewController.swift in Sources */,
 				2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */,
 				2A6BA7071AC8758500D57FA9 /* Type.swift in Sources */,
 				2AE8082C1A8127D70005E831 /* CategoriesTableViewController.swift in Sources */,
 				2AC4C6EE1ACCC782000C527E /* SavedData.swift in Sources */,
 				2ACFDE561ABA070300579467 /* EditValuesTableViewController.swift in Sources */,
+				2AFC83051ACF2C6D005825D6 /* SelectedTypeTableViewController.swift in Sources */,
 				2AD3C1201AC0731B00286A18 /* NoteTypeTableViewController.swift in Sources */,
 				2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */,
 				2A6BA7031AC8758400D57FA9 /* Category.swift in Sources */,

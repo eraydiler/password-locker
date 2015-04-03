@@ -10,7 +10,10 @@ import Foundation
 
 struct Constants {
 
+    // To load data into core data at first run
     static let FIRST_RUN = false
+    
+    // For Debugging and testing at developing
     static let DEBUG = false
     static let TEST = false
     
