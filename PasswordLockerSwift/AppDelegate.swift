@@ -13,7 +13,6 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-//    let FIRSTRUN: Bool = false
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,14 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             DataFactory.setupInitialData(self.managedObjectContext!)
             
-            println("Sample Data inserted")
+            println("Initial Data inserted")
             exit(EXIT_SUCCESS)
         }
         
-        let tab = self.window!.rootViewController as UITabBarController
-        let nav = tab.childViewControllers[0] as UINavigationController
-        let master = nav.topViewController as CategoriesTableViewController
-        master.managedObjectContext = self.managedObjectContext
+        // Set managedObjectContext for view controllers
+        let tabBarController = self.window!.rootViewController as TabBarController
+        tabBarController.managedObjectContext = self.managedObjectContext
+        
+        let nav = tabBarController.childViewControllers[0] as UINavigationController
+        let categoriesVC = nav.topViewController as CategoriesTableViewController
+        categoriesVC.managedObjectContext = self.managedObjectContext
         
         return true
     }

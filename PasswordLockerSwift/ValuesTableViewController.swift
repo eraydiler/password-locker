@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+    protocol ValuesTableViewControllerDelegate {
+        func newDataSaved()
+    }
+    
 class ValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate,  EditValuesTableViewControllerDelegate {
     
     // set by former controller
@@ -17,6 +21,9 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     // hack for handling back button
     var isBackTouched = true
+    
+    // delegate to send info to tabBar Controller when user saved data
+    var delegate: ValuesTableViewControllerDelegate?
     
     func configureView() {
         self.tableView.rowHeight = 44.0
@@ -297,7 +304,8 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     @IBAction func saveBarButtonTouched(sender: UIBarButtonItem) {
         isBackTouched = false
         save()
-        addNewBar()
+//        addNewBar()
+        self.delegate?.newDataSaved()
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -326,6 +334,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         var newData = NSEntityDescription.insertNewObjectForEntityForName("SavedData", inManagedObjectContext: self.managedObjectContext!) as SavedData
         newData.data = arr
         newData.type = self.type!
+        newData.date = NSDate()
         
         var e: NSError?
 
@@ -347,7 +356,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
                 println()
             }
         }
-        
     }
     
     func dictionaryForModifiedType(rows: [Row]) -> Array<Dictionary<String, String>> {

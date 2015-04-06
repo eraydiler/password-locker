@@ -18,7 +18,7 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
     var isBackTouched = true
     
     func configureView() {
-        self.title = "Type"
+        self.title = "Note"
     }
     
     override func viewDidLoad() {

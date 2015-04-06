@@ -1068,7 +1068,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="d53-Lc-cVI">
             <objects>
-                <tabBarController storyboardIdentifier="TabBar" id="r9s-AC-UhR" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" id="r9s-AC-UhR" customClass="TabBarController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="EC4-i4-4uQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -1140,7 +1140,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l8p-PC-3GI">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -3485,7 +3485,7 @@
         <!--Values Table View Controller-->
         <scene sceneID="UcH-iM-0Ve">
             <objects>
-                <tableViewController id="a6e-zU-uwA" customClass="ValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ValuesTVCID" id="a6e-zU-uwA" customClass="ValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="giO-96-bfv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3671,6 +3671,271 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9iG-6Z-5QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3750" y="1554"/>
+        </scene>
+        <!--Account Table View Controller-->
+        <scene sceneID="Y7A-Tl-QXK">
+            <objects>
+                <tableViewController storyboardIdentifier="AccountTVC" id="dvB-Hp-EqU" customClass="AccountTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Zch-JB-B4g">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectedCell" textLabel="Cdp-oE-ghh" style="IBUITableViewCellStyleDefault" id="JbS-Qo-3yU">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JbS-Qo-3yU" id="gYb-16-y1n">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cdp-oE-ghh">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dvB-Hp-EqU" id="dv1-SG-bzV"/>
+                            <outlet property="delegate" destination="dvB-Hp-EqU" id="G98-e5-XKH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="OqF-7d-Tlc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9C-WF-eZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4426" y="2240"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dzg-M7-H4A">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LU1-St-SNK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7SM-zk-DPT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dvB-Hp-EqU" kind="relationship" relationship="rootViewController" id="vX2-Z0-IbM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFo-4P-6hS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="2240"/>
+        </scene>
+        <!--Email Table View Controller-->
+        <scene sceneID="ypo-lL-6nl">
+            <objects>
+                <tableViewController storyboardIdentifier="EmailTVC" id="YJF-Do-TPH" customClass="EmailTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="4Wr-yO-9lc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectedCell" textLabel="waY-Nm-YWq" style="IBUITableViewCellStyleDefault" id="Utn-Fl-zyP">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Utn-Fl-zyP" id="eYe-Mf-8eR">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="waY-Nm-YWq">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YJF-Do-TPH" id="rOa-Hl-sjR"/>
+                            <outlet property="delegate" destination="YJF-Do-TPH" id="3n7-7g-YMo"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="xCA-Pb-C2d"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOf-db-HMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4426" y="2934"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cYc-1a-6rB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZdA-iP-7Rg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WFq-ju-LCg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YJF-Do-TPH" kind="relationship" relationship="rootViewController" id="m5g-yh-UvI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cWf-e9-ipG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="2934"/>
+        </scene>
+        <!--Note Table View Controller-->
+        <scene sceneID="rJV-3c-oVf">
+            <objects>
+                <tableViewController storyboardIdentifier="NoteTVC" id="rTf-ky-0P3" customClass="NoteTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YnE-BO-Ttu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectedCell" textLabel="jfP-1U-8aP" style="IBUITableViewCellStyleDefault" id="8FX-Xv-ykT">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8FX-Xv-ykT" id="CWr-jM-hRW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jfP-1U-8aP">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rTf-ky-0P3" id="Euq-KQ-XKc"/>
+                            <outlet property="delegate" destination="rTf-ky-0P3" id="k4j-6S-aaA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="zlw-hy-FDj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSr-TW-OXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4426" y="3620"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="L4C-f3-XlN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qbw-9F-e7M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ll-Eo-9jk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rTf-ky-0P3" kind="relationship" relationship="rootViewController" id="MYT-DH-xtj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZG-bd-XMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="3620"/>
+        </scene>
+        <!--Wallet Table View Controller-->
+        <scene sceneID="ESM-GH-e00">
+            <objects>
+                <tableViewController storyboardIdentifier="WalletTVC" id="aOF-WS-Qkp" customClass="WalletTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="h5c-R9-aLe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectedCell" textLabel="Wbo-Tj-iRS" style="IBUITableViewCellStyleDefault" id="Bid-P3-BRo">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bid-P3-BRo" id="rXD-an-zRY">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wbo-Tj-iRS">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aOF-WS-Qkp" id="P2c-yX-Kbz"/>
+                            <outlet property="delegate" destination="aOF-WS-Qkp" id="YnJ-HL-4sO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Lci-x7-1ln"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f91-Fs-P7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4426" y="4308"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="t8s-bV-Jpw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V44-L3-48z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sph-tE-zT6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aOF-WS-Qkp" kind="relationship" relationship="rootViewController" id="0Pg-pM-Ycr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adn-u4-3E1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="4308"/>
+        </scene>
+        <!--Web Table View Controller-->
+        <scene sceneID="vkq-nc-bbt">
+            <objects>
+                <tableViewController storyboardIdentifier="WebTVC" id="Dty-pr-Xf3" customClass="WebTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="2uj-RX-84u">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectedCell" textLabel="Gem-pH-GjG" style="IBUITableViewCellStyleDefault" id="bps-ru-PnM">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bps-ru-PnM" id="h8J-aW-eqq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gem-pH-GjG">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Dty-pr-Xf3" id="QKH-MK-ZOx"/>
+                            <outlet property="delegate" destination="Dty-pr-Xf3" id="Pkq-WF-1sp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="VfH-F0-Mvw"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gza-cM-Gtv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4426" y="4982"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VaO-Ds-3Va">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I4H-ft-AJ5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oq9-vh-8W6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dty-pr-Xf3" kind="relationship" relationship="rootViewController" id="agJ-LQ-NSb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c3l-K0-Fo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3750" y="4982"/>
         </scene>
     </scenes>
     <resources>

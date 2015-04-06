@@ -89,10 +89,32 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
         
-            let data = self.fetchedResultsController.objectAtIndexPath(indexPath) as SavedData
+            let savedData = self.fetchedResultsController.objectAtIndexPath(indexPath) as SavedData
+            cell.textLabel?.text = parseDataForTitle(savedData.data, atIndexPath: indexPath)
     }
     
     // MARK: - Helper Methods
+    
+    func parseDataForTitle(data: Array<Dictionary<String, String>>,
+        atIndexPath indexPath: NSIndexPath) -> String {
+            
+            var title: String = String()
+            let dict: Dictionary<String, String> = data[indexPath.row]
+           
+            
+            if indexPath.section == 0 {
+                title = dict["key"]!
+            }
+            
+//            for (key, value) in dict {
+//                println("key: \(key), value: \(value)")
+//                if value == "title" {
+//                    title = value
+//                }
+//            }
+            
+            return title
+    }
     
     func dateString(date:NSDate) -> String {
         let dateFormatter = NSDateFormatter()

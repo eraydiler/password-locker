@@ -148,4 +148,9 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
             imageView.image = UIImage(named: category.imageName)
             titleLabel.text = category.name
     }
+    
+    // Check Saved Data
+    func checkSavedData() {
+        
+    }
 }

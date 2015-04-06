@@ -21,6 +21,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
     func configureView() {
         self.tableView.rowHeight = 45
         self.navigationItem.title = "Type"
+        self.title = self.category?.name
     }
 
     override func viewDidLoad() {
@@ -120,6 +121,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
             targetVC.type = type
+            targetVC.delegate = self.tabBarController as TabBarController
         }
     }
     
