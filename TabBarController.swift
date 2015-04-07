@@ -79,34 +79,37 @@ class TabBarController: UITabBarController,
         
         for category in distinct {
             println(category.name)
-            addNewTabForWithCategory(category)
+            addNewTabWithCategory(category)
         }
     }
     
-    func addNewTabForWithCategory(category: Category) {
+    func addNewTabWithCategory(category: Category) {
         
-        // Select viewcontroller from storyboard
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let storyBoardID = "\(category.name)TVC"
-        
-        var newUIView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
-        
-        // Set tab bar item
-        newUIView.tabBarItem = UITabBarItem(title: category.name, image: UIImage(named: "tab_\(category.imageName)"), selectedImage: nil)
-        
-        // Set views's properties
-        newUIView.category = category
-        newUIView.managedObjectContext = self.managedObjectContext
-        
-        // Add view to tabs
-        var tabs = self.viewControllers        
-        
+        // If the tab does not already exist
         if !contains(self.tabsModel.currentTabs, category.name) {
+
+            // Select viewcontroller from storyboard
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyBoardID = "\(category.name)TVC"
+            
+            var newUIView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
+            
+            // Set tab bar item
+            newUIView.tabBarItem = UITabBarItem(title: category.name, image: UIImage(named: "tab_\(category.imageName)"), selectedImage: nil)
+            
+            // Set views's properties
+            newUIView.category = category
+            newUIView.managedObjectContext = self.managedObjectContext
+            
+            // Add view to tabs
+            var tabs = self.viewControllers
+            
             tabs?.append(newUIView)
             self.tabsModel.currentTabs.append(category.name)
-        }
-        if tabs != nil {
-            self.setViewControllers(tabs!, animated: true)
+            
+            if tabs != nil {
+                self.setViewControllers(tabs!, animated: true)
+            }
         }
     }
 }
