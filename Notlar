@@ -9,3 +9,24 @@ http://stackoverflow.com/questions/15288773/could-not-insert-new-outlet-connecti
 
 + images.xcassets 'de yaptıgım degisikliklerden sonra commit etmeye calışırken aldığım hata için
 http://stackoverflow.com/questions/11940564/xcode-4-4-1-git-no-longer-showing-modifications
+
+
+@NSManaged var data: /*AnyObject*/ Array<Dictionary<String, String>>
+
+extension Row {
+func addTypeToRow(type: Type) {
+var types = self.mutableSetValueForKey("types")
+types.addObject(type)
+}
+
+func getNumberOfTypes() -> Int {
+return self.types.count
+}
+
+func getTypesAsArray() -> [Type] {
+var types: [Type]
+types = self.types.allObjects as [Type]
+
+return types
+}
+}

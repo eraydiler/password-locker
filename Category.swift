@@ -1,19 +1,19 @@
 //
-//  Type.swift
+//  Category.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 29/03/15.
+//  Created by Eray on 08/04/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class Type: NSManagedObject {
+class Category: NSManagedObject {
 
     @NSManaged var imageName: String
     @NSManaged var name: String
-    @NSManaged var category: Category
-    @NSManaged var rows: NSSet
+    @NSManaged var types: NSSet
+    @NSManaged var savedDatas: NSSet
 
 }

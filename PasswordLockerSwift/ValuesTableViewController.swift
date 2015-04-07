@@ -25,6 +25,8 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     // delegate to send info to tabBar Controller when user saved data
     var delegate: ValuesTableViewControllerDelegate?
     
+    let TAG = "Values TVC"
+    
     func configureView() {
         self.tableView.rowHeight = 44.0
         self.title = self.type?.name
@@ -49,18 +51,18 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     override func viewWillDisappear(animated: Bool) {
         
         if isBackTouched {
-            println("back pressed")
+            println("\(TAG) back pressed")
         }
         
         if managedObjectContext!.hasChanges  && isBackTouched {
             rollBack()
-            println("Changes rolled back")
+            println("\(TAG) Changes rolled back")
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        println("Memory Warning received")
+        println("\(TAG) Memory Warning received")
         // Dispose of any resources that can be recreated.
     }
 
@@ -172,7 +174,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         // perform initial model fetch
         var e: NSError?
         if !self._fetchedResultsController!.performFetch(&e) {
-            println("fetch error: \(e!.localizedDescription)")
+            println("\(TAG) fetch error: \(e!.localizedDescription)")
             abort();
         }
         
@@ -201,18 +203,18 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             switch type {
             case .Insert:
                 self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-                println("coredata insert")
+                println("\(TAG) coredata insert")
             case .Update:
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath)
                 self.configureCell(cell!, atIndexPath: indexPath)
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                println("coredata update")
+                println("\(TAG) coredata update")
             case .Move:
-                println("coredata move")
+                println("\(TAG) coredata move")
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             case .Delete:
-                println("coredata delete")
+                println("\(TAG) coredata delete")
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             default:
                 return
@@ -310,7 +312,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     }
     
     func backBarButtonTouched(sender: UIBarButtonItem) {
-        println("back clicked")
+        println("\(TAG) back clicked")
     }
     
     // MARK: - Helper Methods
@@ -339,13 +341,17 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         newData.name = name
         newData.data = arr
         newData.date = NSDate()
+        if self.type == nil || self.category == nil {
+            println("\(TAG) nil kaydedildi.")
+        }
         newData.type = self.type!
+        newData.category = self.category!
 
         var e: NSError?
 
         if !Constants.TEST {
             if !managedObjectContext!.save(&e) {
-                println("save error: \(e!.localizedDescription)")
+                println("\(TAG) save error: \(e!.localizedDescription)")
                 abort()
             }
         }
@@ -356,7 +362,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             for savedData in fetchArray as [SavedData] {
                 let arr: Array = savedData.data
                 for a in arr {
-                    println(a)
+                    println("\(TAG) \(a)")
                 }
                 println()
             }
@@ -376,7 +382,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             
             arr.append(dict)
             
-            println("key: \(row.key) value: \(row.value)")
+            println("\(TAG) key: \(row.key) value: \(row.value)")
         }
         return arr
     }

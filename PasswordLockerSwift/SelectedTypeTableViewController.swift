@@ -15,6 +15,12 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     var category: Category?
     var managedObjectContext: NSManagedObjectContext?
     
+    let TAG = "SelectedType TVC"
+    
+    func configureView() {
+        self.title = self.category?.name
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,13 +29,13 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.title = self.category?.name
+        configureView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        print("MemoryWarning")
+        print("\(TAG) MemoryWarning")
     }
     
     // MARK: - Fetched results controller
@@ -44,8 +50,10 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         let entity = NSEntityDescription.entityForName("SavedData", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "date", ascending: true)
         let req = NSFetchRequest()
+        
         req.entity = entity
         req.sortDescriptors = [sort]
+        req.predicate = NSPredicate(format: "category == %@", self.category!)
         
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         aFetchedResultsController.delegate = self
@@ -54,7 +62,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         // perform initial model fetch
         var e: NSError?
         if !self._fetchedResultsController!.performFetch(&e) {
-            println("fetch error: \(e!.localizedDescription)")
+            println("\(TAG) fetch error: \(e!.localizedDescription)")
             abort();
         }
         
@@ -62,7 +70,51 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     }
     var _fetchedResultsController: NSFetchedResultsController?
 
-
+    // MARK: - fetched results controller delegate
+    
+    /* called first
+    begins update to `UITableView`
+    ensures all updates are animated simultaneously */
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    /* called:
+    - when a new model is created
+    - when an existing model is updated
+    - when an existing model is deleted */
+    func controller(controller: NSFetchedResultsController,
+        didChangeObject object: AnyObject,
+        atIndexPath indexPath: NSIndexPath,
+        forChangeType type: NSFetchedResultsChangeType,
+        newIndexPath: NSIndexPath) {
+            switch type {
+            case .Insert:
+                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                println("\(TAG) coredata insert")
+            case .Update:
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath)
+                self.configureCell(cell!, atIndexPath: indexPath)
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                println("\(TAG) coredata update")
+            case .Move:
+                println("\(TAG) coredata move")
+                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            case .Delete:
+                println("\(TAG) coredata delete")
+                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            default:
+                return
+            }
+    }
+    
+    /* called last
+    tells `UITableView` updates are complete */
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -107,7 +159,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
             }
             
             for (key, value) in dict {
-                println("key: \(key), value: \(value)")
+                println("\(TAG) key: \(key), value: \(value)")
             }
             
             return title

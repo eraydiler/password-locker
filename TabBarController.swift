@@ -38,7 +38,7 @@ class TabBarController: UITabBarController,
     
     // MARK: - UITabBarController Delegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-//        println("\(viewController) selected")
+        
     }
     
     // MARK: - ValuesTableViewController Delegate
