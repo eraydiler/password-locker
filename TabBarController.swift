@@ -16,9 +16,6 @@ class TabBarController: UITabBarController,
     // set by AppDelegate
     var managedObjectContext: NSManagedObjectContext?
     
-    // saved data property
-    var savedData: [SavedData]?
-    
     // keep current tabs
     var tabsModel = TabsModel()
 
@@ -41,7 +38,7 @@ class TabBarController: UITabBarController,
     
     // MARK: - UITabBarController Delegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        println("\(viewController) selected")
+//        println("\(viewController) selected")
     }
     
     // MARK: - ValuesTableViewController Delegate
@@ -68,7 +65,6 @@ class TabBarController: UITabBarController,
     
     func createTabs(results: [SavedData]) {
         
-        self.savedData = results
         var categoryArray = Array<Category>()
         
         for savedData in results as [SavedData] {

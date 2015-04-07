@@ -321,21 +321,26 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     func save() {
         
-        // backup changed rows before rollBack
+        // Backup changed rows before rollBack
         let rows = self.fetchedResultsController.fetchedObjects as [Row]
         
+        // Get name
+        var name = String("")
+        
         // Get Data
-        let arr = dictionaryForModifiedType(rows)
+        let arr = dictionaryForModifiedType(rows, name: &name)
         
         // template deki degisiklikeri geri almak icin
         rollBack()
         
         // Insert new entity for SavedData
         var newData = NSEntityDescription.insertNewObjectForEntityForName("SavedData", inManagedObjectContext: self.managedObjectContext!) as SavedData
-        newData.data = arr
-        newData.type = self.type!
-        newData.date = NSDate()
         
+        newData.name = name
+        newData.data = arr
+        newData.date = NSDate()
+        newData.type = self.type!
+
         var e: NSError?
 
         if !Constants.TEST {
@@ -358,14 +363,20 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         }
     }
     
-    func dictionaryForModifiedType(rows: [Row]) -> Array<Dictionary<String, String>> {
+    func dictionaryForModifiedType(rows: [Row], inout name: String) -> Array<Dictionary<String, String>> {
         var dict = [String:String]()
         var arr = [Dictionary<String, String>]()
         
         for row in rows {
+            
+            if row.section == "0" { name = row.value; continue } // set saveddata name
+            
             dict["key"] = row.key
             dict["value"] = row.value
+            
             arr.append(dict)
+            
+            println("key: \(row.key) value: \(row.value)")
         }
         return arr
     }

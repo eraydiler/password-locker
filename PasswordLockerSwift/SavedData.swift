@@ -11,6 +11,7 @@ import CoreData
 
 class SavedData: NSManagedObject {
 
+    @NSManaged var name: String
     @NSManaged var data: /*AnyObject*/ Array<Dictionary<String, String>>
     @NSManaged var date: NSDate
     @NSManaged var type: Type

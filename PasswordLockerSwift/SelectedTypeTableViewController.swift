@@ -90,7 +90,8 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         atIndexPath indexPath: NSIndexPath) {
         
             let savedData = self.fetchedResultsController.objectAtIndexPath(indexPath) as SavedData
-            cell.textLabel?.text = parseDataForTitle(savedData.data, atIndexPath: indexPath)
+//            cell.textLabel?.text = parseDataForTitle(savedData.data, atIndexPath: indexPath)
+            cell.textLabel?.text = savedData.name            
     }
     
     // MARK: - Helper Methods
@@ -100,18 +101,14 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
             
             var title: String = String()
             let dict: Dictionary<String, String> = data[indexPath.row]
-           
             
             if indexPath.section == 0 {
-                title = dict["key"]!
+                title = dict["value"]!
             }
             
-//            for (key, value) in dict {
-//                println("key: \(key), value: \(value)")
-//                if value == "title" {
-//                    title = value
-//                }
-//            }
+            for (key, value) in dict {
+                println("key: \(key), value: \(value)")
+            }
             
             return title
     }
