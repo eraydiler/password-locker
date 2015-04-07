@@ -198,15 +198,9 @@
 		2A438D8D1A6D67DA00101092 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */,
-				2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */,
-				2AE8082F1A8146150005E831 /* TypesTableViewController.swift */,
-				2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */,
-				2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */,
-				2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */,
-				2AD3C1211AC0A5DC00286A18 /* EditNoteTableViewController.swift */,
 				2A438D901A6D69E500101092 /* AuthenticationViewController.swift */,
 				2AACB02A1AD218DF00194432 /* TabBarController.swift */,
+				2A9F0ED31AD360F700D09F62 /* DynamicTVCS */,
 				2A78B76B1AD34B5F006E34A9 /* TabbedTVCS */,
 			);
 			name = Controller;
@@ -222,6 +216,20 @@
 				2A78B7741AD34BDC006E34A9 /* WebTableViewController.swift */,
 			);
 			name = TabbedTVCS;
+			sourceTree = "<group>";
+		};
+		2A9F0ED31AD360F700D09F62 /* DynamicTVCS */ = {
+			isa = PBXGroup;
+			children = (
+				2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */,
+				2AE8082B1A8127D70005E831 /* CategoriesTableViewController.swift */,
+				2AE8082F1A8146150005E831 /* TypesTableViewController.swift */,
+				2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */,
+				2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */,
+				2AD3C11F1AC0731B00286A18 /* NoteTypeTableViewController.swift */,
+				2AD3C1211AC0A5DC00286A18 /* EditNoteTableViewController.swift */,
+			);
+			name = DynamicTVCS;
 			sourceTree = "<group>";
 		};
 		2AA343F91AB87EAA00819709 /* DataInsertion */ = {

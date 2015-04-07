@@ -88,7 +88,8 @@ class TabBarController: UITabBarController,
         // Select viewcontroller from storyboard
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let storyBoardID = "\(category.name)TVC"
-        var newUIView = storyBoard.instantiateViewControllerWithIdentifier(storyBoardID) as SelectedTypeTableViewController
+        
+        var newUIView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
         
         // Set tab bar item
         newUIView.tabBarItem = UITabBarItem(title: category.name, image: UIImage(named: "tab_\(category.imageName)"), selectedImage: nil)

@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class WalletTableViewController: UITableViewController {
+    
+    // set by former controller
+    var category: Category?
+    var managedObjectContext: NSManagedObjectContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
