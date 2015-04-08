@@ -88,19 +88,23 @@ class TabBarController: UITabBarController,
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let storyBoardID = "\(category.name)TVC"
             
-            var newUIView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
+            var navigationController = storyBoard.instantiateViewControllerWithIdentifier("navControllerForSelectedType") as UINavigationController
+            
+            var selectedTypeView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
+            
+            navigationController.viewControllers[0] = selectedTypeView
             
             // Set tab bar item
-            newUIView.tabBarItem = UITabBarItem(title: category.name, image: UIImage(named: "tab_\(category.imageName)"), selectedImage: nil)
+            selectedTypeView.tabBarItem = UITabBarItem(title: category.name, image: UIImage(named: "tab_\(category.imageName)"), selectedImage: nil)
             
             // Set views's properties
-            newUIView.category = category
-            newUIView.managedObjectContext = self.managedObjectContext
+            selectedTypeView.category = category
+            selectedTypeView.managedObjectContext = self.managedObjectContext
             
             // Add view to tabs
             var tabs = self.viewControllers
             
-            tabs?.append(newUIView)
+            tabs?.append(navigationController)
             self.tabsModel.currentTabs.append(category.name)
             
             if tabs != nil {

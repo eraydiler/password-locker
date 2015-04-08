@@ -146,6 +146,22 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
             cell.textLabel?.text = savedData.name            
     }
     
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let indexPath = self.tableView.indexPathForSelectedRow()
+        let savedData = self.fetchedResultsController.objectAtIndexPath(indexPath!) as SavedData
+        
+        if segue.identifier == "fromSelectedTypeToValuesTVCSegue" {
+            let targetVC = segue.destinationViewController as ValuesTableViewController
+            targetVC.managedObjectContext = self.managedObjectContext
+            targetVC.category = self.category
+            targetVC.type = savedData.type
+            targetVC.delegate = self.tabBarController as TabBarController
+        }
+    }
+    
     // MARK: - Helper Methods
     
     func parseDataForTitle(data: Array<Dictionary<String, String>>,

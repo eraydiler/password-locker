@@ -1145,6 +1145,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="a6e-zU-uwA" kind="show" identifier="fromSelectedTypeToValuesTVCSegue" id="YIT-yG-mCW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1156,7 +1159,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osR-Kj-r0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4426" y="1554"/>
+            <point key="canvasLocation" x="6333" y="-886"/>
         </scene>
         <!--Add-->
         <scene sceneID="m0x-NZ-zq6">
@@ -3657,7 +3660,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Zji-uH-7hu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ttb-QY-bSc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navControllerForSelectedType" automaticallyAdjustsScrollViewInsets="NO" id="Ttb-QY-bSc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F5y-4A-Lt9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3670,7 +3673,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9iG-6Z-5QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3750" y="1554"/>
+            <point key="canvasLocation" x="5657" y="-886"/>
         </scene>
         <!--Account Table View Controller-->
         <scene sceneID="Y7A-Tl-QXK">
@@ -3970,4 +3973,7 @@
         <image name="yahoomail" width="20" height="20"/>
         <image name="youtube" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YIT-yG-mCW"/>
+    </inferredMetricsTieBreakers>
 </document>
