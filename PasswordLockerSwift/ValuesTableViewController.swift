@@ -359,6 +359,9 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             } else { println("section is not in the dictionary") }
             
             newRow.savedObject = savedObject
+            
+            var manyRelation = savedObject.valueForKeyPath("rows") as NSMutableSet
+            manyRelation.addObject(newRow)
         }
 
         var e: NSError?
@@ -389,7 +392,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         
         for row in rows {
             
-            if row.section == "0" { name = row.value; continue } // set SavedObject name
+            if row.section == "0" { name = row.value; } // set SavedObject name
             
             dict["key"] = row.key
             dict["value"] = row.value

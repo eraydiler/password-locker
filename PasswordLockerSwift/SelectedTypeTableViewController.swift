@@ -142,14 +142,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         atIndexPath indexPath: NSIndexPath) {
         
             let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as SavedObject
-//            cell.textLabel?.text = parseDataForTitle(savedObject.data, atIndexPath: indexPath)
-            let rows = savedObject.rows.allObjects as [Row]
-            for row in rows {
-                if row.section == "0" {
-                    cell.textLabel?.text = savedObject.name
-                }
-            }
-//            cell.textLabel?.text = savedObject.name            
+            cell.textLabel?.text = savedObject.name
     }
     
     // MARK: - Navigation
