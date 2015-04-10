@@ -112,7 +112,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
                 reuseIdentifier = "NoteCell"
             }
             var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
-            self.configureCell(cell, atIndexPath: indexPath)
+            configureCell(cell, atIndexPath: indexPath)
             return cell
     }
     
