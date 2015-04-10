@@ -150,7 +150,7 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
     }
     
     // Check Saved Data
-    func checkSavedData() {
+    func checkSavedObject() {
         
     }
 }

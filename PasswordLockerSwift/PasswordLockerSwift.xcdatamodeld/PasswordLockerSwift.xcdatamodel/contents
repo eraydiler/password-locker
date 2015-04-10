@@ -3,7 +3,7 @@
     <entity name="Category" representedClassName="PasswordLockerSwift.Category" syncable="YES">
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="savedDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SavedData" inverseName="category" inverseEntity="SavedData" syncable="YES"/>
+        <relationship name="savedObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SavedObject" inverseName="category" inverseEntity="SavedObject" syncable="YES"/>
         <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="category" inverseEntity="Type" syncable="YES"/>
     </entity>
     <entity name="Row" representedClassName="PasswordLockerSwift.Row" syncable="YES">
@@ -11,26 +11,28 @@
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="savedObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedObject" inverseName="rows" inverseEntity="SavedObject" syncable="YES"/>
         <relationship name="types" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="rows" inverseEntity="Type" syncable="YES"/>
     </entity>
-    <entity name="SavedData" representedClassName="PasswordLockerSwift.SavedData" syncable="YES">
+    <entity name="SavedObject" representedClassName="PasswordLockerSwift.SavedObject" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="savedDatas" inverseEntity="Category" syncable="YES"/>
-        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="savedDatas" inverseEntity="Type" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="savedObjects" inverseEntity="Category" syncable="YES"/>
+        <relationship name="rows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Row" inverseName="savedObject" inverseEntity="Row" syncable="YES"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="savedObjects" inverseEntity="Type" syncable="YES"/>
     </entity>
     <entity name="Type" representedClassName="PasswordLockerSwift.Type" syncable="YES">
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="types" inverseEntity="Category" syncable="YES"/>
         <relationship name="rows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Row" inverseName="types" inverseEntity="Row" syncable="YES"/>
-        <relationship name="savedDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SavedData" inverseName="type" inverseEntity="SavedData" syncable="YES"/>
+        <relationship name="savedObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SavedObject" inverseName="type" inverseEntity="SavedObject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="2599" positionY="-3940" width="128" height="103"/>
-        <element name="Row" positionX="2988" positionY="-3897" width="128" height="118"/>
-        <element name="SavedData" positionX="2590" positionY="-3787" width="128" height="118"/>
-        <element name="Type" positionX="2799" positionY="-3897" width="128" height="118"/>
+        <element name="Category" positionX="2581" positionY="-3978" width="128" height="103"/>
+        <element name="Row" positionX="2979" positionY="-3877" width="128" height="133"/>
+        <element name="SavedObject" positionX="2412" positionY="-3735" width="128" height="133"/>
+        <element name="Type" positionX="2799" positionY="-3933" width="128" height="118"/>
     </elements>
 </model>

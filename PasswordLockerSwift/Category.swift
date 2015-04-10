@@ -2,7 +2,7 @@
 //  Category.swift
 //  PasswordLockerSwift
 //
-//  Created by Eray on 08/04/15.
+//  Created by Eray on 09/04/15.
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ class Category: NSManagedObject {
 
     @NSManaged var imageName: String
     @NSManaged var name: String
+    @NSManaged var savedObjects: NSSet
     @NSManaged var types: NSSet
-    @NSManaged var savedDatas: NSSet
 
 }

@@ -47,7 +47,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         }
         let managedObjectContext = self.managedObjectContext!
         
-        let entity = NSEntityDescription.entityForName("SavedData", inManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entityForName("SavedObject", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "date", ascending: true)
         let req = NSFetchRequest()
         
@@ -141,9 +141,15 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
         
-            let savedData = self.fetchedResultsController.objectAtIndexPath(indexPath) as SavedData
-//            cell.textLabel?.text = parseDataForTitle(savedData.data, atIndexPath: indexPath)
-            cell.textLabel?.text = savedData.name            
+            let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as SavedObject
+//            cell.textLabel?.text = parseDataForTitle(savedObject.data, atIndexPath: indexPath)
+            let rows = savedObject.rows.allObjects as [Row]
+            for row in rows {
+                if row.section == "0" {
+                    cell.textLabel?.text = savedObject.name
+                }
+            }
+//            cell.textLabel?.text = savedObject.name            
     }
     
     // MARK: - Navigation
@@ -151,14 +157,14 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let indexPath = self.tableView.indexPathForSelectedRow()
-        let savedData = self.fetchedResultsController.objectAtIndexPath(indexPath!) as SavedData
+        let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath!) as SavedObject
         
-        if segue.identifier == "fromSelectedTypeToValuesTVCSegue" {
-            let targetVC = segue.destinationViewController as ValuesTableViewController
+        if segue.identifier == "toSelectedValuesTVCSegue" {
+            let targetVC = segue.destinationViewController as SelectedValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
-            targetVC.type = savedData.type
-            targetVC.delegate = self.tabBarController as TabBarController
+            targetVC.savedObjectID = savedObject.objectID
+//            targetVC.delegate = self.tabBarController as TabBarController
         }
     }
     
@@ -179,17 +185,5 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
             }
             
             return title
-    }
-    
-    func dateString(date:NSDate) -> String {
-        let dateFormatter = NSDateFormatter()
-        
-        var theDateFormat = NSDateFormatterStyle.ShortStyle
-        let theTimeFormat = NSDateFormatterStyle.ShortStyle
-        
-        dateFormatter.dateStyle = theDateFormat
-        dateFormatter.timeStyle = theTimeFormat
-        
-        return dateFormatter.stringFromDate(date)
     }
 }

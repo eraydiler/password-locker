@@ -18,6 +18,8 @@ class TabBarController: UITabBarController,
     
     // keep current tabs
     var tabsModel = TabsModel()
+    
+    let TAG = "TabBarController"
 
     func configureView() {
         
@@ -48,33 +50,33 @@ class TabBarController: UITabBarController,
     
     // MARK: - Helper Methods
     func configureTabs() {
-        let fReq = NSFetchRequest(entityName: "SavedData")
+        let fReq = NSFetchRequest(entityName: "SavedObject")
         
         var e: NSError? = nil
         if let fResults = self.managedObjectContext?.executeFetchRequest(fReq, error: &e) {
             if e != nil {
-                println("fetch error: \(e!.localizedDescription)")
+                println("\(TAG) fetch error: \(e!.localizedDescription)")
                 abort()
             }
             
             if fResults.count > 0 {
-                createTabs(fResults as [SavedData])
+                createTabs(fResults as [SavedObject])
             }
         }
     }
     
-    func createTabs(results: [SavedData]) {
+    func createTabs(results: [SavedObject]) {
         
         var categoryArray = Array<Category>()
         
-        for savedData in results as [SavedData] {
-            categoryArray.append(savedData.type.category)
+        for savedObject in results as [SavedObject] {
+            categoryArray.append(savedObject.type.category)
         }
         
+        // Get distinct categories
         let distinct = NSSet(array: categoryArray).allObjects as [Category]
         
         for category in distinct {
-            println(category.name)
             addNewTabWithCategory(category)
         }
     }
@@ -92,6 +94,7 @@ class TabBarController: UITabBarController,
             
             var selectedTypeView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
             
+            // Set selectedTypeView as root view controller
             navigationController.viewControllers[0] = selectedTypeView
             
             // Set tab bar item

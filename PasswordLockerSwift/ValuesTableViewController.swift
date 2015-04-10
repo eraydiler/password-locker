@@ -101,7 +101,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     override func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
-//            var cell: UITableViewCell = UITableViewCell()
+
             var reuseIdentifier: String!
             
             if (indexPath.section == 0) {
@@ -137,15 +137,12 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             cell.addSubview(Helper.seperatorButtomImageView(cell))
         }
     }
-        
-    // MARK: - Fetched results controller
     
     // set by AppDelegate on application startup
     var managedObjectContext: NSManagedObjectContext?
     
-    /* `NSFetchedResultsController`
-    lazily initialized
-    fetches the displayed domain model */
+    // MARK: - Fetched results controller
+    
     var fetchedResultsController: NSFetchedResultsController {
         // return if already initialized
         if self._fetchedResultsController != nil {
@@ -153,10 +150,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         }
         let managedObjectContext = self.managedObjectContext!
         
-        /* `NSFetchRequest` config
-        fetch all `Item`s
-        order them alphabetically by name
-        at least one sort order _is_ required */
+        /* `NSFetchRequest` config */
         let entity = NSEntityDescription.entityForName("Row", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "section", ascending: true)
         let req = NSFetchRequest()
@@ -165,8 +159,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         req.fetchBatchSize = 20
         req.predicate = NSPredicate(format: "ANY types == %@", self.type!)
         
-        /* NSFetchedResultsController initialization
-        a `nil` `sectionNameKeyPath` generates a single section */
+        /* NSFetchedResultsController initialization a `nil` `sectionNameKeyPath` generates a single section */
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: req, managedObjectContext: managedObjectContext, sectionNameKeyPath: "section", cacheName: nil)
         aFetchedResultsController.delegate = self
         self._fetchedResultsController = aFetchedResultsController
@@ -306,7 +299,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     @IBAction func saveBarButtonTouched(sender: UIBarButtonItem) {
         isBackTouched = false
         save()
-//        addNewBar()
         self.delegate?.newDataSaved()
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -324,28 +316,50 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     func save() {
         
         // Backup changed rows before rollBack
-        let rows = self.fetchedResultsController.fetchedObjects as [Row]
+        var fetchedRows = self.fetchedResultsController.fetchedObjects as [Row]
         
         // Get name
         var name = String("")
         
         // Get Data
-        let arr = dictionaryForModifiedType(rows, name: &name)
+        let rows = rowsDictionaries(fetchedRows, name: &name)
         
         // template deki degisiklikeri geri almak icin
         rollBack()
         
-        // Insert new entity for SavedData
-        var newData = NSEntityDescription.insertNewObjectForEntityForName("SavedData", inManagedObjectContext: self.managedObjectContext!) as SavedData
+        // Insert new entity for SavedObject
+        var savedObject = NSEntityDescription.insertNewObjectForEntityForName("SavedObject", inManagedObjectContext: self.managedObjectContext!) as SavedObject
         
-        newData.name = name
-        newData.data = arr
-        newData.date = NSDate()
+        savedObject.name = name
+        savedObject.data = rows
+        savedObject.date = NSDate()
+        savedObject.type = self.type!
+        savedObject.category = self.category!
+        
         if self.type == nil || self.category == nil {
             println("\(TAG) nil kaydedildi.")
         }
-        newData.type = self.type!
-        newData.category = self.category!
+        
+        // Insert new rows
+        for row in rows {
+            let dict: Dictionary<String, String> = row
+            
+            var newRow = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: self.managedObjectContext!) as Row
+            
+            if let key = dict["key"] {
+                newRow.key = key
+            } else { println("key is not in the dictionary") }
+            
+            if let value = dict["value"] {
+                newRow.value = value
+            } else { println("value is not in the dictionary") }
+            
+            if let section = dict["section"] {
+                newRow.section = section
+            } else { println("section is not in the dictionary") }
+            
+            newRow.savedObject = savedObject
+        }
 
         var e: NSError?
 
@@ -357,10 +371,10 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         }
         
         if Constants.TEST {
-            let req = NSFetchRequest(entityName: "SavedData")
+            let req = NSFetchRequest(entityName: "SavedObject")
             let fetchArray  = self.managedObjectContext?.executeFetchRequest(req, error: &e)
-            for savedData in fetchArray as [SavedData] {
-                let arr: Array = savedData.data
+            for savedObject in fetchArray as [SavedObject] {
+                let arr: Array = savedObject.data
                 for a in arr {
                     println("\(TAG) \(a)")
                 }
@@ -369,40 +383,20 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         }
     }
     
-    func dictionaryForModifiedType(rows: [Row], inout name: String) -> Array<Dictionary<String, String>> {
+    func rowsDictionaries(rows: [Row], inout name: String) -> Array<Dictionary<String, String>> {
         var dict = [String:String]()
         var arr = [Dictionary<String, String>]()
         
         for row in rows {
             
-            if row.section == "0" { name = row.value; continue } // set saveddata name
+            if row.section == "0" { name = row.value; continue } // set SavedObject name
             
             dict["key"] = row.key
             dict["value"] = row.value
+            dict["section"] = row.section
             
             arr.append(dict)
-            
-            println("\(TAG) key: \(row.key) value: \(row.value)")
         }
         return arr
-    }
-    
-    func addNewBar() {
-        
-        // Select viewcontroller from storyboard
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var newUIView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
-        
-        // Set tab bar item
-        newUIView.tabBarItem = UITabBarItem(title: self.category!.name, image: UIImage(named: "tab_\(self.category!.imageName)"), selectedImage: nil)
-        
-        // Set views's properties
-        newUIView.category = self.category
-        newUIView.managedObjectContext = self.managedObjectContext
-        
-        // Add view to tabs
-        var tabs = self.tabBarController?.viewControllers
-        tabs?.append(newUIView)
-        self.tabBarController?.setViewControllers(tabs!, animated: true)        
     }
 }
