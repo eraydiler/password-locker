@@ -16,7 +16,7 @@ class SelectedValuesTableViewController: UITableViewController {
     var category: Category?
     var savedObjectID: NSManagedObjectID?
     var savedObject: SavedObject?
-//    var rows: Array<Dictionary<String, String>>?
+
     var rows: [Row]?
     
     // set by AppDelegate on application startup
@@ -26,7 +26,11 @@ class SelectedValuesTableViewController: UITableViewController {
         
         self.savedObject = self.managedObjectContext?.objectWithID(self.savedObjectID!) as? SavedObject
         if let rows = self.savedObject?.rows.allObjects as? [Row] {
+            
+            // Set rows property
             self.rows = rows
+            
+            // Sort by section
             self.rows?.sort({$0.section < $1.section})
         } else {
             println("\(TAG) no row found")
@@ -37,12 +41,6 @@ class SelectedValuesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         configureView()
     }
 
@@ -99,6 +97,13 @@ class SelectedValuesTableViewController: UITableViewController {
         default:
             return nil
         }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 68.0
+        }
+        return 44.0
     }
     
     // MARK: - Navigation
