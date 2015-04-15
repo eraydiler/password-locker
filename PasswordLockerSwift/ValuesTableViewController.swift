@@ -14,7 +14,8 @@ import CoreData
     }
     
 class ValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate,  EditValuesTableViewControllerDelegate {
-    
+    let TAG = "Values TVC"
+
     // set by former controller
     var category: Category?
     var type: Type?
@@ -25,8 +26,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     // delegate to send info to tabBar Controller when user saved data
     var delegate: ValuesTableViewControllerDelegate?
     
-    let TAG = "Values TVC"
-    
     func configureView() {
         self.tableView.rowHeight = 44.0
         self.title = self.type?.name
@@ -34,12 +33,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         configureView()
     }
     
@@ -111,7 +104,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             } else {
                 reuseIdentifier = "NoteCell"
             }
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
             configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -190,25 +183,25 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     - when an existing model is deleted */
     func controller(controller: NSFetchedResultsController,
         didChangeObject object: AnyObject,
-        atIndexPath indexPath: NSIndexPath,
+        atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath) {
+        newIndexPath: NSIndexPath?) {
             switch type {
             case .Insert:
-                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 println("\(TAG) coredata insert")
             case .Update:
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath)
-                self.configureCell(cell!, atIndexPath: indexPath)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+                self.configureCell(cell!, atIndexPath: indexPath!)
+                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 println("\(TAG) coredata update")
             case .Move:
                 println("\(TAG) coredata move")
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             case .Delete:
                 println("\(TAG) coredata delete")
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             default:
                 return
             }
@@ -226,23 +219,24 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         atIndexPath indexPath: NSIndexPath) {
             
 //            let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
-            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
+            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
             
             switch (indexPath.section) {
             case 0:
-                let imageView = cell.contentView.subviews[0] as UIImageView
-                var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
+                let imageView = cell.contentView.subviews[0] as! UIImageView
+                var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
                 imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
                 break;
             case 1:
-                var keyLabel = cell.contentView.subviews[0] as UILabel
-                var valueLabel = cell.contentView.subviews[1] as UILabel
+                var keyLabel = cell.contentView.subviews[0] as! UILabel
+                var valueLabel = cell.contentView.subviews[1] as! UILabel
                 keyLabel.text = row.key
                 valueLabel.text = row.value
                 break;
             case 2:
-                var noteLabel = cell.contentView.subviews[0] as UILabel
+                var noteLabel = cell.contentView.subviews[0] as! UILabel
+                if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }
                 noteLabel.text = row.value
                 break;
                 
@@ -276,14 +270,12 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
         if segue.identifier == "toEditAccountValuesTVCSegue" {
             
-            let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
-            let targetVC = segue.destinationViewController as EditValuesTableViewController
+            let row = self.fetchedResultsController.objectAtIndexPath(sender as! NSIndexPath) as! Row
+            let targetVC = segue.destinationViewController as! EditValuesTableViewController
             
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowId = row.objectID
@@ -303,10 +295,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func backBarButtonTouched(sender: UIBarButtonItem) {
-        println("\(TAG) back clicked")
-    }
-    
     // MARK: - Helper Methods
     
     func rollBack() {
@@ -316,7 +304,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     func save() {
         
         // Backup changed rows before rollBack
-        var fetchedRows = self.fetchedResultsController.fetchedObjects as [Row]
+        var fetchedRows = self.fetchedResultsController.fetchedObjects as! [Row]
         
         // Get name
         var name = String("")
@@ -328,7 +316,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         rollBack()
         
         // Insert new entity for SavedObject
-        var savedObject = NSEntityDescription.insertNewObjectForEntityForName("SavedObject", inManagedObjectContext: self.managedObjectContext!) as SavedObject
+        var savedObject = NSEntityDescription.insertNewObjectForEntityForName("SavedObject", inManagedObjectContext: self.managedObjectContext!) as! SavedObject
         
         savedObject.name = name
         savedObject.data = rows
@@ -344,7 +332,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         for row in rows {
             let dict: Dictionary<String, String> = row
             
-            var newRow = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: self.managedObjectContext!) as Row
+            var newRow = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: self.managedObjectContext!) as! Row
             
             if let key = dict["key"] {
                 newRow.key = key
@@ -360,7 +348,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             
             newRow.savedObject = savedObject
             
-            var manyRelation = savedObject.valueForKeyPath("rows") as NSMutableSet
+            var manyRelation = savedObject.valueForKeyPath("rows") as! NSMutableSet
             manyRelation.addObject(newRow)
         }
 
@@ -376,7 +364,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         if Constants.TEST {
             let req = NSFetchRequest(entityName: "SavedObject")
             let fetchArray  = self.managedObjectContext?.executeFetchRequest(req, error: &e)
-            for savedObject in fetchArray as [SavedObject] {
+            for savedObject in fetchArray as! [SavedObject] {
                 let arr: Array = savedObject.data
                 for a in arr {
                     println("\(TAG) \(a)")

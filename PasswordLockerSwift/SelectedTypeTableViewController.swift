@@ -85,25 +85,25 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     - when an existing model is deleted */
     func controller(controller: NSFetchedResultsController,
         didChangeObject object: AnyObject,
-        atIndexPath indexPath: NSIndexPath,
+        atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath) {
+        newIndexPath: NSIndexPath?) {
             switch type {
             case .Insert:
-                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 println("\(TAG) coredata insert")
             case .Update:
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath)
-                self.configureCell(cell!, atIndexPath: indexPath)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+                self.configureCell(cell!, atIndexPath: indexPath!)
+                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 println("\(TAG) coredata update")
             case .Move:
                 println("\(TAG) coredata move")
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             case .Delete:
                 println("\(TAG) coredata delete")
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             default:
                 return
             }
@@ -130,7 +130,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("selectedCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("selectedCell", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
         configureCell(cell, atIndexPath: indexPath)
@@ -141,7 +141,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
         
-            let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as SavedObject
+            let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as! SavedObject
             cell.textLabel?.text = savedObject.name
     }
     
@@ -150,14 +150,14 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let indexPath = self.tableView.indexPathForSelectedRow()
-        let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath!) as SavedObject
+        let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! SavedObject
         
         if segue.identifier == "toSelectedValuesTVCSegue" {
-            let targetVC = segue.destinationViewController as SelectedValuesTableViewController
+            let targetVC = segue.destinationViewController as! SelectedValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
             targetVC.savedObjectID = savedObject.objectID
-//            targetVC.delegate = self.tabBarController as TabBarController
+//            targetVC.delegate = self.tabBarController as! TabBarController
         }
     }
     

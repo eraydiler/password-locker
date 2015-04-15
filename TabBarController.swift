@@ -60,7 +60,7 @@ class TabBarController: UITabBarController,
             }
             
             if fResults.count > 0 {
-                createTabs(fResults as [SavedObject])
+                createTabs(fResults as! [SavedObject])
             }
         }
     }
@@ -74,7 +74,7 @@ class TabBarController: UITabBarController,
         }
         
         // Get distinct categories
-        let distinct = NSSet(array: categoryArray).allObjects as [Category]
+        let distinct = NSSet(array: categoryArray).allObjects as! [Category]
         
         for category in distinct {
             addNewTabWithCategory(category)
@@ -90,9 +90,9 @@ class TabBarController: UITabBarController,
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let storyBoardID = "\(category.name)TVC"
             
-            var navigationController = storyBoard.instantiateViewControllerWithIdentifier("navControllerForSelectedType") as UINavigationController
+            var navigationController = storyBoard.instantiateViewControllerWithIdentifier("navControllerForSelectedType") as! UINavigationController
             
-            var selectedTypeView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as SelectedTypeTableViewController
+            var selectedTypeView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as! SelectedTypeTableViewController
             
             // Set selectedTypeView as root view controller
             navigationController.viewControllers[0] = selectedTypeView

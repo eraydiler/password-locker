@@ -33,7 +33,6 @@ class EditNoteTableViewController: UITableViewController, UITextFieldDelegate {
         self.tableView.rowHeight = 44.0
         
         if row?.section == "2" {
-            self.textView?.scrollEnabled = true
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
         }
@@ -79,7 +78,7 @@ class EditNoteTableViewController: UITableViewController, UITextFieldDelegate {
             reuseIdentifier = "NoteCell"
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
         self.configureCell(cell, atIndexPath: indexPath, forOption: reuseIdentifier)
@@ -97,7 +96,7 @@ class EditNoteTableViewController: UITableViewController, UITextFieldDelegate {
                 self.editText = cell.contentView.subviews[0] as? UITextField
                 self.editText?.text = row?.value
             } else {
-                let scrollView = cell.contentView.subviews[0] as UIScrollView
+                let scrollView = cell.contentView.subviews[0] as? UIScrollView
                 self.scrollView = scrollView
                 self.scrollView?.delegate = self
                 

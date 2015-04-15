@@ -59,7 +59,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         at least one sort order _is_ required */
         let entity = NSEntityDescription.entityForName("Type", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "name", ascending: true)
-        let req = NSFetchRequest() as NSFetchRequest
+        let req = NSFetchRequest()
         req.entity = entity
         req.sortDescriptors = [sort]
         req.predicate = NSPredicate(format: "category == %@", category!)        
@@ -101,7 +101,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             var cell: UITableViewCell = UITableViewCell()
-            cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as! UITableViewCell
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -111,14 +111,14 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let indexPath = self.tableView.indexPathForSelectedRow()
-        let type = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Type
+        let type = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Type
         
         if segue.identifier == "toAccountValuesTVCSegue" {
-            let targetVC = segue.destinationViewController as ValuesTableViewController
+            let targetVC = segue.destinationViewController as! ValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
             targetVC.type = type
-            targetVC.delegate = self.tabBarController as TabBarController
+            targetVC.delegate = self.tabBarController as! TabBarController
         }
     }
     
@@ -130,10 +130,10 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         atIndexPath indexPath: NSIndexPath) {
             
             let type = self.fetchedResultsController.objectAtIndexPath(indexPath)
-                as Type
+                as! Type
             
-            var titleLabel = cell.contentView.subviews[0] as UILabel
-            let imageView = cell.contentView.subviews[1] as UIImageView
+            var titleLabel = cell.contentView.subviews[0] as! UILabel
+            let imageView = cell.contentView.subviews[1] as! UIImageView
             
             titleLabel.text = type.name
             imageView.image = UIImage(named: type.imageName)

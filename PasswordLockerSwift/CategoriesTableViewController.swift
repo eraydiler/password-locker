@@ -93,7 +93,7 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             var cell: UITableViewCell = UITableViewCell()
-            cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) as UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) as! UITableViewCell
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -102,7 +102,7 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let indexPath = self.tableView.indexPathForSelectedRow()
-        let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Category
+        let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Category
         
         if category.name == "Note" {
             self.performSegueWithIdentifier("toNoteTypeTVCSegue", sender: nil)
@@ -121,15 +121,15 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         // Pass the selected object to the new view controller.
 
         let indexPath = self.tableView.indexPathForSelectedRow()
-        let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as Category
+        let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Category
         
         if segue.identifier == "toTypesTVCSegue" {
-            let targetVC = segue.destinationViewController as TypesTableViewController
+            let targetVC = segue.destinationViewController as! TypesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = category
         } else
         if segue.identifier == "toNoteTypeTVCSegue" {
-            let targetVC = segue.destinationViewController as NoteTypeTableViewController
+            let targetVC = segue.destinationViewController as! NoteTypeTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
         }
     }
@@ -140,10 +140,10 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         atIndexPath indexPath: NSIndexPath) {
             
             let category = self.fetchedResultsController.objectAtIndexPath(indexPath)
-                as Category
+                as! Category
             
-            let imageView = cell.contentView.subviews[0] as UIImageView
-            var titleLabel = cell.contentView.subviews[1] as UILabel
+            let imageView = cell.contentView.subviews[0] as! UIImageView
+            var titleLabel = cell.contentView.subviews[1] as! UILabel
             
             imageView.image = UIImage(named: category.imageName)
             titleLabel.text = category.name

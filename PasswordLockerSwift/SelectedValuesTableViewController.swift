@@ -9,7 +9,8 @@
 import UIKit
 import CoreData
 
-class SelectedValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class SelectedValuesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate,
+    EditValuesTableViewControllerDelegate {
     let TAG = "SelectedValuesTableViewController"
     
     // set by former controller
@@ -20,7 +21,13 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     var rows: [Row]?
     
     // set by AppDelegate on application startup
-    var managedObjectContext: NSManagedObjectContext?
+    var managedObjectContext: NSManagedObjectContext?    
+    
+    // hack for handling back button
+    var isBackTouched = true
+    
+    // delegate to send info to tabBar Controller when user saved data
+    var delegate: ValuesTableViewControllerDelegate?
 
     func configureView() {
         
@@ -43,7 +50,24 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         super.viewDidLoad()
         configureView()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        isBackTouched = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        if isBackTouched {
+            println("\(TAG) back pressed")
+        }
+        
+        if managedObjectContext!.hasChanges  && isBackTouched {
+            rollBack()
+            println("\(TAG) Changes rolled back")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("\(TAG) memory warning")
@@ -83,6 +107,43 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     }
     var _fetchedResultsController: NSFetchedResultsController?
 
+    
+    // MARK: - fetched results controller delegate
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController,
+        didChangeObject object: AnyObject,
+        atIndexPath indexPath: NSIndexPath?,
+        forChangeType type: NSFetchedResultsChangeType,
+        newIndexPath: NSIndexPath?) {
+            switch type {
+            case .Insert:
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                println("\(TAG) coredata insert")
+            case .Update:
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+                self.configureCell(cell!, atIndexPath: indexPath!)
+                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                println("\(TAG) coredata update")
+            case .Move:
+                println("\(TAG) coredata move")
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            case .Delete:
+                println("\(TAG) coredata delete")
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            default:
+                return
+            }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -104,7 +165,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         } else {
             reuseIdentifier = "NoteCell"
         }
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
         configureCell(cell, atIndexPath: indexPath)
 
         return cell
@@ -136,56 +197,159 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         return 44.0
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("toEditSelectedValuesTVCSegue", sender: indexPath)
+    }
+    
+    // MARK: - EditValuesTableViewController Delegate
+    
+    func rowValueChanged() {
         
         let indexPath = self.tableView.indexPathForSelectedRow()
         
-        if let row = self.rows?[indexPath!.row]{
-            
+        var reuseIdentifier: String! = nil
+        if indexPath?.section == 0 {
+            reuseIdentifier = "TitleCell"
+        }
+        else if indexPath?.section == 1 {
+            reuseIdentifier = "ValueCell"
+        }
+        else {
+            reuseIdentifier = "NoteCell"
         }
         
-//        if segue.identifier == "toSelectedValuesTVCSegue" {
-//            
-//            let targetVC = segue.destinationViewController as SelectedValuesTableViewController
-//            targetVC.managedObjectContext = self.managedObjectContext
-//            targetVC.category = self.category
-//            targetVC.type = savedObject.type
-//            targetVC.savedObjectID = row.objectID
-//            targetVC.delegate = self.tabBarController as TabBarController
-//        }
+        if let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath!) as? UITableViewCell
+        {
+            configureCell(cell, atIndexPath: indexPath!)
+        }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func saveBarButtonTouched(sender: UIBarButtonItem) {
+        isBackTouched = false
+        save()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func backBarButtonTouched(sender: UIBarButtonItem) {
+        println("\(TAG) back clicked")
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let indexPath = self.tableView.indexPathForSelectedRow()      
+        
+        if segue.identifier == "toEditSelectedValuesTVCSegue" {
+            
+            let row = self.fetchedResultsController.objectAtIndexPath(sender as! NSIndexPath) as! Row
+
+            let targetVC = segue.destinationViewController as! EditSelectedValuesTableViewController
+            targetVC.managedObjectContext = self.managedObjectContext
+            targetVC.rowID = row.objectID
+            targetVC.placeholder = row.value
+            targetVC.delegate = self
+            
+            isBackTouched = false
+        }
     }
     
     // MARK: - Helper Methods
-    /* helper method to configure a `UITableViewCell`
-    ask `NSFetchedResultsController` for the model */
+    
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
             
-            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
+            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
             
             switch (indexPath.section) {
             case 0:
-                let imageView = cell.contentView.subviews[0] as UIImageView
-                var titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
-                imageView.image = UIImage(named: row.key)
-                titleLabel.text = row.value
+                
+                if let imageView = cell.contentView.subviews[0] as? UIImageView {
+                    imageView.image = UIImage(named: row.key)
+                } else {
+                    println(TAG + " " + "imageView not found")
+                }
+                
+                if let titleLabel = cell.contentView.subviews[1].subviews[0] as? UILabel {
+                    titleLabel.text = row.value
+                } else {
+                    println(TAG + " " + "titleLabel not found")
+                }
+
+//                let imageView = cell.contentView.subviews[0] as! UIImageView
+//                var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
+//                imageView.image = UIImage(named: row.key)
+//                titleLabel.text = row.value                
                 break;
             case 1:
-                var keyLabel = cell.contentView.subviews[0] as UILabel
-                var valueLabel = cell.contentView.subviews[1] as UILabel
-                keyLabel.text = row.key
-                valueLabel.text = row.value
+                
+                if let keyLabel = cell.contentView.subviews[0] as? UILabel {
+                    keyLabel.text = row.key
+                } else {
+                    println(TAG + " " + "keyLabel not found")
+                }
+                
+                if let valueLabel = cell.contentView.subviews[1] as? UILabel {
+                    valueLabel.text = row.value
+                } else {
+                    println(TAG + " " + "valueLabel not found")
+                }
+                
+//                var keyLabel = cell.contentView.subviews[0] as! UILabel
+//                var valueLabel = cell.contentView.subviews[1] as! UILabel
+//                keyLabel.text = row.key
+//                valueLabel.text = row.value
+                
                 break;
             case 2:
-                var noteLabel = cell.contentView.subviews[0] as UILabel
-                noteLabel.text = row.value
+                
+                if let noteLabel = cell.contentView.subviews[0] as? UILabel {
+                    if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }
+                    noteLabel.text = row.value
+                } else {
+                    println(TAG + " " + "noteLabel not found")
+                }
+                
+//                var noteLabel = cell.contentView.subviews[0] as! UILabel
+//                noteLabel.text = row.value
                 break;
                 
             default:
                 break;
             }
+    }
+    
+    func rollBack() {
+        managedObjectContext?.rollback()
+    }
+    
+    func save() {
+        
+        // Set savedObject name
+        let rows = self.fetchedResultsController.fetchedObjects as! [Row]
+        
+        for row in rows {
+            if row.section == "0" {self.savedObject?.name = row.value}
+        }
+        
+        var e: NSError?
+        if let moc = self.managedObjectContext {
+            if !moc.save(&e) {
+                println("\(TAG) save error: \(e!.localizedDescription)")
+                abort()
+            }
+        } else {
+            println("\(TAG) managedobjectcontext not found")
+            abort()
+        }
+        
+//        if !managedObjectContext!.save(&e) {
+//            println("\(TAG) save error: \(e!.localizedDescription)")
+//            abort()
+//        }
     }
 }

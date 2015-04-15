@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
 class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
+    let TAG = "AuthenticationViewController"
+    
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var managedObjectContext: NSManagedObjectContext?
     
     let kPasswordKey="PassLock";
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         passwordTextField.delegate = self
     }
     
@@ -96,6 +99,13 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AuthenticationToTabBarController" {
+            // Set managedObjectContext for view controllers
+            let tabBarController = segue.destinationViewController as! TabBarController
+            tabBarController.managedObjectContext = self.managedObjectContext
+            
+            let nav = tabBarController.childViewControllers[0] as! UINavigationController
+            let categoriesVC = nav.topViewController as! CategoriesTableViewController
+            categoriesVC.managedObjectContext = self.managedObjectContext
         }
     }
 }

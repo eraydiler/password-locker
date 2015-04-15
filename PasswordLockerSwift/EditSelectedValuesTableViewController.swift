@@ -9,58 +9,143 @@
 import UIKit
 import CoreData
 
-class EditSelectedValuesTableViewController: UITableViewController {
+protocol EditSelectedValuesTableViewControllerDelegate {
+    func rowValueChanged()
+}
+
+class EditSelectedValuesTableViewController: UITableViewController, UITextViewDelegate {
     let TAG = "EditSelectedValuesTableViewController"
     
     // set by AppDelegate on application startup
     var managedObjectContext: NSManagedObjectContext?
     
     var placeholder: String?
-    var savedObjectId: NSManagedObjectID?
-    var savedObject: SavedObject?
+    var rowID: NSManagedObjectID?
+    var row: Row?
+    
+    @IBOutlet weak var editTextField: UITextField!
+    @IBOutlet weak var editTextView: UITextView!
+    
+    @IBOutlet weak var textFieldCell: UITableViewCell!
+    @IBOutlet weak var textViewCell: UITableViewCell!
+    
+    // delegate to send value to former controller
+    var delegate: EditValuesTableViewControllerDelegate! = nil
     
     func configureView() {
         
+        self.tableView.allowsSelection = false
+        
+        self.tableView.rowHeight = 44.0
+        self.row = self.managedObjectContext?.objectWithID(self.rowID!) as? Row
+        
+        self.title = "Edit"
+        
+        // Check if it is note
+        if self.row?.section == "2" {
+//            let frameRect = editTextField.frame
+//            frameRect.size.height = 10.0
+//            editTextField.frame = frameRect
+            
+            self.textViewCell.hidden = false
+            self.textFieldCell.hidden = true
+            configureTextView()
+        } else {
+            self.textViewCell.hidden = true
+            self.textFieldCell.hidden = false
+            configureTextField()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        configureView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
         print("\(TAG) memory warning")
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return 2
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    // MARK: - Actions
+    @IBAction func doneBarButtonPressed(sender: UIBarButtonItem) {
+        
+        var newValue = String("")
+        
+        if self.row?.section != "2" { newValue = editTextField.text }
+        else { newValue = editTextView.text }
+        
+        self.row?.value = newValue
+        
+        delegate.rowValueChanged()
+        self.navigationController?.popViewControllerAnimated(true)
     }
-    */
-
+    
+    // MARK: - UITextView Delegate
+    
+//    func textViewDidChange(textView: UITextView) {
+//        var frame = self.editTextView.frame
+//        frame.size.height = self.editTextView.contentSize.height
+//        self.editTextView.frame = frame
+//    }
+    
+    // MARK: - UITextField Delegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    // MARK: - Keyboard Notifications
+    
+    func keyboardDidShow(notification: NSNotification) {
+        if let rectValue = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
+            let keyboardSize = rectValue.CGRectValue().size
+            updateTextViewSizeForKeyboardHeight(keyboardSize.height)
+        }
+    }
+    
+    func keyboardDidHide(notification: NSNotification) {
+        updateTextViewSizeForKeyboardHeight(0)
+    }
+    
+    func updateTextViewSizeForKeyboardHeight(keyboardHeight: CGFloat) {
+        self.editTextView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - keyboardHeight-200)
+    }
+    
+    // MARK: - Helper Methods
+    
+    func configureTextField() {
+        
+        if self.row?.value == "" {
+            self.editTextField.placeholder = self.row?.key
+        } else {
+            self.editTextField.text = self.row?.value
+        }
+        self.editTextField.text = placeholder
+    }
+    
+    func configureTextView() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        
+        if self.row?.value == "" {
+            self.editTextView.text = "No Note"
+        } else {
+            self.editTextView.text = self.row?.value
+        }
+    }
 }

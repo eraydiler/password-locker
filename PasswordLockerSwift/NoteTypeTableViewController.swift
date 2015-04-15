@@ -87,7 +87,7 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
             } else if (indexPath.section == 1) {
                 reuseIdentifier = "NoteCell"
             }
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -163,17 +163,17 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
     func configureCell(cell: UITableViewCell,
         atIndexPath indexPath: NSIndexPath) {
             
-            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as Row
+            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
             
             switch (indexPath.section) {
             case 0:
-                let imageView = cell.contentView.subviews[0] as UIImageView
-                let titleLabel = cell.contentView.subviews[1].subviews[0] as UILabel
+                let imageView = cell.contentView.subviews[0] as! UIImageView
+                let titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
                 imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
                 break;
             case 1:
-                let valueLabel = cell.contentView.subviews[0] as UILabel
+                let valueLabel = cell.contentView.subviews[0] as! UILabel
                 valueLabel.text = row.value
                 break;
                 
@@ -203,8 +203,8 @@ class NoteTypeTableViewController: UITableViewController, NSFetchedResultsContro
         // Pass the selected object to the new view controller.
         if segue.identifier == "toEditNoteTVCSegue" {
             
-            let row = self.fetchedResultsController.objectAtIndexPath(sender as NSIndexPath) as Row
-            let targetVC = segue.destinationViewController as EditNoteTableViewController
+            let row = self.fetchedResultsController.objectAtIndexPath(sender as! NSIndexPath) as! Row
+            let targetVC = segue.destinationViewController as! EditNoteTableViewController
 
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowId = row.objectID
