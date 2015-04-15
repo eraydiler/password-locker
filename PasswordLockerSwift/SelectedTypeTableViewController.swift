@@ -28,7 +28,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         configureView()
     }
 
@@ -136,6 +136,36 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         configureCell(cell, atIndexPath: indexPath)
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            let context = self.fetchedResultsController.managedObjectContext
+            let objectToBeDeleted: SavedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as! SavedObject
+            
+            let relationships = objectToBeDeleted.mutableSetValueForKey("rows")
+            
+            context.deleteObject(objectToBeDeleted)
+//            relationships.removeObject(objectToBeDeleted)
+
+            for row in relationships {
+                context.deleteObject(row as! NSManagedObject)
+            }
+            
+            var e: NSError?
+            if let moc = self.managedObjectContext {
+                if !moc.save(&e) {
+                    println("\(TAG) save error: \(e!.localizedDescription)")
+                    abort()
+                }
+            } else {
+                println("\(TAG) managedobjectcontext not found")
+                abort()
+            }
+            
+        }
     }
     
     func configureCell(cell: UITableViewCell,

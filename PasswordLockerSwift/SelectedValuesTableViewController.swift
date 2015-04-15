@@ -211,7 +211,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             cell.addSubview(Helper.seperatorButtomImageView(cell))
         }
     }
-        
+    
     // MARK: - EditValuesTableViewController Delegate
     
     func rowValueChanged() {
