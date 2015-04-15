@@ -203,6 +203,15 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         self.performSegueWithIdentifier("toEditSelectedValuesTVCSegue", sender: indexPath)
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            cell.addSubview(Helper.seperatorTopImageView(cell))
+        } else {
+            cell.addSubview(Helper.seperatorTopImageView(cell))
+            cell.addSubview(Helper.seperatorButtomImageView(cell))
+        }
+    }
+        
     // MARK: - EditValuesTableViewController Delegate
     
     func rowValueChanged() {

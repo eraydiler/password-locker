@@ -3670,13 +3670,13 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="386" id="hCE-hq-Whc">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="hCE-hq-Whc">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="hCE-hq-Whc" id="0YX-rI-h3W">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I9z-yD-Mm6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="385"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -3701,6 +3701,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editTextField" destination="jYh-Ff-iRR" id="Rle-K8-Ead"/>
+                        <outlet property="editTextView" destination="I9z-yD-Mm6" id="6Q1-in-Sc3"/>
+                        <outlet property="textFieldCell" destination="KtW-Wc-btB" id="CAT-p6-9fm"/>
+                        <outlet property="textViewCell" destination="hCE-hq-Whc" id="nJq-e8-jbh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBB-20-w8f" userLabel="First Responder" sceneMemberID="firstResponder"/>

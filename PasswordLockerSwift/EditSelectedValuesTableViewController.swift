@@ -93,14 +93,6 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    // MARK: - UITextView Delegate
-    
-//    func textViewDidChange(textView: UITextView) {
-//        var frame = self.editTextView.frame
-//        frame.size.height = self.editTextView.contentSize.height
-//        self.editTextView.frame = frame
-//    }
-    
     // MARK: - UITextField Delegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
