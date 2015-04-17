@@ -70,7 +70,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     }
     
     @IBAction func viewTapped(sender: AnyObject) {
-        println("View Tapped")
         passwordTextField.resignFirstResponder()
     }
     

@@ -14,7 +14,7 @@ struct Constants {
     static let FIRST_RUN = false
     
     // For not making change in appDelegate
-    static let AUTHENTICATION = false
+    static let AUTHENTICATION = true
     
     // For Debugging and testing at developing
     static let DEBUG = false

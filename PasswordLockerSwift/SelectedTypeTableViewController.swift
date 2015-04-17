@@ -143,13 +143,11 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
             let context = self.fetchedResultsController.managedObjectContext
-            let objectToBeDeleted: SavedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as! SavedObject
             
+            let objectToBeDeleted: SavedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as! SavedObject
             let relationships = objectToBeDeleted.mutableSetValueForKey("rows")
             
             context.deleteObject(objectToBeDeleted)
-//            relationships.removeObject(objectToBeDeleted)
-
             for row in relationships {
                 context.deleteObject(row as! NSManagedObject)
             }
