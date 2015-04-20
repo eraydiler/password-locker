@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="bxk-tk-C1f">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIf-ia-jvo">
                                 <rect key="frame" x="46" y="304" width="44" height="30"/>
                                 <state key="normal" title="Delete">
@@ -53,7 +56,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appname" translatesAutoresizingMaskIntoConstraints="NO" id="Y8i-oY-o6d">
                                         <rect key="frame" x="215" y="125" width="138" height="22"/>
                                     </imageView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFK-ZQ-axM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFK-ZQ-axM">
                                         <rect key="frame" x="263" y="160" width="42" height="30"/>
                                         <state key="normal" title="check">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -96,6 +99,7 @@
                         <color key="backgroundColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bxk-tk-C1f" secondAttribute="bottom" id="2dR-GT-iQ3"/>
                             <constraint firstItem="Zze-ii-bdg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="30" id="87c-j0-rCL"/>
                             <constraint firstItem="v2L-xk-H47" firstAttribute="leading" secondItem="Zze-ii-bdg" secondAttribute="trailing" constant="8" id="8i4-fZ-ff2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="u4q-q4-7lW" secondAttribute="trailing" constant="30" id="97B-C7-p4y"/>
@@ -112,10 +116,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="cbn-JZ-9Q5" secondAttribute="trailing" constant="30" id="Lld-LC-jBd"/>
                             <constraint firstItem="cbn-JZ-9Q5" firstAttribute="top" secondItem="v2L-xk-H47" secondAttribute="bottom" constant="10" id="NgJ-VO-nQK"/>
                             <constraint firstItem="v2L-xk-H47" firstAttribute="top" secondItem="iXH-lg-hnd" secondAttribute="bottom" id="V6d-b4-764"/>
+                            <constraint firstItem="bxk-tk-C1f" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Y9A-U7-deK"/>
                             <constraint firstItem="iXH-lg-hnd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="cSY-Y5-0s4"/>
+                            <constraint firstItem="bxk-tk-C1f" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="ddM-oS-SzS"/>
                             <constraint firstItem="u4q-q4-7lW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="30" id="eqk-ea-s3p"/>
                             <constraint firstItem="Zze-ii-bdg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="30" id="ez6-k7-ujB"/>
                             <constraint firstItem="v2L-xk-H47" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="250" id="h9s-Jg-b9j"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bxk-tk-C1f" secondAttribute="trailing" constant="-16" id="hGO-vN-afE"/>
                             <constraint firstItem="PIf-ia-jvo" firstAttribute="top" secondItem="u4q-q4-7lW" secondAttribute="bottom" constant="1" id="i5T-Lc-Jdo"/>
                             <constraint firstItem="cbn-JZ-9Q5" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="k1o-f8-m2f"/>
                             <constraint firstItem="iXH-lg-hnd" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="nZM-fh-ajP"/>
@@ -153,7 +160,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2832" y="368"/>
+            <point key="canvasLocation" x="2876" y="350"/>
         </scene>
         <!--Web Type Table View Controller-->
         <scene sceneID="pzf-4J-y2t">
@@ -3978,6 +3985,7 @@
         <image name="add" width="29" height="29"/>
         <image name="amazon" width="20" height="20"/>
         <image name="appname" width="138" height="22"/>
+        <image name="background" width="375" height="667"/>
         <image name="bankAccount" width="20" height="15"/>
         <image name="creditCard" width="18" height="13"/>
         <image name="database" width="20" height="20"/>

@@ -16,11 +16,18 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     var managedObjectContext: NSManagedObjectContext?
     
-    let kPasswordKey="PassLock";
+    let kPasswordKey="PassLock"
+    
+    func configureView() {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.delegate = self
+        configureView()
+//        (checkPassword()) ? println("true") : println("false")
+        (checkPassword()) ? println("true") : println("false")
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,6 +113,11 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             let categoriesVC = nav.topViewController as! CategoriesTableViewController
             categoriesVC.managedObjectContext = self.managedObjectContext
         }
+    }
+    
+    // Helper Methods
+    func checkPassword() -> Bool {
+        return (KeychainWrapper.stringForKey(kPasswordKey) != nil)
     }
 }
 
