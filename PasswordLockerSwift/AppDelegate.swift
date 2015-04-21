@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Constants.AUTHENTICATION {
             
             // Set managedObjectContext for view controllers
-            let authenticationController = self.window!.rootViewController as! AuthenticationViewController
+            let authenticationController = self.window!.rootViewController as! SplashViewController
             authenticationController.managedObjectContext = self.managedObjectContext
             
         } else {

@@ -16,18 +16,17 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     var managedObjectContext: NSManagedObjectContext?
     
-    let kPasswordKey="PassLock"
+    let kPasswordKey = "PassLock"
     
     func configureView() {
-        
+        passwordTextField.delegate = self
+        self.passwordTextField.setValue(UIColor.grayColor(), forKeyPath: "_placeholderLabel.textColor")
+        self.passwordTextField.tintColor = UIColor.whiteColor()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordTextField.delegate = self
         configureView()
-//        (checkPassword()) ? println("true") : println("false")
-        (checkPassword()) ? println("true") : println("false")
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,15 +60,26 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             // show alert
             let alertController = UIAlertController(title: "Password Removed", message: "Your password is removed successfully", preferredStyle: .Alert)
             
-            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+
             alertController.addAction(defaultAction)
+            presentViewController(alertController, animated: true, completion: nil)            
             
-            presentViewController(alertController, animated: true, completion: nil)
         }
         else {
             println("Error when removing")
         }
     }
+    /*
+    let alertView = UIAlertController(title: "You need to log in first", message: "To access the special features of the app you need to log in first.", preferredStyle: .Alert)
+    alertView.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (alertAction) -> Void in
+    logUserIn()
+    }))
+    alertView.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+    presentViewController(alertView, animated: true, completion: nil)
+    */
     
     @IBAction func checkButtonPressed(sender: AnyObject) {
         let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)
