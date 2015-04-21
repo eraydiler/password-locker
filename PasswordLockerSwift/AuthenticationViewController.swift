@@ -91,6 +91,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     }
     
     // MARK: - UITextField Delegate
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.isEqual(passwordTextField) {
             let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)

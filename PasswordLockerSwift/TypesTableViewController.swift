@@ -35,6 +35,12 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         
         configureView()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        if self.category?.name == "Note" {
+            self.performSegueWithIdentifier("toValuesTVCSegue", sender: nil)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,7 +119,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         let indexPath = self.tableView.indexPathForSelectedRow()
         let type = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Type
         
-        if segue.identifier == "toAccountValuesTVCSegue" {
+        if segue.identifier == "toValuesTVCSegue" {
             let targetVC = segue.destinationViewController as! ValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category

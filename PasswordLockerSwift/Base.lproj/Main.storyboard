@@ -59,7 +59,7 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iXH-lg-hnd">
                                 <rect key="frame" x="16" y="40" width="568" height="230"/>
@@ -1054,13 +1054,7 @@
                             <outlet property="delegate" destination="uOe-fI-r19" id="x4v-Dy-NyE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add" id="3Ns-Od-2CX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="r37-GI-sfy">
-                            <connections>
-                                <action selector="addBarButtonTouched:" destination="uOe-fI-r19" id="f6b-2i-lAe"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Add" id="3Ns-Od-2CX"/>
                     <connections>
                         <segue destination="aWD-sI-9aa" kind="show" identifier="toNoteTypeTVCSegue" id="Uzd-2o-ph4"/>
                         <segue destination="7fz-YA-aGB" kind="show" identifier="toTypesTVCSegue" id="XFD-Wr-bfu"/>
@@ -1109,7 +1103,7 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
-                                    <segue destination="a6e-zU-uwA" kind="show" identifier="toAccountValuesTVCSegue" id="lJJ-3b-MMI"/>
+                                    <segue destination="a6e-zU-uwA" kind="show" identifier="toValuesTVCSegue" id="lJJ-3b-MMI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -3569,11 +3563,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wVe-Mo-em0">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="SmH-rD-XbJ">
-                            <connections>
-                                <action selector="saveBarButtonPressed:" destination="J5o-E9-0LD" id="XOv-1R-jNq"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="SmH-rD-XbJ"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Z8-Kf-3Ke" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4005,7 +3995,7 @@
                                 <rect key="frame" x="63" y="270" width="521" height="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmc-Fk-0gw">
                                 <rect key="frame" x="16" y="40" width="568" height="230"/>
@@ -4088,13 +4078,13 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="qez-LD-q2c"/>
                                 <exclude reference="Foq-LG-z6s"/>
+                                <exclude reference="qez-LD-q2c"/>
                                 <exclude reference="ecp-V9-BZz"/>
                                 <exclude reference="iAW-9b-GQQ"/>
-                                <exclude reference="PLw-Qm-Ufd"/>
-                                <exclude reference="OEX-ad-9xF"/>
                                 <exclude reference="KcA-H5-K6W"/>
+                                <exclude reference="OEX-ad-9xF"/>
+                                <exclude reference="PLw-Qm-Ufd"/>
                                 <exclude reference="qEf-Oi-az3"/>
                             </mask>
                         </variation>
@@ -4155,6 +4145,6 @@
         <image name="youtube" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gsq-VG-8ET"/>
+        <segue reference="uKA-R8-01d"/>
     </inferredMetricsTieBreakers>
 </document>
