@@ -3478,7 +3478,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ValueCell" id="KH2-vd-ZnX">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ValueCell" id="KH2-vd-ZnX">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KH2-vd-ZnX" id="itG-c7-CDd">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -3492,7 +3492,7 @@
                                             <color key="textColor" red="0.0" green="0.26538480279999999" blue="0.55622632579999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjM-tJ-d41">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjM-tJ-d41">
                                             <rect key="frame" x="142" y="11" width="450" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -3528,23 +3528,23 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell2" rowHeight="392" id="F2x-Ce-ud2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell2" rowHeight="44" id="F2x-Ce-ud2">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F2x-Ce-ud2" id="YhT-Mp-yal">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNk-A7-8fa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="384"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="KNk-A7-8fa" firstAttribute="leading" secondItem="YhT-Mp-yal" secondAttribute="leading" id="4Eu-b1-WUl"/>
-                                        <constraint firstItem="KNk-A7-8fa" firstAttribute="bottom" secondItem="YhT-Mp-yal" secondAttribute="bottomMargin" id="WNR-Cf-b1E"/>
-                                        <constraint firstItem="KNk-A7-8fa" firstAttribute="top" secondItem="YhT-Mp-yal" secondAttribute="top" id="Wv3-AJ-Pqs"/>
-                                        <constraint firstAttribute="trailing" secondItem="KNk-A7-8fa" secondAttribute="trailing" id="vJ0-7W-U8X"/>
+                                        <constraint firstItem="KNk-A7-8fa" firstAttribute="top" secondItem="YhT-Mp-yal" secondAttribute="topMargin" id="Lgd-7Z-xDQ"/>
+                                        <constraint firstItem="KNk-A7-8fa" firstAttribute="leading" secondItem="YhT-Mp-yal" secondAttribute="leadingMargin" id="TUj-p2-1GC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="KNk-A7-8fa" secondAttribute="trailing" id="YDg-iC-LGo"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KNk-A7-8fa" secondAttribute="bottom" id="ZNn-mt-1Ot"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -3568,7 +3568,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4h-m8-ECT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6385" y="3"/>
+            <point key="canvasLocation" x="6363" y="-120"/>
         </scene>
         <!--Edit Values Table View Controller-->
         <scene sceneID="bk6-Yo-jPa">
@@ -3632,7 +3632,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBB-20-w8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7052" y="-117"/>
+            <point key="canvasLocation" x="7054" y="-120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zji-uH-7hu">
@@ -3705,7 +3705,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ValueCell" id="WTq-pc-OHc">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ValueCell" id="WTq-pc-OHc">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WTq-pc-OHc" id="uk2-uk-bqH">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -3719,7 +3719,7 @@
                                             <color key="textColor" red="0.0" green="0.26538480279999999" blue="0.55622632579999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58W-x4-tOK">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58W-x4-tOK">
                                             <rect key="frame" x="142" y="11" width="450" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="highlightedColor"/>
@@ -4019,7 +4019,7 @@
         <image name="youtube" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uKA-R8-01d"/>
-        <segue reference="lJJ-3b-MMI"/>
+        <segue reference="gsq-VG-8ET"/>
+        <segue reference="InE-eZ-04Z"/>
     </inferredMetricsTieBreakers>
 </document>
