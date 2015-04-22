@@ -208,7 +208,6 @@ class DataFactory: NSObject {
         typeNote.imageName = "note"
         typeNote.category = categoryNote
         
-        
         // MARK: - Rows
         
         // Generic Account header row
@@ -448,7 +447,7 @@ class DataFactory: NSObject {
         rowNote.key = "note"
         rowNote.value = "No Note"
         rowNote.section = "2"
-        rowNote.types = NSSet(array: Array<Type>([typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeSoftwrLcnc, typeWirelessRtr, typeServer, typeRegularMail, typeGmail, typeHotmail, typeYahooMail, typeBankAccount, typeID, typePassport, typeRegular, typeFacebook, typeGoogle, typeTwitter, typeInstagram, typeFlickr, typeYoutube, typeLinkedin, typeYahoo, typePaypal, typeAmazon, typeEbay, typeWordpress]))
+        rowNote.types = NSSet(array: Array<Type>([typeGenericAcc, typeInstnMssngr, typeDatabase, typeFtpServer, typeSoftwrLcnc, typeWirelessRtr, typeServer, typeRegularMail, typeGmail, typeHotmail, typeYahooMail, typeBankAccount, typeID, typePassport, typeRegular, typeFacebook, typeGoogle, typeTwitter, typeInstagram, typeFlickr, typeYoutube, typeLinkedin, typeYahoo, typePaypal, typeAmazon, typeEbay, typeWordpress, typeNote]))
         
         var rowID: Row = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
         rowID.key = "ID"

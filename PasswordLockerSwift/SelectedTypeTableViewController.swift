@@ -170,7 +170,11 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         atIndexPath indexPath: NSIndexPath) {
         
             let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as! SavedObject
-            cell.textLabel?.text = savedObject.name
+            //            cell.textLabel?.text = savedObject.name
+            let label = cell.contentView.subviews[0] as! UILabel
+            label.text = savedObject.name
+            let imageView = cell.contentView.subviews[1] as! UIImageView
+            imageView.image = UIImage(named: savedObject.type.imageName)
     }
     
     // MARK: - Navigation

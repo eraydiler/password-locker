@@ -105,7 +105,8 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Category
         
         if category.name == "Note" {
-            self.performSegueWithIdentifier("toNoteTypeTVCSegue", sender: nil)
+//            self.performSegueWithIdentifier("toNoteTypeTVCSegue", sender: nil)
+            self.performSegueWithIdentifier("toValuesTVCSegue", sender: nil)
         } else {
             self.performSegueWithIdentifier("toTypesTVCSegue", sender: nil)
         }
@@ -125,10 +126,19 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
             let targetVC = segue.destinationViewController as! TypesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = category
-        } else
+        } /*else
         if segue.identifier == "toNoteTypeTVCSegue" {
             let targetVC = segue.destinationViewController as! NoteTypeTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
+        }*/ else
+            if segue.identifier == "toValuesTVCSegue" {
+                let targetVC = segue.destinationViewController as! ValuesTableViewController
+                targetVC.managedObjectContext = self.managedObjectContext
+                targetVC.category = category
+                targetVC.delegate = self.tabBarController as! TabBarController
+
+                let type = getNoteType(category.types.allObjects as! [Type])
+                targetVC.type = type
         }
     }
     
@@ -147,8 +157,13 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
             titleLabel.text = category.name
     }
     
-    // Check Saved Data
-    func checkSavedObject() {
-        
+    // MARK: - Helper Methods
+    func getNoteType(types: [Type]) -> Type {
+        for type in types {
+            if type.name == "Note" {
+                return type
+            }
+        }
+        return types[0]
     }
 }

@@ -96,13 +96,19 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         -> UITableViewCell {
 
             var reuseIdentifier: String!
+            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
             
-            if (indexPath.section == 0) {
+            if (row.section == "0") {
                 reuseIdentifier = "TitleCell"
-            } else if (indexPath.section == 1) {
+            } else if (row.section == "1") {
                 reuseIdentifier = "ValueCell"
             } else {
-                reuseIdentifier = "NoteCell"
+//                if self.category?.name == "Note" {
+//                    reuseIdentifier = "NoteCell2"
+//                } else {
+//                    reuseIdentifier = "NoteCell"
+//                }
+                (self.category?.name != "Note") ? (reuseIdentifier = "NoteCell") : (reuseIdentifier = "NoteCell2")
             }
             var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
             configureCell(cell, atIndexPath: indexPath)
@@ -113,7 +119,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         if indexPath.section == 0 {
             return 68.0
         }
-        return 44.0
+        return (category?.name != "Note") ? (44.0) : (250.0)
     }
     
     // MARK: - Table view delegate
@@ -221,20 +227,20 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
 //            let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
             let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
             
-            switch (indexPath.section) {
-            case 0:
+            switch (row.section/*indexPath.section*/) {
+            case "0":
                 let imageView = cell.contentView.subviews[0] as! UIImageView
                 var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
                 imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
                 break;
-            case 1:
+            case "1":
                 var keyLabel = cell.contentView.subviews[0] as! UILabel
                 var valueLabel = cell.contentView.subviews[1] as! UILabel
                 keyLabel.text = row.key
                 valueLabel.text = row.value
                 break;
-            case 2:
+            case "2":
                 var noteLabel = cell.contentView.subviews[0] as! UILabel
                 if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }
                 noteLabel.text = row.value

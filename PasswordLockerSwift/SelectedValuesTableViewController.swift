@@ -157,10 +157,11 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var reuseIdentifier: String!
-        
-        if (indexPath.section == 0) {
+        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
+
+        if (sectionsInfo.indexTitle == "0") {
             reuseIdentifier = "TitleCell"
-        } else if (indexPath.section == 1) {
+        } else if (sectionsInfo.indexTitle == "1") {
             reuseIdentifier = "ValueCell"
         } else {
             reuseIdentifier = "NoteCell"
@@ -194,7 +195,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         if indexPath.section == 0 {
             return 68.0
         }
-        return 44.0
+        return (self.category?.name != "Note") ? (44.0) : (250.0)
     }
     
     // MARK: - Table view delegate
@@ -217,12 +218,13 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     func rowValueChanged() {
         
         let indexPath = self.tableView.indexPathForSelectedRow()
+        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath!.section]
         
         var reuseIdentifier: String! = nil
-        if indexPath?.section == 0 {
+        if sectionsInfo.indexTitle == "0" {
             reuseIdentifier = "TitleCell"
         }
-        else if indexPath?.section == 1 {
+        else if sectionsInfo.indexTitle == "1" {
             reuseIdentifier = "ValueCell"
         }
         else {
@@ -273,9 +275,10 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         atIndexPath indexPath: NSIndexPath) {
             
             let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
+            let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
             
-            switch (indexPath.section) {
-            case 0:
+            switch (sectionsInfo.indexTitle) {
+            case "0":
                 
                 if let imageView = cell.contentView.subviews[0] as? UIImageView {
                     imageView.image = UIImage(named: row.key)
@@ -294,7 +297,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
 //                imageView.image = UIImage(named: row.key)
 //                titleLabel.text = row.value                
                 break;
-            case 1:
+            case "1":
                 
                 if let keyLabel = cell.contentView.subviews[0] as? UILabel {
                     keyLabel.text = row.key
@@ -314,7 +317,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
 //                valueLabel.text = row.value
                 
                 break;
-            case 2:
+            case "2":
                 
                 if let noteLabel = cell.contentView.subviews[0] as? UILabel {
                     if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }

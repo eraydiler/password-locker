@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CreatePasswordViewController: UIViewController {
+class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     let kPasswordKey = "PassLock"
     
     @IBOutlet weak var passwordTextField: UITextField!
@@ -18,6 +18,7 @@ class CreatePasswordViewController: UIViewController {
     func configureView() {
         self.passwordTextField.setValue(UIColor.grayColor(), forKeyPath: "_placeholderLabel.textColor")
         self.passwordTextField.tintColor = UIColor.grayColor()
+        self.passwordTextField.delegate = self
     }
     
     override func viewDidLoad() {
@@ -34,7 +35,11 @@ class CreatePasswordViewController: UIViewController {
     }
     
     // MARK: - IBActions
+    
     @IBAction func addPassLockButtonPressed(sender: AnyObject) {
+        
+        if self.passwordTextField.text == "" { return }
+
         let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text, forKey: kPasswordKey)
         if isSaved {
             println("Saved Successfully")
@@ -50,7 +55,30 @@ class CreatePasswordViewController: UIViewController {
             presentViewController(alertController, animated: true, completion: nil)
         }
         else { println("Error when saving") }
+    }
+    
+    // MARK: - UITextField Delegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         
+        if textField.text == "" { return false }
+        
+        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text, forKey: kPasswordKey)
+        if isSaved {
+            println("Saved Successfully")
+            
+            // show alert
+            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
+                self.performSegueWithIdentifier("toAuthenticationVCSegue", sender: self)
+            })
+            alertController.addAction(okAction)
+            
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+        else { println("Error when saving") }
+        return false
     }
     
     // MARK: - Navigation

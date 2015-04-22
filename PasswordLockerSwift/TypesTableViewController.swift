@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class TypesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    
+    let TAG = "TypesTableViewController"
     // set by AppDelegate on application startup
     var managedObjectContext: NSManagedObjectContext?
     
@@ -26,25 +26,12 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         configureView()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if self.category?.name == "Note" {
-            self.performSegueWithIdentifier("toValuesTVCSegue", sender: nil)
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        println(TAG + "memory warning received")
     }
     
     // MARK: - Fetched results controller
@@ -79,7 +66,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         // perform initial model fetch
         var e: NSError?
         if !self._fetchedResultsController!.performFetch(&e) {
-            println("fetch error: \(e!.localizedDescription)")
+            println(TAG + " fetch error: \(e!.localizedDescription)")
             abort();
         }
         

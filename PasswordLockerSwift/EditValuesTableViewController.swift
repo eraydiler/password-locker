@@ -99,8 +99,7 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
         delegate.rowValueChanged()
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
-    
+        
     // MARK: - UITextField Delegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
