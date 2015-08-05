@@ -38,9 +38,9 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             self.rows = rows
             
             // Sort by section
-            self.rows?.sort({$0.section < $1.section})
+            self.rows?.sortInPlace({$0.section < $1.section})
         } else {
-            println("\(TAG) no row found")
+            print("\(TAG) no row found")
             abort()
         }
         self.tableView.rowHeight = 44.0
@@ -59,18 +59,18 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     override func viewWillDisappear(animated: Bool) {
         
         if isBackTouched {
-            println("\(TAG) back pressed")
+            print("\(TAG) back pressed")
         }
         
         if managedObjectContext!.hasChanges  && isBackTouched {
             rollBack()
-            println("\(TAG) Changes rolled back")
+            print("\(TAG) Changes rolled back")
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("\(TAG) memory warning")
+        print("\(TAG) memory warning", appendNewline: false)
     }
     
     // MARK: - FetchedResultsController
@@ -98,8 +98,11 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         
         // perform initial model fetch
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("\(TAG) fetch error: \(e!.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("\(TAG) fetch error: \(e!.localizedDescription)")
             abort();
         }
         
@@ -115,28 +118,26 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     }
     
     func controller(controller: NSFetchedResultsController,
-        didChangeObject object: AnyObject,
+        didChangeObject object: NSManagedObject,
         atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {
             switch type {
             case .Insert:
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                println("\(TAG) coredata insert")
+                print("\(TAG) coredata insert")
             case .Update:
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
                 self.configureCell(cell!, atIndexPath: indexPath!)
                 self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                println("\(TAG) coredata update")
+                print("\(TAG) coredata update")
             case .Move:
-                println("\(TAG) coredata move")
+                print("\(TAG) coredata move")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             case .Delete:
-                println("\(TAG) coredata delete")
+                print("\(TAG) coredata delete")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            default:
-                return
             }
     }
     
@@ -166,7 +167,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         } else {
             reuseIdentifier = "NoteCell"
         }
-        var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) 
         configureCell(cell, atIndexPath: indexPath)
 
         return cell
@@ -174,21 +175,42 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![section]
+//        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![section]
+//        
+//        switch (sectionsInfo.indexTitle) {
+//        case "0":
+//            return "Title Header"
+//            
+//        case "1":
+//            return "Values Header"
+//            
+//        case "2":
+//            return "Notes Header"
+//            
+//        default:
+//            return nil
+//        }
         
-        switch (sectionsInfo.indexTitle) {
-        case "0":
-            return "Title Header"
+        if let sections = self.fetchedResultsController.sections {
+            let currentSection = sections[section] as NSFetchedResultsSectionInfo
             
-        case "1":
-            return "Values Header"
-            
-        case "2":
-            return "Notes Header"
-            
-        default:
-            return nil
+            switch (currentSection.indexTitle!) {
+            case "0":
+                return "Title Header"
+                
+            case "1":
+                return "Values Header"
+                
+            case "2":
+                return "Notes Header"
+                
+            default:
+                return nil
+            }
+
         }
+        
+        return nil
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -217,7 +239,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     func rowValueChanged() {
         
-        let indexPath = self.tableView.indexPathForSelectedRow()
+        let indexPath = self.tableView.indexPathForSelectedRow
         let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath!.section]
         
         var reuseIdentifier: String! = nil
@@ -231,7 +253,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             reuseIdentifier = "NoteCell"
         }
         
-        if let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath!) as? UITableViewCell
+        if let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath!)
         {
             configureCell(cell, atIndexPath: indexPath!)
         }
@@ -246,14 +268,14 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     }
     
     func backBarButtonTouched(sender: UIBarButtonItem) {
-        println("\(TAG) back clicked")
+        print("\(TAG) back clicked")
     }
     
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let indexPath = self.tableView.indexPathForSelectedRow()      
+//        let indexPath = self.tableView.indexPathForSelectedRow      
         
         if segue.identifier == "toEditSelectedValuesTVCSegue" {
             
@@ -275,63 +297,64 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         atIndexPath indexPath: NSIndexPath) {
             
             let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
-            let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
-            
-            switch (sectionsInfo.indexTitle) {
-            case "0":
+            if let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section] {
                 
-                if let imageView = cell.contentView.subviews[0] as? UIImageView {
-                    imageView.image = UIImage(named: row.key)
-                } else {
-                    println(TAG + " " + "imageView not found")
+                switch (sectionsInfo.indexTitle!!) {
+                case "0":
+                    
+                    if let imageView = cell.contentView.subviews[0] as? UIImageView {
+                        imageView.image = UIImage(named: row.key)
+                    } else {
+                        print(TAG + " " + "imageView not found")
+                    }
+                    
+                    if let titleLabel = cell.contentView.subviews[1].subviews[0] as? UILabel {
+                        titleLabel.text = row.value
+                    } else {
+                        print(TAG + " " + "titleLabel not found")
+                    }
+                    
+                    //                let imageView = cell.contentView.subviews[0] as! UIImageView
+                    //                var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
+                    //                imageView.image = UIImage(named: row.key)
+                    //                titleLabel.text = row.value
+                    break;
+                case "1":
+                    
+                    if let keyLabel = cell.contentView.subviews[0] as? UILabel {
+                        keyLabel.text = row.key
+                    } else {
+                        print(TAG + " " + "keyLabel not found")
+                    }
+                    
+                    if let valueLabel = cell.contentView.subviews[1] as? UILabel {
+                        valueLabel.text = row.value
+                    } else {
+                        print(TAG + " " + "valueLabel not found")
+                    }
+                    
+                    //                var keyLabel = cell.contentView.subviews[0] as! UILabel
+                    //                var valueLabel = cell.contentView.subviews[1] as! UILabel
+                    //                keyLabel.text = row.key
+                    //                valueLabel.text = row.value
+                    
+                    break;
+                case "2":
+                    
+                    if let noteLabel = cell.contentView.subviews[0] as? UILabel {
+                        if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }
+                        noteLabel.text = row.value
+                    } else {
+                        print(TAG + " " + "noteLabel not found")
+                    }
+                    
+                    //                var noteLabel = cell.contentView.subviews[0] as! UILabel
+                    //                noteLabel.text = row.value
+                    break;
+                    
+                default:
+                    break;
                 }
-                
-                if let titleLabel = cell.contentView.subviews[1].subviews[0] as? UILabel {
-                    titleLabel.text = row.value
-                } else {
-                    println(TAG + " " + "titleLabel not found")
-                }
-
-//                let imageView = cell.contentView.subviews[0] as! UIImageView
-//                var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
-//                imageView.image = UIImage(named: row.key)
-//                titleLabel.text = row.value                
-                break;
-            case "1":
-                
-                if let keyLabel = cell.contentView.subviews[0] as? UILabel {
-                    keyLabel.text = row.key
-                } else {
-                    println(TAG + " " + "keyLabel not found")
-                }
-                
-                if let valueLabel = cell.contentView.subviews[1] as? UILabel {
-                    valueLabel.text = row.value
-                } else {
-                    println(TAG + " " + "valueLabel not found")
-                }
-                
-//                var keyLabel = cell.contentView.subviews[0] as! UILabel
-//                var valueLabel = cell.contentView.subviews[1] as! UILabel
-//                keyLabel.text = row.key
-//                valueLabel.text = row.value
-                
-                break;
-            case "2":
-                
-                if let noteLabel = cell.contentView.subviews[0] as? UILabel {
-                    if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }
-                    noteLabel.text = row.value
-                } else {
-                    println(TAG + " " + "noteLabel not found")
-                }
-                
-//                var noteLabel = cell.contentView.subviews[0] as! UILabel
-//                noteLabel.text = row.value
-                break;
-                
-            default:
-                break;
             }
     }
     
@@ -350,12 +373,15 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         
         var e: NSError?
         if let moc = self.managedObjectContext {
-            if !moc.save(&e) {
-                println("\(TAG) save error: \(e!.localizedDescription)")
+            do {
+                try moc.save()
+            } catch let error as NSError {
+                e = error
+                print("\(TAG) save error: \(e!.localizedDescription)")
                 abort()
             }
         } else {
-            println("\(TAG) managedobjectcontext not found")
+            print("\(TAG) managedobjectcontext not found")
             abort()
         }
         

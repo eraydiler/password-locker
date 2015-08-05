@@ -40,9 +40,9 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         
         if self.passwordTextField.text == "" { return }
 
-        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text, forKey: kPasswordKey)
+        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!, forKey: kPasswordKey)
         if isSaved {
-            println("Saved Successfully")
+            print("Saved Successfully")
             
             // show alert
             let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .Alert)
@@ -54,7 +54,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
             
             presentViewController(alertController, animated: true, completion: nil)
         }
-        else { println("Error when saving") }
+        else { print("Error when saving") }
     }
     
     // MARK: - UITextField Delegate
@@ -63,9 +63,9 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         
         if textField.text == "" { return false }
         
-        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text, forKey: kPasswordKey)
+        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!, forKey: kPasswordKey)
         if isSaved {
-            println("Saved Successfully")
+            print("Saved Successfully")
             
             // show alert
             let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .Alert)
@@ -77,7 +77,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
             
             presentViewController(alertController, animated: true, completion: nil)
         }
-        else { println("Error when saving") }
+        else { print("Error when saving") }
         return false
     }
     

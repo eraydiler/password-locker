@@ -64,7 +64,7 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("\(TAG) memory warning")
+        print("\(TAG) memory warning", appendNewline: false)
     }
     
     // MARK: - Table view data source
@@ -84,7 +84,7 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
         
         var newValue = String("")
         
-        if self.row?.section != "2" { newValue = editTextField.text }
+        if self.row?.section != "2" { newValue = editTextField.text! }
         else { newValue = editTextView.text }
         
         self.row?.value = newValue

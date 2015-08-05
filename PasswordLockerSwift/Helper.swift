@@ -10,7 +10,7 @@ import UIKit
 
 class Helper: NSObject {
     class func seperatorTopImageView(cell: UITableViewCell) -> UIImageView {
-        let separatorY: CGFloat = cell.frame.size.height
+//        let separatorY: CGFloat = cell.frame.size.height
         let separatorHeight: CGFloat = 1.0 / UIScreen .mainScreen().scale
         let separatorWidth: CGFloat = cell.frame.size.width
         let separatorInset: CGFloat = 15.0

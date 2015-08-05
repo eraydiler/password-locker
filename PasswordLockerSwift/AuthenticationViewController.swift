@@ -36,9 +36,9 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     // MARK: - IBActions
     @IBAction func addPassLockButtonPressed(sender: AnyObject) {
-        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text, forKey: kPasswordKey)
+        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!, forKey: kPasswordKey)
         if isSaved {
-            println("Saved Successfully")
+            print("Saved Successfully")
             
             // show alert
             let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .Alert)
@@ -48,14 +48,14 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             
             presentViewController(alertController, animated: true, completion: nil)
         }
-        else { println("Error when saving") }
+        else { print("Error when saving") }
 
     }
     
     @IBAction func deletePassLockButtonPressed(sender: AnyObject) {
         let isRemoved: Bool = KeychainWrapper.removeObjectForKey(kPasswordKey)
         if isRemoved {
-            println("Removed Successfully")
+            print("Removed Successfully")
             
             // show alert
             let alertController = UIAlertController(title: "Password Removed", message: "Your password is removed successfully", preferredStyle: .Alert)
@@ -69,7 +69,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             
         }
         else {
-            println("Error when removing")
+            print("Error when removing")
         }
     }
     /*
@@ -83,7 +83,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     @IBAction func checkButtonPressed(sender: AnyObject) {
         let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)
-        println("\(retrieveString)")
+        print("\(retrieveString)")
     }
     
     @IBAction func viewTapped(sender: AnyObject) {
@@ -97,7 +97,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)
             if retrieveString == passwordTextField.text {
                 // Success
-                println("Login Successful")
+                print("Login Successful")
                 self.performSegueWithIdentifier("AuthenticationToTabBarController", sender: nil)
                 return true
             } else {

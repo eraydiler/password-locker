@@ -21,7 +21,7 @@ class SplashViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        println(TAG + " receive memory warning")
+        print(TAG + " receive memory warning")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,10 +40,10 @@ class SplashViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toAuthenticationVCSegue" {
-            var authenticationVC = segue.destinationViewController as! AuthenticationViewController
+            let authenticationVC = segue.destinationViewController as! AuthenticationViewController
             authenticationVC.managedObjectContext = self.managedObjectContext
         } else {
-            var createPassVC = segue.destinationViewController as! CreatePasswordViewController
+            let createPassVC = segue.destinationViewController as! CreatePasswordViewController
             createPassVC.managedObjectContext = self.managedObjectContext
         }
     }

@@ -35,7 +35,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        print("\(TAG) MemoryWarning")
+        print("\(TAG) MemoryWarning", appendNewline: false)
     }
     
     // MARK: - Fetched results controller
@@ -61,8 +61,11 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         
         // perform initial model fetch
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("\(TAG) fetch error: \(e!.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("\(TAG) fetch error: \(e!.localizedDescription)")
             abort();
         }
         
@@ -84,28 +87,28 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     - when an existing model is updated
     - when an existing model is deleted */
     func controller(controller: NSFetchedResultsController,
-        didChangeObject object: AnyObject,
+        didChangeObject object: NSManagedObject,
         atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {
             switch type {
             case .Insert:
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                println("\(TAG) coredata insert")
+                print("\(TAG) coredata insert")
             case .Update:
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
                 self.configureCell(cell!, atIndexPath: indexPath!)
                 self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                println("\(TAG) coredata update")
+                print("\(TAG) coredata update")
             case .Move:
-                println("\(TAG) coredata move")
+                print("\(TAG) coredata move")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             case .Delete:
-                println("\(TAG) coredata delete")
+                print("\(TAG) coredata delete")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            default:
-                return
+//            default:
+//                return
             }
     }
     
@@ -130,7 +133,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("selectedCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("selectedCell", forIndexPath: indexPath) 
 
         // Configure the cell...
         configureCell(cell, atIndexPath: indexPath)
@@ -154,12 +157,15 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
             
             var e: NSError?
             if let moc = self.managedObjectContext {
-                if !moc.save(&e) {
-                    println("\(TAG) save error: \(e!.localizedDescription)")
+                do {
+                    try moc.save()
+                } catch let error as NSError {
+                    e = error
+                    print("\(TAG) save error: \(e!.localizedDescription)")
                     abort()
                 }
             } else {
-                println("\(TAG) managedobjectcontext not found")
+                print("\(TAG) managedobjectcontext not found")
                 abort()
             }
             
@@ -181,7 +187,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let indexPath = self.tableView.indexPathForSelectedRow()
+        let indexPath = self.tableView.indexPathForSelectedRow
         let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! SavedObject
         
         if segue.identifier == "toSelectedValuesTVCSegue" {
@@ -206,7 +212,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
             }
             
             for (key, value) in dict {
-                println("\(TAG) key: \(key), value: \(value)")
+                print("\(TAG) key: \(key), value: \(value)")
             }
             
             return title

@@ -65,8 +65,11 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         
         // perform initial model fetch
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("fetch error: \(e!.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("fetch error: \(e!.localizedDescription)")
             abort();
         }
         
@@ -93,7 +96,7 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             var cell: UITableViewCell = UITableViewCell()
-            cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) 
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -101,7 +104,7 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let indexPath = self.tableView.indexPathForSelectedRow()
+        let indexPath = self.tableView.indexPathForSelectedRow
         let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Category
         
         if category.name == "Note" {
@@ -119,7 +122,7 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
 
-        let indexPath = self.tableView.indexPathForSelectedRow()
+        let indexPath = self.tableView.indexPathForSelectedRow
         let category = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Category
         
         if segue.identifier == "toTypesTVCSegue" {
@@ -151,7 +154,7 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
                 as! Category
             
             let imageView = cell.contentView.subviews[0] as! UIImageView
-            var titleLabel = cell.contentView.subviews[1] as! UILabel
+            let titleLabel = cell.contentView.subviews[1] as! UILabel
             
             imageView.image = UIImage(named: category.imageName)
             titleLabel.text = category.name

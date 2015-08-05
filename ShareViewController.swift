@@ -23,22 +23,22 @@ class ShareViewController: UIViewController {
         if sender.titleLabel?.text == "Facebook" {
 
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-                var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 facebookSheet.setInitialText("Hey, \n\n I'm using this awesome app to keep my passwords in secure.\n\nVisit http://eraydiler.com for more.")
                 self.presentViewController(facebookSheet, animated: true, completion: nil)
             } else {
-                var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         } else {
 
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
-                var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 twitterSheet.setInitialText("Hey, \n\n I'm using this awesome app to keep my passwords in secure.\n\nVisit http://eraydiler.com for more.")
                 self.presentViewController(twitterSheet, animated: true, completion: nil)
             } else {
-                var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }

@@ -53,15 +53,18 @@ class TabBarController: UITabBarController,
         let fReq = NSFetchRequest(entityName: "SavedObject")
         
         var e: NSError? = nil
-        if let fResults = self.managedObjectContext?.executeFetchRequest(fReq, error: &e) {
+        do {
+            let fResults = try self.managedObjectContext?.executeFetchRequest(fReq)
             if e != nil {
-                println("\(TAG) fetch error: \(e!.localizedDescription)")
+                print("\(TAG) fetch error: \(e!.localizedDescription)")
                 abort()
             }
             
-            if fResults.count > 0 {
+            if fResults!.count > 0 {
                 createTabs(fResults as! [SavedObject])
             }
+        } catch let error as NSError {
+            e = error
         }
     }
     
@@ -84,15 +87,15 @@ class TabBarController: UITabBarController,
     func addNewTabWithCategory(category: Category) {
         
         // If the tab does not already exist
-        if !contains(self.tabsModel.currentTabs, category.name) {
+        if !self.tabsModel.currentTabs.contains(category.name) {
 
             // Select viewcontroller from storyboard
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let storyBoardID = "\(category.name)TVC"
+//            let storyBoardID = "\(category.name)TVC"
             
-            var navigationController = storyBoard.instantiateViewControllerWithIdentifier("navControllerForSelectedType") as! UINavigationController
+            let navigationController = storyBoard.instantiateViewControllerWithIdentifier("navControllerForSelectedType") as! UINavigationController
             
-            var selectedTypeView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as! SelectedTypeTableViewController
+            let selectedTypeView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as! SelectedTypeTableViewController
             
             // Set selectedTypeView as root view controller
             navigationController.viewControllers[0] = selectedTypeView

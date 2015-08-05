@@ -31,7 +31,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        println(TAG + "memory warning received")
+        print(TAG + "memory warning received")
     }
     
     // MARK: - Fetched results controller
@@ -65,8 +65,11 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         
         // perform initial model fetch
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println(TAG + " fetch error: \(e!.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print(TAG + " fetch error: \(e!.localizedDescription)")
             abort();
         }
         
@@ -94,7 +97,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
             var cell: UITableViewCell = UITableViewCell()
-            cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) 
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -103,7 +106,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let indexPath = self.tableView.indexPathForSelectedRow()
+        let indexPath = self.tableView.indexPathForSelectedRow
         let type = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Type
         
         if segue.identifier == "toValuesTVCSegue" {
@@ -125,7 +128,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
             let type = self.fetchedResultsController.objectAtIndexPath(indexPath)
                 as! Type
             
-            var titleLabel = cell.contentView.subviews[0] as! UILabel
+            let titleLabel = cell.contentView.subviews[0] as! UILabel
             let imageView = cell.contentView.subviews[1] as! UIImageView
             
             titleLabel.text = type.name

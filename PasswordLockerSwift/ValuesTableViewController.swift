@@ -44,18 +44,18 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     override func viewWillDisappear(animated: Bool) {
         
         if isBackTouched {
-            println("\(TAG) back pressed")
+            print("\(TAG) back pressed")
         }
         
         if managedObjectContext!.hasChanges  && isBackTouched {
             rollBack()
-            println("\(TAG) Changes rolled back")
+            print("\(TAG) Changes rolled back")
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        println("\(TAG) Memory Warning received")
+        print("\(TAG) Memory Warning received")
         // Dispose of any resources that can be recreated.
     }
 
@@ -75,7 +75,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionsInfo: AnyObject = self.fetchedResultsController.sections![section]
         
-        switch (sectionsInfo.indexTitle) {
+        switch (sectionsInfo.indexTitle!!) {
         case "0":
             return "Title Header"
             
@@ -110,7 +110,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
 //                }
                 (self.category?.name != "Note") ? (reuseIdentifier = "NoteCell") : (reuseIdentifier = "NoteCell2")
             }
-            var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) 
             configureCell(cell, atIndexPath: indexPath)
             return cell
     }
@@ -165,8 +165,11 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         
         // perform initial model fetch
         var e: NSError?
-        if !self._fetchedResultsController!.performFetch(&e) {
-            println("\(TAG) fetch error: \(e!.localizedDescription)")
+        do {
+            try self._fetchedResultsController!.performFetch()
+        } catch let error as NSError {
+            e = error
+            print("\(TAG) fetch error: \(e!.localizedDescription)")
             abort();
         }
         
@@ -188,28 +191,28 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     - when an existing model is updated
     - when an existing model is deleted */
     func controller(controller: NSFetchedResultsController,
-        didChangeObject object: AnyObject,
+        didChangeObject object: NSManagedObject,
         atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {
             switch type {
             case .Insert:
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                println("\(TAG) coredata insert")
+                print("\(TAG) coredata insert")
             case .Update:
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
                 self.configureCell(cell!, atIndexPath: indexPath!)
                 self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                println("\(TAG) coredata update")
+                print("\(TAG) coredata update")
             case .Move:
-                println("\(TAG) coredata move")
+                print("\(TAG) coredata move")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             case .Delete:
-                println("\(TAG) coredata delete")
+                print("\(TAG) coredata delete")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            default:
-                return
+//            default:
+//                return
             }
     }
     
@@ -230,18 +233,18 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             switch (row.section/*indexPath.section*/) {
             case "0":
                 let imageView = cell.contentView.subviews[0] as! UIImageView
-                var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
+                let titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
                 imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
                 break;
             case "1":
-                var keyLabel = cell.contentView.subviews[0] as! UILabel
-                var valueLabel = cell.contentView.subviews[1] as! UILabel
+                let keyLabel = cell.contentView.subviews[0] as! UILabel
+                let valueLabel = cell.contentView.subviews[1] as! UILabel
                 keyLabel.text = row.key
                 valueLabel.text = row.value
                 break;
             case "2":
-                var noteLabel = cell.contentView.subviews[0] as! UILabel
+                let noteLabel = cell.contentView.subviews[0] as! UILabel
                 if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }
                 noteLabel.text = row.value
                 break;
@@ -255,7 +258,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     
     func rowValueChanged() {
         
-        let indexPath = self.tableView.indexPathForSelectedRow()
+        let indexPath = self.tableView.indexPathForSelectedRow
         
         var reuseIdentifier: String! = nil
         if indexPath?.section == 0 {
@@ -268,7 +271,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             reuseIdentifier = "NoteCell"
         }
         
-        if let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath!) as? UITableViewCell
+        if let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath!)
         {
             configureCell(cell, atIndexPath: indexPath!)
         }
@@ -310,7 +313,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     func save() {
         
         // Backup changed rows before rollBack
-        var fetchedRows = self.fetchedResultsController.fetchedObjects as! [Row]
+        let fetchedRows = self.fetchedResultsController.fetchedObjects as! [Row]
         
         // Get name
         var name = String("")
@@ -322,7 +325,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         rollBack()
         
         // Insert new entity for SavedObject
-        var savedObject = NSEntityDescription.insertNewObjectForEntityForName("SavedObject", inManagedObjectContext: self.managedObjectContext!) as! SavedObject
+        let savedObject = NSEntityDescription.insertNewObjectForEntityForName("SavedObject", inManagedObjectContext: self.managedObjectContext!) as! SavedObject
         
         savedObject.name = name
         savedObject.data = rows
@@ -331,51 +334,60 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         savedObject.category = self.category!
         
         if self.type == nil || self.category == nil {
-            println("\(TAG) nil kaydedildi.")
+            print("\(TAG) nil kaydedildi.")
         }
         
         // Insert new rows
         for row in rows {
             let dict: Dictionary<String, String> = row
             
-            var newRow = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: self.managedObjectContext!) as! Row
+            let newRow = NSEntityDescription.insertNewObjectForEntityForName("Row", inManagedObjectContext: self.managedObjectContext!) as! Row
             
             if let key = dict["key"] {
                 newRow.key = key
-            } else { println("key is not in the dictionary") }
+            } else { print("key is not in the dictionary") }
             
             if let value = dict["value"] {
                 newRow.value = value
-            } else { println("value is not in the dictionary") }
+            } else { print("value is not in the dictionary") }
             
             if let section = dict["section"] {
                 newRow.section = section
-            } else { println("section is not in the dictionary") }
+            } else { print("section is not in the dictionary") }
             
             newRow.savedObject = savedObject
             
-            var manyRelation = savedObject.valueForKeyPath("rows") as! NSMutableSet
+            let manyRelation = savedObject.valueForKeyPath("rows") as! NSMutableSet
             manyRelation.addObject(newRow)
         }
 
         var e: NSError?
 
         if !Constants.TEST {
-            if !managedObjectContext!.save(&e) {
-                println("\(TAG) save error: \(e!.localizedDescription)")
+            do {
+                try managedObjectContext!.save()
+            } catch let error as NSError {
+                e = error
+                print("\(TAG) save error: \(e!.localizedDescription)")
                 abort()
             }
         }
         
         if Constants.TEST {
             let req = NSFetchRequest(entityName: "SavedObject")
-            let fetchArray  = self.managedObjectContext?.executeFetchRequest(req, error: &e)
+            let fetchArray: [AnyObject]?
+            do {
+                fetchArray = try self.managedObjectContext?.executeFetchRequest(req)
+            } catch let error as NSError {
+                e = error
+                fetchArray = nil
+            }
             for savedObject in fetchArray as! [SavedObject] {
                 let arr: Array = savedObject.data
                 for a in arr {
-                    println("\(TAG) \(a)")
+                    print("\(TAG) \(a)")
                 }
-                println()
+                print("")
             }
         }
     }

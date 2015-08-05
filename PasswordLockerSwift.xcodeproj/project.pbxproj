@@ -13,12 +13,12 @@
 		2A438D701A6D66A500101092 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D6F1A6D66A500101092 /* Images.xcassets */; };
 		2A438D731A6D66A500101092 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D711A6D66A500101092 /* LaunchScreen.xib */; };
 		2A438D7F1A6D66A500101092 /* PasswordLockerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D7E1A6D66A500101092 /* PasswordLockerSwiftTests.swift */; };
-		2A438D8B1A6D670500101092 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D8A1A6D670500101092 /* KeychainWrapper.swift */; };
 		2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D901A6D69E500101092 /* AuthenticationViewController.swift */; };
 		2A6E28DD1AB1D74F00A25E73 /* ValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */; };
 		2A78B76A1AD3411C006E34A9 /* TabsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78B7691AD3411C006E34A9 /* TabsModel.swift */; };
 		2A88E8481AF2DCC200CB08C4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */; };
 		2A9300E41A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A9300E21A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld */; };
+		2A9B04A81B728B1E0044870D /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */; };
 		2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA343FA1AB87EFF00819709 /* DataFactory.swift */; };
 		2AA4FDEB1AE5C4AF009D21CC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */; };
 		2AA4FDED1AE5C5B4009D21CC /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4FDEC1AE5C5B4009D21CC /* CreatePasswordViewController.swift */; };
@@ -58,12 +58,12 @@
 		2A438D781A6D66A500101092 /* PasswordLockerSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordLockerSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A438D7D1A6D66A500101092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A438D7E1A6D66A500101092 /* PasswordLockerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordLockerSwiftTests.swift; sourceTree = "<group>"; };
-		2A438D8A1A6D670500101092 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		2A438D901A6D69E500101092 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ValuesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2A78B7691AD3411C006E34A9 /* TabsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsModel.swift; sourceTree = "<group>"; };
 		2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareViewController.swift; path = ../ShareViewController.swift; sourceTree = "<group>"; };
 		2A9300E31A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PasswordLockerSwift.xcdatamodel; sourceTree = "<group>"; };
+		2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		2AA343FA1AB87EFF00819709 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2AA4FDEC1AE5C5B4009D21CC /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		2A438D891A6D66EC00101092 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				2A438D8A1A6D670500101092 /* KeychainWrapper.swift */,
+				2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */,
 				2AF76B461A82B1C500873A92 /* Helper.swift */,
 				2AD367191ACEB98100538F6E /* Constants.swift */,
 			);
@@ -286,7 +286,9 @@
 		2A438D581A6D66A500101092 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Eray;
 				TargetAttributes = {
 					2A438D5F1A6D66A500101092 = {
@@ -347,7 +349,6 @@
 				2AD3671A1ACEB98100538F6E /* Constants.swift in Sources */,
 				2AC23C9E1AD5DD3D00DFAAE1 /* SavedObject.swift in Sources */,
 				2ACDCF041AD5B8B800D2CAEB /* SelectedValuesTableViewController.swift in Sources */,
-				2A438D8B1A6D670500101092 /* KeychainWrapper.swift in Sources */,
 				2AA4FDEB1AE5C4AF009D21CC /* SplashViewController.swift in Sources */,
 				2AA4FDED1AE5C5B4009D21CC /* CreatePasswordViewController.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
@@ -364,6 +365,7 @@
 				2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */,
 				2A6E28DD1AB1D74F00A25E73 /* ValuesTableViewController.swift in Sources */,
 				2AE808301A8146150005E831 /* TypesTableViewController.swift in Sources */,
+				2A9B04A81B728B1E0044870D /* KeychainWrapper.swift in Sources */,
 				2AC23C981AD5DD3C00DFAAE1 /* Row.swift in Sources */,
 				2AF76B471A82B1C500873A92 /* Helper.swift in Sources */,
 			);
@@ -427,6 +429,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -441,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -477,7 +480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -491,6 +494,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PasswordLockerSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -503,6 +507,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PasswordLockerSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -511,16 +516,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = PasswordLockerSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PasswordLockerSwift.app/PasswordLockerSwift";
 			};
@@ -530,12 +535,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = PasswordLockerSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PasswordLockerSwift.app/PasswordLockerSwift";
 			};
