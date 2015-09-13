@@ -191,7 +191,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     - when an existing model is updated
     - when an existing model is deleted */
     func controller(controller: NSFetchedResultsController,
-        didChangeObject object: NSManagedObject,
+        didChangeObject anObject: AnyObject,
         atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {
@@ -211,8 +211,8 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             case .Delete:
                 print("\(TAG) coredata delete")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-//            default:
-//                return
+                //            default:
+                //                return
             }
     }
     

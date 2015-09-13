@@ -70,7 +70,7 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("\(TAG) memory warning", appendNewline: false)
+        print("\(TAG) memory warning", terminator: "")
     }
 
     // MARK: - Table view data source

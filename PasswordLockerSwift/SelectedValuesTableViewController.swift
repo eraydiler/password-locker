@@ -70,7 +70,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("\(TAG) memory warning", appendNewline: false)
+        print("\(TAG) memory warning", terminator: "")
     }
     
     // MARK: - FetchedResultsController
@@ -118,7 +118,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     }
     
     func controller(controller: NSFetchedResultsController,
-        didChangeObject object: NSManagedObject,
+        didChangeObject anObject: AnyObject,
         atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {

@@ -35,7 +35,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        print("\(TAG) MemoryWarning", appendNewline: false)
+        print("\(TAG) MemoryWarning", terminator: "")
     }
     
     // MARK: - Fetched results controller
@@ -87,7 +87,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     - when an existing model is updated
     - when an existing model is deleted */
     func controller(controller: NSFetchedResultsController,
-        didChangeObject object: NSManagedObject,
+        didChangeObject anObject: AnyObject,
         atIndexPath indexPath: NSIndexPath?,
         forChangeType type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {
@@ -107,8 +107,10 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
             case .Delete:
                 print("\(TAG) coredata delete")
                 self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-//            default:
-//                return
+                
+                if self.fetchedResultsController.sections![0].numberOfObjects == 0 {
+                    // TODO: Butun veriler silinmisse view controller i da sil
+                }
             }
     }
     
