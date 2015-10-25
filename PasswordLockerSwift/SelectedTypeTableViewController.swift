@@ -9,11 +9,18 @@
 import UIKit
 import CoreData
 
+protocol SelectedTypeTableViewControllerDelegate {
+    func allDataDeletedForCategory(category: Category)
+}
+
 class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     // set by former controller
     var category: Category?
     var managedObjectContext: NSManagedObjectContext?
+    
+    // delegate to send info to tabBar Controller when there is no more data
+    var delegate: SelectedTypeTableViewControllerDelegate?
     
     let TAG = "SelectedType TVC"
     
@@ -110,6 +117,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
                 
                 if self.fetchedResultsController.sections![0].numberOfObjects == 0 {
                     // TODO: Butun veriler silinmisse view controller i da sil
+                    self.delegate?.allDataDeletedForCategory(self.category!)
                 }
             }
     }

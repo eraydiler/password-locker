@@ -100,6 +100,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A2824C41BA62232008D15EA /* Dependecies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Dependecies;
+			sourceTree = "<group>";
+		};
 		2A438D571A6D66A400101092 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +128,7 @@
 		2A438D621A6D66A500101092 /* PasswordLockerSwift */ = {
 			isa = PBXGroup;
 			children = (
+				2A2824C41BA62232008D15EA /* Dependecies */,
 				2A438D8C1A6D67D200101092 /* View */,
 				2A438D8D1A6D67DA00101092 /* Controller */,
 				2A438D881A6D66C700101092 /* Model */,

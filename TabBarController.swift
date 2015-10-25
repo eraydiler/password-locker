@@ -11,7 +11,8 @@ import CoreData
 
 class TabBarController: UITabBarController,
                         UITabBarControllerDelegate,
-                        ValuesTableViewControllerDelegate {
+                        ValuesTableViewControllerDelegate,
+                        SelectedTypeTableViewControllerDelegate {
     
     // set by AppDelegate
     var managedObjectContext: NSManagedObjectContext?
@@ -40,11 +41,16 @@ class TabBarController: UITabBarController,
     
     // MARK: - UITabBarController Delegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        
     }
     
     // MARK: - ValuesTableViewController Delegate
     func newDataSaved() {
+        configureTabs()
+    }
+    
+    // MARK: - SelectedTypeTableViewController Delegate
+    func allDataDeletedForCategory(category: Category) {
+        removeTabWithCategory(category)
         configureTabs()
     }
     
@@ -68,6 +74,7 @@ class TabBarController: UITabBarController,
         }
     }
     
+    // MARK: Create tabs
     func createTabs(results: [SavedObject]) {
         
         var categoryArray = Array<Category>()
@@ -95,17 +102,20 @@ class TabBarController: UITabBarController,
             
             let navigationController = storyBoard.instantiateViewControllerWithIdentifier("navControllerForSelectedType") as! UINavigationController
             
-            let selectedTypeView = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as! SelectedTypeTableViewController
+            let selectedTypeViewController = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as! SelectedTypeTableViewController
             
             // Set selectedTypeView as root view controller
-            navigationController.viewControllers[0] = selectedTypeView
+            navigationController.viewControllers[0] = selectedTypeViewController
             
             // Set tab bar item
-            selectedTypeView.tabBarItem = UITabBarItem(title: category.name, image: UIImage(named: "tab_\(category.imageName)"), selectedImage: nil)
+            selectedTypeViewController.tabBarItem = UITabBarItem(title: category.name,
+                                                                 image: UIImage(named: "tab_\(category.imageName)"),
+                                                                 selectedImage: nil)
             
             // Set views's properties
-            selectedTypeView.category = category
-            selectedTypeView.managedObjectContext = self.managedObjectContext
+            selectedTypeViewController.category = category
+            selectedTypeViewController.managedObjectContext = self.managedObjectContext
+            selectedTypeViewController.delegate = self
             
             // Add view to tabs
             var tabs = self.viewControllers
@@ -116,6 +126,16 @@ class TabBarController: UITabBarController,
             if tabs != nil {
                 self.setViewControllers(tabs!, animated: true)
             }
+        }
+    }
+    
+    // MARK: Remove Tab
+    func removeTabWithCategory(category: Category) {
+        
+        if let tabIndex = self.tabsModel.currentTabs.indexOf(category.name) {
+            self.tabsModel.currentTabs.removeAtIndex(tabIndex)
+            self.viewControllers?.removeAtIndex(2 + tabIndex)
+            self.setViewControllers(self.viewControllers, animated: true)
         }
     }
 }
