@@ -395,7 +395,7 @@
                                 <rect key="frame" x="145" y="165" width="310" height="125"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMy-x4-q0t">
-                                        <rect key="frame" x="279" y="10" width="21" height="22"/>
+                                        <rect key="frame" x="288" y="5" width="17" height="22"/>
                                         <state key="normal" image="exit"/>
                                         <connections>
                                             <action selector="exitTapped:" destination="2YU-JO-88m" eventType="touchUpInside" id="a2r-SC-hAh"/>
@@ -428,9 +428,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="yMy-x4-q0t" secondAttribute="trailing" constant="10" id="6ze-7N-OJ7"/>
+                                    <constraint firstAttribute="trailing" secondItem="yMy-x4-q0t" secondAttribute="trailing" constant="5" id="6ze-7N-OJ7"/>
                                     <constraint firstAttribute="width" constant="310" id="Az2-C8-mux"/>
-                                    <constraint firstItem="yMy-x4-q0t" firstAttribute="top" secondItem="ska-FJ-fRz" secondAttribute="top" constant="10" id="f6H-mq-ogB"/>
+                                    <constraint firstItem="yMy-x4-q0t" firstAttribute="top" secondItem="ska-FJ-fRz" secondAttribute="top" constant="5" id="f6H-mq-ogB"/>
                                     <constraint firstAttribute="height" constant="125" id="flp-Ds-dxi"/>
                                 </constraints>
                             </view>
@@ -1338,7 +1338,7 @@
         <image name="add" width="29" height="29"/>
         <image name="appname" width="138" height="22"/>
         <image name="background" width="375" height="667"/>
-        <image name="exit" width="21" height="21"/>
+        <image name="exit" width="17" height="15"/>
         <image name="genericAccount" width="20" height="20"/>
         <image name="line" width="263" height="2"/>
         <image name="lock" width="9" height="13"/>
