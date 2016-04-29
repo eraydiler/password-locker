@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="c0h-KH-MKy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="c0h-KH-MKy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -412,7 +412,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOe-6D-StL">
                                 <rect key="frame" x="267" y="141" width="70" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell your friend about this application              Tap Facebook or Twitter button below to share." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJW-Wr-0Jb">
@@ -422,7 +422,7 @@
                                     <constraint firstAttribute="height" constant="80" id="did-wM-DYx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMy-x4-q0t">
@@ -472,7 +472,6 @@
         <!--Selected Type Table View Controller-->
         <scene sceneID="w0j-8w-Nf0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="osR-Kj-r0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="selectedTypeView" id="NFi-iT-ycV" customClass="SelectedTypeTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="A3Y-VL-cLd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -489,7 +488,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDr-sW-aFL">
                                             <rect key="frame" x="8" y="11" width="87" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VhG-Xc-olm">
@@ -524,6 +523,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="HyU-vI-sGg"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="osR-Kj-r0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4982" y="-792"/>
         </scene>
@@ -770,7 +770,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Zji-uH-7hu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9iG-6Z-5QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="navControllerForSelectedType" automaticallyAdjustsScrollViewInsets="NO" id="Ttb-QY-bSc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F5y-4A-Lt9">
@@ -786,13 +785,13 @@
                         <segue destination="vlL-5r-tC5" kind="show" id="b74-ZD-4Sb"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iG-6Z-5QB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4306" y="-792"/>
         </scene>
         <!--Selected Values Table View Controller-->
         <scene sceneID="toH-6N-reQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BZD-NO-Den" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="H4W-hg-za9" customClass="SelectedValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0p1-uo-i06">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -917,13 +916,13 @@
                         <segue destination="tbL-fs-awj" kind="show" identifier="toEditSelectedValuesTVCSegue" id="ZYq-21-2zb"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BZD-NO-Den" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5637" y="-792"/>
         </scene>
         <!--Edit Selected Values Table View Controller-->
         <scene sceneID="GQB-mP-Fjg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fn2-ul-Dbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="tbL-fs-awj" customClass="EditSelectedValuesTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ua6-od-e10">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -985,6 +984,7 @@
                         <outlet property="textViewCell" destination="Zkj-X7-usf" id="A6R-yD-vS9"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fn2-ul-Dbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6292" y="-792"/>
         </scene>
@@ -1022,66 +1022,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmc-Fk-0gw">
                                 <rect key="frame" x="20" y="40" width="560" height="230"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SVh-mp-21L">
-                                        <rect key="frame" x="253" y="14" width="62" height="86"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K6S-VX-EUX">
-                                                <rect key="frame" x="0.0" y="0.0" width="62" height="86"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1oc-P1-PCN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="86"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="86" id="bEN-nT-Kn4"/>
-                                                            <constraint firstAttribute="width" constant="62" id="pxf-Qt-bkB"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="centerX" secondItem="K6S-VX-EUX" secondAttribute="centerX" id="2ri-Lg-XpP"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="leading" secondItem="K6S-VX-EUX" secondAttribute="leading" id="656-6Z-Fd2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1oc-P1-PCN" secondAttribute="trailing" id="9ap-Cq-fXa"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="top" secondItem="K6S-VX-EUX" secondAttribute="top" id="AOh-8o-cC7"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="bottom" secondItem="K6S-VX-EUX" secondAttribute="bottomMargin" id="Ell-2f-5Um"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="top" secondItem="K6S-VX-EUX" secondAttribute="top" id="HZS-Cf-jrg"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="leading" secondItem="K6S-VX-EUX" secondAttribute="leadingMargin" id="JlK-CW-YOl"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="leading" secondItem="K6S-VX-EUX" secondAttribute="leading" id="KCj-AY-JAq"/>
-                                                    <constraint firstAttribute="bottom" secondItem="1oc-P1-PCN" secondAttribute="bottom" id="LFe-GE-qSk"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="trailing" secondItem="K6S-VX-EUX" secondAttribute="trailingMargin" id="Tmk-Ma-JkP"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="leading" secondItem="K6S-VX-EUX" secondAttribute="leading" id="XPA-gd-lY6"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="top" secondItem="K6S-VX-EUX" secondAttribute="top" id="fbY-AT-YT2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1oc-P1-PCN" secondAttribute="trailing" id="hQw-Up-rE0"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="top" secondItem="K6S-VX-EUX" secondAttribute="top" id="mpm-8a-zsl"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="top" secondItem="K6S-VX-EUX" secondAttribute="top" id="oKm-9q-wd4"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="top" secondItem="K6S-VX-EUX" secondAttribute="topMargin" id="vbo-JV-kVI"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="centerY" secondItem="K6S-VX-EUX" secondAttribute="centerY" id="wD3-HW-27a"/>
-                                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="leading" secondItem="K6S-VX-EUX" secondAttribute="leading" id="xFL-Gb-lC2"/>
-                                                    <constraint firstAttribute="bottom" secondItem="1oc-P1-PCN" secondAttribute="bottom" id="zXg-Vs-wec"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="K6S-VX-EUX" secondAttribute="bottom" id="0k9-Sf-ekM"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="leading" secondItem="SVh-mp-21L" secondAttribute="leading" id="23U-0B-gvu"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="top" secondItem="SVh-mp-21L" secondAttribute="topMargin" id="3jy-vR-IHN"/>
-                                            <constraint firstAttribute="trailing" secondItem="K6S-VX-EUX" secondAttribute="trailing" id="7SA-jT-die"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="leading" secondItem="SVh-mp-21L" secondAttribute="leading" id="HW0-DT-U8b"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="bottom" secondItem="SVh-mp-21L" secondAttribute="bottomMargin" id="HzO-wV-OnS"/>
-                                            <constraint firstAttribute="bottom" secondItem="K6S-VX-EUX" secondAttribute="bottom" id="Jvl-MK-Lis"/>
-                                            <constraint firstAttribute="trailing" secondItem="K6S-VX-EUX" secondAttribute="trailing" id="MFI-0p-5QP"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="top" secondItem="SVh-mp-21L" secondAttribute="top" id="WIG-JD-s1r"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="leading" secondItem="SVh-mp-21L" secondAttribute="leading" id="Y8s-rb-g8b"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="top" secondItem="SVh-mp-21L" secondAttribute="top" id="csC-qX-7T3"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="top" secondItem="SVh-mp-21L" secondAttribute="top" id="fBp-hA-9ox"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="trailing" secondItem="SVh-mp-21L" secondAttribute="trailingMargin" id="fdB-TT-OI6"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="centerX" secondItem="SVh-mp-21L" secondAttribute="centerX" id="i96-Lc-PxA"/>
-                                            <constraint firstAttribute="trailing" secondItem="K6S-VX-EUX" secondAttribute="trailing" id="pm0-x5-veO"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="leading" secondItem="SVh-mp-21L" secondAttribute="leading" id="rbF-8s-Fct"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="leading" secondItem="SVh-mp-21L" secondAttribute="leadingMargin" id="sMa-Kx-vT6"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="top" secondItem="SVh-mp-21L" secondAttribute="top" id="seB-IK-IBa"/>
-                                            <constraint firstAttribute="bottom" secondItem="K6S-VX-EUX" secondAttribute="bottom" id="xPs-F9-LMS"/>
-                                            <constraint firstItem="K6S-VX-EUX" firstAttribute="centerY" secondItem="SVh-mp-21L" secondAttribute="centerY" id="zCP-V4-80Z"/>
-                                        </constraints>
-                                    </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appname" translatesAutoresizingMaskIntoConstraints="NO" id="eT1-On-njF">
                                         <rect key="frame" x="211" y="125" width="138" height="22"/>
                                     </imageView>
@@ -1095,14 +1035,21 @@
                                             <action selector="checkButtonPressed:" destination="m5t-dH-CVm" eventType="touchUpInside" id="Z7U-wK-4HZ"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1oc-P1-PCN">
+                                        <rect key="frame" x="249" y="31" width="62" height="86"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86" id="bEN-nT-Kn4"/>
+                                            <constraint firstAttribute="width" constant="62" id="pxf-Qt-bkB"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="eT1-On-njF" firstAttribute="top" secondItem="SVh-mp-21L" secondAttribute="bottom" constant="25" id="Bvg-yS-Wx1"/>
+                                    <constraint firstItem="eT1-On-njF" firstAttribute="top" secondItem="1oc-P1-PCN" secondAttribute="bottom" constant="8" id="8kX-e4-Eoo"/>
                                     <constraint firstAttribute="centerY" secondItem="XZ2-pW-oVE" secondAttribute="centerY" constant="-60" id="CrI-hP-fxb"/>
                                     <constraint firstAttribute="height" constant="114" id="Gho-ys-MQ3"/>
                                     <constraint firstAttribute="centerX" secondItem="XZ2-pW-oVE" secondAttribute="centerX" id="JXp-fI-afA"/>
-                                    <constraint firstItem="SVh-mp-21L" firstAttribute="leading" secondItem="gmc-Fk-0gw" secondAttribute="leading" constant="253" id="QLW-pV-e5o"/>
+                                    <constraint firstItem="1oc-P1-PCN" firstAttribute="centerX" secondItem="eT1-On-njF" secondAttribute="centerX" id="YxP-lZ-8NO"/>
                                     <constraint firstAttribute="centerY" secondItem="eT1-On-njF" secondAttribute="centerY" constant="-21" id="bDJ-Dl-5rv"/>
                                     <constraint firstAttribute="centerX" secondItem="eT1-On-njF" secondAttribute="centerX" id="f26-fW-ZiP"/>
                                     <constraint firstItem="XZ2-pW-oVE" firstAttribute="top" secondItem="eT1-On-njF" secondAttribute="bottom" constant="10" id="t0H-fm-Bx2"/>
@@ -1166,9 +1113,6 @@
                                 <exclude reference="qEf-Oi-az3"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="kf3-9i-43P" appends="YES" id="kNx-bk-EBy"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="xeo-Y4-Oc4" id="9i7-Ak-HJV"/>
@@ -1176,18 +1120,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0A-Fu-H7P" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="kf3-9i-43P">
-                    <connections>
-                        <action selector="viewTapped:" destination="m5t-dH-CVm" id="OmB-X8-0QT"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2120" y="-12"/>
         </scene>
         <!--Selected Type Table View Controller-->
         <scene sceneID="yFp-Qc-aCA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bll-Mk-xQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="AccountTypeView" id="8T1-0m-B3D" customClass="SelectedTypeTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="O3u-gI-rbk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1204,7 +1142,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahQ-e9-dfO">
                                             <rect key="frame" x="8" y="11" width="87" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FZO-B9-1NN">
@@ -1239,13 +1177,13 @@
                         <segue destination="H4W-hg-za9" kind="show" id="1Gb-K5-A7i"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bll-Mk-xQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4982" y="-1436"/>
         </scene>
         <!--Selected Type Table View Controller-->
         <scene sceneID="luo-EF-Uri">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ctk-kF-m9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="EmailTypeView" id="eAK-MX-oWz" customClass="SelectedTypeTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="PqD-e4-7uD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1262,7 +1200,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1n-Eg-Fyp">
                                             <rect key="frame" x="8" y="11" width="87" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZd-al-C2G">
@@ -1297,13 +1235,13 @@
                         <segue destination="H4W-hg-za9" kind="show" id="wGm-wv-Uvd"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ctk-kF-m9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4982" y="-2086"/>
         </scene>
         <!--Selected Type Table View Controller-->
         <scene sceneID="Gq0-ZE-5S8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sIZ-8T-oli" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="NoteTypeView" id="7GS-WU-StS" customClass="SelectedTypeTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="eiT-E0-bMX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1320,7 +1258,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdg-sx-OXH">
                                             <rect key="frame" x="8" y="11" width="87" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y5C-ZE-CeA">
@@ -1355,13 +1293,13 @@
                         <segue destination="H4W-hg-za9" kind="show" id="ama-g7-i7v"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sIZ-8T-oli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4982" y="-2742"/>
         </scene>
         <!--Selected Type Table View Controller-->
         <scene sceneID="qmP-Ht-o9N">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gj3-eB-FUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="WalletTypeView" id="vlL-5r-tC5" customClass="SelectedTypeTableViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RfL-Ie-adr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -1378,7 +1316,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yl2-Ps-jhv">
                                             <rect key="frame" x="8" y="11" width="87" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ai0-Lb-e0O">
@@ -1413,6 +1351,7 @@
                         <segue destination="H4W-hg-za9" kind="show" id="3pO-yJ-zcP"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gj3-eB-FUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4982" y="-3398"/>
         </scene>
@@ -1430,7 +1369,7 @@
         <image name="settings" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gsq-VG-8ET"/>
+        <segue reference="uKA-R8-01d"/>
         <segue reference="lJJ-3b-MMI"/>
         <segue reference="3pO-yJ-zcP"/>
     </inferredMetricsTieBreakers>
