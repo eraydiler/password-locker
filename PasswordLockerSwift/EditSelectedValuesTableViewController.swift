@@ -33,7 +33,6 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
     var delegate: EditValuesTableViewControllerDelegate! = nil
     
     func configureView() {
-        
         self.tableView.allowsSelection = false
         
         self.tableView.rowHeight = 44.0
@@ -59,6 +58,7 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureView()
     }
 
@@ -130,10 +130,15 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
     }
     
     func configureTextView() {
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardDidShow),
+                                                         name: UIKeyboardDidShowNotification,
+                                                         object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardDidHide),
+                                                         name: UIKeyboardDidHideNotification,
+                                                         object: nil)
         if self.row?.value == "" {
             self.editTextView.text = "No Note"
         } else {

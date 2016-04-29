@@ -137,10 +137,15 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
     }
     
     func configureTextView() {
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardDidShow),
+                                                         name: UIKeyboardDidShowNotification,
+                                                         object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(keyboardDidHide),
+                                                         name: UIKeyboardDidHideNotification,
+                                                         object: nil)
         if self.row?.value == "" {
             self.editTextView.text = "No Note"
         } else {
