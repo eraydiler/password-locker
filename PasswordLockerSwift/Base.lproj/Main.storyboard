@@ -382,7 +382,7 @@
         <!--Share View Controller-->
         <scene sceneID="1f4-La-ZK6">
             <objects>
-                <viewController id="2YU-JO-88m" customClass="ShareViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="2YU-JO-88m" customClass="ShareViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C64-Ts-Dst"/>
                         <viewControllerLayoutGuide type="bottom" id="4xm-nD-iqF"/>
@@ -391,83 +391,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Tx-5v-eCv">
-                                <rect key="frame" x="156" y="336" width="67" height="30"/>
-                                <state key="normal" title="Facebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="2YU-JO-88m" eventType="touchUpInside" id="QpP-Gg-Ptu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjh-zl-wuT">
-                                <rect key="frame" x="396" y="336" width="48" height="30"/>
-                                <state key="normal" title="Twitter">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonTapped:" destination="2YU-JO-88m" eventType="touchUpInside" id="osR-xM-TGC"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOe-6D-StL">
-                                <rect key="frame" x="267" y="141" width="70" height="35"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell your friend about this application              Tap Facebook or Twitter button below to share." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJW-Wr-0Jb">
-                                <rect key="frame" x="156" y="225" width="288" height="80"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ska-FJ-fRz" userLabel="ShareOverlayView">
+                                <rect key="frame" x="145" y="165" width="310" height="125"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMy-x4-q0t">
+                                        <rect key="frame" x="279" y="10" width="21" height="22"/>
+                                        <state key="normal" image="exit"/>
+                                        <connections>
+                                            <action selector="exitTapped:" destination="2YU-JO-88m" eventType="touchUpInside" id="a2r-SC-hAh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjh-zl-wuT">
+                                        <rect key="frame" x="131" y="69" width="48" height="30"/>
+                                        <state key="normal" title="Twitter">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="2YU-JO-88m" eventType="touchUpInside" id="osR-xM-TGC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Tx-5v-eCv">
+                                        <rect key="frame" x="122" y="95" width="67" height="30"/>
+                                        <state key="normal" title="Facebook">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="2YU-JO-88m" eventType="touchUpInside" id="QpP-Gg-Ptu"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share this application on social media." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJW-Wr-0Jb">
+                                        <rect key="frame" x="10" y="40" width="292" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="dGA-zo-tzi"/>
-                                    <constraint firstAttribute="height" constant="80" id="did-wM-DYx"/>
+                                    <constraint firstAttribute="trailing" secondItem="yMy-x4-q0t" secondAttribute="trailing" constant="10" id="6ze-7N-OJ7"/>
+                                    <constraint firstAttribute="width" constant="310" id="Az2-C8-mux"/>
+                                    <constraint firstItem="yMy-x4-q0t" firstAttribute="top" secondItem="ska-FJ-fRz" secondAttribute="top" constant="10" id="f6H-mq-ogB"/>
+                                    <constraint firstAttribute="height" constant="125" id="flp-Ds-dxi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMy-x4-q0t">
-                                <rect key="frame" x="423" y="119" width="21" height="22"/>
-                                <state key="normal" image="exit">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="exitTapped:" destination="2YU-JO-88m" eventType="touchUpInside" id="a2r-SC-hAh"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uJW-Wr-0Jb" firstAttribute="leading" secondItem="9Tx-5v-eCv" secondAttribute="leading" constant="42" id="31D-ra-2NN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hjh-zl-wuT" secondAttribute="trailing" constant="98" id="3qW-2o-kj4"/>
-                            <constraint firstItem="uJW-Wr-0Jb" firstAttribute="trailing" secondItem="hjh-zl-wuT" secondAttribute="trailing" id="A2E-s9-bBt"/>
-                            <constraint firstAttribute="centerX" secondItem="gOe-6D-StL" secondAttribute="centerX" constant="-1.5" id="AnK-xs-Ie3"/>
-                            <constraint firstItem="uJW-Wr-0Jb" firstAttribute="trailing" secondItem="hjh-zl-wuT" secondAttribute="trailing" constant="-42" id="BEw-7j-ZnL"/>
-                            <constraint firstAttribute="centerY" secondItem="gOe-6D-StL" secondAttribute="centerY" constant="141.5" id="EBu-Ac-O2p"/>
-                            <constraint firstItem="uJW-Wr-0Jb" firstAttribute="leading" secondItem="9Tx-5v-eCv" secondAttribute="leading" id="FVr-5j-iA2"/>
-                            <constraint firstItem="hjh-zl-wuT" firstAttribute="top" secondItem="uJW-Wr-0Jb" secondAttribute="bottom" constant="31" id="FZj-Ri-SKT"/>
-                            <constraint firstItem="9Tx-5v-eCv" firstAttribute="leading" secondItem="ULq-qJ-C2z" secondAttribute="leadingMargin" constant="98" id="Ga8-RW-GLp"/>
-                            <constraint firstItem="uJW-Wr-0Jb" firstAttribute="leading" secondItem="9Tx-5v-eCv" secondAttribute="leading" id="SFA-De-fKo"/>
-                            <constraint firstItem="gOe-6D-StL" firstAttribute="top" secondItem="yMy-x4-q0t" secondAttribute="top" constant="22" id="SsP-HI-UQ3"/>
-                            <constraint firstItem="9Tx-5v-eCv" firstAttribute="top" secondItem="uJW-Wr-0Jb" secondAttribute="bottom" constant="31" id="aUb-yd-MUZ"/>
-                            <constraint firstItem="uJW-Wr-0Jb" firstAttribute="trailing" secondItem="yMy-x4-q0t" secondAttribute="trailing" id="e6L-Al-BKo"/>
-                            <constraint firstAttribute="centerY" secondItem="uJW-Wr-0Jb" secondAttribute="centerY" constant="35" id="p93-iZ-Ycs"/>
-                            <constraint firstItem="uJW-Wr-0Jb" firstAttribute="top" secondItem="gOe-6D-StL" secondAttribute="bottom" constant="49" id="sZf-Li-9Dr"/>
-                            <constraint firstAttribute="centerX" secondItem="uJW-Wr-0Jb" secondAttribute="centerX" constant="0.5" id="waU-qb-TKi"/>
+                            <constraint firstItem="ska-FJ-fRz" firstAttribute="centerX" secondItem="ULq-qJ-C2z" secondAttribute="centerX" id="56h-bt-6x8"/>
+                            <constraint firstItem="ska-FJ-fRz" firstAttribute="centerY" secondItem="ULq-qJ-C2z" secondAttribute="centerY" constant="-72.5" id="5N9-et-OwX"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="31D-ra-2NN"/>
-                                <exclude reference="BEw-7j-ZnL"/>
-                                <exclude reference="FVr-5j-iA2"/>
-                                <exclude reference="Ga8-RW-GLp"/>
-                                <exclude reference="3qW-2o-kj4"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyL-mV-5Xh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4306" y="1444"/>
+            <point key="canvasLocation" x="4314" y="1511"/>
         </scene>
         <!--Selected Type Table View Controller-->
         <scene sceneID="w0j-8w-Nf0">
@@ -1371,6 +1348,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="uKA-R8-01d"/>
         <segue reference="lJJ-3b-MMI"/>
-        <segue reference="3pO-yJ-zcP"/>
+        <segue reference="52z-mw-CI0"/>
     </inferredMetricsTieBreakers>
 </document>
