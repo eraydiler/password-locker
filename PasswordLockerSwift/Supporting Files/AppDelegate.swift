@@ -9,35 +9,40 @@
 import UIKit
 import CoreData
 
+let kPasswordLockerUserDefaultsHasInitialized = "kPasswordLockerUserDefaultsHasInitialized"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        if Constants.FIRST_RUN {
-            
+
+        let isAppInitializedWithData = NSUserDefaults.standardUserDefaults()
+                                           .boolForKey(kPasswordLockerUserDefaultsHasInitialized)
+
+        if (isAppInitializedWithData == false) {
             DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Category")
             DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Type")
             DataFactory.deleteAllObjects(self.managedObjectContext!, entityDescription: "Row")
             
             DataFactory.setupInitialData(self.managedObjectContext!)
-            
+
+            NSUserDefaults.standardUserDefaults()
+                .setBool(true, forKey: kPasswordLockerUserDefaultsHasInitialized)
+
             print("Initial Data inserted")
-            exit(EXIT_SUCCESS)
         }
         
         // If authentication is active
         if Constants.AUTHENTICATION {
-            
+
             // Set managedObjectContext for view controllers
             let authenticationController = self.window!.rootViewController as! SplashViewController
             authenticationController.managedObjectContext = self.managedObjectContext
-            
+
         } else {
-        
+            
             // Set managedObjectContext for view controllers
             let tabBarController = self.window!.rootViewController as! TabBarController
             tabBarController.managedObjectContext = self.managedObjectContext

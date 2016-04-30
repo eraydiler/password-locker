@@ -56,8 +56,9 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         }
         else { print("Error when saving") }
     }
-    @IBAction func didViewTapped(sender: AnyObject) {
-        print("TAPPED")
+
+    @IBAction func viewTapped(sender: AnyObject) {
+        passwordTextField.resignFirstResponder()
     }
 
     // MARK: - UITextField Delegate

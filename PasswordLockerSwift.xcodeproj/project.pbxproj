@@ -18,6 +18,8 @@
 		2A78B76A1AD3411C006E34A9 /* TabsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78B7691AD3411C006E34A9 /* TabsModel.swift */; };
 		2A88E8481AF2DCC200CB08C4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */; };
 		2A9300E41A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A9300E21A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld */; };
+		2A937F5E1CD54D4C00E5226B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A937F5D1CD54D4C00E5226B /* SettingsViewController.swift */; };
+		2A937F5F1CD54D4C00E5226B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A937F5D1CD54D4C00E5226B /* SettingsViewController.swift */; };
 		2A9B04A81B728B1E0044870D /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */; };
 		2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA343FA1AB87EFF00819709 /* DataFactory.swift */; };
 		2AA4FDEB1AE5C4AF009D21CC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */; };
@@ -63,6 +65,7 @@
 		2A78B7691AD3411C006E34A9 /* TabsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsModel.swift; sourceTree = "<group>"; };
 		2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		2A9300E31A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PasswordLockerSwift.xcdatamodel; sourceTree = "<group>"; };
+		2A937F5D1CD54D4C00E5226B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		2AA343FA1AB87EFF00819709 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */,
+				2A937F5D1CD54D4C00E5226B /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -384,6 +388,7 @@
 				2A9B04A81B728B1E0044870D /* KeychainWrapper.swift in Sources */,
 				2AC23C981AD5DD3C00DFAAE1 /* Row.swift in Sources */,
 				2AF76B471A82B1C500873A92 /* Helper.swift in Sources */,
+				2A937F5E1CD54D4C00E5226B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A438D7F1A6D66A500101092 /* PasswordLockerSwiftTests.swift in Sources */,
+				2A937F5F1CD54D4C00E5226B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
