@@ -149,7 +149,6 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bxk-tk-C1f" secondAttribute="bottom" id="agc-U4-b56"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="V0E-Bt-6FL" secondAttribute="bottom" id="aub-xf-cgV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V0E-Bt-6FL" secondAttribute="trailing" constant="-20" id="dK7-NB-yjH"/>
-                            <constraint firstItem="V0E-Bt-6FL" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="wbD-UL-toe"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="NE0-hv-y5m" appends="YES" id="x9A-iH-HRn"/>
@@ -374,6 +373,27 @@
                                         <connections>
                                             <segue destination="2YU-JO-88m" kind="presentation" id="lI1-3C-Zhr"/>
                                         </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Logout" footerTitle="You can logout manually here." id="ts5-eJ-YkF" userLabel="logout">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="GHz-mH-hm5" style="IBUITableViewCellStyleDefault" id="hUD-FQ-34d">
+                                        <rect key="frame" x="0.0" y="383" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUD-FQ-34d" id="7A7-n2-2rf">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Logout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GHz-mH-hm5" userLabel="Logout">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1311,7 +1331,6 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="z5p-rg-pQL" firstAttribute="top" secondItem="KXE-XN-Dtk" secondAttribute="bottom" id="2ln-aF-nwP"/>
-                            <constraint firstItem="9wX-H0-vd5" firstAttribute="centerY" secondItem="yWf-5u-TKT" secondAttribute="centerY" id="56Z-VG-JbJ"/>
                             <constraint firstItem="9wX-H0-vd5" firstAttribute="leading" secondItem="yWf-5u-TKT" secondAttribute="leadingMargin" constant="-20" id="DJb-l9-UCW"/>
                             <constraint firstItem="9wX-H0-vd5" firstAttribute="centerX" secondItem="yWf-5u-TKT" secondAttribute="centerX" id="F3e-cg-wbI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9wX-H0-vd5" secondAttribute="trailing" constant="-20" id="XSg-Db-idc"/>
