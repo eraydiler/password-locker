@@ -8,6 +8,32 @@
 
 import UIKit
 
+private enum SectionType {
+    case PasswordChange
+    case BackupRestore
+    case Share
+    case Logout
+}
+
+private enum Item {
+    case PasswordChange
+    case BackupRestore
+    case Share
+    case Logout
+}
+
+private struct Section {
+    var type: SectionType
+    var items: [Item]
+}
+
+private var sections =  [
+    Section(type: .PasswordChange, items: [.PasswordChange]),
+    Section(type: .BackupRestore, items: [.BackupRestore]),
+    Section(type: .Share, items: [.Share]),
+    Section(type: .Logout, items: [.Logout]),
+]
+
 class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -19,14 +45,24 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
+    override func tableView(tableView: UITableView,
+                            didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        print("Selected \(indexPath.section) \(indexPath.row)")
 
+        switch sections[indexPath.section].items[indexPath.row] {
+        case .PasswordChange:
+            break;
+        case .BackupRestore:
+            break;
+        case .Share:
+            break;
+        case .Logout: // Logout
+            if let tabBarController = self.tabBarController {
+                tabBarController.dismissViewControllerAnimated(true, completion: nil)
+            }
+
+            break;
+        }
+    }    
 }

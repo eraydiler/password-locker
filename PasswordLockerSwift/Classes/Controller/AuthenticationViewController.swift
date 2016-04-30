@@ -26,6 +26,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         configureView()
     }
     
@@ -36,12 +37,15 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     // MARK: - IBActions
     @IBAction func addPassLockButtonPressed(sender: AnyObject) {
-        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!, forKey: kPasswordKey)
+        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!,
+                                                      forKey: kPasswordKey)
         if isSaved {
             print("Saved Successfully")
             
             // show alert
-            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Password Saved",
+                                                    message: "Your password is saved successfully",
+                                                    preferredStyle: .Alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertController.addAction(defaultAction)
@@ -123,6 +127,8 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             let nav = tabBarController.childViewControllers[0] as! UINavigationController
             let categoriesVC = nav.topViewController as! CategoriesTableViewController
             categoriesVC.managedObjectContext = self.managedObjectContext
+
+            passwordTextField.text = nil
         }
     }
     
