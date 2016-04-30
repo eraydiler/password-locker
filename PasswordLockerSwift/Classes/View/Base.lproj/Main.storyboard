@@ -294,17 +294,17 @@
                     </tabBar>
                     <connections>
                         <segue destination="gne-Z7-Jh0" kind="relationship" relationship="viewControllers" id="e7x-NM-38s"/>
-                        <segue destination="CyU-Kt-BxO" kind="relationship" relationship="viewControllers" id="f4L-XZ-ukr"/>
+                        <segue destination="Trc-IE-s7q" kind="relationship" relationship="viewControllers" id="f4L-XZ-ukr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOc-20-3II" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3598" y="350"/>
         </scene>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="BiW-MH-dBm">
             <objects>
-                <tableViewController id="CyU-Kt-BxO" sceneMemberID="viewController">
+                <tableViewController id="CyU-Kt-BxO" customClass="SettingsViewController" customModule="PasswordLockerSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="A2I-2D-dvr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,7 +313,7 @@
                             <tableViewSection headerTitle="Security" footerTitle="You can change your master password" id="n2a-EX-BxF">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="190-id-yF4" style="IBUITableViewCellStyleDefault" id="l6b-BS-iJa">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l6b-BS-iJa" id="qAd-YM-gtF">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -334,7 +334,7 @@
                             <tableViewSection headerTitle="Database" footerTitle="You can backup your data and restore here" id="jsA-R6-Iln">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="CP5-zB-Qa6" style="IBUITableViewCellStyleDefault" id="V73-RH-gHt">
-                                        <rect key="frame" x="0.0" y="161" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="225" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V73-RH-gHt" id="zwH-hX-SK5">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -355,7 +355,7 @@
                             <tableViewSection headerTitle="feedback" footerTitle="You can support the developer sharing this application" id="9ij-2H-boj">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="2tk-FF-TRS" style="IBUITableViewCellStyleDefault" id="BUh-Cw-xEK">
-                                        <rect key="frame" x="0.0" y="272" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="336" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUh-Cw-xEK" id="g0N-Uy-IQA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -379,7 +379,7 @@
                             <tableViewSection headerTitle="Logout" footerTitle="You can logout manually here." id="ts5-eJ-YkF" userLabel="logout">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="GHz-mH-hm5" style="IBUITableViewCellStyleDefault" id="hUD-FQ-34d">
-                                        <rect key="frame" x="0.0" y="383" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="447" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUD-FQ-34d" id="7A7-n2-2rf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -403,11 +403,11 @@
                             <outlet property="delegate" destination="CyU-Kt-BxO" id="7QP-w9-QAk"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="6nZ-eY-n2I"/>
+                    <navigationItem key="navigationItem" id="gYI-bD-lVU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPb-Tv-RiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4314" y="731"/>
+            <point key="canvasLocation" x="5126" y="731"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="1f4-La-ZK6">
@@ -474,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyL-mV-5Xh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4314" y="1511"/>
+            <point key="canvasLocation" x="5126" y="1505"/>
         </scene>
         <!--Selected Type Table View Controller-->
         <scene sceneID="w0j-8w-Nf0">
@@ -704,7 +704,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4h-m8-ECT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5661" y="662"/>
+            <point key="canvasLocation" x="6473" y="662"/>
         </scene>
         <!--Edit Values Table View Controller-->
         <scene sceneID="bk6-Yo-jPa">
@@ -772,7 +772,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBB-20-w8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6368" y="662"/>
+            <point key="canvasLocation" x="7180" y="662"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zji-uH-7hu">
@@ -1358,6 +1358,25 @@
             </objects>
             <point key="canvasLocation" x="2134" y="350"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="suM-an-Ovw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Trc-IE-s7q" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="6nZ-eY-n2I"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P01-XJ-WwB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CyU-Kt-BxO" kind="relationship" relationship="rootViewController" id="nA2-fm-97V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhk-tW-3iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4314" y="731"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ID" width="20" height="15"/>
@@ -1373,7 +1392,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k9A-t3-5v1"/>
-        <segue reference="lJJ-3b-MMI"/>
+        <segue reference="InE-eZ-04Z"/>
         <segue reference="wGm-wv-Uvd"/>
     </inferredMetricsTieBreakers>
 </document>
