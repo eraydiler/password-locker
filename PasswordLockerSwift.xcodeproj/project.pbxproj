@@ -18,6 +18,7 @@
 		2A6946031CDFEFFA00F2215F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946021CDFEFFA00F2215F /* Note.swift */; };
 		2A6946071CDFF59700F2215F /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946061CDFF59700F2215F /* Web.swift */; };
 		2A6946091CDFF5A900F2215F /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946081CDFF5A900F2215F /* Wallet.swift */; };
+		2A6946281CDFFD3E00F2215F /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A6946191CDFFCEF00F2215F /* MagicalRecord.framework */; };
 		2A6E28DD1AB1D74F00A25E73 /* ValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */; };
 		2A78B76A1AD3411C006E34A9 /* TabsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78B7691AD3411C006E34A9 /* TabsModel.swift */; };
 		2A88E8481AF2DCC200CB08C4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */; };
@@ -51,6 +52,62 @@
 			remoteGlobalIDString = 2A438D5F1A6D66A500101092;
 			remoteInfo = PasswordLockerSwift;
 		};
+		2A6946181CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 905D07181A63DE190076B54E;
+			remoteInfo = "MagicalRecord for iOS";
+		};
+		2A69461A1CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9004F5211A94CBCF00A61312;
+			remoteInfo = "MagicalRecord for iOS Tests";
+		};
+		2A69461C1CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 905D073B1A63DE690076B54E;
+			remoteInfo = "MagicalRecord for OS X";
+		};
+		2A69461E1CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9004F5661A94CBF900A61312;
+			remoteInfo = "MagicalRecord for OS X Tests";
+		};
+		2A6946201CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7CF97AB17498414008D9D13;
+			remoteInfo = "libMagicalRecord for iOS";
+		};
+		2A6946221CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7CF97FF174984CA008D9D13;
+			remoteInfo = "libMagicalRecord for iOS Tests";
+		};
+		2A6946241CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7CF97BB1749843F008D9D13;
+			remoteInfo = "libMagicalRecord for OS X";
+		};
+		2A6946261CDFFCEF00F2215F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7CF9816174984E4008D9D13;
+			remoteInfo = "libMagicalRecord for OS X Tests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -69,12 +126,14 @@
 		2A6946021CDFEFFA00F2215F /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Entities/Note.swift; sourceTree = "<group>"; };
 		2A6946061CDFF59700F2215F /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Web.swift; path = Entities/Web.swift; sourceTree = "<group>"; };
 		2A6946081CDFF5A900F2215F /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = Entities/Wallet.swift; sourceTree = "<group>"; };
+		2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MagicalRecord.xcodeproj; path = Vendor/MagicalRecord/MagicalRecord.xcodeproj; sourceTree = SOURCE_ROOT; };
+		2A6946291CDFFEA400F2215F /* ObjC-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 		2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ValuesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2A78B7691AD3411C006E34A9 /* TabsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsModel.swift; sourceTree = "<group>"; };
 		2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		2A9300E31A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PasswordLockerSwift.xcdatamodel; sourceTree = "<group>"; };
 		2A937F5D1CD54D4C00E5226B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = Classes/Model/Utils/KeychainWrapper.swift; sourceTree = "<group>"; };
 		2AA343FA1AB87EFF00819709 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2AA4FDEC1AE5C5B4009D21CC /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A6946281CDFFD3E00F2215F /* MagicalRecord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +192,7 @@
 		2A438D621A6D66A500101092 /* PasswordLockerSwift */ = {
 			isa = PBXGroup;
 			children = (
+				2A69460A1CDFFCD700F2215F /* Dependencies */,
 				2A493A741CD4FA72002D286C /* Classes */,
 				2A438D631A6D66A500101092 /* Supporting Files */,
 			);
@@ -144,6 +205,7 @@
 				2A438D651A6D66A500101092 /* AppDelegate.swift */,
 				2A438D6F1A6D66A500101092 /* Images.xcassets */,
 				2A438D641A6D66A500101092 /* Info.plist */,
+				2A6946291CDFFEA400F2215F /* ObjC-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -183,7 +245,6 @@
 			children = (
 				2AD367191ACEB98100538F6E /* Constants.swift */,
 				2AF76B461A82B1C500873A92 /* Helper.swift */,
-				2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -249,6 +310,38 @@
 				2A6946061CDFF59700F2215F /* Web.swift */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		2A69460A1CDFFCD700F2215F /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */,
+				2A69460B1CDFFCE300F2215F /* Submodules */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		2A69460B1CDFFCE300F2215F /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */,
+			);
+			name = Submodules;
+			sourceTree = "<group>";
+		};
+		2A69460D1CDFFCEE00F2215F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A6946191CDFFCEF00F2215F /* MagicalRecord.framework */,
+				2A69461B1CDFFCEF00F2215F /* MagicalRecord for iOS Tests.xctest */,
+				2A69461D1CDFFCEF00F2215F /* MagicalRecord.framework */,
+				2A69461F1CDFFCEF00F2215F /* MagicalRecord for OS X Tests.xctest */,
+				2A6946211CDFFCEF00F2215F /* libMagicalRecord.a */,
+				2A6946231CDFFCEF00F2215F /* libMagicalRecord for iOS Tests.xctest */,
+				2A6946251CDFFCEF00F2215F /* libMagicalRecord.dylib */,
+				2A6946271CDFFCEF00F2215F /* libMagicalRecord for OS X Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		2A78B76B1AD34B5F006E34A9 /* TabBarVC */ = {
@@ -359,6 +452,12 @@
 			mainGroup = 2A438D571A6D66A400101092;
 			productRefGroup = 2A438D611A6D66A500101092 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2A69460D1CDFFCEE00F2215F /* Products */;
+					ProjectRef = 2A69460C1CDFFCEE00F2215F /* MagicalRecord.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2A438D5F1A6D66A500101092 /* PasswordLockerSwift */,
@@ -366,6 +465,65 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2A6946191CDFFCEF00F2215F /* MagicalRecord.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MagicalRecord.framework;
+			remoteRef = 2A6946181CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2A69461B1CDFFCEF00F2215F /* MagicalRecord for iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "MagicalRecord for iOS Tests.xctest";
+			remoteRef = 2A69461A1CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2A69461D1CDFFCEF00F2215F /* MagicalRecord.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MagicalRecord.framework;
+			remoteRef = 2A69461C1CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2A69461F1CDFFCEF00F2215F /* MagicalRecord for OS X Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "MagicalRecord for OS X Tests.xctest";
+			remoteRef = 2A69461E1CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2A6946211CDFFCEF00F2215F /* libMagicalRecord.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMagicalRecord.a;
+			remoteRef = 2A6946201CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2A6946231CDFFCEF00F2215F /* libMagicalRecord for iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "libMagicalRecord for iOS Tests.xctest";
+			remoteRef = 2A6946221CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2A6946251CDFFCEF00F2215F /* libMagicalRecord.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libMagicalRecord.dylib;
+			remoteRef = 2A6946241CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2A6946271CDFFCEF00F2215F /* libMagicalRecord for OS X Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "libMagicalRecord for OS X Tests.xctest";
+			remoteRef = 2A6946261CDFFCEF00F2215F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2A438D5E1A6D66A500101092 /* Resources */ = {
@@ -552,6 +710,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -565,6 +724,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
 			};
 			name = Release;
 		};
