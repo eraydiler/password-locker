@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="c0h-KH-MKy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="c0h-KH-MKy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -37,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1S-jx-M7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2134" y="-428"/>
+            <point key="canvasLocation" x="2222" y="1092"/>
         </scene>
         <!--Authentication View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -166,7 +166,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2874" y="350"/>
+            <point key="canvasLocation" x="2962" y="1870"/>
         </scene>
         <!--Add-->
         <scene sceneID="FR4-IX-zIz">
@@ -224,7 +224,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrA-bJ-xmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4982" y="-116.5"/>
+            <point key="canvasLocation" x="5070" y="1403"/>
         </scene>
         <!--Types Table View Controller-->
         <scene sceneID="Mvf-D9-8qu">
@@ -280,7 +280,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNc-Dr-BoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5661" y="-120"/>
+            <point key="canvasLocation" x="5749" y="1400"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="d53-Lc-cVI">
@@ -299,7 +299,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOc-20-3II" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3598" y="350"/>
+            <point key="canvasLocation" x="3686" y="1870"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="BiW-MH-dBm">
@@ -407,7 +407,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPb-Tv-RiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5126" y="731"/>
+            <point key="canvasLocation" x="5118" y="2251"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="1f4-La-ZK6">
@@ -474,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyL-mV-5Xh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5126" y="1505"/>
+            <point key="canvasLocation" x="5118" y="3025"/>
         </scene>
         <!--Selected Type Table View Controller-->
         <scene sceneID="w0j-8w-Nf0">
@@ -551,7 +551,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kj8-YU-5uE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4308" y="-117"/>
+            <point key="canvasLocation" x="4396" y="1403"/>
         </scene>
         <!--Values Table View Controller-->
         <scene sceneID="UcH-iM-0Ve">
@@ -704,7 +704,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4h-m8-ECT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6473" y="662"/>
+            <point key="canvasLocation" x="5781" y="618"/>
         </scene>
         <!--Edit Values Table View Controller-->
         <scene sceneID="bk6-Yo-jPa">
@@ -772,7 +772,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBB-20-w8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7180" y="662"/>
+            <point key="canvasLocation" x="6490" y="618"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zji-uH-7hu">
@@ -1356,7 +1356,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2134" y="350"/>
+            <point key="canvasLocation" x="2222" y="1870"/>
         </scene>
         <!--Settings-->
         <scene sceneID="suM-an-Ovw">
@@ -1375,7 +1375,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhk-tW-3iu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4314" y="731"/>
+            <point key="canvasLocation" x="4402" y="2251"/>
         </scene>
     </scenes>
     <resources>
@@ -1392,7 +1392,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k9A-t3-5v1"/>
-        <segue reference="InE-eZ-04Z"/>
-        <segue reference="wGm-wv-Uvd"/>
+        <segue reference="lJJ-3b-MMI"/>
+        <segue reference="3pO-yJ-zcP"/>
     </inferredMetricsTieBreakers>
 </document>

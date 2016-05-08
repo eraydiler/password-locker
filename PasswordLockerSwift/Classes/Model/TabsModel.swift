@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 Eray. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class TabsModel: NSObject {
-   
+class TabsModel {
     var currentTabs = [String]()
 }

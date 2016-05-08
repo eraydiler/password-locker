@@ -14,6 +14,10 @@
 		2A438D731A6D66A500101092 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D711A6D66A500101092 /* LaunchScreen.xib */; };
 		2A438D7F1A6D66A500101092 /* PasswordLockerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D7E1A6D66A500101092 /* PasswordLockerSwiftTests.swift */; };
 		2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D901A6D69E500101092 /* AuthenticationViewController.swift */; };
+		2A6946011CDFED0700F2215F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946001CDFED0700F2215F /* Email.swift */; };
+		2A6946031CDFEFFA00F2215F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946021CDFEFFA00F2215F /* Note.swift */; };
+		2A6946071CDFF59700F2215F /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946061CDFF59700F2215F /* Web.swift */; };
+		2A6946091CDFF5A900F2215F /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946081CDFF5A900F2215F /* Wallet.swift */; };
 		2A6E28DD1AB1D74F00A25E73 /* ValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */; };
 		2A78B76A1AD3411C006E34A9 /* TabsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78B7691AD3411C006E34A9 /* TabsModel.swift */; };
 		2A88E8481AF2DCC200CB08C4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */; };
@@ -61,6 +65,10 @@
 		2A438D7D1A6D66A500101092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A438D7E1A6D66A500101092 /* PasswordLockerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordLockerSwiftTests.swift; sourceTree = "<group>"; };
 		2A438D901A6D69E500101092 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		2A6946001CDFED0700F2215F /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Email.swift; path = Entities/Email.swift; sourceTree = "<group>"; };
+		2A6946021CDFEFFA00F2215F /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Entities/Note.swift; sourceTree = "<group>"; };
+		2A6946061CDFF59700F2215F /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Web.swift; path = Entities/Web.swift; sourceTree = "<group>"; };
+		2A6946081CDFF5A900F2215F /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = Entities/Wallet.swift; sourceTree = "<group>"; };
 		2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ValuesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2A78B7691AD3411C006E34A9 /* TabsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsModel.swift; sourceTree = "<group>"; };
 		2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -160,15 +168,12 @@
 		2A438D881A6D66C700101092 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A6945FF1CDFECB300F2215F /* Entities */,
+				2A6945FE1CDFEBD300F2215F /* Core Data */,
 				2AA343F91AB87EAA00819709 /* DataInsertion */,
 				2A438D891A6D66EC00101092 /* Utils */,
-				2AC23C991AD5DD3D00DFAAE1 /* Category.swift */,
 				2A2FC34B1ABF467000D1769E /* Notlar */,
-				2A9300E21A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld */,
-				2AC23C971AD5DD3C00DFAAE1 /* Row.swift */,
-				2AC23C9D1AD5DD3D00DFAAE1 /* SavedObject.swift */,
 				2A78B7691AD3411C006E34A9 /* TabsModel.swift */,
-				2AC23C9B1AD5DD3D00DFAAE1 /* Type.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +226,29 @@
 				2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */,
 			);
 			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		2A6945FE1CDFEBD300F2215F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2A9300E21A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld */,
+				2AC23C991AD5DD3D00DFAAE1 /* Category.swift */,
+				2AC23C971AD5DD3C00DFAAE1 /* Row.swift */,
+				2AC23C9D1AD5DD3D00DFAAE1 /* SavedObject.swift */,
+				2AC23C9B1AD5DD3D00DFAAE1 /* Type.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		2A6945FF1CDFECB300F2215F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				2A6946001CDFED0700F2215F /* Email.swift */,
+				2A6946021CDFEFFA00F2215F /* Note.swift */,
+				2A6946081CDFF5A900F2215F /* Wallet.swift */,
+				2A6946061CDFF59700F2215F /* Web.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		2A78B76B1AD34B5F006E34A9 /* TabBarVC */ = {
@@ -370,6 +398,8 @@
 				2AC23C9E1AD5DD3D00DFAAE1 /* SavedObject.swift in Sources */,
 				2ACDCF041AD5B8B800D2CAEB /* SelectedValuesTableViewController.swift in Sources */,
 				2AA4FDEB1AE5C4AF009D21CC /* SplashViewController.swift in Sources */,
+				2A6946031CDFEFFA00F2215F /* Note.swift in Sources */,
+				2A6946071CDFF59700F2215F /* Web.swift in Sources */,
 				2AA4FDED1AE5C5B4009D21CC /* CreatePasswordViewController.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
 				2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */,
@@ -383,8 +413,10 @@
 				2AFC83051ACF2C6D005825D6 /* SelectedTypeTableViewController.swift in Sources */,
 				2ACDCF061AD5B8C800D2CAEB /* EditSelectedValuesTableViewController.swift in Sources */,
 				2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */,
+				2A6946091CDFF5A900F2215F /* Wallet.swift in Sources */,
 				2A6E28DD1AB1D74F00A25E73 /* ValuesTableViewController.swift in Sources */,
 				2AE808301A8146150005E831 /* TypesTableViewController.swift in Sources */,
+				2A6946011CDFED0700F2215F /* Email.swift in Sources */,
 				2A9B04A81B728B1E0044870D /* KeychainWrapper.swift in Sources */,
 				2AC23C981AD5DD3C00DFAAE1 /* Row.swift in Sources */,
 				2AF76B471A82B1C500873A92 /* Helper.swift in Sources */,
