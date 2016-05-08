@@ -17,7 +17,7 @@ class Email {
             if self.name.isEmpty {
                 self.name = "Email"
             }
-            
+
             self.name = newValue
         }
     }
