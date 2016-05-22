@@ -9,6 +9,4 @@
 #ifndef ObjC_Bridging_Header_h
 #define ObjC_Bridging_Header_h
 
-#import <MagicalRecord/MagicalRecord.h>
-
 #endif /* ObjC_Bridging_Header_h */
