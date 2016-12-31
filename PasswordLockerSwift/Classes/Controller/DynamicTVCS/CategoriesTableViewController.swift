@@ -12,8 +12,8 @@ import CoreData
 class CategoriesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // set by AppDelegate on application startup
-    var managedObjectContext: NSManagedObjectContext?
-    
+//    var managedObjectContext: NSManagedObjectContext?
+
     func configureView() {
         self.tableView.rowHeight = 50.0
     }
@@ -45,8 +45,9 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
         }
-        let managedObjectContext = self.managedObjectContext!
-        
+
+        let managedObjectContext = NSManagedObjectContext.mr_default()
+
         /* `NSFetchRequest` config
         fetch all `Item`s
         order them alphabetically by name
@@ -124,10 +125,10 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
 
         let indexPath = self.tableView.indexPathForSelectedRow
         let category = self.fetchedResultsController.object(at: indexPath!) as! Category
-        
+
         if segue.identifier == "toTypesTVCSegue" {
             let targetVC = segue.destination as! TypesTableViewController
-            targetVC.managedObjectContext = self.managedObjectContext
+//            targetVC.managedObjectContext = managedObjectContext
             targetVC.category = category
         } /*else
         if segue.identifier == "toNoteTypeTVCSegue" {
@@ -136,7 +137,8 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
         }*/ else
             if segue.identifier == "toValuesTVCSegue" {
                 let targetVC = segue.destination as! ValuesTableViewController
-                targetVC.managedObjectContext = self.managedObjectContext
+
+//                targetVC.managedObjectContext = managedObjectContext
                 targetVC.category = category
                 targetVC.delegate = self.tabBarController as! TabBarController
 

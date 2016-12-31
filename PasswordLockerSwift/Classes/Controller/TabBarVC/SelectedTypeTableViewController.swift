@@ -17,8 +17,8 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
 
     // set by former controller
     var category: Category?
-    var managedObjectContext: NSManagedObjectContext?
-    
+//    var managedObjectContext: NSManagedObjectContext?
+
     // delegate to send info to tabBar Controller when there is no more data
     var delegate: SelectedTypeTableViewControllerDelegate?
     
@@ -52,7 +52,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
         }
-        let managedObjectContext = self.managedObjectContext!
+        let managedObjectContext = NSManagedObjectContext.mr_default()
         
         let entity = NSEntityDescription.entity(forEntityName: "SavedObject", in: managedObjectContext)
         let sort = NSSortDescriptor(key: "date", ascending: true)
@@ -165,25 +165,13 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
                 context.delete(row as! NSManagedObject)
             }
             
-            var e: NSError?
-            if let moc = self.managedObjectContext {
-                do {
-                    try moc.save()
-                } catch let error as NSError {
-                    e = error
-                    print("\(TAG) save error: \(e!.localizedDescription)")
-                    abort()
-                }
-            } else {
-                print("\(TAG) managedobjectcontext not found")
-                abort()
-            }
-            
+            let managedObjectContext = NSManagedObjectContext.mr_default()
+
+            managedObjectContext.mr_saveToPersistentStoreAndWait()
         }
     }
-    
-    func configureCell(_ cell: UITableViewCell,
-        atIndexPath indexPath: IndexPath) {
+
+    func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
         
             let savedObject = self.fetchedResultsController.object(at: indexPath) as! SavedObject
             //            cell.textLabel?.text = savedObject.name
@@ -202,7 +190,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         
         if segue.identifier == "toSelectedValuesTVCSegue" {
             let targetVC = segue.destination as! SelectedValuesTableViewController
-            targetVC.managedObjectContext = self.managedObjectContext
+//            targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
             targetVC.savedObjectID = savedObject.objectID
 //            targetVC.delegate = self.tabBarController as! TabBarController

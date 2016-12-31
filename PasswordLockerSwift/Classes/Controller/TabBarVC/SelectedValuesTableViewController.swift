@@ -21,8 +21,8 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     var rows: [Row]?
     
     // set by AppDelegate on application startup
-    var managedObjectContext: NSManagedObjectContext?    
-    
+//    var managedObjectContext: NSManagedObjectContext?    
+
     // hack for handling back button
     var isBackTouched = true
     
@@ -31,7 +31,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
 
     func configureView() {
         
-        self.savedObject = self.managedObjectContext?.object(with: self.savedObjectID!) as? SavedObject
+        self.savedObject = NSManagedObjectContext.mr_default().object(with: self.savedObjectID!) as? SavedObject
         if let rows = self.savedObject?.rows.allObjects as? [Row] {
             
             // Set rows property
@@ -57,13 +57,14 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
         if isBackTouched {
             print("\(TAG) back pressed")
         }
+
+        let managedObjectContext = NSManagedObjectContext.mr_default()
         
-        if managedObjectContext!.hasChanges  && isBackTouched {
-            rollBack()
+        if managedObjectContext.hasChanges  && isBackTouched {
+            managedObjectContext.rollback()
             print("\(TAG) Changes rolled back")
         }
     }
@@ -80,8 +81,8 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
         }
-        let managedObjectContext = self.managedObjectContext!
-        
+        let managedObjectContext = NSManagedObjectContext.mr_default()
+
         /* `NSFetchRequest` config */
         let entity = NSEntityDescription.entity(forEntityName: "Row", in: managedObjectContext)
         let sort = NSSortDescriptor(key: "section", ascending: true)
@@ -264,7 +265,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     @IBAction func saveBarButtonTouched(_ sender: UIBarButtonItem) {
         isBackTouched = false
         save()
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func backBarButtonTouched(_ sender: UIBarButtonItem) {
@@ -282,7 +283,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             let row = self.fetchedResultsController.object(at: sender as! IndexPath) as! Row
 
             let targetVC = segue.destination as! EditSelectedValuesTableViewController
-            targetVC.managedObjectContext = self.managedObjectContext
+//            targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowID = row.objectID
             targetVC.placeholder = row.value
             targetVC.delegate = self
@@ -293,98 +294,95 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     // MARK: - Helper Methods
     
-    func configureCell(_ cell: UITableViewCell,
-        atIndexPath indexPath: IndexPath) {
-            
-            let row = self.fetchedResultsController.object(at: indexPath) as! Row
-            if let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section] {
-                
-                switch (sectionsInfo.indexTitle!!) {
-                case "0":
-                    
-                    if let imageView = cell.contentView.subviews[0] as? UIImageView {
-                        imageView.image = UIImage(named: row.key)
-                    } else {
-                        print(TAG + " " + "imageView not found")
-                    }
-                    
-                    if let titleLabel = cell.contentView.subviews[1].subviews[0] as? UILabel {
-                        titleLabel.text = row.value
-                    } else {
-                        print(TAG + " " + "titleLabel not found")
-                    }
-                    
-                    //                let imageView = cell.contentView.subviews[0] as! UIImageView
-                    //                var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
-                    //                imageView.image = UIImage(named: row.key)
-                    //                titleLabel.text = row.value
-                    break;
-                case "1":
-                    
-                    if let keyLabel = cell.contentView.subviews[0] as? UILabel {
-                        keyLabel.text = row.key
-                    } else {
-                        print(TAG + " " + "keyLabel not found")
-                    }
-                    
-                    if let valueLabel = cell.contentView.subviews[1] as? UILabel {
-                        valueLabel.text = row.value
-                    } else {
-                        print(TAG + " " + "valueLabel not found")
-                    }
-                    
-                    //                var keyLabel = cell.contentView.subviews[0] as! UILabel
-                    //                var valueLabel = cell.contentView.subviews[1] as! UILabel
-                    //                keyLabel.text = row.key
-                    //                valueLabel.text = row.value
-                    
-                    break;
-                case "2":
-                    
-                    if let noteLabel = cell.contentView.subviews[0] as? UILabel {
-                        if row.value != "No Note" { noteLabel.textColor = UIColor.black }
-                        noteLabel.text = row.value
-                    } else {
-                        print(TAG + " " + "noteLabel not found")
-                    }
-                    
-                    //                var noteLabel = cell.contentView.subviews[0] as! UILabel
-                    //                noteLabel.text = row.value
-                    break;
-                    
-                default:
-                    break;
+    func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+        let row = self.fetchedResultsController.object(at: indexPath) as! Row
+
+        if let sectionsInfo: AnyObject = self.fetchedResultsController.sections?[indexPath.section] {
+
+            switch (sectionsInfo.indexTitle!!) {
+            case "0":
+
+                if let imageView = cell.contentView.subviews[0] as? UIImageView {
+                    imageView.image = UIImage(named: row.key)
+                } else {
+                    print(TAG + " " + "imageView not found")
                 }
+
+                if let titleLabel = cell.contentView.subviews[1].subviews[0] as? UILabel {
+                    titleLabel.text = row.value
+                } else {
+                    print(TAG + " " + "titleLabel not found")
+                }
+
+                //                let imageView = cell.contentView.subviews[0] as! UIImageView
+                //                var titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
+                //                imageView.image = UIImage(named: row.key)
+                //                titleLabel.text = row.value
+                break;
+            case "1":
+
+                if let keyLabel = cell.contentView.subviews[0] as? UILabel {
+                    keyLabel.text = row.key
+                } else {
+                    print(TAG + " " + "keyLabel not found")
+                }
+
+                if let valueLabel = cell.contentView.subviews[1] as? UILabel {
+                    valueLabel.text = row.value
+                } else {
+                    print(TAG + " " + "valueLabel not found")
+                }
+
+                //                var keyLabel = cell.contentView.subviews[0] as! UILabel
+                //                var valueLabel = cell.contentView.subviews[1] as! UILabel
+                //                keyLabel.text = row.key
+                //                valueLabel.text = row.value
+
+                break;
+            case "2":
+
+                if let noteLabel = cell.contentView.subviews[0] as? UILabel {
+                    if row.value != "No Note" { noteLabel.textColor = UIColor.black }
+                    noteLabel.text = row.value
+                } else {
+                    print(TAG + " " + "noteLabel not found")
+                }
+
+                //                var noteLabel = cell.contentView.subviews[0] as! UILabel
+                //                noteLabel.text = row.value
+                break;
+
+            default:
+                break;
             }
+        }
     }
-    
-    func rollBack() {
-        managedObjectContext?.rollback()
-    }
-    
+
     func save() {
-        
+
         // Set savedObject name
         let rows = self.fetchedResultsController.fetchedObjects as! [Row]
-        
+
         for row in rows {
             if row.section == "0" {self.savedObject?.name = row.value}
         }
+
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()
         
-        var e: NSError?
-        if let moc = self.managedObjectContext {
-            do {
-                try moc.save()
-            } catch let error as NSError {
-                e = error
-                print("\(TAG) save error: \(e!.localizedDescription)")
-                abort()
-            }
-        } else {
-            print("\(TAG) managedobjectcontext not found")
-            abort()
-        }
-        
+//        var e: NSError?
+//        if let moc = self.managedObjectContext {
+//            do {
+//                try moc.save()
+//            } catch let error as NSError {
+//                e = error
+//                print("\(TAG) save error: \(e!.localizedDescription)")
+//                abort()
+//            }
+//        } else {
+//            print("\(TAG) managedobjectcontext not found")
+//            abort()
+//        }
+
 //        if !managedObjectContext!.save(&e) {
 //            println("\(TAG) save error: \(e!.localizedDescription)")
 //            abort()

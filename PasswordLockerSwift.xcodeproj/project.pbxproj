@@ -42,7 +42,6 @@
 		2AE808301A8146150005E831 /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8082F1A8146150005E831 /* TypesTableViewController.swift */; };
 		2AF76B471A82B1C500873A92 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF76B461A82B1C500873A92 /* Helper.swift */; };
 		2AFC83051ACF2C6D005825D6 /* SelectedTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */; };
-		5AF9EDF4EAA0603D6D92D7D4 /* Pods_PasswordLockerSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236EA4C6C8BCC200610213BB /* Pods_PasswordLockerSwiftTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +95,6 @@
 		2AF76B461A82B1C500873A92 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SelectedTypeTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		436BAEB4C1B97E94AF635450 /* Pods-PasswordLockerSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordLockerSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		4F02E7239BC89B87765AE4C4 /* Pods-PasswordLockerSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordLockerSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordLockerSwiftTests/Pods-PasswordLockerSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
-		BC72878E31786E2D5B70AC2B /* Pods-PasswordLockerSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordLockerSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordLockerSwiftTests/Pods-PasswordLockerSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FB1E53FF1AE08A69FFE7CE69 /* Pods_PasswordLockerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PasswordLockerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1F6CDD5BCE3A4B16480374 /* Pods-PasswordLockerSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordLockerSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AF9EDF4EAA0603D6D92D7D4 /* Pods_PasswordLockerSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,8 +313,6 @@
 			children = (
 				436BAEB4C1B97E94AF635450 /* Pods-PasswordLockerSwift.debug.xcconfig */,
 				FB1F6CDD5BCE3A4B16480374 /* Pods-PasswordLockerSwift.release.xcconfig */,
-				BC72878E31786E2D5B70AC2B /* Pods-PasswordLockerSwiftTests.debug.xcconfig */,
-				4F02E7239BC89B87765AE4C4 /* Pods-PasswordLockerSwiftTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -359,12 +353,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A438D851A6D66A500101092 /* Build configuration list for PBXNativeTarget "PasswordLockerSwiftTests" */;
 			buildPhases = (
-				D664FE7C73EA94F55296D211 /* [CP] Check Pods Manifest.lock */,
 				2A438D741A6D66A500101092 /* Sources */,
 				2A438D751A6D66A500101092 /* Frameworks */,
 				2A438D761A6D66A500101092 /* Resources */,
-				E69D490B362B26EFF4FB575C /* [CP] Embed Pods Frameworks */,
-				74A5234058AF9E99C34EF555 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -482,51 +473,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		74A5234058AF9E99C34EF555 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordLockerSwiftTests/Pods-PasswordLockerSwiftTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D664FE7C73EA94F55296D211 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E69D490B362B26EFF4FB575C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordLockerSwiftTests/Pods-PasswordLockerSwiftTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -721,7 +667,6 @@
 		};
 		2A438D861A6D66A500101092 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC72878E31786E2D5B70AC2B /* Pods-PasswordLockerSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -742,7 +687,6 @@
 		};
 		2A438D871A6D66A500101092 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F02E7239BC89B87765AE4C4 /* Pods-PasswordLockerSwiftTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "";

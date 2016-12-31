@@ -15,8 +15,8 @@ class TabBarController: UITabBarController,
                         SelectedTypeTableViewControllerDelegate {
     
     // set by AppDelegate
-    var managedObjectContext: NSManagedObjectContext?
-    
+//    var managedObjectContext: NSManagedObjectContext?
+
     // keep current tabs
     var tabsModel = TabsModel()
     
@@ -57,20 +57,22 @@ class TabBarController: UITabBarController,
     // MARK: - Helper Methods
     func configureTabs() {
         let fReq = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedObject")
-        
-        var e: NSError? = nil
+        let managedObjectContext = NSManagedObjectContext.mr_default()
+
+        var error: NSError? = nil
         do {
-            let fResults = try self.managedObjectContext?.fetch(fReq)
-            if e != nil {
-                print("\(TAG) fetch error: \(e!.localizedDescription)")
+            let fResults = try managedObjectContext.fetch(fReq)
+
+            if error != nil {
+                print("\(TAG) fetch error: \(error!.localizedDescription)")
                 abort()
             }
             
-            if fResults!.count > 0 {
+            if fResults.count > 0 {
                 createTabs(fResults as! [SavedObject])
             }
-        } catch let error as NSError {
-            e = error
+        } catch let exception as NSError {
+            error = exception
         }
     }
     
@@ -92,7 +94,7 @@ class TabBarController: UITabBarController,
     }
     
     func addNewTabWithCategory(_ category: Category) {
-        
+
         // If the tab does not already exist
         if !self.tabsModel.currentTabs.contains(category.name) {
 
@@ -111,10 +113,12 @@ class TabBarController: UITabBarController,
             selectedTypeViewController.tabBarItem = UITabBarItem(title: category.name,
                                                                  image: UIImage(named: "tab_\(category.imageName)"),
                                                                  selectedImage: nil)
-            
+
+            let managedObjectContext = NSManagedObjectContext.mr_default()
+
             // Set views's properties
             selectedTypeViewController.category = category
-            selectedTypeViewController.managedObjectContext = self.managedObjectContext
+//            selectedTypeViewController.managedObjectContext = managedObjectContext
             selectedTypeViewController.delegate = self
             
             // Add view to tabs

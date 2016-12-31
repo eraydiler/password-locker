@@ -42,13 +42,14 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        let managedObjectContext = NSManagedObjectContext.mr_default()
+
         if isBackTouched {
             print("\(TAG) back pressed")
         }
         
-        if managedObjectContext!.hasChanges  && isBackTouched {
-            rollBack()
+        if managedObjectContext.hasChanges  && isBackTouched {
+            NSManagedObjectContext.mr_default().rollback()
             print("\(TAG) Changes rolled back")
         }
     }
@@ -138,8 +139,8 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     }
     
     // set by AppDelegate on application startup
-    var managedObjectContext: NSManagedObjectContext?
-    
+//    var managedObjectContext: NSManagedObjectContext?
+
     // MARK: - Fetched results controller
     
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> {
@@ -147,8 +148,9 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
         }
-        let managedObjectContext = self.managedObjectContext!
-        
+
+        let managedObjectContext = NSManagedObjectContext.mr_default()
+
         /* `NSFetchRequest` config */
         let entity = NSEntityDescription.entity(forEntityName: "Row", in: managedObjectContext)
         let sort = NSSortDescriptor(key: "section", ascending: true)
@@ -286,7 +288,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             let row = self.fetchedResultsController.object(at: sender as! IndexPath) as! Row
             let targetVC = segue.destination as! EditValuesTableViewController
             
-            targetVC.managedObjectContext = self.managedObjectContext
+//            targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowId = row.objectID
             targetVC.placeholder = row.value
             targetVC.delegate = self
@@ -301,17 +303,18 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         isBackTouched = false
         save()
         self.delegate?.newDataSaved()
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Helper Methods
     
-    func rollBack() {
-        managedObjectContext?.rollback()
-    }
-    
+//    func rollBack() {
+//        managedObjectContext?.rollback()
+//    }
+
     func save() {
-        
+        let managedObjectContext = NSManagedObjectContext.mr_default()
+
         // Backup changed rows before rollBack
         let fetchedRows = self.fetchedResultsController.fetchedObjects as! [Row]
         
@@ -322,10 +325,13 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         let rows = rowsDictionaries(fetchedRows, name: &name!)
         
         // template deki degisiklikeri geri almak icin
-        rollBack()
+//        rollBack()
+        managedObjectContext.rollback()
         
         // Insert new entity for SavedObject
-        let savedObject = NSEntityDescription.insertNewObject(forEntityName: "SavedObject", into: self.managedObjectContext!) as! SavedObject
+        let savedObject = NSEntityDescription
+                                .insertNewObject(forEntityName: "SavedObject",
+                                                into: managedObjectContext) as! SavedObject
         
         savedObject.name = name!
         savedObject.data = rows
@@ -341,7 +347,8 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         for row in rows {
             let dict: Dictionary<String, String> = row
             
-            let newRow = NSEntityDescription.insertNewObject(forEntityName: "Row", into: self.managedObjectContext!) as! Row
+            let newRow = NSEntityDescription.insertNewObject(forEntityName: "Row",
+                                                             into: managedObjectContext) as! Row
             
             if let key = dict["key"] {
                 newRow.key = key
@@ -364,20 +371,22 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         var e: NSError?
 
         if !Constants.TEST {
-            do {
-                try managedObjectContext!.save()
-            } catch let error as NSError {
-                e = error
-                print("\(TAG) save error: \(e!.localizedDescription)")
-                abort()
-            }
+            managedObjectContext.mr_saveToPersistentStoreAndWait()
+
+//            do {
+//                try managedObjectContext!.save()
+//            } catch let error as NSError {
+//                e = error
+//                print("\(TAG) save error: \(e!.localizedDescription)")
+//                abort()
+//            }
         }
         
         if Constants.TEST {
             let req = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedObject")
             let fetchArray: [AnyObject]?
             do {
-                fetchArray = try self.managedObjectContext?.fetch(req)
+                fetchArray = try managedObjectContext.fetch(req)
             } catch let error as NSError {
                 e = error
                 fetchArray = nil
@@ -387,6 +396,7 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
                 for a in arr {
                     print("\(TAG) \(a)")
                 }
+                
                 print("")
             }
         }

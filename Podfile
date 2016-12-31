@@ -6,12 +6,7 @@ target 'PasswordLockerSwift' do
   use_frameworks!
 
   # Pods for PasswordLockerSwift
-#  pod "MagicalRecord"
-#  pod "MagicalRecord/ShorthandMethodAliases"
-
-  target 'PasswordLockerSwiftTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  pod "MagicalRecord"
+  pod "MagicalRecord/ShorthandMethodAliases"
 
 end

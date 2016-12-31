@@ -23,7 +23,7 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
     @IBOutlet weak var textViewCell: UITableViewCell!
     
     // set by AppDelegate on application startup
-    var managedObjectContext: NSManagedObjectContext?
+//    var managedObjectContext: NSManagedObjectContext?
 
     var placeholder: String?
     var rowId: NSManagedObjectID?
@@ -37,7 +37,8 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
         self.tableView.allowsSelection = false
         
         self.tableView.rowHeight = 44.0
-        self.row = self.managedObjectContext?.object(with: self.rowId!) as? Row
+
+        self.row = NSManagedObjectContext.mr_default().object(with: self.rowId!) as? Row
         
         self.title = "Edit"
         

@@ -13,8 +13,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     let kPasswordKey = "PassLock"
     
     @IBOutlet weak var passwordTextField: UITextField!
-    var managedObjectContext: NSManagedObjectContext?
-    
+
     func configureView() {
         self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
         self.passwordTextField.tintColor = UIColor.gray
@@ -92,8 +91,8 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "toAuthenticationVCSegue" {
-            let authenticationVC = segue.destination as! AuthenticationViewController
-            authenticationVC.managedObjectContext = self.managedObjectContext
+//            let authenticationVC = segue.destination as! AuthenticationViewController
+//            authenticationVC.managedObjectContext = self.managedObjectContext
         }
     }
 
