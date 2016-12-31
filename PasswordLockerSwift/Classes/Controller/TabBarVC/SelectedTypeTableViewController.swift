@@ -17,7 +17,6 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
 
     // set by former controller
     var category: Category?
-//    var managedObjectContext: NSManagedObjectContext?
 
     // delegate to send info to tabBar Controller when there is no more data
     var delegate: SelectedTypeTableViewControllerDelegate?
@@ -190,10 +189,9 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         
         if segue.identifier == "toSelectedValuesTVCSegue" {
             let targetVC = segue.destination as! SelectedValuesTableViewController
-//            targetVC.managedObjectContext = self.managedObjectContext
+            
             targetVC.category = self.category
             targetVC.savedObjectID = savedObject.objectID
-//            targetVC.delegate = self.tabBarController as! TabBarController
         }
     }
     

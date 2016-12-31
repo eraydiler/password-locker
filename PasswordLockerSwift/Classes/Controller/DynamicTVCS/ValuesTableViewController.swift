@@ -137,9 +137,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             cell.addSubview(Helper.seperatorButtomImageView(cell))
         }
     }
-    
-    // set by AppDelegate on application startup
-//    var managedObjectContext: NSManagedObjectContext?
 
     // MARK: - Fetched results controller
     
@@ -288,7 +285,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             let row = self.fetchedResultsController.object(at: sender as! IndexPath) as! Row
             let targetVC = segue.destination as! EditValuesTableViewController
             
-//            targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowId = row.objectID
             targetVC.placeholder = row.value
             targetVC.delegate = self
@@ -307,10 +303,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     }
     
     // MARK: - Helper Methods
-    
-//    func rollBack() {
-//        managedObjectContext?.rollback()
-//    }
 
     func save() {
         let managedObjectContext = NSManagedObjectContext.mr_default()
@@ -325,7 +317,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         let rows = rowsDictionaries(fetchedRows, name: &name!)
         
         // template deki degisiklikeri geri almak icin
-//        rollBack()
         managedObjectContext.rollback()
         
         // Insert new entity for SavedObject
@@ -372,14 +363,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
 
         if !Constants.TEST {
             managedObjectContext.mr_saveToPersistentStoreAndWait()
-
-//            do {
-//                try managedObjectContext!.save()
-//            } catch let error as NSError {
-//                e = error
-//                print("\(TAG) save error: \(e!.localizedDescription)")
-//                abort()
-//            }
         }
         
         if Constants.TEST {

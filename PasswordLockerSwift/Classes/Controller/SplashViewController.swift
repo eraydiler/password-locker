@@ -12,8 +12,6 @@ import CoreData
 class SplashViewController: UIViewController {
     let kPasswordKey="PassLock"
     let TAG = "SplashViewController"
-    
-//    var managedObjectContext: NSManagedObjectContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +31,5 @@ class SplashViewController: UIViewController {
     // Helper Methods
     func checkPassword() -> Bool {
         return (KeychainWrapper.stringForKey(kPasswordKey) != nil)
-    }
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAuthenticationVCSegue" {
-//            let authenticationVC = segue.destination as! AuthenticationViewController
-////            authenticationVC.managedObjectContext = managedObjectContext
-        } else {
-//            let createPassVC = segue.destination as! CreatePasswordViewController
-//            createPassVC.managedObjectContext = managedObjectContext
-        }
     }
 }

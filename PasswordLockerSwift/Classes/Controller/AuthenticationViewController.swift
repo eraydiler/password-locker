@@ -13,8 +13,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     let TAG = "AuthenticationViewController"
     
     @IBOutlet weak var passwordTextField: UITextField!
-    
-//    var managedObjectContext: NSManagedObjectContext?
 
     let kPasswordKey = "PassLock"
     
@@ -120,14 +118,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AuthenticationToTabBarController" {
-            // Set managedObjectContext for view controllers
-//            let tabBarController = segue.destination as! TabBarController
-//            tabBarController.managedObjectContext = managedObjectContext
-//            
-//            let nav = tabBarController.childViewControllers[0] as! UINavigationController
-//            let categoriesVC = nav.topViewController as! CategoriesTableViewController
-//            categoriesVC.managedObjectContext = self.managedObjectContext
-
             passwordTextField.text = nil
         }
     }

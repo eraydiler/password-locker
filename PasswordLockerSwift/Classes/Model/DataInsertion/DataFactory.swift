@@ -1110,13 +1110,6 @@ class DataFactory: NSObject {
 
         // MARK: - Save
         moc.mr_saveToPersistentStoreAndWait()
-
-//        do {
-//            try moc.save()
-//        } catch let error as NSError {
-//            print("finish error: \(error.localizedDescription)")
-//            abort()
-//        }
     }
     
     class func deleteAllObjects(_ managedObjectContext: NSManagedObjectContext, entityDescription: String) {
@@ -1134,12 +1127,6 @@ class DataFactory: NSObject {
             }
 
             managedObjectContext.mr_saveToPersistentStoreAndWait()
-
-//            do {
-//                try managedObjectContext.save()
-//            } catch let error as NSError {
-//                print("Error deleting \(entityDescription) - error:\(error)")
-//            }
         } catch let error as NSError {
             print("\(error.localizedDescription)")
         }

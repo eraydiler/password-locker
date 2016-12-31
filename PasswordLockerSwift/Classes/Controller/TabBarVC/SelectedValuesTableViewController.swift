@@ -19,9 +19,6 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     var savedObject: SavedObject?
 
     var rows: [Row]?
-    
-    // set by AppDelegate on application startup
-//    var managedObjectContext: NSManagedObjectContext?    
 
     // hack for handling back button
     var isBackTouched = true
@@ -283,7 +280,6 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             let row = self.fetchedResultsController.object(at: sender as! IndexPath) as! Row
 
             let targetVC = segue.destination as! EditSelectedValuesTableViewController
-//            targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowID = row.objectID
             targetVC.placeholder = row.value
             targetVC.delegate = self
@@ -367,25 +363,6 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             if row.section == "0" {self.savedObject?.name = row.value}
         }
 
-        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()
-        
-//        var e: NSError?
-//        if let moc = self.managedObjectContext {
-//            do {
-//                try moc.save()
-//            } catch let error as NSError {
-//                e = error
-//                print("\(TAG) save error: \(e!.localizedDescription)")
-//                abort()
-//            }
-//        } else {
-//            print("\(TAG) managedobjectcontext not found")
-//            abort()
-//        }
-
-//        if !managedObjectContext!.save(&e) {
-//            println("\(TAG) save error: \(e!.localizedDescription)")
-//            abort()
-//        }
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()        
     }
 }

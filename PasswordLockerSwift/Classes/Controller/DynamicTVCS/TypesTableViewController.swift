@@ -11,9 +11,7 @@ import CoreData
 
 class TypesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     let TAG = "TypesTableViewController"
-    // set by AppDelegate on application startup
-//    var managedObjectContext: NSManagedObjectContext?
-    
+
     // set by former controller
     var category: Category?
     
@@ -112,7 +110,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         
         if segue.identifier == "toValuesTVCSegue" {
             let targetVC = segue.destination as! ValuesTableViewController
-//            targetVC.managedObjectContext = self.managedObjectContext
+
             targetVC.category = self.category
             targetVC.type = type
             targetVC.delegate = self.tabBarController as! TabBarController

@@ -10,9 +10,6 @@ import UIKit
 import CoreData
 
 class CategoriesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    
-    // set by AppDelegate on application startup
-//    var managedObjectContext: NSManagedObjectContext?
 
     func configureView() {
         self.tableView.rowHeight = 50.0
@@ -138,7 +135,6 @@ class CategoriesTableViewController: UITableViewController, NSFetchedResultsCont
             if segue.identifier == "toValuesTVCSegue" {
                 let targetVC = segue.destination as! ValuesTableViewController
 
-//                targetVC.managedObjectContext = managedObjectContext
                 targetVC.category = category
                 targetVC.delegate = self.tabBarController as! TabBarController
 

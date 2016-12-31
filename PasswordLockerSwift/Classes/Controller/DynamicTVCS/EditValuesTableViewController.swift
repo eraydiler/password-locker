@@ -21,9 +21,6 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var textFieldCell: UITableViewCell!
     @IBOutlet weak var textViewCell: UITableViewCell!
-    
-    // set by AppDelegate on application startup
-//    var managedObjectContext: NSManagedObjectContext?
 
     var placeholder: String?
     var rowId: NSManagedObjectID?

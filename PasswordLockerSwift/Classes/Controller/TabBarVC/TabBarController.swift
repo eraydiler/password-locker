@@ -13,9 +13,6 @@ class TabBarController: UITabBarController,
                         UITabBarControllerDelegate,
                         ValuesTableViewControllerDelegate,
                         SelectedTypeTableViewControllerDelegate {
-    
-    // set by AppDelegate
-//    var managedObjectContext: NSManagedObjectContext?
 
     // keep current tabs
     var tabsModel = TabsModel()
@@ -118,7 +115,6 @@ class TabBarController: UITabBarController,
 
             // Set views's properties
             selectedTypeViewController.category = category
-//            selectedTypeViewController.managedObjectContext = managedObjectContext
             selectedTypeViewController.delegate = self
             
             // Add view to tabs
