@@ -31,14 +31,14 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
 
     func configureView() {
         
-        self.savedObject = self.managedObjectContext?.objectWithID(self.savedObjectID!) as? SavedObject
+        self.savedObject = self.managedObjectContext?.object(with: self.savedObjectID!) as? SavedObject
         if let rows = self.savedObject?.rows.allObjects as? [Row] {
             
             // Set rows property
             self.rows = rows
             
             // Sort by section
-            self.rows?.sortInPlace({$0.section < $1.section})
+            self.rows?.sort(by: {$0.section < $1.section})
         } else {
             print("\(TAG) no row found")
             abort()
@@ -51,12 +51,12 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         configureView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isBackTouched = true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
         if isBackTouched {
             print("\(TAG) back pressed")
@@ -75,7 +75,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     // MARK: - FetchedResultsController
     
-    var fetchedResultsController: NSFetchedResultsController {
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> {
         // return if already initialized
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
@@ -83,9 +83,9 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         let managedObjectContext = self.managedObjectContext!
         
         /* `NSFetchRequest` config */
-        let entity = NSEntityDescription.entityForName("Row", inManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Row", in: managedObjectContext)
         let sort = NSSortDescriptor(key: "section", ascending: true)
-        let req = NSFetchRequest()
+        let req = NSFetchRequest<NSFetchRequestResult>()
         req.entity = entity
         req.sortDescriptors = [sort]
         req.fetchBatchSize = 20
@@ -108,54 +108,54 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         
         return self._fetchedResultsController!
     }
-    var _fetchedResultsController: NSFetchedResultsController?
+    var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
 
     
     // MARK: - fetched results controller delegate
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController,
-        didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?) {
             switch type {
-            case .Insert:
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            case .insert:
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
                 print("\(TAG) coredata insert")
-            case .Update:
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+            case .update:
+                let cell = self.tableView.cellForRow(at: indexPath!)
                 self.configureCell(cell!, atIndexPath: indexPath!)
-                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.reloadRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
                 print("\(TAG) coredata update")
-            case .Move:
+            case .move:
                 print("\(TAG) coredata move")
-                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            case .Delete:
+                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+            case .delete:
                 print("\(TAG) coredata delete")
-                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
             }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections!.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.fetchedResultsController.sections![section].numberOfObjects
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var reuseIdentifier: String!
         let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
@@ -167,13 +167,13 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         } else {
             reuseIdentifier = "NoteCell"
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) 
         configureCell(cell, atIndexPath: indexPath)
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
 //        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![section]
 //        
@@ -213,7 +213,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         return nil
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 68.0
         }
@@ -222,11 +222,11 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("toEditSelectedValuesTVCSegue", sender: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toEditSelectedValuesTVCSegue", sender: indexPath)
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             cell.addSubview(Helper.seperatorTopImageView(cell))
         } else {
@@ -253,7 +253,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             reuseIdentifier = "NoteCell"
         }
         
-        if let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath!)
+        if let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath!)
         {
             configureCell(cell, atIndexPath: indexPath!)
         }
@@ -261,27 +261,27 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     // MARK: - IBActions
     
-    @IBAction func saveBarButtonTouched(sender: UIBarButtonItem) {
+    @IBAction func saveBarButtonTouched(_ sender: UIBarButtonItem) {
         isBackTouched = false
         save()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    func backBarButtonTouched(sender: UIBarButtonItem) {
+    func backBarButtonTouched(_ sender: UIBarButtonItem) {
         print("\(TAG) back clicked")
     }
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
 //        let indexPath = self.tableView.indexPathForSelectedRow      
         
         if segue.identifier == "toEditSelectedValuesTVCSegue" {
             
-            let row = self.fetchedResultsController.objectAtIndexPath(sender as! NSIndexPath) as! Row
+            let row = self.fetchedResultsController.object(at: sender as! IndexPath) as! Row
 
-            let targetVC = segue.destinationViewController as! EditSelectedValuesTableViewController
+            let targetVC = segue.destination as! EditSelectedValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.rowID = row.objectID
             targetVC.placeholder = row.value
@@ -293,10 +293,10 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     // MARK: - Helper Methods
     
-    func configureCell(cell: UITableViewCell,
-        atIndexPath indexPath: NSIndexPath) {
+    func configureCell(_ cell: UITableViewCell,
+        atIndexPath indexPath: IndexPath) {
             
-            let row = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Row
+            let row = self.fetchedResultsController.object(at: indexPath) as! Row
             if let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section] {
                 
                 switch (sectionsInfo.indexTitle!!) {
@@ -342,7 +342,7 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
                 case "2":
                     
                     if let noteLabel = cell.contentView.subviews[0] as? UILabel {
-                        if row.value != "No Note" { noteLabel.textColor = UIColor.blackColor() }
+                        if row.value != "No Note" { noteLabel.textColor = UIColor.black }
                         noteLabel.text = row.value
                     } else {
                         print(TAG + " " + "noteLabel not found")

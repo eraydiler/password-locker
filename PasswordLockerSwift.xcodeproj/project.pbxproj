@@ -339,12 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A438D821A6D66A500101092 /* Build configuration list for PBXNativeTarget "PasswordLockerSwift" */;
 			buildPhases = (
-				6241879C42B9F0D7A3EB6A5D /* 📦 Check Pods Manifest.lock */,
+				6241879C42B9F0D7A3EB6A5D /* [CP] Check Pods Manifest.lock */,
 				2A438D5C1A6D66A500101092 /* Sources */,
 				2A438D5D1A6D66A500101092 /* Frameworks */,
 				2A438D5E1A6D66A500101092 /* Resources */,
-				510E66550C271A6FA3DCECA6 /* 📦 Embed Pods Frameworks */,
-				12E399454B5996774486B404 /* 📦 Copy Pods Resources */,
+				510E66550C271A6FA3DCECA6 /* [CP] Embed Pods Frameworks */,
+				12E399454B5996774486B404 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -359,12 +359,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A438D851A6D66A500101092 /* Build configuration list for PBXNativeTarget "PasswordLockerSwiftTests" */;
 			buildPhases = (
-				D664FE7C73EA94F55296D211 /* 📦 Check Pods Manifest.lock */,
+				D664FE7C73EA94F55296D211 /* [CP] Check Pods Manifest.lock */,
 				2A438D741A6D66A500101092 /* Sources */,
 				2A438D751A6D66A500101092 /* Frameworks */,
 				2A438D761A6D66A500101092 /* Resources */,
-				E69D490B362B26EFF4FB575C /* 📦 Embed Pods Frameworks */,
-				74A5234058AF9E99C34EF555 /* 📦 Copy Pods Resources */,
+				E69D490B362B26EFF4FB575C /* [CP] Embed Pods Frameworks */,
+				74A5234058AF9E99C34EF555 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,9 +389,11 @@
 				TargetAttributes = {
 					2A438D5F1A6D66A500101092 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0820;
 					};
 					2A438D771A6D66A500101092 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 2A438D5F1A6D66A500101092;
 					};
 				};
@@ -437,14 +439,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12E399454B5996774486B404 /* 📦 Copy Pods Resources */ = {
+		12E399454B5996774486B404 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,14 +454,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		510E66550C271A6FA3DCECA6 /* 📦 Embed Pods Frameworks */ = {
+		510E66550C271A6FA3DCECA6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,29 +469,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6241879C42B9F0D7A3EB6A5D /* 📦 Check Pods Manifest.lock */ = {
+		6241879C42B9F0D7A3EB6A5D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		74A5234058AF9E99C34EF555 /* 📦 Copy Pods Resources */ = {
+		74A5234058AF9E99C34EF555 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,29 +499,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordLockerSwiftTests/Pods-PasswordLockerSwiftTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D664FE7C73EA94F55296D211 /* 📦 Check Pods Manifest.lock */ = {
+		D664FE7C73EA94F55296D211 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E69D490B362B26EFF4FB575C /* 📦 Embed Pods Frameworks */ = {
+		E69D490B362B26EFF4FB575C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +700,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -712,6 +715,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -731,6 +735,7 @@
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PasswordLockerSwift.app/PasswordLockerSwift";
 			};
 			name = Debug;
@@ -746,6 +751,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PasswordLockerSwift.app/PasswordLockerSwift";
 			};
 			name = Release;

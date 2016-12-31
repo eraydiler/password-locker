@@ -39,7 +39,7 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
     /* `NSFetchedResultsController`
     lazily initialized
     fetches the displayed domain model */
-    var fetchedResultsController: NSFetchedResultsController {
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> {
         // return if already initialized
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
@@ -50,9 +50,9 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         fetch all `Item`s
         order them alphabetically by name
         at least one sort order _is_ required */
-        let entity = NSEntityDescription.entityForName("Type", inManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Type", in: managedObjectContext)
         let sort = NSSortDescriptor(key: "name", ascending: true)
-        let req = NSFetchRequest()
+        let req = NSFetchRequest<NSFetchRequestResult>()
         req.entity = entity
         req.sortDescriptors = [sort]
         req.predicate = NSPredicate(format: "category == %@", category!)        
@@ -75,42 +75,42 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
         
         return self._fetchedResultsController!
     }
-    var _fetchedResultsController: NSFetchedResultsController?
+    var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return self.fetchedResultsController.sections!.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.fetchedResultsController.sections![section].numberOfObjects
     }
     
     // create and configure each `UITableViewCell`
-    override func tableView(tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
             var cell: UITableViewCell = UITableViewCell()
-            cell = tableView.dequeueReusableCellWithIdentifier("TypeCell", forIndexPath: indexPath) 
+            cell = tableView.dequeueReusableCell(withIdentifier: "TypeCell", for: indexPath) 
             self.configureCell(cell, atIndexPath: indexPath)
             return cell
     }
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let indexPath = self.tableView.indexPathForSelectedRow
-        let type = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! Type
+        let type = self.fetchedResultsController.object(at: indexPath!) as! Type
         
         if segue.identifier == "toValuesTVCSegue" {
-            let targetVC = segue.destinationViewController as! ValuesTableViewController
+            let targetVC = segue.destination as! ValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
             targetVC.type = type
@@ -122,10 +122,10 @@ class TypesTableViewController: UITableViewController, NSFetchedResultsControlle
     
     /* helper method to configure a `UITableViewCell`
     ask `NSFetchedResultsController` for the model */
-    func configureCell(cell: UITableViewCell,
-        atIndexPath indexPath: NSIndexPath) {
+    func configureCell(_ cell: UITableViewCell,
+        atIndexPath indexPath: IndexPath) {
             
-            let type = self.fetchedResultsController.objectAtIndexPath(indexPath)
+            let type = self.fetchedResultsController.object(at: indexPath)
                 as! Type
             
             let titleLabel = cell.contentView.subviews[0] as! UILabel

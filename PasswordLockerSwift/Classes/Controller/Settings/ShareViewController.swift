@@ -19,34 +19,34 @@ class ShareViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }    
 
-    @IBAction func buttonTapped(sender: UIButton) {
+    @IBAction func buttonTapped(_ sender: UIButton) {
         if sender.titleLabel?.text == "Facebook" {
 
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
                 let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                 facebookSheet.setInitialText("Hey, \n\n I'm using this awesome app to keep my passwords in secure.\n\nVisit http://eraydiler.com for more.")
-                self.presentViewController(facebookSheet, animated: true, completion: nil)
+                self.present(facebookSheet, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         } else {
 
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
                 let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
                 twitterSheet.setInitialText("Hey, \n\n I'm using this awesome app to keep my passwords in secure.\n\nVisit http://eraydiler.com for more.")
-                self.presentViewController(twitterSheet, animated: true, completion: nil)
+                self.present(twitterSheet, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
     
-    @IBAction func exitTapped(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func exitTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

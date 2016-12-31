@@ -20,8 +20,8 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     func configureView() {
         passwordTextField.delegate = self
-        self.passwordTextField.setValue(UIColor.grayColor(), forKeyPath: "_placeholderLabel.textColor")
-        self.passwordTextField.tintColor = UIColor.whiteColor()
+        self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
+        self.passwordTextField.tintColor = UIColor.white
     }
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     }
     
     // MARK: - IBActions
-    @IBAction func addPassLockButtonPressed(sender: AnyObject) {
+    @IBAction func addPassLockButtonPressed(_ sender: AnyObject) {
         let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!,
                                                       forKey: kPasswordKey)
         if isSaved {
@@ -45,31 +45,31 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             // show alert
             let alertController = UIAlertController(title: "Password Saved",
                                                     message: "Your password is saved successfully",
-                                                    preferredStyle: .Alert)
+                                                    preferredStyle: .alert)
             
-            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
             
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
         else { print("Error when saving") }
 
     }
     
-    @IBAction func deletePassLockButtonPressed(sender: AnyObject) {
+    @IBAction func deletePassLockButtonPressed(_ sender: AnyObject) {
         let isRemoved: Bool = KeychainWrapper.removeObjectForKey(kPasswordKey)
         if isRemoved {
             print("Removed Successfully")
             
             // show alert
-            let alertController = UIAlertController(title: "Password Removed", message: "Your password is removed successfully", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Password Removed", message: "Your password is removed successfully", preferredStyle: .alert)
             
-            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
-                self.dismissViewControllerAnimated(true, completion: nil)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { (alertAction) -> Void in
+                self.dismiss(animated: true, completion: nil)
             })
 
             alertController.addAction(defaultAction)
-            presentViewController(alertController, animated: true, completion: nil)            
+            present(alertController, animated: true, completion: nil)            
             
         }
         else {
@@ -85,43 +85,43 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     presentViewController(alertView, animated: true, completion: nil)
     */
     
-    @IBAction func checkButtonPressed(sender: AnyObject) {
+    @IBAction func checkButtonPressed(_ sender: AnyObject) {
         let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)
         print("\(retrieveString)")
     }
     
-    @IBAction func viewTapped(sender: AnyObject) {
+    @IBAction func viewTapped(_ sender: AnyObject) {
         passwordTextField.resignFirstResponder()
     }
     
     // MARK: - UITextField Delegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.isEqual(passwordTextField) {
             let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)
             if retrieveString == passwordTextField.text {
                 // Success
                 print("Login Successful")
-                self.performSegueWithIdentifier("AuthenticationToTabBarController", sender: nil)
+                self.performSegue(withIdentifier: "AuthenticationToTabBarController", sender: nil)
                 return true
             } else {
                 // show alert
-                let alertController = UIAlertController(title: "Wrong Pass", message: "Be sure to enter right password", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Wrong Pass", message: "Be sure to enter right password", preferredStyle: .alert)
                 
-                let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(defaultAction)
                 
-                presentViewController(alertController, animated: true, completion: nil)
+                present(alertController, animated: true, completion: nil)
             }
         }
         return false
     }
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AuthenticationToTabBarController" {
             // Set managedObjectContext for view controllers
-            let tabBarController = segue.destinationViewController as! TabBarController
+            let tabBarController = segue.destination as! TabBarController
             tabBarController.managedObjectContext = self.managedObjectContext
             
             let nav = tabBarController.childViewControllers[0] as! UINavigationController

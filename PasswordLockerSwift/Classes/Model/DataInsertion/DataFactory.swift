@@ -13,7 +13,7 @@ class DataFactory: NSObject {
     
     var managedObjectContext: NSManagedObjectContext?
     
-    class func setupInitialData(managedObjectContext: NSManagedObjectContext) {
+    class func setupInitialData(_ managedObjectContext: NSManagedObjectContext) {
         let moc: NSManagedObjectContext = managedObjectContext
 
 
@@ -21,35 +21,35 @@ class DataFactory: NSObject {
         // MARK: - Categories
         
         let categoryAccount: Category = NSEntityDescription
-                                        .insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as! Category
+                                        .insertNewObject(forEntityName: "Category", into: moc) as! Category
 
         categoryAccount.name = "Account"
         categoryAccount.imageName = "account"
 
 
         let categoryWeb: Category = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as! Category
+                                    .insertNewObject(forEntityName: "Category", into: moc) as! Category
 
         categoryWeb.name = "Web"
         categoryWeb.imageName = "web"
         
 
         let categoryNote: Category = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as! Category
+                                    .insertNewObject(forEntityName: "Category", into: moc) as! Category
 
         categoryNote.name = "Note"
         categoryNote.imageName = "note"
         
 
         let categoryEmail: Category = NSEntityDescription
-                                      .insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as! Category
+                                      .insertNewObject(forEntityName: "Category", into: moc) as! Category
 
         categoryEmail.name = "Email"
         categoryEmail.imageName = "email"
         
 
         let categoryWallet: Category = NSEntityDescription
-                                       .insertNewObjectForEntityForName("Category", inManagedObjectContext: moc) as! Category
+                                       .insertNewObject(forEntityName: "Category", into: moc) as! Category
 
         categoryWallet.name = "Wallet"
         categoryWallet.imageName = "wallet"
@@ -59,7 +59,7 @@ class DataFactory: NSObject {
         // MARK: - Account Types
         
         let typeGenericAcc: Type = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                   .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeGenericAcc.name = "Generic Account"
         typeGenericAcc.imageName = "genericAccount"
@@ -67,7 +67,7 @@ class DataFactory: NSObject {
         
 
         let typeInstnMssngr: Type = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                    .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeInstnMssngr.name = "Instant Messenger"
         typeInstnMssngr.imageName = "instantMessenger"
@@ -75,7 +75,7 @@ class DataFactory: NSObject {
         
 
         let typeSoftwrLcnc: Type = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                   .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeSoftwrLcnc.name = "Software Licence"
         typeSoftwrLcnc.imageName = "softwareLicence"
@@ -83,7 +83,7 @@ class DataFactory: NSObject {
         
 
         let typeDatabase: Type = NSEntityDescription
-                                .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeDatabase.name = "Database"
         typeDatabase.imageName = "database"
@@ -91,7 +91,7 @@ class DataFactory: NSObject {
         
 
         let typeFtpServer: Type = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                  .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeFtpServer.name = "Ftp Server"
         typeFtpServer.imageName = "ftpServer"
@@ -99,7 +99,7 @@ class DataFactory: NSObject {
         
 
         let typeWirelessRtr: Type = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                    .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeWirelessRtr.name = "Wireless Router"
         typeWirelessRtr.imageName = "wirelessRouter"
@@ -107,7 +107,7 @@ class DataFactory: NSObject {
         
 
         let typeServer: Type = NSEntityDescription
-                               .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                               .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeServer.name = "Server"
         typeServer.imageName = "server"
@@ -118,7 +118,7 @@ class DataFactory: NSObject {
         // MARK: - Web Types
         
         let typeRegular: Type = NSEntityDescription
-                                .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeRegular.name = "Regular"
         typeRegular.imageName = "regular"
@@ -126,7 +126,7 @@ class DataFactory: NSObject {
         
 
         let typeFacebook: Type = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                 .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeFacebook.name = "Facebook"
         typeFacebook.imageName = "facebook"
@@ -134,7 +134,7 @@ class DataFactory: NSObject {
         
 
         let typeGoogle: Type = NSEntityDescription
-                               .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                               .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeGoogle.name = "Google"
         typeGoogle.imageName = "google"
@@ -142,7 +142,7 @@ class DataFactory: NSObject {
         
 
         let typeTwitter: Type = NSEntityDescription
-                                .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeTwitter.name = "Twitter"
         typeTwitter.imageName = "twitter"
@@ -150,7 +150,7 @@ class DataFactory: NSObject {
         
 
         let typeInstagram: Type = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                  .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeInstagram.name = "Instagram"
         typeInstagram.imageName = "instagram"
@@ -158,7 +158,7 @@ class DataFactory: NSObject {
         
 
         let typeFlickr: Type = NSEntityDescription
-                               .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                               .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeFlickr.name = "Flickr"
         typeFlickr.imageName = "flickr"
@@ -166,7 +166,7 @@ class DataFactory: NSObject {
         
 
         let typeYoutube: Type = NSEntityDescription
-                                .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeYoutube.name = "Youtube"
         typeYoutube.imageName = "youtube"
@@ -174,7 +174,7 @@ class DataFactory: NSObject {
         
 
         let typeLinkedin: Type = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                 .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeLinkedin.name = "Linkedin"
         typeLinkedin.imageName = "linkedin"
@@ -182,7 +182,7 @@ class DataFactory: NSObject {
         
 
         let typeYahoo: Type = NSEntityDescription
-                              .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                              .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeYahoo.name = "Yahoo"
         typeYahoo.imageName = "yahoo"
@@ -190,7 +190,7 @@ class DataFactory: NSObject {
         
 
         let typePaypal: Type = NSEntityDescription
-                               .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                               .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typePaypal.name = "Paypal"
         typePaypal.imageName = "paypal"
@@ -198,7 +198,7 @@ class DataFactory: NSObject {
         
 
         let typeAmazon: Type = NSEntityDescription
-                               .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                               .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeAmazon.name = "Amazon"
         typeAmazon.imageName = "amazon"
@@ -206,7 +206,7 @@ class DataFactory: NSObject {
 
 
         let typeEbay: Type = NSEntityDescription
-                             .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                             .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeEbay.name = "Ebay"
         typeEbay.imageName = "ebay"
@@ -214,7 +214,7 @@ class DataFactory: NSObject {
         
 
         let typeWordpress: Type = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                  .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeWordpress.name = "Wordpress"
         typeWordpress.imageName = "wordpress"
@@ -225,7 +225,7 @@ class DataFactory: NSObject {
         // MARK: - Email Types
         
         let typeRegularMail: Type = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                    .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeRegularMail.name = "Regular Mail"
         typeRegularMail.imageName = "regularMail"
@@ -233,7 +233,7 @@ class DataFactory: NSObject {
         
 
         let typeGmail: Type = NSEntityDescription
-                              .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                              .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeGmail.name = "Gmail"
         typeGmail.imageName = "gmail"
@@ -241,7 +241,7 @@ class DataFactory: NSObject {
         
 
         let typeHotmail: Type = NSEntityDescription
-                                .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeHotmail.name = "Hotmail"
         typeHotmail.imageName = "hotmail"
@@ -249,7 +249,7 @@ class DataFactory: NSObject {
         
 
         let typeYahooMail: Type = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                  .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeYahooMail.name = "Yahoo"
         typeYahooMail.imageName = "yahoo"
@@ -260,7 +260,7 @@ class DataFactory: NSObject {
         // MARK: - Wallet Types
         
         let typeBankAccount: Type = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                    .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeBankAccount.name = "Bank Account"
         typeBankAccount.imageName = "bankAccount"
@@ -268,7 +268,7 @@ class DataFactory: NSObject {
 
 
         let typeCreditCard: Type = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                   .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeCreditCard.name = "Credit Card"
         typeCreditCard.imageName = "creditCard"
@@ -276,7 +276,7 @@ class DataFactory: NSObject {
         
 
         let typeID: Type = NSEntityDescription
-                           .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                           .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeID.name = "ID"
         typeID.imageName = "ID"
@@ -284,7 +284,7 @@ class DataFactory: NSObject {
         
 
         let typeDriverLicence: Type = NSEntityDescription
-                                      .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                      .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeDriverLicence.name = "Driver Licence"
         typeDriverLicence.imageName = "driverLicence"
@@ -292,7 +292,7 @@ class DataFactory: NSObject {
         
 
         let typeMembership: Type = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                   .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeMembership.name = "Membership"
         typeMembership.imageName = "membership"
@@ -300,7 +300,7 @@ class DataFactory: NSObject {
         
 
         let typePassport: Type = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                                 .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typePassport.name = "Passport"
         typePassport.imageName = "passport"
@@ -311,7 +311,7 @@ class DataFactory: NSObject {
         // MARK: - Note Type
         
         let typeNote: Type = NSEntityDescription
-                             .insertNewObjectForEntityForName("Type", inManagedObjectContext: moc) as! Type
+                             .insertNewObject(forEntityName: "Type", into: moc) as! Type
 
         typeNote.name = "Note"
         typeNote.imageName = "note"
@@ -323,7 +323,7 @@ class DataFactory: NSObject {
         
         // Generic Account header row
         let rowGenericAccTitle: Row = NSEntityDescription
-                                      .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                      .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowGenericAccTitle.key = "genericAccount"
         rowGenericAccTitle.value = "Generic Account"
@@ -333,7 +333,7 @@ class DataFactory: NSObject {
 
         // Instant Messenger header row
         let rowInstanMsngrTitle: Row = NSEntityDescription
-                                       .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                       .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowInstanMsngrTitle.key = "instantMessenger"
         rowInstanMsngrTitle.value = "Instant Messenger"
@@ -343,7 +343,7 @@ class DataFactory: NSObject {
 
         // Software Licence header row
         let rowSoftwareLicenceTitle: Row = NSEntityDescription
-                                           .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                           .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSoftwareLicenceTitle.key = "softwareLicence"
         rowSoftwareLicenceTitle.value = "Software Licence"
@@ -353,7 +353,7 @@ class DataFactory: NSObject {
 
         // Database header row
         let rowDatabaseTitle: Row = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                    .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowDatabaseTitle.key = "database"
         rowDatabaseTitle.value = "Database"
@@ -363,7 +363,7 @@ class DataFactory: NSObject {
 
         // Ftp Server header row
         let rowFtpServerTitle: Row = NSEntityDescription
-                                     .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                     .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowFtpServerTitle.key = "ftpServer"
         rowFtpServerTitle.value = "Ftp Server"
@@ -373,7 +373,7 @@ class DataFactory: NSObject {
 
         // Wireless Router header row
         let rowWirlessRouterTitle: Row = NSEntityDescription
-                                         .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                         .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowWirlessRouterTitle.key = "wirelessRouter"
         rowWirlessRouterTitle.value = "Wireless Router"
@@ -383,7 +383,7 @@ class DataFactory: NSObject {
 
         // Server header row
         let rowServerTitle: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowServerTitle.key = "server"
         rowServerTitle.value = "Server"
@@ -393,7 +393,7 @@ class DataFactory: NSObject {
 
         // Note header row
         let rowNoteTitle: Row = NSEntityDescription
-                                .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowNoteTitle.key = "note"
         rowNoteTitle.value = "New Note"
@@ -403,7 +403,7 @@ class DataFactory: NSObject {
 
         // Regular Mail header row
         let rowRegularMailTitle: Row = NSEntityDescription
-                                       .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                       .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowRegularMailTitle.key = "regularMail"
         rowRegularMailTitle.value = "Regular Mail"
@@ -413,7 +413,7 @@ class DataFactory: NSObject {
 
         // Gmail header row
         let rowGmailTitle: Row = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                 .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowGmailTitle.key = "gmail"
         rowGmailTitle.value = "Gmail"
@@ -423,7 +423,7 @@ class DataFactory: NSObject {
 
         // Hotmail header row
         let rowHotmailTitle: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowHotmailTitle.key = "hotmail"
         rowHotmailTitle.value = "Hotmail"
@@ -433,7 +433,7 @@ class DataFactory: NSObject {
 
         // Yahoo header row
         let rowYahooMailTitle: Row = NSEntityDescription
-                                     .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                     .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowYahooMailTitle.key = "yahoomail"
         rowYahooMailTitle.value = "Yahoo Mail"
@@ -443,7 +443,7 @@ class DataFactory: NSObject {
 
         // Bank Account header row
         let rowBankAccountTitle: Row = NSEntityDescription
-                                       .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                       .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowBankAccountTitle.key = "bankAccount"
         rowBankAccountTitle.value = "Bank Account"
@@ -453,7 +453,7 @@ class DataFactory: NSObject {
 
         // Credit Card header row
         let rowCreditCardTitle: Row = NSEntityDescription
-                                      .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                      .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowCreditCardTitle.key = "creditCard"
         rowCreditCardTitle.value = "Credit Card"
@@ -463,7 +463,7 @@ class DataFactory: NSObject {
 
         // ID header row
         let rowIDTitle: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowIDTitle.key = "ID"
         rowIDTitle.value = "ID"
@@ -473,7 +473,7 @@ class DataFactory: NSObject {
 
         // Driver Licence header row
         let rowDriverLicenceTitle: Row = NSEntityDescription
-                                         .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                         .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowDriverLicenceTitle.key = "driverLicence"
         rowDriverLicenceTitle.value = "Driver Licence"
@@ -483,7 +483,7 @@ class DataFactory: NSObject {
 
         // Membership header row
         let rowMembershipTitle: Row = NSEntityDescription
-                                      .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                      .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowMembershipTitle.key = "membership"
         rowMembershipTitle.value = "Membersip"
@@ -493,7 +493,7 @@ class DataFactory: NSObject {
 
         // Passport header row
         let rowPassportTitle: Row = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                    .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPassportTitle.key = "passport"
         rowPassportTitle.value = "Passport"
@@ -503,7 +503,7 @@ class DataFactory: NSObject {
 
         // Regular header row
         let rowRegularTitle: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowRegularTitle.key = "regular"
         rowRegularTitle.value = "Regular"
@@ -513,7 +513,7 @@ class DataFactory: NSObject {
 
         // Facebook header row
         let rowFacebookTitle: Row = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                    .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowFacebookTitle.key = "facebook"
         rowFacebookTitle.value = "Facebook"
@@ -523,7 +523,7 @@ class DataFactory: NSObject {
 
         // Google header row
         let rowGoogleTitle: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowGoogleTitle.key = "google"
         rowGoogleTitle.value = "Google"
@@ -533,7 +533,7 @@ class DataFactory: NSObject {
 
         // Twitter header row
         let rowTwitterTitle: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowTwitterTitle.key = "twitter"
         rowTwitterTitle.value = "Twitter"
@@ -543,7 +543,7 @@ class DataFactory: NSObject {
 
         // Instagram header row
         let rowInstagramTİtle: Row = NSEntityDescription
-                                     .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                     .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowInstagramTİtle.key = "instagram"
         rowInstagramTİtle.value = "Instagram"
@@ -553,7 +553,7 @@ class DataFactory: NSObject {
 
         // Flickr header row
         let rowFlickrTitle: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowFlickrTitle.key = "flickr"
         rowFlickrTitle.value = "Flickr"
@@ -563,7 +563,7 @@ class DataFactory: NSObject {
 
         // Youtube header row
         let rowYoutubeTitle: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowYoutubeTitle.key = "youtube"
         rowYoutubeTitle.value = "Youtube"
@@ -573,7 +573,7 @@ class DataFactory: NSObject {
 
         // Linkedin header row
         let rowLinkedinTitle: Row = NSEntityDescription
-                                    .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                    .insertNewObject(forEntityName: "Row", into: moc) as! Row
         rowLinkedinTitle.key = "linkedin"
         rowLinkedinTitle.value = "Linkedin"
         rowLinkedinTitle.section = "0"
@@ -582,7 +582,7 @@ class DataFactory: NSObject {
         
         // Yahoo header row
         let rowYahooTitle: Row = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                 .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowYahooTitle.key = "yahoo"
         rowYahooTitle.value = "Yahoo"
@@ -592,7 +592,7 @@ class DataFactory: NSObject {
 
         // Paypal header row
         let rowPaypalTitle: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPaypalTitle.key = "paypal"
         rowPaypalTitle.value = "Paypal"
@@ -601,7 +601,7 @@ class DataFactory: NSObject {
         
         // Amazon header row
         let rowAmazonTitle: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowAmazonTitle.key = "amazon"
         rowAmazonTitle.value = "Amazon"
@@ -611,7 +611,7 @@ class DataFactory: NSObject {
 
         // Ebay header row
         let rowEbayTitle: Row = NSEntityDescription
-                                .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowEbayTitle.key = "ebay"
         rowEbayTitle.value = "Ebay"
@@ -621,7 +621,7 @@ class DataFactory: NSObject {
 
         // Wordpress header row
         let rowWordpressTitle: Row = NSEntityDescription
-                                     .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                     .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowWordpressTitle.key = "wordpress"
         rowWordpressTitle.value = "Wordpress"
@@ -632,7 +632,7 @@ class DataFactory: NSObject {
         
         
         let rowUsername: Row = NSEntityDescription
-                               .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                               .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowUsername.key = "Username"
         rowUsername.value = ""
@@ -641,7 +641,7 @@ class DataFactory: NSObject {
 )
         
         let rowPassword: Row = NSEntityDescription
-                               .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                               .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPassword.key = "Password"
         rowPassword.value = ""
@@ -650,7 +650,7 @@ class DataFactory: NSObject {
 
 
         let rowNote: Row = NSEntityDescription
-                           .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                           .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowNote.key = "note"
         rowNote.value = "No Note"
@@ -659,7 +659,7 @@ class DataFactory: NSObject {
         
 
         let rowID: Row = NSEntityDescription
-                         .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                         .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowID.key = "ID"
         rowID.value = ""
@@ -668,7 +668,7 @@ class DataFactory: NSObject {
 
         
         let rowKey: Row = NSEntityDescription
-                          .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                          .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowKey.key = "Key"
         rowKey.value = ""
@@ -677,7 +677,7 @@ class DataFactory: NSObject {
 
         
         let rowType: Row = NSEntityDescription
-                           .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                           .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowType.key = "Type"
         rowType.value = ""
@@ -686,7 +686,7 @@ class DataFactory: NSObject {
 
         
         let rowServer: Row = NSEntityDescription
-                             .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                             .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowServer.key = "Server"
         rowServer.value = ""
@@ -695,7 +695,7 @@ class DataFactory: NSObject {
 
 
         let rowPort: Row = NSEntityDescription
-                           .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                           .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPort.key = "Port"
         rowPort.value = ""
@@ -704,7 +704,7 @@ class DataFactory: NSObject {
 
 
         let rowDatabase: Row = NSEntityDescription
-                               .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                               .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowDatabase.key = "Database"
         rowDatabase.value = ""
@@ -713,7 +713,7 @@ class DataFactory: NSObject {
 
 
         let rowSID: Row = NSEntityDescription
-                          .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                          .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSID.key = "SID"
         rowSID.value = ""
@@ -722,7 +722,7 @@ class DataFactory: NSObject {
 
 
         let rowAlias: Row = NSEntityDescription
-                            .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                            .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowAlias.key = "Alias"
         rowAlias.value = ""
@@ -731,7 +731,7 @@ class DataFactory: NSObject {
 
 
         let rowOptions: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowOptions.key = "Options"
         rowOptions.value = ""
@@ -740,7 +740,7 @@ class DataFactory: NSObject {
 
 
         let rowPath: Row = NSEntityDescription
-                           .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                           .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPath.key = "Path"
         rowPath.value = ""
@@ -749,7 +749,7 @@ class DataFactory: NSObject {
         
 
         let rowProvider: Row = NSEntityDescription
-                               .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                               .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowProvider.key = "Provider"
         rowProvider.value = ""
@@ -758,7 +758,7 @@ class DataFactory: NSObject {
         
 
         let rowWebsite: Row = NSEntityDescription
-                             .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                             .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowWebsite.key = "Website"
         rowWebsite.value = ""
@@ -767,7 +767,7 @@ class DataFactory: NSObject {
 
 
         let rowPhone: Row = NSEntityDescription
-                            .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                            .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPhone.key = "Phone"
         rowPhone.value = ""
@@ -776,7 +776,7 @@ class DataFactory: NSObject {
 
 
         let rowStation: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowStation.key = "Station"
         rowStation.value = ""
@@ -785,7 +785,7 @@ class DataFactory: NSObject {
 
 
         let rowIpAddress: Row = NSEntityDescription
-                                .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowIpAddress.key = "Ip Address"
         rowIpAddress.value = ""
@@ -794,7 +794,7 @@ class DataFactory: NSObject {
 
 
         let rowAirportID: Row = NSEntityDescription
-                                .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowAirportID.key = "Airport ID"
         rowAirportID.value = ""
@@ -803,7 +803,7 @@ class DataFactory: NSObject {
         
 
         let rowNetwork: Row = NSEntityDescription
-                             .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                             .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowNetwork.key = "Network"
         rowNetwork.value = ""
@@ -812,7 +812,7 @@ class DataFactory: NSObject {
 
 
         let rowSecurity: Row = NSEntityDescription
-                               .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                               .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSecurity.key = "Security"
         rowSecurity.value = ""
@@ -821,7 +821,7 @@ class DataFactory: NSObject {
 
 
         let rowNetwrkPass: Row = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                 .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowNetwrkPass.key = "Network Passwd."
         rowNetwrkPass.value = ""
@@ -830,7 +830,7 @@ class DataFactory: NSObject {
 
 
         let rowStoragePass: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowStoragePass.key = "Storate Passwd."
         rowStoragePass.value = ""
@@ -839,7 +839,7 @@ class DataFactory: NSObject {
 
 
         let rowUrl: Row = NSEntityDescription
-                          .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                          .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowUrl.key = "Url"
         rowUrl.value = ""
@@ -848,7 +848,7 @@ class DataFactory: NSObject {
         
 
         let rowName: Row = NSEntityDescription
-                           .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                           .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowName.key = "Name"
         rowName.value = ""
@@ -857,7 +857,7 @@ class DataFactory: NSObject {
 
 
         let rowAdmPUrl: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowAdmPUrl.key = "Admin Panel URL"
         rowAdmPUrl.value = ""
@@ -866,7 +866,7 @@ class DataFactory: NSObject {
 
 
         let rowAdmPUsername: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowAdmPUsername.key = "Adm.P.Username"
         rowAdmPUsername.value = ""
@@ -875,7 +875,7 @@ class DataFactory: NSObject {
 
 
         let rowAdmPPassword: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowAdmPPassword.key = "Adm.P.Password"
         rowAdmPPassword.value = ""
@@ -884,7 +884,7 @@ class DataFactory: NSObject {
 
 
         let rowSupportURL: Row = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                 .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSupportURL.key = "Support URL"
         rowSupportURL.value = ""
@@ -893,7 +893,7 @@ class DataFactory: NSObject {
 
 
         let rowSupport: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSupport.key = "Support#"
         rowSupport.value = ""
@@ -902,7 +902,7 @@ class DataFactory: NSObject {
 
 
         let rowServerType: Row = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                 .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowServerType.key = "Server Type"
         rowServerType.value = ""
@@ -911,7 +911,7 @@ class DataFactory: NSObject {
 
 
         let rowSmtpServer: Row = NSEntityDescription
-                                 .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                 .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSmtpServer.key = "SMTP Server"
         rowSmtpServer.value = ""
@@ -920,7 +920,7 @@ class DataFactory: NSObject {
 
 
         let rowWebmail: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowWebmail.key = "Webmail"
         rowWebmail.value = ""
@@ -929,7 +929,7 @@ class DataFactory: NSObject {
 
 
         let rowBankName: Row = NSEntityDescription
-                               .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                               .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowBankName.key = "Bank Name"
         rowBankName.value = ""
@@ -938,7 +938,7 @@ class DataFactory: NSObject {
 
 
         let rowOwner: Row = NSEntityDescription
-                            .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                            .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowOwner.key = "Owner"
         rowOwner.value = ""
@@ -947,7 +947,7 @@ class DataFactory: NSObject {
         
 
         let rowAccount: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowAccount.key = "Account#"
         rowAccount.value = ""
@@ -956,7 +956,7 @@ class DataFactory: NSObject {
 
 
         let rowPin: Row = NSEntityDescription
-                          .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                          .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPin.key = "PIN"
         rowPin.value = ""
@@ -965,7 +965,7 @@ class DataFactory: NSObject {
 
 
         let rowSwift: Row = NSEntityDescription
-                            .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                            .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSwift.key = "Swift"
         rowSwift.value = ""
@@ -974,7 +974,7 @@ class DataFactory: NSObject {
 
 
         let rowIban: Row = NSEntityDescription
-                           .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                           .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowIban.key = "IBAN"
         rowIban.value = ""
@@ -983,7 +983,7 @@ class DataFactory: NSObject {
 
 
         let rowNumber: Row = NSEntityDescription
-                             .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                             .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowNumber.key = "Number"
         rowNumber.value = ""
@@ -992,7 +992,7 @@ class DataFactory: NSObject {
 
 
         let rowCardHolder: Row = NSEntityDescription
-                                .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowCardHolder.key = "Cardholder"
         rowCardHolder.value = ""
@@ -1001,7 +1001,7 @@ class DataFactory: NSObject {
 
 
         let rowValid: Row = NSEntityDescription
-                            .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                            .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowValid.key = "Valid"
         rowValid.value = ""
@@ -1010,7 +1010,7 @@ class DataFactory: NSObject {
 
 
         let rowCvc: Row = NSEntityDescription
-                          .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                          .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowCvc.key = "CVC"
         rowCvc.value = ""
@@ -1019,7 +1019,7 @@ class DataFactory: NSObject {
         
 
         let rowDateOfBirth: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowDateOfBirth.key = "Date of birth"
         rowDateOfBirth.value = ""
@@ -1028,7 +1028,7 @@ class DataFactory: NSObject {
 
 
         let rowPlaceOfBirth: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowPlaceOfBirth.key = "Place of birth"
         rowPlaceOfBirth.value = ""
@@ -1037,7 +1037,7 @@ class DataFactory: NSObject {
 
 
         let rowDateOfIssue: Row = NSEntityDescription
-                                  .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                  .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowDateOfIssue.key = "Date of issue"
         rowDateOfIssue.value = ""
@@ -1046,7 +1046,7 @@ class DataFactory: NSObject {
 
 
         let rowDateOfExpiry: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowDateOfExpiry.key = "Date of Expiry"
         rowDateOfExpiry.value = ""
@@ -1055,7 +1055,7 @@ class DataFactory: NSObject {
 
 
         let rowFullName: Row = NSEntityDescription
-                               .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                               .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowFullName.key = "Full Name"
         rowFullName.value = ""
@@ -1064,7 +1064,7 @@ class DataFactory: NSObject {
 
 
         let rowVehicleTypes: Row = NSEntityDescription
-                                   .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                   .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowVehicleTypes.key = "Vehicle Types"
         rowVehicleTypes.value = ""
@@ -1073,7 +1073,7 @@ class DataFactory: NSObject {
 
 
         let rowOrg: Row = NSEntityDescription
-                          .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                          .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowOrg.key = "Org"
         rowOrg.value = ""
@@ -1082,7 +1082,7 @@ class DataFactory: NSObject {
 
 
         let rowTelephone: Row = NSEntityDescription
-                                .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                                .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowTelephone.key = "Telephone"
         rowTelephone.value = ""
@@ -1091,7 +1091,7 @@ class DataFactory: NSObject {
         
 
         let rowSince: Row = NSEntityDescription
-                            .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                            .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowSince.key = "Since"
         rowSince.value = ""
@@ -1100,7 +1100,7 @@ class DataFactory: NSObject {
         
 
         let rowExpires: Row = NSEntityDescription
-                              .insertNewObjectForEntityForName("Row", inManagedObjectContext: moc) as! Row
+                              .insertNewObject(forEntityName: "Row", into: moc) as! Row
 
         rowExpires.key = "Expires"
         rowExpires.value = ""
@@ -1117,17 +1117,17 @@ class DataFactory: NSObject {
         }
     }
     
-    class func deleteAllObjects(managedObjectContext: NSManagedObjectContext, entityDescription: String) {
+    class func deleteAllObjects(_ managedObjectContext: NSManagedObjectContext, entityDescription: String) {
         
-        let entity = NSEntityDescription.entityForName(entityDescription, inManagedObjectContext: managedObjectContext)
-        let req = NSFetchRequest()
+        let entity = NSEntityDescription.entity(forEntityName: entityDescription, in: managedObjectContext)
+        let req = NSFetchRequest<NSFetchRequestResult>()
         req.entity = entity
 
         // perform initial model fetch
         do {
-            let items = try managedObjectContext.executeFetchRequest(req)
+            let items = try managedObjectContext.fetch(req)
             for object in items {
-                managedObjectContext.deleteObject(object as! NSManagedObject)
+                managedObjectContext.delete(object as! NSManagedObject)
                 print("\(object) object deleted")
             }
             do {

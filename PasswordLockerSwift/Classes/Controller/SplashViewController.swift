@@ -24,10 +24,10 @@ class SplashViewController: UIViewController {
         print(TAG + " receive memory warning")
     }
     
-    override func viewDidAppear(animated: Bool) {
-        var segueID = String("")
+    override func viewDidAppear(_ animated: Bool) {
+        var segueID = ""
         (checkPassword()) ? (segueID = "toAuthenticationVCSegue") : (segueID = "toCreatePasswordVCSegue")
-        self.performSegueWithIdentifier(segueID, sender: nil)
+        self.performSegue(withIdentifier: segueID, sender: nil)
     }
     
     // Helper Methods
@@ -37,13 +37,13 @@ class SplashViewController: UIViewController {
 
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toAuthenticationVCSegue" {
-            let authenticationVC = segue.destinationViewController as! AuthenticationViewController
+            let authenticationVC = segue.destination as! AuthenticationViewController
             authenticationVC.managedObjectContext = self.managedObjectContext
         } else {
-            let createPassVC = segue.destinationViewController as! CreatePasswordViewController
+            let createPassVC = segue.destination as! CreatePasswordViewController
             createPassVC.managedObjectContext = self.managedObjectContext
         }
     }

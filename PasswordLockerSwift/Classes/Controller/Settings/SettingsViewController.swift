@@ -9,17 +9,17 @@
 import UIKit
 
 private enum SectionType {
-    case PasswordChange
-    case BackupRestore
-    case Share
-    case Logout
+    case passwordChange
+    case backupRestore
+    case share
+    case logout
 }
 
 private enum Item {
-    case PasswordChange
-    case BackupRestore
-    case Share
-    case Logout
+    case passwordChange
+    case backupRestore
+    case share
+    case logout
 }
 
 private struct Section {
@@ -28,10 +28,10 @@ private struct Section {
 }
 
 private var sections =  [
-    Section(type: .PasswordChange, items: [.PasswordChange]),
-    Section(type: .BackupRestore, items: [.BackupRestore]),
-    Section(type: .Share, items: [.Share]),
-    Section(type: .Logout, items: [.Logout]),
+    Section(type: .passwordChange, items: [.passwordChange]),
+    Section(type: .backupRestore, items: [.backupRestore]),
+    Section(type: .share, items: [.share]),
+    Section(type: .logout, items: [.logout]),
 ]
 
 class SettingsViewController: UITableViewController {
@@ -45,21 +45,21 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func tableView(tableView: UITableView,
-                            didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
 
         print("Selected \(indexPath.section) \(indexPath.row)")
 
         switch sections[indexPath.section].items[indexPath.row] {
-        case .PasswordChange:
+        case .passwordChange:
             break;
-        case .BackupRestore:
+        case .backupRestore:
             break;
-        case .Share:
+        case .share:
             break;
-        case .Logout: // Logout
+        case .logout: // Logout
             if let tabBarController = self.tabBarController {
-                tabBarController.dismissViewControllerAnimated(true, completion: nil)
+                tabBarController.dismiss(animated: true, completion: nil)
             }
 
             break;

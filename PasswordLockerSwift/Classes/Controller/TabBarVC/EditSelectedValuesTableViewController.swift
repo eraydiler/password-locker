@@ -36,7 +36,7 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
         self.tableView.allowsSelection = false
         
         self.tableView.rowHeight = 44.0
-        self.row = self.managedObjectContext?.objectWithID(self.rowID!) as? Row
+        self.row = self.managedObjectContext?.object(with: self.rowID!) as? Row
         
         self.title = "Edit"
         
@@ -46,12 +46,12 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
 //            frameRect.size.height = 10.0
 //            editTextField.frame = frameRect
             
-            self.textViewCell.hidden = false
-            self.textFieldCell.hidden = true
+            self.textViewCell.isHidden = false
+            self.textFieldCell.isHidden = true
             configureTextView()
         } else {
-            self.textViewCell.hidden = true
-            self.textFieldCell.hidden = false
+            self.textViewCell.isHidden = true
+            self.textFieldCell.isHidden = false
             configureTextField()
         }
     }
@@ -69,20 +69,20 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return 2
     }
     
     // MARK: - Actions
-    @IBAction func doneBarButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func doneBarButtonPressed(_ sender: UIBarButtonItem) {
         
-        var newValue = String("")
+        var newValue = ""
         
         if self.row?.section != "2" { newValue = editTextField.text! }
         else { newValue = editTextView.text }
@@ -90,30 +90,30 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
         self.row?.value = newValue
         
         delegate.rowValueChanged()
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - UITextField Delegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
     
     // MARK: - Keyboard Notifications
     
-    func keyboardDidShow(notification: NSNotification) {
+    func keyboardDidShow(_ notification: Notification) {
         if let rectValue = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
-            let keyboardSize = rectValue.CGRectValue().size
+            let keyboardSize = rectValue.cgRectValue.size
             updateTextViewSizeForKeyboardHeight(keyboardSize.height)
         }
     }
     
-    func keyboardDidHide(notification: NSNotification) {
+    func keyboardDidHide(_ notification: Notification) {
         updateTextViewSizeForKeyboardHeight(0)
     }
     
-    func updateTextViewSizeForKeyboardHeight(keyboardHeight: CGFloat) {
+    func updateTextViewSizeForKeyboardHeight(_ keyboardHeight: CGFloat) {
         self.editTextView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - keyboardHeight-200)
     }
     
@@ -130,14 +130,14 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
     }
     
     func configureTextView() {
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                          selector: #selector(keyboardDidShow),
-                                                         name: UIKeyboardDidShowNotification,
+                                                         name: NSNotification.Name.UIKeyboardDidShow,
                                                          object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                          selector: #selector(keyboardDidHide),
-                                                         name: UIKeyboardDidHideNotification,
+                                                         name: NSNotification.Name.UIKeyboardDidHide,
                                                          object: nil)
         if self.row?.value == "" {
             self.editTextView.text = "No Note"

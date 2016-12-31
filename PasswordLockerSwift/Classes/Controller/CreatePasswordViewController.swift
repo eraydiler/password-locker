@@ -16,8 +16,8 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     var managedObjectContext: NSManagedObjectContext?
     
     func configureView() {
-        self.passwordTextField.setValue(UIColor.grayColor(), forKeyPath: "_placeholderLabel.textColor")
-        self.passwordTextField.tintColor = UIColor.grayColor()
+        self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
+        self.passwordTextField.tintColor = UIColor.gray
         self.passwordTextField.delegate = self
     }
     
@@ -25,7 +25,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         configureView()
     }
     
@@ -36,7 +36,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBActions
     
-    @IBAction func addPassLockButtonPressed(sender: AnyObject) {
+    @IBAction func addPassLockButtonPressed(_ sender: AnyObject) {
         
         if self.passwordTextField.text == "" { return }
 
@@ -45,25 +45,25 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
             print("Saved Successfully")
             
             // show alert
-            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
-                self.performSegueWithIdentifier("toAuthenticationVCSegue", sender: self)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (alertAction) -> Void in
+                self.performSegue(withIdentifier: "toAuthenticationVCSegue", sender: self)
             })
             alertController.addAction(okAction)
             
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
         else { print("Error when saving") }
     }
 
-    @IBAction func viewTapped(sender: AnyObject) {
+    @IBAction func viewTapped(_ sender: AnyObject) {
         passwordTextField.resignFirstResponder()
     }
 
     // MARK: - UITextField Delegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField.text == "" { return false }
         
@@ -72,14 +72,14 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
             print("Saved Successfully")
             
             // show alert
-            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
-                self.performSegueWithIdentifier("toAuthenticationVCSegue", sender: self)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (alertAction) -> Void in
+                self.performSegue(withIdentifier: "toAuthenticationVCSegue", sender: self)
             })
             alertController.addAction(okAction)
             
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
         else { print("Error when saving") }
         return false
@@ -88,11 +88,11 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "toAuthenticationVCSegue" {
-            let authenticationVC = segue.destinationViewController as! AuthenticationViewController
+            let authenticationVC = segue.destination as! AuthenticationViewController
             authenticationVC.managedObjectContext = self.managedObjectContext
         }
     }

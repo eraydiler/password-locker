@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol SelectedTypeTableViewControllerDelegate {
-    func allDataDeletedForCategory(category: Category)
+    func allDataDeletedForCategory(_ category: Category)
 }
 
 class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
@@ -35,7 +35,7 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem
         configureView()
     }
 
@@ -47,16 +47,16 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     
     // MARK: - Fetched results controller
     
-    var fetchedResultsController: NSFetchedResultsController {
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> {
         // return if already initialized
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
         }
         let managedObjectContext = self.managedObjectContext!
         
-        let entity = NSEntityDescription.entityForName("SavedObject", inManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName: "SavedObject", in: managedObjectContext)
         let sort = NSSortDescriptor(key: "date", ascending: true)
-        let req = NSFetchRequest()
+        let req = NSFetchRequest<NSFetchRequestResult>()
         
         req.entity = entity
         req.sortDescriptors = [sort]
@@ -78,14 +78,14 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         
         return self._fetchedResultsController!
     }
-    var _fetchedResultsController: NSFetchedResultsController?
+    var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
 
     // MARK: - fetched results controller delegate
     
     /* called first
     begins update to `UITableView`
     ensures all updates are animated simultaneously */
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
     }
     
@@ -93,27 +93,27 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     - when a new model is created
     - when an existing model is updated
     - when an existing model is deleted */
-    func controller(controller: NSFetchedResultsController,
-        didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?) {
             switch type {
-            case .Insert:
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            case .insert:
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
                 print("\(TAG) coredata insert")
-            case .Update:
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath!)
+            case .update:
+                let cell = self.tableView.cellForRow(at: indexPath!)
                 self.configureCell(cell!, atIndexPath: indexPath!)
-                self.tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.reloadRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
                 print("\(TAG) coredata update")
-            case .Move:
+            case .move:
                 print("\(TAG) coredata move")
-                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            case .Delete:
+                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+            case .delete:
                 print("\(TAG) coredata delete")
-                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
                 
                 if self.fetchedResultsController.sections![0].numberOfObjects == 0 {
                     // TODO: Butun veriler silinmisse view controller i da sil
@@ -124,26 +124,26 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     
     /* called last
     tells `UITableView` updates are complete */
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.endUpdates()
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return self.fetchedResultsController.sections!.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.fetchedResultsController.sections![section].numberOfObjects
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("selectedCell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "selectedCell", for: indexPath) 
 
         // Configure the cell...
         configureCell(cell, atIndexPath: indexPath)
@@ -151,18 +151,18 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == UITableViewCellEditingStyle.Delete {
+        if editingStyle == UITableViewCellEditingStyle.delete {
             
             let context = self.fetchedResultsController.managedObjectContext
             
-            let objectToBeDeleted: SavedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as! SavedObject
-            let relationships = objectToBeDeleted.mutableSetValueForKey("rows")
+            let objectToBeDeleted: SavedObject = self.fetchedResultsController.object(at: indexPath) as! SavedObject
+            let relationships = objectToBeDeleted.mutableSetValue(forKey: "rows")
             
-            context.deleteObject(objectToBeDeleted)
+            context.delete(objectToBeDeleted)
             for row in relationships {
-                context.deleteObject(row as! NSManagedObject)
+                context.delete(row as! NSManagedObject)
             }
             
             var e: NSError?
@@ -182,10 +182,10 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         }
     }
     
-    func configureCell(cell: UITableViewCell,
-        atIndexPath indexPath: NSIndexPath) {
+    func configureCell(_ cell: UITableViewCell,
+        atIndexPath indexPath: IndexPath) {
         
-            let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath) as! SavedObject
+            let savedObject = self.fetchedResultsController.object(at: indexPath) as! SavedObject
             //            cell.textLabel?.text = savedObject.name
             let label = cell.contentView.subviews[0] as! UILabel
             label.text = savedObject.name
@@ -195,13 +195,13 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let indexPath = self.tableView.indexPathForSelectedRow
-        let savedObject = self.fetchedResultsController.objectAtIndexPath(indexPath!) as! SavedObject
+        let savedObject = self.fetchedResultsController.object(at: indexPath!) as! SavedObject
         
         if segue.identifier == "toSelectedValuesTVCSegue" {
-            let targetVC = segue.destinationViewController as! SelectedValuesTableViewController
+            let targetVC = segue.destination as! SelectedValuesTableViewController
             targetVC.managedObjectContext = self.managedObjectContext
             targetVC.category = self.category
             targetVC.savedObjectID = savedObject.objectID
@@ -211,8 +211,8 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
     
     // MARK: - Helper Methods
     
-    func parseDataForTitle(data: Array<Dictionary<String, String>>,
-        atIndexPath indexPath: NSIndexPath) -> String {
+    func parseDataForTitle(_ data: Array<Dictionary<String, String>>,
+        atIndexPath indexPath: IndexPath) -> String {
             
             var title: String = String()
             let dict: Dictionary<String, String> = data[indexPath.row]
