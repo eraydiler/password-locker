@@ -237,8 +237,11 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     
     func rowValueChanged() {
         
-        let indexPath = self.tableView.indexPathForSelectedRow
-        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath!.section]
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            return
+        }
+
+        let sectionsInfo: AnyObject = self.fetchedResultsController.sections![indexPath.section]
         
         var reuseIdentifier: String! = nil
         if sectionsInfo.indexTitle == "0" {
@@ -251,10 +254,11 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             reuseIdentifier = "NoteCell"
         }
         
-        if let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath!)
-        {
-            configureCell(cell, atIndexPath: indexPath!)
-        }
+        let cell: UITableViewCell = tableView
+                                        .dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                                             for: indexPath)
+
+        configureCell(cell, atIndexPath: indexPath)
     }
     
     // MARK: - IBActions
@@ -272,9 +276,6 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        let indexPath = self.tableView.indexPathForSelectedRow      
-        
         if segue.identifier == "toEditSelectedValuesTVCSegue" {
             
             let row = self.fetchedResultsController.object(at: sender as! IndexPath) as! Row

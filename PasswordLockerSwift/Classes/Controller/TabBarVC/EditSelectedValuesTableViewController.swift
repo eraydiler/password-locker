@@ -17,8 +17,7 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
     let TAG = "EditSelectedValuesTableViewController"
     
     // set by AppDelegate on application startup
-    var managedObjectContext: NSManagedObjectContext?
-    
+
     var placeholder: String?
     var rowID: NSManagedObjectID?
     var row: Row?
@@ -36,7 +35,8 @@ class EditSelectedValuesTableViewController: UITableViewController, UITextViewDe
         self.tableView.allowsSelection = false
         
         self.tableView.rowHeight = 44.0
-        self.row = self.managedObjectContext?.object(with: self.rowID!) as? Row
+
+        self.row = NSManagedObjectContext.mr_default().object(with: self.rowID!) as? Row
         
         self.title = "Edit"
         

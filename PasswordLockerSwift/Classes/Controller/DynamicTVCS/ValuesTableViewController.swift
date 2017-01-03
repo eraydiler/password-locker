@@ -163,19 +163,18 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
         self._fetchedResultsController = aFetchedResultsController
         
         // perform initial model fetch
-        var e: NSError?
         do {
             try self._fetchedResultsController!.performFetch()
         } catch let error as NSError {
-            e = error
-            print("\(TAG) fetch error: \(e!.localizedDescription)")
+            print("\(TAG) fetch error: \(error.localizedDescription)")
             abort();
         }
         
         return self._fetchedResultsController!
     }
+
     var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
-    
+
     // MARK: - fetched results controller delegate
     
     /* called first
@@ -233,21 +232,23 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             case "0":
                 let imageView = cell.contentView.subviews[0] as! UIImageView
                 let titleLabel = cell.contentView.subviews[1].subviews[0] as! UILabel
+
                 imageView.image = UIImage(named: row.key)
                 titleLabel.text = row.value
-                break;
+
             case "1":
                 let keyLabel = cell.contentView.subviews[0] as! UILabel
                 let valueLabel = cell.contentView.subviews[1] as! UILabel
+
                 keyLabel.text = row.key
                 valueLabel.text = row.value
-                break;
+
             case "2":
                 let noteLabel = cell.contentView.subviews[0] as! UILabel
+
                 if row.value != "No Note" { noteLabel.textColor = UIColor.black }
                 noteLabel.text = row.value
-                break;
-                
+
             default:
                 break;
             }
@@ -256,24 +257,24 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
     // MARK: - EditValuesTableViewController Delegate
     
     func rowValueChanged() {
-        
-        let indexPath = self.tableView.indexPathForSelectedRow
+        guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            return
+        }
         
         var reuseIdentifier: String! = nil
-        if indexPath?.section == 0 {
+        if indexPath.section == 0 {
             reuseIdentifier = "TitleCell"
         }
-        else if indexPath?.section == 1 {
+        else if indexPath.section == 1 {
             reuseIdentifier = "ValueCell"
         }
         else {
             reuseIdentifier = "NoteCell"
         }
         
-        if let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath!)
-        {
-            configureCell(cell, atIndexPath: indexPath!)
-        }
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+
+        configureCell(cell, atIndexPath: indexPath)
     }
     
     // MARK: - Navigation
@@ -359,8 +360,6 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             manyRelation.add(newRow)
         }
 
-        var e: NSError?
-
         if !Constants.TEST {
             managedObjectContext.mr_saveToPersistentStoreAndWait()
         }
@@ -371,7 +370,8 @@ class ValuesTableViewController: UITableViewController, NSFetchedResultsControll
             do {
                 fetchArray = try managedObjectContext.fetch(req)
             } catch let error as NSError {
-                e = error
+                print(error.localizedDescription)
+
                 fetchArray = nil
             }
             for savedObject in fetchArray as! [SavedObject] {

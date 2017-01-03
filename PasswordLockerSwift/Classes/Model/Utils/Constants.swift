@@ -10,7 +10,7 @@ import Foundation
 
 struct Constants {
     
-    // For not making change in appDelegate
+    // Not to make any change in appDelegate
     static let AUTHENTICATION = true
     
     // For Debugging and testing at developing

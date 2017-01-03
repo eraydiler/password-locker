@@ -36,24 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Initial Data inserted")
         }
         
-        // If authentication is active
-//        if Constants.AUTHENTICATION {
-//
-//            // Set managedObjectContext for view controllers
-//            let authenticationController = self.window!.rootViewController as! SplashViewController
-//            authenticationController.managedObjectContext = managedObjectContext
-//
-//        } else {
-//
-//            // Set managedObjectContext for view controllers
-//            let tabBarController = self.window!.rootViewController as! TabBarController
-//            tabBarController.managedObjectContext = managedObjectContext
-//            
-//            let nav = tabBarController.childViewControllers[0] as! UINavigationController
-//            let categoriesVC = nav.topViewController as! CategoriesTableViewController
-//            categoriesVC.managedObjectContext = managedObjectContext
-//        }
-
         return true
     }
 
