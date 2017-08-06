@@ -380,10 +380,12 @@
 				TargetAttributes = {
 					2A438D5F1A6D66A500101092 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = KJZJDKU3SG;
 						LastSwiftMigration = 0820;
 					};
 					2A438D771A6D66A500101092 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = KJZJDKU3SG;
 						LastSwiftMigration = 0820;
 						TestTargetID = 2A438D5F1A6D66A500101092;
 					};
@@ -640,6 +642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				INFOPLIST_FILE = "PasswordLockerSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
@@ -656,6 +659,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				INFOPLIST_FILE = "PasswordLockerSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
@@ -669,6 +673,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -689,6 +694,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "PasswordLockerSwiftTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
