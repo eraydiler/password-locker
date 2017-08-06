@@ -82,12 +82,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     alertView.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
     presentViewController(alertView, animated: true, completion: nil)
     */
-    
-    @IBAction func checkButtonPressed(_ sender: AnyObject) {
-        let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)
-        print("\(retrieveString)")
-    }
-    
+        
     @IBAction func viewTapped(_ sender: AnyObject) {
         passwordTextField.resignFirstResponder()
     }

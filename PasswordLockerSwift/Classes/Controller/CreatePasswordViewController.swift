@@ -34,6 +34,14 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - IBActions
+
+    @IBAction func checkButtonPressed(_ sender: AnyObject) {
+        guard let retrieveString = KeychainWrapper.stringForKey(kPasswordKey) else {
+            return
+        }
+
+        print("\(retrieveString)")
+    }
     
     @IBAction func addPassLockButtonPressed(_ sender: AnyObject) {
         
