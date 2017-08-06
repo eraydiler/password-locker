@@ -14,12 +14,9 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var passwordTextField: UITextField!
 
-    func configureView() {
-        self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
-        self.passwordTextField.tintColor = UIColor.gray
-        self.passwordTextField.delegate = self
-    }
-    
+
+    // MARK: View lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,10 +24,11 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         configureView()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    func configureView() {
+        self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
+        self.passwordTextField.tintColor = UIColor.gray
+        self.passwordTextField.delegate = self
     }
     
     // MARK: - IBActions

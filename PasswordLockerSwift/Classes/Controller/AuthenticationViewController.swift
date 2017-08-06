@@ -15,45 +15,19 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     @IBOutlet weak var passwordTextField: UITextField!
 
     let kPasswordKey = "PassLock"
-    
-    func configureView() {
-        passwordTextField.delegate = self
-        self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
-        self.passwordTextField.tintColor = UIColor.white
-    }
-    
+
+    // MARK: View lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureView()
+        passwordTextField.delegate = self
+        passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
+        passwordTextField.tintColor = UIColor.white
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - IBActions
-    @IBAction func addPassLockButtonPressed(_ sender: AnyObject) {
-        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!,
-                                                      forKey: kPasswordKey)
-        if isSaved {
-            print("Saved Successfully")
-            
-            // show alert
-            let alertController = UIAlertController(title: "Password Saved",
-                                                    message: "Your password is saved successfully",
-                                                    preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(defaultAction)
-            
-            present(alertController, animated: true, completion: nil)
-        }
-        else { print("Error when saving") }
 
-    }
-    
+    // MARK: - IBActions
+
     @IBAction func deletePassLockButtonPressed(_ sender: AnyObject) {
         let isRemoved: Bool = KeychainWrapper.removeObjectForKey(kPasswordKey)
         if isRemoved {
@@ -74,42 +48,36 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
             print("Error when removing")
         }
     }
-    /*
-    let alertView = UIAlertController(title: "You need to log in first", message: "To access the special features of the app you need to log in first.", preferredStyle: .Alert)
-    alertView.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (alertAction) -> Void in
-    logUserIn()
-    }))
-    alertView.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-    presentViewController(alertView, animated: true, completion: nil)
-    */
-        
+
     @IBAction func viewTapped(_ sender: AnyObject) {
         passwordTextField.resignFirstResponder()
     }
-    
+
     // MARK: - UITextField Delegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.isEqual(passwordTextField) {
-            let retrieveString: String? = KeychainWrapper.stringForKey(kPasswordKey)
-            if retrieveString == passwordTextField.text {
-                // Success
-                print("Login Successful")
-                self.performSegue(withIdentifier: "AuthenticationToTabBarController", sender: nil)
-                return true
-            } else {
-                // show alert
-                let alertController = UIAlertController(title: "Wrong Pass", message: "Be sure to enter right password", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                present(alertController, animated: true, completion: nil)
-            }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text as NSString? else {
+            return true
         }
-        return false
+
+        let replacedText = text.replacingCharacters(in: range, with: string)
+
+        guard
+            replacedText.characters.count > 0,
+            let password = KeychainWrapper.stringForKey(kPasswordKey) else {
+
+                return true
+        }
+
+        if replacedText == password {
+            print("Login Successful")
+
+            self.performSegue(withIdentifier: "AuthenticationToTabBarController", sender: nil)
+        }
+
+        return true
     }
-    
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AuthenticationToTabBarController" {
