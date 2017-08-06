@@ -1307,7 +1307,7 @@
                                                     <constraint firstItem="cDS-T2-Rsu" firstAttribute="top" secondItem="Igj-1y-iCo" secondAttribute="bottom" constant="8" id="r6h-pM-i3B"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qR-pI-d7V">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qR-pI-d7V">
                                                 <rect key="frame" x="264" y="250" width="34" height="30"/>
                                                 <state key="normal" title="Save">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
