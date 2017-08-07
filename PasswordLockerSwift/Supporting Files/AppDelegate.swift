@@ -18,10 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         MagicalRecord.setupCoreDataStack()
-        let managedObjectContext = NSManagedObjectContext.mr_default()
 
+        let managedObjectContext = NSManagedObjectContext.mr_default()
         let isAppInitializedWithData = UserDefaults.standard.bool(forKey: kPasswordLockerUserDefaultsHasInitialized)
 
         if (isAppInitializedWithData == false) {
@@ -45,8 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        guard let splashController = self.window?.rootViewController else {
+            return
+        }
+
+        guard let authenticationController = splashController.presentedViewController as? AuthenticationViewController else {
+            return
+        }
+
+        guard let tabBarController = authenticationController.presentedViewController else {
+            return
+        }
+
+        tabBarController.dismiss(animated: false)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

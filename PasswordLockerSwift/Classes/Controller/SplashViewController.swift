@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class SplashViewController: UIViewController {
     let kPasswordKey="PassLock"
@@ -17,11 +16,6 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print(TAG + " receive memory warning")
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         var segueID = ""
         (checkPassword()) ? (segueID = "toAuthenticationVCSegue") : (segueID = "toCreatePasswordVCSegue")
@@ -29,6 +23,7 @@ class SplashViewController: UIViewController {
     }
     
     // Helper Methods
+
     func checkPassword() -> Bool {
         return (KeychainWrapper.stringForKey(kPasswordKey) != nil)
     }
