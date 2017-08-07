@@ -1,16 +1,19 @@
 PODS:
+  - KeychainAccess (3.0.2)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
   - MagicalRecord/ShorthandMethodAliases (2.3.2)
 
 DEPENDENCIES:
+  - KeychainAccess
   - MagicalRecord
   - MagicalRecord/ShorthandMethodAliases
 
 SPEC CHECKSUMS:
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 
-PODFILE CHECKSUM: e0e9258cff014163a8deb8566eee8c0f0987b2b8
+PODFILE CHECKSUM: 9879044217f775640fc0d38ff79d5e72fe0962b8
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

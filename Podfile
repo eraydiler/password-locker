@@ -8,5 +8,6 @@ target 'PasswordLockerSwift' do
   # Pods for PasswordLockerSwift
   pod "MagicalRecord"
   pod "MagicalRecord/ShorthandMethodAliases"
+  pod 'KeychainAccess'
 
 end

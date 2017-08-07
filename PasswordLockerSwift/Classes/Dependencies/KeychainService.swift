@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainAccess
 
 protocol LocalStorageService {
     static func set(value: String, forKey key: String) -> Bool
@@ -15,15 +16,34 @@ protocol LocalStorageService {
 }
 
 class KeychainService: LocalStorageService {
-    class func set(value: String, forKey key: String) -> Bool {
-        return KeychainWrapper.setString(value, forKey: key)
+    static func set(value: String, forKey key: String) -> Bool {
+        let keychain = Keychain()
+
+        do {
+            try keychain.set(value, key: key)
+        } catch {
+            return false
+        }
+
+        return true
     }
 
-    class func value(forKey key: String) -> String? {
-        return KeychainWrapper.stringForKey(key)
+    static func value(forKey key: String) -> String? {
+        let keychain = Keychain()
+
+        return keychain[key]
     }
 
-    class func removeValue(forKey key: String) -> Bool {
-        return KeychainWrapper.removeObjectForKey(key)
+    static func removeValue(forKey key: String) -> Bool {
+        let keychain = Keychain()
+
+        do {
+            try keychain.remove(key)
+
+        } catch {
+            return false
+        }
+
+        return true
     }
 }

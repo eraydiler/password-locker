@@ -29,8 +29,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     // MARK: - IBActions
 
     @IBAction func deletePassLockButtonPressed(_ sender: AnyObject) {
-        let keychainService = KeychainService()
-
         let isRemoved = KeychainService.removeValue(forKey: kPasswordKey)
 
         if isRemoved {
