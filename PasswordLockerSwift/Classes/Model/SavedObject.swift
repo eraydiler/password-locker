@@ -12,7 +12,7 @@ import CoreData
 class SavedObject: NSManagedObject {
 
     @NSManaged var data: /*AnyObject*/ Array<Dictionary<String, String>>
-    @NSManaged var date: NSDate
+    @NSManaged var date: Date
     @NSManaged var name: String
     @NSManaged var category: Category
     @NSManaged var type: Type

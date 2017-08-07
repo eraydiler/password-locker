@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AD5F9FDE07DA6EBC6DBC961 /* Pods_PasswordLockerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1E53FF1AE08A69FFE7CE69 /* Pods_PasswordLockerSwift.framework */; };
 		2A2FC34C1ABF467100D1769E /* Notlar in Resources */ = {isa = PBXBuildFile; fileRef = 2A2FC34B1ABF467000D1769E /* Notlar */; };
 		2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D651A6D66A500101092 /* AppDelegate.swift */; };
 		2A438D6E1A6D66A500101092 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D6C1A6D66A500101092 /* Main.storyboard */; };
@@ -14,6 +15,10 @@
 		2A438D731A6D66A500101092 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D711A6D66A500101092 /* LaunchScreen.xib */; };
 		2A438D7F1A6D66A500101092 /* PasswordLockerSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D7E1A6D66A500101092 /* PasswordLockerSwiftTests.swift */; };
 		2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D901A6D69E500101092 /* AuthenticationViewController.swift */; };
+		2A6946011CDFED0700F2215F /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946001CDFED0700F2215F /* Email.swift */; };
+		2A6946031CDFEFFA00F2215F /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946021CDFEFFA00F2215F /* Note.swift */; };
+		2A6946071CDFF59700F2215F /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946061CDFF59700F2215F /* Web.swift */; };
+		2A6946091CDFF5A900F2215F /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6946081CDFF5A900F2215F /* Wallet.swift */; };
 		2A6E28DD1AB1D74F00A25E73 /* ValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */; };
 		2A78B76A1AD3411C006E34A9 /* TabsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A78B7691AD3411C006E34A9 /* TabsModel.swift */; };
 		2A88E8481AF2DCC200CB08C4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */; };
@@ -50,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		236EA4C6C8BCC200610213BB /* Pods_PasswordLockerSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PasswordLockerSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A2FC34B1ABF467000D1769E /* Notlar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notlar; sourceTree = "<group>"; };
 		2A438D601A6D66A500101092 /* PasswordLockerSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordLockerSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A438D641A6D66A500101092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,12 +67,17 @@
 		2A438D7D1A6D66A500101092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A438D7E1A6D66A500101092 /* PasswordLockerSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordLockerSwiftTests.swift; sourceTree = "<group>"; };
 		2A438D901A6D69E500101092 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		2A6946001CDFED0700F2215F /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Email.swift; path = Entities/Email.swift; sourceTree = "<group>"; };
+		2A6946021CDFEFFA00F2215F /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Entities/Note.swift; sourceTree = "<group>"; };
+		2A6946061CDFF59700F2215F /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Web.swift; path = Entities/Web.swift; sourceTree = "<group>"; };
+		2A6946081CDFF5A900F2215F /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = Entities/Wallet.swift; sourceTree = "<group>"; };
+		2A6946291CDFFEA400F2215F /* ObjC-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 		2A6E28DC1AB1D74F00A25E73 /* ValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ValuesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2A78B7691AD3411C006E34A9 /* TabsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsModel.swift; sourceTree = "<group>"; };
 		2A88E8471AF2DCC200CB08C4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		2A9300E31A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PasswordLockerSwift.xcdatamodel; sourceTree = "<group>"; };
 		2A937F5D1CD54D4C00E5226B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = Classes/Model/Utils/KeychainWrapper.swift; sourceTree = "<group>"; };
 		2AA343FA1AB87EFF00819709 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2AA4FDEC1AE5C5B4009D21CC /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +94,9 @@
 		2AE8082F1A8146150005E831 /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
 		2AF76B461A82B1C500873A92 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		2AFC83041ACF2C6D005825D6 /* SelectedTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SelectedTypeTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		436BAEB4C1B97E94AF635450 /* Pods-PasswordLockerSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordLockerSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		FB1E53FF1AE08A69FFE7CE69 /* Pods_PasswordLockerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PasswordLockerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB1F6CDD5BCE3A4B16480374 /* Pods-PasswordLockerSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PasswordLockerSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD5F9FDE07DA6EBC6DBC961 /* Pods_PasswordLockerSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +124,8 @@
 				2A438D621A6D66A500101092 /* PasswordLockerSwift */,
 				2A438D7B1A6D66A500101092 /* PasswordLockerSwiftTests */,
 				2A438D611A6D66A500101092 /* Products */,
+				38222AE1C8EA5790E4158609 /* Pods */,
+				DF3A864D9532F33ED70E15D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +141,7 @@
 		2A438D621A6D66A500101092 /* PasswordLockerSwift */ = {
 			isa = PBXGroup;
 			children = (
+				2A69460A1CDFFCD700F2215F /* Dependencies */,
 				2A493A741CD4FA72002D286C /* Classes */,
 				2A438D631A6D66A500101092 /* Supporting Files */,
 			);
@@ -136,6 +154,7 @@
 				2A438D651A6D66A500101092 /* AppDelegate.swift */,
 				2A438D6F1A6D66A500101092 /* Images.xcassets */,
 				2A438D641A6D66A500101092 /* Info.plist */,
+				2A6946291CDFFEA400F2215F /* ObjC-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -160,15 +179,12 @@
 		2A438D881A6D66C700101092 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A6945FF1CDFECB300F2215F /* Entities */,
+				2A6945FE1CDFEBD300F2215F /* Core Data */,
 				2AA343F91AB87EAA00819709 /* DataInsertion */,
 				2A438D891A6D66EC00101092 /* Utils */,
-				2AC23C991AD5DD3D00DFAAE1 /* Category.swift */,
 				2A2FC34B1ABF467000D1769E /* Notlar */,
-				2A9300E21A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld */,
-				2AC23C971AD5DD3C00DFAAE1 /* Row.swift */,
-				2AC23C9D1AD5DD3D00DFAAE1 /* SavedObject.swift */,
 				2A78B7691AD3411C006E34A9 /* TabsModel.swift */,
-				2AC23C9B1AD5DD3D00DFAAE1 /* Type.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,7 +194,6 @@
 			children = (
 				2AD367191ACEB98100538F6E /* Constants.swift */,
 				2AF76B461A82B1C500873A92 /* Helper.swift */,
-				2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -223,6 +238,37 @@
 			name = Onboarding;
 			sourceTree = "<group>";
 		};
+		2A6945FE1CDFEBD300F2215F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2A9300E21A76AF9500C5C66F /* PasswordLockerSwift.xcdatamodeld */,
+				2AC23C991AD5DD3D00DFAAE1 /* Category.swift */,
+				2AC23C971AD5DD3C00DFAAE1 /* Row.swift */,
+				2AC23C9D1AD5DD3D00DFAAE1 /* SavedObject.swift */,
+				2AC23C9B1AD5DD3D00DFAAE1 /* Type.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		2A6945FF1CDFECB300F2215F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				2A6946001CDFED0700F2215F /* Email.swift */,
+				2A6946021CDFEFFA00F2215F /* Note.swift */,
+				2A6946081CDFF5A900F2215F /* Wallet.swift */,
+				2A6946061CDFF59700F2215F /* Web.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		2A69460A1CDFFCD700F2215F /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
 		2A78B76B1AD34B5F006E34A9 /* TabBarVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +308,24 @@
 			path = DataInsertion;
 			sourceTree = "<group>";
 		};
+		38222AE1C8EA5790E4158609 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				436BAEB4C1B97E94AF635450 /* Pods-PasswordLockerSwift.debug.xcconfig */,
+				FB1F6CDD5BCE3A4B16480374 /* Pods-PasswordLockerSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DF3A864D9532F33ED70E15D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB1E53FF1AE08A69FFE7CE69 /* Pods_PasswordLockerSwift.framework */,
+				236EA4C6C8BCC200610213BB /* Pods_PasswordLockerSwiftTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,9 +333,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A438D821A6D66A500101092 /* Build configuration list for PBXNativeTarget "PasswordLockerSwift" */;
 			buildPhases = (
+				6241879C42B9F0D7A3EB6A5D /* [CP] Check Pods Manifest.lock */,
 				2A438D5C1A6D66A500101092 /* Sources */,
 				2A438D5D1A6D66A500101092 /* Frameworks */,
 				2A438D5E1A6D66A500101092 /* Resources */,
+				510E66550C271A6FA3DCECA6 /* [CP] Embed Pods Frameworks */,
+				12E399454B5996774486B404 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -313,9 +380,13 @@
 				TargetAttributes = {
 					2A438D5F1A6D66A500101092 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = KJZJDKU3SG;
+						LastSwiftMigration = 0820;
 					};
 					2A438D771A6D66A500101092 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = KJZJDKU3SG;
+						LastSwiftMigration = 0820;
 						TestTargetID = 2A438D5F1A6D66A500101092;
 					};
 				};
@@ -360,6 +431,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12E399454B5996774486B404 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		510E66550C271A6FA3DCECA6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PasswordLockerSwift/Pods-PasswordLockerSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6241879C42B9F0D7A3EB6A5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2A438D5C1A6D66A500101092 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -370,6 +489,8 @@
 				2AC23C9E1AD5DD3D00DFAAE1 /* SavedObject.swift in Sources */,
 				2ACDCF041AD5B8B800D2CAEB /* SelectedValuesTableViewController.swift in Sources */,
 				2AA4FDEB1AE5C4AF009D21CC /* SplashViewController.swift in Sources */,
+				2A6946031CDFEFFA00F2215F /* Note.swift in Sources */,
+				2A6946071CDFF59700F2215F /* Web.swift in Sources */,
 				2AA4FDED1AE5C5B4009D21CC /* CreatePasswordViewController.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
 				2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */,
@@ -383,8 +504,10 @@
 				2AFC83051ACF2C6D005825D6 /* SelectedTypeTableViewController.swift in Sources */,
 				2ACDCF061AD5B8C800D2CAEB /* EditSelectedValuesTableViewController.swift in Sources */,
 				2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */,
+				2A6946091CDFF5A900F2215F /* Wallet.swift in Sources */,
 				2A6E28DD1AB1D74F00A25E73 /* ValuesTableViewController.swift in Sources */,
 				2AE808301A8146150005E831 /* TypesTableViewController.swift in Sources */,
+				2A6946011CDFED0700F2215F /* Email.swift in Sources */,
 				2A9B04A81B728B1E0044870D /* KeychainWrapper.swift in Sources */,
 				2AC23C981AD5DD3C00DFAAE1 /* Row.swift in Sources */,
 				2AF76B471A82B1C500873A92 /* Helper.swift in Sources */,
@@ -472,6 +595,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -507,32 +631,41 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		2A438D831A6D66A500101092 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 436BAEB4C1B97E94AF635450 /* Pods-PasswordLockerSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				INFOPLIST_FILE = "PasswordLockerSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		2A438D841A6D66A500101092 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB1F6CDD5BCE3A4B16480374 /* Pods-PasswordLockerSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				INFOPLIST_FILE = "PasswordLockerSwift/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PasswordLockerSwift/Supporting Files/ObjC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -540,6 +673,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -551,6 +685,7 @@
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PasswordLockerSwift.app/PasswordLockerSwift";
 			};
 			name = Debug;
@@ -559,12 +694,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = KJZJDKU3SG;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "PasswordLockerSwiftTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ED.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PasswordLockerSwift.app/PasswordLockerSwift";
 			};
 			name = Release;

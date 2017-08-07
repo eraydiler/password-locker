@@ -7,44 +7,24 @@
 //
 
 import UIKit
-import CoreData
 
 class SplashViewController: UIViewController {
     let kPasswordKey="PassLock"
     let TAG = "SplashViewController"
-    
-    var managedObjectContext: NSManagedObjectContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print(TAG + " receive memory warning")
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        var segueID = String("")
+    override func viewDidAppear(_ animated: Bool) {
+        var segueID = ""
         (checkPassword()) ? (segueID = "toAuthenticationVCSegue") : (segueID = "toCreatePasswordVCSegue")
-        self.performSegueWithIdentifier(segueID, sender: nil)
+        self.performSegue(withIdentifier: segueID, sender: nil)
     }
     
     // Helper Methods
+
     func checkPassword() -> Bool {
         return (KeychainWrapper.stringForKey(kPasswordKey) != nil)
-    }
-
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "toAuthenticationVCSegue" {
-            let authenticationVC = segue.destinationViewController as! AuthenticationViewController
-            authenticationVC.managedObjectContext = self.managedObjectContext
-        } else {
-            let createPassVC = segue.destinationViewController as! CreatePasswordViewController
-            createPassVC.managedObjectContext = self.managedObjectContext
-        }
     }
 }

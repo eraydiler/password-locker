@@ -13,10 +13,7 @@ class TabBarController: UITabBarController,
                         UITabBarControllerDelegate,
                         ValuesTableViewControllerDelegate,
                         SelectedTypeTableViewControllerDelegate {
-    
-    // set by AppDelegate
-    var managedObjectContext: NSManagedObjectContext?
-    
+
     // keep current tabs
     var tabsModel = TabsModel()
     
@@ -40,7 +37,7 @@ class TabBarController: UITabBarController,
     }
     
     // MARK: - UITabBarController Delegate
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     }
     
     // MARK: - ValuesTableViewController Delegate
@@ -49,33 +46,35 @@ class TabBarController: UITabBarController,
     }
     
     // MARK: - SelectedTypeTableViewController Delegate
-    func allDataDeletedForCategory(category: Category) {
+    func allDataDeletedForCategory(_ category: Category) {
         removeTabWithCategory(category)
         configureTabs()
     }
     
     // MARK: - Helper Methods
     func configureTabs() {
-        let fReq = NSFetchRequest(entityName: "SavedObject")
-        
-        var e: NSError? = nil
+        let fReq = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedObject")
+        let managedObjectContext = NSManagedObjectContext.mr_default()
+
+        var error: NSError? = nil
         do {
-            let fResults = try self.managedObjectContext?.executeFetchRequest(fReq)
-            if e != nil {
-                print("\(TAG) fetch error: \(e!.localizedDescription)")
+            let fResults = try managedObjectContext.fetch(fReq)
+
+            if error != nil {
+                print("\(TAG) fetch error: \(error!.localizedDescription)")
                 abort()
             }
             
-            if fResults!.count > 0 {
+            if fResults.count > 0 {
                 createTabs(fResults as! [SavedObject])
             }
-        } catch let error as NSError {
-            e = error
+        } catch let exception as NSError {
+            error = exception
         }
     }
     
     // MARK: Create tabs
-    func createTabs(results: [SavedObject]) {
+    func createTabs(_ results: [SavedObject]) {
         
         var categoryArray = Array<Category>()
         
@@ -91,8 +90,8 @@ class TabBarController: UITabBarController,
         }
     }
     
-    func addNewTabWithCategory(category: Category) {
-        
+    func addNewTabWithCategory(_ category: Category) {
+
         // If the tab does not already exist
         if !self.tabsModel.currentTabs.contains(category.name) {
 
@@ -100,9 +99,9 @@ class TabBarController: UITabBarController,
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //            let storyBoardID = "\(category.name)TVC"
             
-            let navigationController = storyBoard.instantiateViewControllerWithIdentifier("navControllerForSelectedType") as! UINavigationController
+            let navigationController = storyBoard.instantiateViewController(withIdentifier: "navControllerForSelectedType") as! UINavigationController
             
-            let selectedTypeViewController = storyBoard.instantiateViewControllerWithIdentifier("selectedTypeView") as! SelectedTypeTableViewController
+            let selectedTypeViewController = storyBoard.instantiateViewController(withIdentifier: "selectedTypeView") as! SelectedTypeTableViewController
             
             // Set selectedTypeView as root view controller
             navigationController.viewControllers[0] = selectedTypeViewController
@@ -111,10 +110,11 @@ class TabBarController: UITabBarController,
             selectedTypeViewController.tabBarItem = UITabBarItem(title: category.name,
                                                                  image: UIImage(named: "tab_\(category.imageName)"),
                                                                  selectedImage: nil)
-            
+
+            let managedObjectContext = NSManagedObjectContext.mr_default()
+
             // Set views's properties
             selectedTypeViewController.category = category
-            selectedTypeViewController.managedObjectContext = self.managedObjectContext
             selectedTypeViewController.delegate = self
             
             // Add view to tabs
@@ -130,11 +130,11 @@ class TabBarController: UITabBarController,
     }
     
     // MARK: Remove Tab
-    func removeTabWithCategory(category: Category) {
+    func removeTabWithCategory(_ category: Category) {
         
-        if let tabIndex = self.tabsModel.currentTabs.indexOf(category.name) {
-            self.tabsModel.currentTabs.removeAtIndex(tabIndex)
-            self.viewControllers?.removeAtIndex(2 + tabIndex)
+        if let tabIndex = self.tabsModel.currentTabs.index(of: category.name) {
+            self.tabsModel.currentTabs.remove(at: tabIndex)
+            self.viewControllers?.remove(at: 2 + tabIndex)
             self.setViewControllers(self.viewControllers, animated: true)
         }
     }

@@ -1,0 +1,16 @@
+PODS:
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+  - MagicalRecord/ShorthandMethodAliases (2.3.2)
+
+DEPENDENCIES:
+  - MagicalRecord
+  - MagicalRecord/ShorthandMethodAliases
+
+SPEC CHECKSUMS:
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+
+PODFILE CHECKSUM: e0e9258cff014163a8deb8566eee8c0f0987b2b8
+
+COCOAPODS: 1.1.1
