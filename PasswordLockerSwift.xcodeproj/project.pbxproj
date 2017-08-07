@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0AD5F9FDE07DA6EBC6DBC961 /* Pods_PasswordLockerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1E53FF1AE08A69FFE7CE69 /* Pods_PasswordLockerSwift.framework */; };
+		2A2B34B71F39039300486B63 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2B34B61F39039300486B63 /* KeychainService.swift */; };
 		2A2FC34C1ABF467100D1769E /* Notlar in Resources */ = {isa = PBXBuildFile; fileRef = 2A2FC34B1ABF467000D1769E /* Notlar */; };
 		2A438D661A6D66A500101092 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A438D651A6D66A500101092 /* AppDelegate.swift */; };
 		2A438D6E1A6D66A500101092 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A438D6C1A6D66A500101092 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		236EA4C6C8BCC200610213BB /* Pods_PasswordLockerSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PasswordLockerSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A2B34B61F39039300486B63 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeychainService.swift; path = Classes/Dependencies/KeychainService.swift; sourceTree = "<group>"; };
 		2A2FC34B1ABF467000D1769E /* Notlar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notlar; sourceTree = "<group>"; };
 		2A438D601A6D66A500101092 /* PasswordLockerSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordLockerSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A438D641A6D66A500101092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				2A9B04A71B728B1E0044870D /* KeychainWrapper.swift */,
+				2A2B34B61F39039300486B63 /* KeychainService.swift */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				2AA4FDEB1AE5C4AF009D21CC /* SplashViewController.swift in Sources */,
 				2A6946031CDFEFFA00F2215F /* Note.swift in Sources */,
 				2A6946071CDFF59700F2215F /* Web.swift in Sources */,
+				2A2B34B71F39039300486B63 /* KeychainService.swift in Sources */,
 				2AA4FDED1AE5C5B4009D21CC /* CreatePasswordViewController.swift in Sources */,
 				2A438D911A6D69E500101092 /* AuthenticationViewController.swift in Sources */,
 				2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */,

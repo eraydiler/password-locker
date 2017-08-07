@@ -25,6 +25,6 @@ class SplashViewController: UIViewController {
     // Helper Methods
 
     func checkPassword() -> Bool {
-        return (KeychainWrapper.stringForKey(kPasswordKey) != nil)
+        return (KeychainService.value(forKey: kPasswordKey) != nil)
     }
 }

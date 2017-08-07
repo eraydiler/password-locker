@@ -29,7 +29,10 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     // MARK: - IBActions
 
     @IBAction func deletePassLockButtonPressed(_ sender: AnyObject) {
-        let isRemoved: Bool = KeychainWrapper.removeObjectForKey(kPasswordKey)
+        let keychainService = KeychainService()
+
+        let isRemoved = KeychainService.removeValue(forKey: kPasswordKey)
+
         if isRemoved {
             print("Removed Successfully")
             
@@ -64,7 +67,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
 
         guard
             replacedText.characters.count > 0,
-            let password = KeychainWrapper.stringForKey(kPasswordKey) else {
+            let password = KeychainService.value(forKey: kPasswordKey) else {
 
                 return true
         }
@@ -87,7 +90,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     // Helper Methods
     func checkPassword() -> Bool {
-        return (KeychainWrapper.stringForKey(kPasswordKey) != nil)
+        return (KeychainService.value(forKey: kPasswordKey) != nil)
     }
 }
 
