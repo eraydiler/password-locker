@@ -48,11 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        guard let authenticationController = splashController.presentedViewController as? AuthenticationViewController else {
+        guard let aController = splashController.presentedViewController
+            else {
             return
         }
 
-        guard let tabBarController = authenticationController.presentedViewController else {
+        guard let tabBarController = aController.presentedViewController else {
             return
         }
 

@@ -34,7 +34,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     // MARK: - IBActions
 
     @IBAction func checkButtonPressed(_ sender: AnyObject) {
-        guard let retrieveString = KeychainWrapper.stringForKey(kPasswordKey) else {
+        guard let retrieveString = KeychainService.value(forKey: kPasswordKey) else {
             return
         }
 
@@ -45,7 +45,8 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         
         if self.passwordTextField.text == "" { return }
 
-        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!, forKey: kPasswordKey)
+        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!,
+                                                forKey: kPasswordKey)
         if isSaved {
             print("Saved Successfully")
             
@@ -72,7 +73,8 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         
         if textField.text == "" { return false }
         
-        let isSaved: Bool = KeychainWrapper.setString(passwordTextField.text!, forKey: kPasswordKey)
+        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!,
+                                                forKey: kPasswordKey)
         if isSaved {
             print("Saved Successfully")
             
