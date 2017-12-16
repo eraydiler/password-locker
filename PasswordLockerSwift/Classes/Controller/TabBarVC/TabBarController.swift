@@ -83,7 +83,9 @@ class TabBarController: UITabBarController,
         }
         
         // Get distinct categories
-        let distinct = NSSet(array: categoryArray).allObjects as! [Category]
+        guard let distinct = NSSet(array: categoryArray).allObjects as? [Category] else {
+            return
+        }
         
         for category in distinct {
             addNewTabWithCategory(category)
@@ -97,8 +99,7 @@ class TabBarController: UITabBarController,
 
             // Select viewcontroller from storyboard
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let storyBoardID = "\(category.name)TVC"
-            
+
             let navigationController = storyBoard.instantiateViewController(withIdentifier: "navControllerForSelectedType") as! UINavigationController
             
             let selectedTypeViewController = storyBoard.instantiateViewController(withIdentifier: "selectedTypeView") as! SelectedTypeTableViewController
@@ -110,8 +111,6 @@ class TabBarController: UITabBarController,
             selectedTypeViewController.tabBarItem = UITabBarItem(title: category.name,
                                                                  image: UIImage(named: "tab_\(category.imageName)"),
                                                                  selectedImage: nil)
-
-            let managedObjectContext = NSManagedObjectContext.mr_default()
 
             // Set views's properties
             selectedTypeViewController.category = category

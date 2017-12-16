@@ -254,9 +254,8 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
             reuseIdentifier = "NoteCell"
         }
         
-        let cell: UITableViewCell = tableView
-                                        .dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                             for: indexPath)
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                                                  for: indexPath)
 
         configureCell(cell, atIndexPath: indexPath)
     }
