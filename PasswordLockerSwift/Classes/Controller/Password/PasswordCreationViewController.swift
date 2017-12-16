@@ -1,5 +1,5 @@
 //
-//  CreatePasswordViewController.swift
+//  PasswordCreationViewController.swift
 //  PasswordLockerSwift
 //
 //  Created by Eray on 21/04/15.
@@ -9,20 +9,10 @@
 import UIKit
 import CoreData
 
-class CreatePasswordViewController: UIViewController {    
+class PasswordCreationViewController: UIViewController {    
     @IBOutlet weak var passwordTextField: UITextField!
 
-    // MARK: - Computed properties
-    
-    fileprivate var isFieldEmpty: Bool {
-        guard let text = passwordTextField.text else {
-            return false
-        }
-        
-        return text.isEmpty
-    }
-
-    // MARK: View lifecycle
+    // MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +21,8 @@ class CreatePasswordViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         configureView()
     }
+    
+    // MARK: - Configuration
 
     func configureView() {
         self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
@@ -60,13 +52,13 @@ class CreatePasswordViewController: UIViewController {
     
     @discardableResult
     fileprivate func attemptToSavePassword() -> Bool {
-        guard !isFieldEmpty else {
+        guard let text = passwordTextField.text, !text.isEmpty else {
             print(">>> TEXT FIELD IS EMPTY")
             
             return false
         }
         
-        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!, forKey: KeychainService.appPasswordKey)
+        let isSaved: Bool = KeychainService.set(value: text, forKey: KeychainService.appPasswordKey)
         
         guard isSaved else {
             print(">>> AN ERROR OCCURED WHILE SAVING PASSWORD")
@@ -81,22 +73,20 @@ class CreatePasswordViewController: UIViewController {
         return true
     }
     
-    fileprivate func displaySuccessAlert() {
-        let alertController = UIAlertController(title: "Password Saved",
-                                                message: "Your password is saved successfully",
-                                                preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (alertAction) -> Void in
-            self.performSegue(withIdentifier: "toAuthenticationVCSegue", sender: self)
-        })
-        
-        alertController.addAction(okAction)
-        
-        present(alertController, animated: true, completion: nil)
+    func displaySuccessAlert() {
+        fatalError("Must be implemented by subclasses")
+    }
+    
+    // MARK: - Subclass methods
+    
+    func performSuccessAction() {
+        fatalError("Must be implemented by subclasses")
     }
 }
 
-extension CreatePasswordViewController: UITextFieldDelegate {
+// MARK: - Text field delegate
+
+extension PasswordCreationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return attemptToSavePassword()
     }
