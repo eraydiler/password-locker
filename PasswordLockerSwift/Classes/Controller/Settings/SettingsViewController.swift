@@ -37,6 +37,8 @@ import UIKit
 
 
 class SettingsViewController: UITableViewController {
+    @IBOutlet weak var touchIDSwitchControl: UISwitch!
+    
     fileprivate enum SectionType {
         case password
         case backupRestore
@@ -55,6 +57,8 @@ class SettingsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        touchIDSwitchControl.isOn = Preferences.isTouchIdEnabled
     }
     
     // MARK: - Private methods
@@ -63,6 +67,10 @@ class SettingsViewController: UITableViewController {
         if let tabBarController = self.tabBarController {
             tabBarController.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func touchIdSwitchValueDidChange(_ sender: UISwitch) {
+        Preferences.isTouchIdEnabled = sender.isOn
     }
 }
 
