@@ -231,11 +231,19 @@
 		2A493A751CD4FADA002D286C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				2A561DE91FE58490001BFD6F /* Password Creation */,
 				2A438D901A6D69E500101092 /* AuthenticationViewController.swift */,
-				2AA4FDEC1AE5C5B4009D21CC /* CreatePasswordViewController.swift */,
 				2AA4FDEA1AE5C4AF009D21CC /* SplashViewController.swift */,
 			);
 			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		2A561DE91FE58490001BFD6F /* Password Creation */ = {
+			isa = PBXGroup;
+			children = (
+				2AA4FDEC1AE5C5B4009D21CC /* CreatePasswordViewController.swift */,
+			);
+			name = "Password Creation";
 			sourceTree = "<group>";
 		};
 		2A6945FE1CDFEBD300F2215F /* Core Data */ = {

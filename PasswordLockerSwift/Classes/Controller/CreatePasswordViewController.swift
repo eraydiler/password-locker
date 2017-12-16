@@ -9,11 +9,20 @@
 import UIKit
 import CoreData
 
-class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
+class CreatePasswordViewController: UIViewController {
     let kPasswordKey = "PassLock"
     
     @IBOutlet weak var passwordTextField: UITextField!
 
+    // MARK: - Computed properties
+    
+    fileprivate var isFieldEmpty: Bool {
+        guard let text = passwordTextField.text else {
+            return false
+        }
+        
+        return text.isEmpty
+    }
 
     // MARK: View lifecycle
 
@@ -42,53 +51,55 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func addPassLockButtonPressed(_ sender: AnyObject) {
-        
-        if self.passwordTextField.text == "" { return }
-
-        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!,
-                                                forKey: kPasswordKey)
-        if isSaved {
-            print("Saved Successfully")
-            
-            // show alert
-            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (alertAction) -> Void in
-                self.performSegue(withIdentifier: "toAuthenticationVCSegue", sender: self)
-            })
-            alertController.addAction(okAction)
-            
-            present(alertController, animated: true, completion: nil)
-        }
-        else { print("Error when saving") }
+        attemptToSavePassword()
     }
 
     @IBAction func viewTapped(_ sender: AnyObject) {
         passwordTextField.resignFirstResponder()
     }
-
-    // MARK: - UITextField Delegate
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        if textField.text == "" { return false }
-        
-        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!,
-                                                forKey: kPasswordKey)
-        if isSaved {
-            print("Saved Successfully")
+    // MARK: - Private methods
+    
+    @discardableResult
+    fileprivate func attemptToSavePassword() -> Bool {
+        guard !isFieldEmpty else {
+            print(">>> TEXT FIELD IS EMPTY")
             
-            // show alert
-            let alertController = UIAlertController(title: "Password Saved", message: "Your password is saved successfully", preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (alertAction) -> Void in
-                self.performSegue(withIdentifier: "toAuthenticationVCSegue", sender: self)
-            })
-            alertController.addAction(okAction)
-            
-            present(alertController, animated: true, completion: nil)
+            return false
         }
-        else { print("Error when saving") }
-        return false
+        
+        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!, forKey: kPasswordKey)
+        
+        guard isSaved else {
+            print(">>> AN ERROR OCCURED WHILE SAVING PASSWORD")
+            
+            return false
+        }
+        
+        print(">>> PASSWORD SAVED SUCCESSFULLY")
+        
+        displaySuccessAlert()
+        
+        return true
+    }
+    
+    fileprivate func displaySuccessAlert() {
+        let alertController = UIAlertController(title: "Password Saved",
+                                                message: "Your password is saved successfully",
+                                                preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (alertAction) -> Void in
+            self.performSegue(withIdentifier: "toAuthenticationVCSegue", sender: self)
+        })
+        
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension CreatePasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return attemptToSavePassword()
     }
 }
