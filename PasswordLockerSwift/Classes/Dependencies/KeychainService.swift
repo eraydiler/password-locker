@@ -16,6 +16,8 @@ protocol LocalStorageService {
 }
 
 class KeychainService: LocalStorageService {
+    static let appPasswordKey = "com.app.passwordlocker.password.key"
+    
     static func set(value: String, forKey key: String) -> Bool {
         let keychain = Keychain()
 

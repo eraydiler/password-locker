@@ -14,8 +14,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     @IBOutlet weak var passwordTextField: UITextField!
 
-    let kPasswordKey = "PassLock"
-
     // MARK: View lifecycle
 
     override func viewDidLoad() {
@@ -29,7 +27,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     // MARK: - IBActions
 
     @IBAction func deletePassLockButtonPressed(_ sender: AnyObject) {
-        let isRemoved = KeychainService.removeValue(forKey: kPasswordKey)
+        let isRemoved = KeychainService.removeValue(forKey: KeychainService.appPasswordKey)
 
         if isRemoved {
             print("Removed Successfully")
@@ -65,7 +63,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
 
         guard
             replacedText.characters.count > 0,
-            let password = KeychainService.value(forKey: kPasswordKey) else {
+            let password = KeychainService.value(forKey: KeychainService.appPasswordKey) else {
 
                 return true
         }
@@ -88,7 +86,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate, UIAle
     
     // Helper Methods
     func checkPassword() -> Bool {
-        return (KeychainService.value(forKey: kPasswordKey) != nil)
+        return (KeychainService.value(forKey: KeychainService.appPasswordKey) != nil)
     }
 }
 

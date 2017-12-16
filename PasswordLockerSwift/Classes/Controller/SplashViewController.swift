@@ -9,8 +9,7 @@
 import UIKit
 
 class SplashViewController: UIViewController {
-    let kPasswordKey="PassLock"
-    let TAG = "SplashViewController"
+    private let TAG = "SplashViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +24,6 @@ class SplashViewController: UIViewController {
     // Helper Methods
 
     func checkPassword() -> Bool {
-        return (KeychainService.value(forKey: kPasswordKey) != nil)
+        return (KeychainService.value(forKey: KeychainService.appPasswordKey) != nil)
     }
 }

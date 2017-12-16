@@ -9,9 +9,7 @@
 import UIKit
 import CoreData
 
-class CreatePasswordViewController: UIViewController {
-    let kPasswordKey = "PassLock"
-    
+class CreatePasswordViewController: UIViewController {    
     @IBOutlet weak var passwordTextField: UITextField!
 
     // MARK: - Computed properties
@@ -43,7 +41,7 @@ class CreatePasswordViewController: UIViewController {
     // MARK: - IBActions
 
     @IBAction func checkButtonPressed(_ sender: AnyObject) {
-        guard let retrieveString = KeychainService.value(forKey: kPasswordKey) else {
+        guard let retrieveString = KeychainService.value(forKey: KeychainService.appPasswordKey) else {
             return
         }
 
@@ -68,7 +66,7 @@ class CreatePasswordViewController: UIViewController {
             return false
         }
         
-        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!, forKey: kPasswordKey)
+        let isSaved: Bool = KeychainService.set(value: passwordTextField.text!, forKey: KeychainService.appPasswordKey)
         
         guard isSaved else {
             print(">>> AN ERROR OCCURED WHILE SAVING PASSWORD")

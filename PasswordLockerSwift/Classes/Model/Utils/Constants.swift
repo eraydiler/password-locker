@@ -15,5 +15,5 @@ struct Constants {
     
     // For Debugging and testing at developing
     static let DEBUG = false
-    static let TEST = false
+    static let TEST = false    
 }
