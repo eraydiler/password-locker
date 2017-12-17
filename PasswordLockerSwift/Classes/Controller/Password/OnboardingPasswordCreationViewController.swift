@@ -8,7 +8,20 @@
 
 import UIKit
 
-class OnboardingPasswordCreationViewController: PasswordCreationViewController {    
+class OnboardingPasswordCreationViewController: PasswordCreationViewController {
+    
+    // MARK: - View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if Preferences.isTouchIdEnabled {
+            
+        }
+    }
+    
+    // MARK - Overriden Methods
+    
     override func performSuccessAction() {
         self.performSegue(withIdentifier: "toAuthenticationVCSegue", sender: self)
     }

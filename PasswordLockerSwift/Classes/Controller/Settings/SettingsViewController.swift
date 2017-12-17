@@ -43,6 +43,7 @@ class SettingsViewController: UITableViewController {
         case password
         case backupRestore
         case share
+        case login
         case logout
     }
     
@@ -50,6 +51,7 @@ class SettingsViewController: UITableViewController {
         .password,
         .backupRestore,
         .share,
+        .login,
         .logout
     ]
 

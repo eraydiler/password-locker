@@ -38,6 +38,8 @@
 		2AC23C9C1AD5DD3D00DFAAE1 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC23C9B1AD5DD3D00DFAAE1 /* Type.swift */; };
 		2AC23C9E1AD5DD3D00DFAAE1 /* SavedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC23C9D1AD5DD3D00DFAAE1 /* SavedObject.swift */; };
 		2ACD6E6F1FE5AF46004A048B /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A98B7361FE5AD39006172AA /* Preferences.swift */; };
+		2ACD6E721FE6D9A6004A048B /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACD6E711FE6D9A6004A048B /* TouchIDAuthentication.swift */; };
+		2ACD6E731FE6D9A6004A048B /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACD6E711FE6D9A6004A048B /* TouchIDAuthentication.swift */; };
 		2ACDCF041AD5B8B800D2CAEB /* SelectedValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACDCF031AD5B8B800D2CAEB /* SelectedValuesTableViewController.swift */; };
 		2ACDCF061AD5B8C800D2CAEB /* EditSelectedValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACDCF051AD5B8C800D2CAEB /* EditSelectedValuesTableViewController.swift */; };
 		2ACFDE561ABA070300579467 /* EditValuesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */; };
@@ -93,6 +95,7 @@
 		2AC23C991AD5DD3D00DFAAE1 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2AC23C9B1AD5DD3D00DFAAE1 /* Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		2AC23C9D1AD5DD3D00DFAAE1 /* SavedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedObject.swift; sourceTree = "<group>"; };
+		2ACD6E711FE6D9A6004A048B /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		2ACDCF031AD5B8B800D2CAEB /* SelectedValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SelectedValuesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2ACDCF051AD5B8C800D2CAEB /* EditSelectedValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EditSelectedValuesTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2ACFDE551ABA070300579467 /* EditValuesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditValuesTableViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 		2A493A741CD4FA72002D286C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2ACD6E701FE6D984004A048B /* Utility */,
 				2A98B7351FE5AD2A006172AA /* Preferences */,
 				2A438D8D1A6D67DA00101092 /* Controller */,
 				2A438D881A6D66C700101092 /* Model */,
@@ -332,6 +336,14 @@
 				2AA343FA1AB87EFF00819709 /* DataFactory.swift */,
 			);
 			path = DataInsertion;
+			sourceTree = "<group>";
+		};
+		2ACD6E701FE6D984004A048B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2ACD6E711FE6D9A6004A048B /* TouchIDAuthentication.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		38222AE1C8EA5790E4158609 /* Pods */ = {
@@ -516,6 +528,7 @@
 				2A98B7371FE5AD39006172AA /* Preferences.swift in Sources */,
 				2ACDCF041AD5B8B800D2CAEB /* SelectedValuesTableViewController.swift in Sources */,
 				2A6946031CDFEFFA00F2215F /* Note.swift in Sources */,
+				2ACD6E721FE6D9A6004A048B /* TouchIDAuthentication.swift in Sources */,
 				2A6946071CDFF59700F2215F /* Web.swift in Sources */,
 				2A2B34B71F39039300486B63 /* KeychainService.swift in Sources */,
 				2AA343FB1AB87EFF00819709 /* DataFactory.swift in Sources */,
@@ -550,6 +563,7 @@
 			files = (
 				2A438D7F1A6D66A500101092 /* PasswordLockerSwiftTests.swift in Sources */,
 				2A937F5F1CD54D4C00E5226B /* SettingsViewController.swift in Sources */,
+				2ACD6E731FE6D9A6004A048B /* TouchIDAuthentication.swift in Sources */,
 				2ACD6E6F1FE5AF46004A048B /* Preferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
