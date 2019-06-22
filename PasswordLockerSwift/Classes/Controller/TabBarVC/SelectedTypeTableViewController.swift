@@ -99,20 +99,20 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         newIndexPath: IndexPath?) {
             switch type {
             case .insert:
-                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableView.RowAnimation.fade)
                 print("\(TAG) coredata insert")
             case .update:
                 let cell = self.tableView.cellForRow(at: indexPath!)
                 self.configureCell(cell!, atIndexPath: indexPath!)
-                self.tableView.reloadRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
                 print("\(TAG) coredata update")
             case .move:
                 print("\(TAG) coredata move")
-                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
-                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableView.RowAnimation.fade)
             case .delete:
                 print("\(TAG) coredata delete")
-                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
                 
                 if self.fetchedResultsController.sections![0].numberOfObjects == 0 {
                     // TODO: Butun veriler silinmisse view controller i da sil
@@ -150,9 +150,9 @@ class SelectedTypeTableViewController: UITableViewController, NSFetchedResultsCo
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == UITableViewCellEditingStyle.delete {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             
             let context = self.fetchedResultsController.managedObjectContext
             

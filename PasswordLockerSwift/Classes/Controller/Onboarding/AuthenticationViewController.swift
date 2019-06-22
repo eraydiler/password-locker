@@ -49,11 +49,11 @@ class AuthenticationViewController: UIViewController, TouchIDAuthenticable {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didReceive(applicationWillEnterForeground:)),
-            name: .UIApplicationWillEnterForeground,
+            name: UIApplication.willEnterForegroundNotification,
             object: nil)
     }
     
-    func didReceive(applicationWillEnterForeground notification: Notification) {
+    @objc func didReceive(applicationWillEnterForeground notification: Notification) {
         attemptToLoginWithTouchID()
     }
     

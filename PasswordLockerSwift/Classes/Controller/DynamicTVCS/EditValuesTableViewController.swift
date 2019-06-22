@@ -107,14 +107,14 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
     
     // MARK: - Keyboard Notifications
     
-    func keyboardDidShow(_ notification: Notification) {
-        if let rectValue = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
+    @objc func keyboardDidShow(_ notification: Notification) {
+        if let rectValue = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue {
             let keyboardSize = rectValue.cgRectValue.size
             updateTextViewSizeForKeyboardHeight(keyboardSize.height)
         }
     }
     
-    func keyboardDidHide(_ notification: Notification) {
+    @objc func keyboardDidHide(_ notification: Notification) {
         updateTextViewSizeForKeyboardHeight(0)
     }
     
@@ -135,15 +135,18 @@ class EditValuesTableViewController: UITableViewController, UITextViewDelegate {
     }
     
     func configureTextView() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardDidShow),
-                                               name: NSNotification.Name.UIKeyboardDidShow,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDidShow),
+            name: UIResponder.keyboardDidShowNotification,
+            object: nil)
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardDidHide),
-                                               name: NSNotification.Name.UIKeyboardDidHide,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDidHide),
+            name: UIResponder.keyboardDidHideNotification,
+            object: nil)
+        
         if self.row?.value == "" {
             self.editTextView.text = "No Note"
         } else {

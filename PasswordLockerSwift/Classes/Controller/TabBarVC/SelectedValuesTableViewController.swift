@@ -122,20 +122,20 @@ class SelectedValuesTableViewController: UITableViewController, NSFetchedResults
         newIndexPath: IndexPath?) {
             switch type {
             case .insert:
-                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableView.RowAnimation.fade)
                 print("\(TAG) coredata insert")
             case .update:
                 let cell = self.tableView.cellForRow(at: indexPath!)
                 self.configureCell(cell!, atIndexPath: indexPath!)
-                self.tableView.reloadRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
                 print("\(TAG) coredata update")
             case .move:
                 print("\(TAG) coredata move")
-                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
-                self.tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
+                self.tableView.insertRows(at: [newIndexPath!], with: UITableView.RowAnimation.fade)
             case .delete:
                 print("\(TAG) coredata delete")
-                self.tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+                self.tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
             }
     }
     

@@ -32,9 +32,9 @@ class ShareViewController: UIViewController {
             } else {
                 let alert = UIAlertController(title: "Accounts",
                                               message: "Please login to a Facebook account to share.",
-                                              preferredStyle: UIAlertControllerStyle.alert)
+                                              preferredStyle: UIAlertController.Style.alert)
                 
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
             }
@@ -47,9 +47,9 @@ class ShareViewController: UIViewController {
             } else {
                 let alert = UIAlertController(title: "Accounts",
                                               message: "Please login to a Twitter account to share.",
-                                              preferredStyle: UIAlertControllerStyle.alert)
+                                              preferredStyle: UIAlertController.Style.alert)
                 
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
             }
