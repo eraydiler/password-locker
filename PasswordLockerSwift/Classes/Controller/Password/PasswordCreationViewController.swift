@@ -25,9 +25,9 @@ class PasswordCreationViewController: UIViewController {
     // MARK: - Configuration
 
     func configureView() {
-        self.passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
-        self.passwordTextField.tintColor = UIColor.gray
-        self.passwordTextField.delegate = self
+        passwordTextField.textColor = .gray
+        passwordTextField.tintColor = UIColor.gray
+        passwordTextField.delegate = self
     }
     
     // MARK: - IBActions

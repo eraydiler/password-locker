@@ -25,7 +25,7 @@ class AuthenticationViewController: UIViewController, TouchIDAuthenticable {
         super.viewDidLoad()
 
         passwordTextField.delegate = self
-        passwordTextField.setValue(UIColor.gray, forKeyPath: "_placeholderLabel.textColor")
+        passwordTextField.textColor = .gray
         passwordTextField.tintColor = UIColor.white
         
         registerForNotifications()
